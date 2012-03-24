@@ -1,0 +1,87 @@
+
+Basic site structure:
+
+	Main folder:
+		-contains files that will be viewed by browser directly
+		-contains documentation, sometimes an SQL dump or whatev. 
+		
+	Other folders:
+		php
+			-all backend PHP scripts
+			-also header.php, scripts.php, footer.php, cxn.php
+		js
+			-contains all the javascript used on the site
+			-should hold any library used, unless you can link to a google repository
+		css
+			-should have one large main CSS folder
+			-may contain CSS for plugin elements. 
+		img
+			-contains images
+			- 'img/stock' will be basic site images like arrows, ect
+			- 'img/img_db' will hold all images accessed by the mysql database.
+			
+Tables
+	eventvalues
+	columns: eventid (INT) (PK)(NN)(UQ)(AI) 
+		 datetime (DATETIME) (NN)
+		 location (VARCHAR(300)) (NN)
+	
+	uservalues
+	columns: userid (INT) (NN)(UQ)(AI)
+		 joindate (DATETIME)
+		 profilepic (VARCHAR(300))
+		 password (VARCHAR(30)) (NN)
+		 sex (VARCHAR(6)) (NN)
+	 	 location (VARCHAR(300))
+		 name (VARCHAR(50)) (NN)
+			
+useful code for this project:
+
+	https://github.com/a-r-d/ooz-message-board
+		-has working AJAX scripts
+		-has a very very similar structure
+		-has a similar library of functions see php/lib.php
+	
+	GEOLOCATION via HTML 5
+	
+	http://html5demos.com/geo
+
+	(Add more URLs as you find them!)
+
+	Google maps:places... (im working on this now -aaron)
+	http://code.google.com/apis/maps/documentation/places/
+			
+			
+		
+	
+	
+Search algorith outline:
+
+ --> take user input:
+ 
+	$input = $_GET['search'];
+	preg_replace("#[\{\[\}\]\\;\/]#', '', $input); //filter some nasties
+	
+	$res1 = search_location($input);		// see if we geocode anything!
+	$res2 = search_date($input);		 	// see if we can get a date
+	$res3 = search_text($input); 			// see if we can search for text with what is left?
+	
+	function search_location($input)
+		{
+		//something like this:
+		$strings = preg_split("#[ ]#, '', $input); //break into strings when spaces
+		
+		//then we match against five numbers for a zip code:
+		
+		// or do we just try to geocode the whole thing?
+		
+		return $res1;
+		}
+	
+	function search_date($input)
+		{
+		
+		
+		}
+	
+

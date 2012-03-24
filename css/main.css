@@ -1,0 +1,319 @@
+
+/* Main css file. Should ONLY put tag attributes here (e.g. body, a, p) */
+	/*
+	 * 
+	 * FYI: INDENT LEVELS SHOULD REFLECT ORDER OF INHERTANCE cool? 
+	 *
+	 */ 
+/* * { margin: 0; padding: 0;} the * applys to everything within the document,we could use this instead*/
+html, body
+	{
+	margin: 0;
+    padding: 0;
+				/* Super important (just fucking finally figured this out)
+				 *
+				 *  NOTE: THERE ARE BODY MARGINS THAT ALL BROWSERS ADD BY DEFAULT!!!
+				 *  WE HAVE TO REMOVE THESE TO GET A NORMAL LOOKING HEADER AND FOOTER 
+				* 
+				* */
+				
+	font-family: helvetica, verdana, arial, sans-serif;
+	text-align: center;
+	background-color: white;
+	color: black;
+	font-size: 20px;
+	position: relative;
+    height: 100%;
+    width: 100%;
+	}
+	
+        #advancedButton {
+			top: 2px;
+			right: 2px;
+
+			position: absolute;
+			z-index: 3;
+				/* because no image for this yet exists I have given it a BG color */
+			}
+			
+        .login_msg {
+			color: red;
+			font-size: 90%;
+			position: absolute;
+		    right: 10%;
+			text-align: center;
+			}       
+            
+            
+            
+	#header {
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		width: 100%;
+		height: 30px;
+		/*background-color: #328AC5; *//*temp.. just so i can see wtf i am doing here #2E2E2E; */
+		background-color: #2E2E2E;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: black;
+		z-index: 3;
+			/*text formatting: */
+			color: white;
+			text-align: left;
+			font-family: 'Quicksand', sans-serif;
+
+		
+		}
+            #advancedPanel {
+                right:0px;
+                top: 30px;
+                color: black;
+                padding: 15px;
+                width: 375px;
+                height: 90px;
+                border-width: 0px;
+                border-color: black;
+                border-style: solid;
+                
+                position: absolute;
+                background-color: whitesmoke;
+                z-index: 3;
+                display: none;
+                
+                border-radius: 10px;
+                }
+		/* Begin login field attributes -Note: These are all under header inheritance!*/
+		#login-field
+			{
+			position: absolute;
+            top:2px;
+			right: 4%;
+			font-size: 14px;
+			}
+			.login-button
+				{
+				font-size: 150%;
+				font-style: italic;
+				color: #1E1F3F;
+				background-color: #CBCCED;
+				border-radius: 5px;
+				}
+				.login-button:hover
+					{
+					color: red;
+					}
+                #signupPanel {
+                             width: 70%;
+                             height: 70%;
+                             right:0px;
+                             top: 120px;
+
+                             color: black;
+			                padding: 15px;
+			                width: 375px;
+			                height: 180px;
+			                border-width: 0px;
+			                border-color: black;
+			                border-style: solid;
+			                
+			                position: absolute;
+			                background-color: whitesmoke;
+			                z-index: 3;
+			                display: none;
+			                
+			                border-radius: 10px;
+                             
+                             
+                             }
+               
+        
+        #submit-signup{
+			
+			
+			}
+		#signup-errors {
+			text-align: center;
+			color: red;
+			}
+        
+          
+               
+               
+	#wrap {
+		
+		}	
+	
+            #footer {
+                width: 100%;
+                height: 40px;
+                border-top-width: 1px;
+                
+                
+                
+                border-top-style: solid;
+                border-top-color: black;
+                
+                /*
+                z-index: 2;
+                position: absolute;
+                bottom: 0px;
+                margin-top: -30px;
+                */
+                /*
+                CSS has to be tricked into displaying the footer on the bottom of the page.
+                Use margin-top: -heightoffooter;
+                */
+                
+                color: white;
+                background-color: black;
+                text-align: center;
+                font-size: 75%;
+                
+				}		
+				#footer ul li
+					{
+					display: inline-block;
+					
+					}
+				
+				#footer ul li:hover
+					{
+					color: black;
+					background-color: white;
+					
+					}
+		#logo
+			{
+			font-family: 'Quicksand', sans-serif;
+			font-size: 600%;
+			text-align: center;
+			}
+			#infin
+				{
+				font-size: 120%;
+				}
+				
+				
+				
+						
+ /* END PRIMARY PAGE ELEMENTS */
+
+
+
+
+/* Random shit goes here: */
+
+	#map { 
+		    width:600px; 
+		    height:350px; 
+		    margin-left: auto;
+		    margin-right:auto;
+		} 
+	
+	#e /*just for the template... also a demonstration of word-wrap attribute Comment:
+            What words would we need to wrap on the front page - it will be a header, footer
+            and search box right?
+            * 
+            * Why?--> word wrap all results that may have been user entered. 
+            * Users can input long strings that will break page formatting. 
+            * */
+		{
+		font-family: courier-new, courier;
+		width: 60%;
+		margin-left: 20%;
+		word-wrap: break-word;
+		
+		}
+
+	/*
+        #header {
+            position: absolute;
+            width: 100%;
+            height: 28px;
+            background-color: #2E2E2E;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: black;
+            z-index: 3;
+        }
+        * 
+        */
+/*        #footer {
+            width: 100%;
+            height: 30px;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: black;
+            z-index: 3;
+            position: relative;
+            display: inline;
+            list-style-type: none;
+            list-style-image: none;
+            
+        } */
+        #pageContent {
+            z-index: 2;
+            width: 450px;
+            height: 300px;
+            background-color: red;
+            position: absolute;
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15%;
+            
+        }
+        #tips {
+            z-index: 3;
+            background-color: blue;
+            color: white;
+            
+        }
+        /*styling not finished due to buggy browsers ect ect, need to build it on waanoo.com
+          before I finish them off - all sorts of problems with centering in IE and safari EG:
+         marign-left: auto, margin-right:auto does not work*/
+        
+     
+    /* FLOATING WINDOW */  
+		#signUpWindow {
+			z-index: 100;
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 100px;
+			left: 40%;
+			
+			font-family: 'Quicksand', sans-serif;
+			color: black;
+			background-color: #E9E9F3;
+			border-radius: 10px;
+			opacity: 90%;
+			}
+
+	/* EVENT VIEW AREA*/
+		
+		.eventViewer{
+			margin-left: auto;
+            margin-right: auto;
+			width: 70%;
+			
+			padding: 10px;
+			border-width: 0px;
+			border-color: black;
+			border-style: solid;
+			
+			background-color: #F5F5F5;
+			border-radius: 10px;
+			}
+			.eventSingle{
+				margin-left: auto;
+	            margin-right: auto;
+				width: 100%;
+				
+				border-width: 0px;
+				color:black;
+				background-color: white;	
+				border-radius: 10px;
+				}
