@@ -12,7 +12,7 @@ function signIn(){
 	$.post("./php/signin.php", infos, function(resultJSON){
 	
 		var status = resultJSON.status;
-		var msg = resultJSON.msg;
+		var msg = resultJSON.message;
 		var name = resultJSON.name;
 		var id = resultJSON.id;
 		
@@ -26,7 +26,7 @@ function signIn(){
 			}
 		else{
 			// Login failed
-			$('#loginNotes').empty().append("login failed");
+			$('#loginNotes').empty().append("login failed: " + "<small>" + msg + "</small>");
 			}
 		
 	}, "json");

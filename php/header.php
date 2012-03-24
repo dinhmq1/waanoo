@@ -50,7 +50,6 @@ require('scripts.php');
 				</span>
 				<span id='loginNotes'></span>
 						
-				<br />
                 <br />
                 Don't have an account? <br /> 
 				<span class='login-button' id='signupBtn'>
