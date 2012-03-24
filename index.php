@@ -13,7 +13,10 @@ Events Near You:
 <div class="eventViewer">
 </div>
 
-
 <div id="tempWindow">
 </div>
+
+<p>&nbsp;
+</p>
+
 <?php require 'php/footer.php';?>

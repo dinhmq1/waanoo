@@ -23,7 +23,7 @@ require('scripts.php');
 	<div id="header">&nbsp;waan<span id='infin'>∞</span>.com
        <!-- <div id='login-text'> [login]</div> -->
 		
-		<span class="login_msg">
+		<span class="login_msg" id="login_msg">
 			<?php
 			echo $logged_in;
 			?>
@@ -38,15 +38,18 @@ require('scripts.php');
 			<span id='login-field'>
 			
                 login with facebook:<br />
-							email:
-								<input type='text' id='login-email' size='10' />
-							
-							password:
-								<input type='password' id='login-password' size='10' />
-				<span class='login-button'>
+                
+				email:
+					<input type='text' id='login-email' size='10' />
+				
+				password:
+					<input type='password' id='login-password' size='10' />
+					
+				<span class='login-button' onClick='signIn()'>
 				GO!
 				</span>
-							
+				<span id='loginNotes'></span>
+						
 				<br />
                 <br />
                 Don't have an account? <br /> 

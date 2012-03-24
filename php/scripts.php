@@ -12,3 +12,4 @@
 		<script src="./js/main.js"></script>
 		<script src="./js/signup-ajax.js"></script>
 		<script src="./js/location_detection.js"></script>
+		<script src="./js/signin.js"></script>

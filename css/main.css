@@ -92,6 +92,10 @@ html, body
 			right: 4%;
 			font-size: 14px;
 			}
+			
+		#loginNotes{
+			color: red;
+			}
 			.login-button
 				{
 				font-size: 150%;
@@ -105,29 +109,29 @@ html, body
 					color: red;
 					}
                 #signupPanel {
-                             width: 70%;
-                             height: 70%;
-                             right:0px;
-                             top: 120px;
+					 width: 70%;
+					 height: 70%;
+					 right:0px;
+					 top: 120px;
 
-                             color: black;
-			                padding: 15px;
-			                width: 375px;
-			                height: 180px;
-			                border-width: 0px;
-			                border-color: black;
-			                border-style: solid;
-			                
-			                position: absolute;
-			                background-color: whitesmoke;
-			                z-index: 3;
-			                display: none;
-			                
-			                border-radius: 10px;
-                             
-                             
-                             }
-               
+					 color: black;
+	                padding: 15px;
+	                width: 375px;
+	                height: 180px;
+	                border-width: 0px;
+	                border-color: black;
+	                border-style: solid;
+	                
+	                position: absolute;
+	                background-color: whitesmoke;
+	                z-index: 3;
+	                display: none;
+	                
+	                border-radius: 10px;
+					 
+					 
+					 }
+	   
         
         #submit-signup{
 			
