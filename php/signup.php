@@ -171,14 +171,14 @@ function get_user_id($email){
 
 /********** The main function **********************************************************/
 
-function main_validation($email, $password1, $password2, $fname, $lname, $sex, $num_errors){
-	if(verify_email($email) == true and verify_password($password1, $password2) == true and validate_sex($sex) == true){
+function main_validation($email, $password1, $password2, $fname, $lname, $sex){
+	if(verify_email($email) == true and verify_password($password1, $password2, $lname) == true and validate_sex($sex) == true){
 	//$username = validate_username($username);
 		$password = sha1($password1);
 		$cxn = $GLOBALS['cxn'];
 	
 		$query = "INSERT INTO user_list (email, password, first_name, last_name, date_added) 
-				VALUES(?, ?, ?, ?, ?, NOW())";
+				VALUES(?, ?, ?, ?, NOW())";
 		$stm2 = $cxn->prepare($query);
 		$stm2->bind_param("ssss", $email, $password, $fname, $lname);
 		$stm2->execute();
@@ -197,12 +197,13 @@ function main_validation($email, $password1, $password2, $fname, $lname, $sex, $
 	}//end main function!
 
 
-$ret = main_validation($email, $password1, $password2, $fname, $lname, $sex, $num_errors);
+$ret = main_validation($email, $password1, $password2, $fname, $lname, $sex);
 
+// if we get a true, then everything went ok
 if($ret == true)
-	$status = 0;
-else
 	$status = 1;
+else
+	$status = 0;
 	
 $arr = array("status" => $status, "name" => $fname);
 

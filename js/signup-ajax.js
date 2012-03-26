@@ -9,23 +9,12 @@ function mainSignUp(email, pass1, pass2, fname, lname, sex){
 						last_name: lname,
 						user_sex: sex
 					};
-	$.post("./php/signup.php", signupInfos, function(json){
-		
-		//unpack json data into variables.
-		var status = json.status;
-		var error = json.error_msg;
-		var usr = json.name;
-		
-		// if status is 1, success
-		if(status === 1){
-			// set the header to say: "you are logged in", and name
-			$("#login_msg").empty().append("Hi " + usr);
-			}
-		else{
-			console.log("Failed to sign up: " + error);
-			}
-		
-		}, "json");
+	return $.ajax({
+		type: "POST",
+		url: "./php/signup.php", 
+		data: signupInfos,
+		dataType: "json"
+		});
 	}
 
 // checks to see if email already taken
@@ -41,15 +30,27 @@ function find_email(email){
 		if(res == 0){
 			console.log("Not matched: " + email);
 			$('#email_test').val("1");
-			return 1;
+			var result = 1;
 			}
 		else{
 			console.log("matched: " + email);
 			$('#email_test').val("0");
-			return 0;
+			var result = 1;
 			}
 		});
 	}
+	
+function find_email_prom(email){
+	var toSend = {
+					test_mail: email
+				};
+	return $.ajax({
+		type: 'POST',
+		url: "./php/checkEmail.php",
+		data: toSend
+		});
+	}	
+	
 	
 function closeMe(idInpt){
 	$(idInpt).hide();

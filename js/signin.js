@@ -21,6 +21,10 @@ function signIn(){
 		// -add login message
 		
 		if(status == 1){
+			// need to modify user object here
+		
+		
+			console.log("user logged in id: " + id);
 			name = "Hi " + name + "!";
 			$('#login_msg').empty().append(name);
 			}

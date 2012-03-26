@@ -1,12 +1,14 @@
 TO DO:
 	
-	Why does a function call a function that makes an AJAX request and
-	then not wait for the return?
+	Use promises for asychronos function calls.
+	Tell other people about promises. An callbacks. 
+	http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
 	
-	How do I fix it so that they will wait for the return?
+	-make some kind of broswer object for a user. This will keep track of user
+	data on the front end and can stored in cookies. This should be
+	useful for address data and prefs. The object will make it so there
+	is some universal-ness in writing AJAX calls and such
 	
-	-fix above issue on frontend email validator (checks for valid, i.e.
-	not taken already).
 	-test out backend signup / signin
 	-make the front end update things when signup/ signin
 	-I have location detection. How do I incorporate this into user info

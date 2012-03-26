@@ -57,13 +57,20 @@ $(document).ready(function() {
 			var email = $('#email').val();
 			
 			// returns BINARY - 1 = not matched = good
-			var res = find_email(email);
+			// This is the nasty bit:
+			//var res = 1;//find_email(email);
 			var re = /\S+@\S+/g;
 			
-			if(res == 1 && re.test(email))
-				$("#emailIsValid").empty().append("good");
-			else
-				$("#emailIsValid").empty().append("bad");
+			var promise = find_email_prom(email);
+			
+			promise.success(function (data) {
+				var res = data;
+				if(res == 0 && re.test(email))
+					$("#emailIsValid").empty().append("<font color='green'>good</font>");
+				else
+					$("#emailIsValid").empty().append("<font color='red'>bad</font>");
+					
+			});	
 		});
 		
 		
@@ -100,28 +107,46 @@ $(document).ready(function() {
 					// finally regex for email
 					var re = /\S+@\S+/g;
 					if(re.test(email)){
-					
 						// should be true if NOT matched
 						var emailStatus = $('#email_test').val();
 						console.log("email status: " + emailStatus);
-						if(emailStatus == 1){
+						if(emailStatus == 0){
 							// last validation test
 							// THIS IS WHERE WE SHOULD SEE IF EMAIL ALREADY TAKEN!!!
 							console.log("All validations passed");
 							$('#signup-errors').empty().append("Success");
-							mainSignUp(email, pass1, pass2, fname, lname, sex);
 							
-							$('#signupPanel').hide();
-							$('#advancedPanel').hide();
-							
-							// new success window
-							signUpSuccessWindow(fname);
-							
-							// THIS SHOULD NOW CHANGE OTHER STATES:
-								// need to change "not signed in" to hello blah blah blah
-								// need to remove sign-Up button/ 
-								// need to change signin field to logout button
-							
+							// AJAX CALL WITH A PROMISE
+							var promiseSignUp = mainSignUp(email, pass1, pass2, fname, lname, sex);
+							promiseSignUp.success(function (data) {
+								
+								console.log("promise returned from sign up");
+														//unpack json data into variables.
+								var status = data.status;
+								var error = data.error_msg;
+								var usr = data.name;
+								
+								// if status is 1, success
+								if(status === 1){
+									// set the header to say: "you are logged in", and name
+									$("#login_msg").empty().append("Hi " + usr);
+									
+									$('#signupPanel').hide();
+									$('#advancedPanel').hide();
+									
+									// new success window
+									signUpSuccessWindow(fname);
+									
+									// THIS SHOULD NOW CHANGE OTHER STATES:
+									// need to change "not signed in" to hello blah blah blah
+									// need to remove sign-Up button/ 
+									// need to change signin field to logout button
+									
+									}
+								else{
+									console.log("Failed to sign up: ");
+									}
+								}); // end promise
 							}
 						else{
 							console.log("email already in use");
