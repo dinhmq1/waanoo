@@ -1,3 +1,19 @@
+TO DO:
+	
+	Why does a function call a function that makes an AJAX request and
+	then not wait for the return?
+	
+	How do I fix it so that they will wait for the return?
+	
+	-fix above issue on frontend email validator (checks for valid, i.e.
+	not taken already).
+	-test out backend signup / signin
+	-make the front end update things when signup/ signin
+	-I have location detection. How do I incorporate this into user info
+	-not save user address data...
+	-make this easily change able. Pull up google maps with a dragger/ 
+	search bar for the location.
+
 
 Basic site structure:
 
@@ -7,19 +23,23 @@ Basic site structure:
 		
 	Other folders:
 		php
-			-all backend PHP scripts
-			-also header.php, scripts.php, footer.php, cxn.php
+		-all backend PHP scripts
+		-also header.php, scripts.php, footer.php, cxn.php
 		js
-			-contains all the javascript used on the site
-			-should hold any library used, unless you can link to a google repository
+		-contains all the javascript used on the site
+		-should hold any library used, unless you can link to a google repository
 		css
-			-should have one large main CSS folder
-			-may contain CSS for plugin elements. 
+		-should have one large main CSS folder
+		-may contain CSS for plugin elements. 
 		img
-			-contains images
-			- 'img/stock' will be basic site images like arrows, ect
-			- 'img/img_db' will hold all images accessed by the mysql database.
-			
+		-contains images
+		- 'img/stock' will be basic site images like arrows, ect
+		- 'img/img_db' will hold all images accessed by the mysql database.
+		
+		
+		
+		
+		
 Tables
 	eventvalues
 	columns: eventid (INT) (PK)(NN)(UQ)(AI) 

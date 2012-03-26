@@ -41,10 +41,12 @@ function find_email(email){
 		if(res == 0){
 			console.log("Not matched: " + email);
 			$('#email_test').val("1");
+			return 1;
 			}
 		else{
 			console.log("matched: " + email);
 			$('#email_test').val("0");
+			return 0;
 			}
 		});
 	}

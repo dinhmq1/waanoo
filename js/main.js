@@ -55,7 +55,15 @@ $(document).ready(function() {
 	// CHECK FOR VALID EMAIL	
 		$('#email').keyup(function(){
 			var email = $('#email').val();
-			find_email(email);
+			
+			// returns BINARY - 1 = not matched = good
+			var res = find_email(email);
+			var re = /\S+@\S+/g;
+			
+			if(res == 1 && re.test(email))
+				$("#emailIsValid").empty().append("good");
+			else
+				$("#emailIsValid").empty().append("bad");
 		});
 		
 		

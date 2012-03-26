@@ -59,6 +59,7 @@ require('scripts.php');
 					<form>
 						<div id="signupPanel"> 
 						email: <input type ="text" id="email" /><input type='hidden' id="email_test" value='0'/><br /> 
+						<span id="emailIsValid"></span>
 						Password: <input type ="password" id="password" size='10' /><br /> 
 						Password again: <input type ="password" id="passwordcheck" size='10' /><br /> 
 						First Name: <input type ="text" id="firstname" size='10' /><br /> 
