@@ -8,7 +8,7 @@
 		<script src="js/gomap.min.js"></script>
 		<script src="js/jQrotate.2.1.js"></script>
 		
-		
+<!-- custom scripts -->
 		<script src="./js/main.js"></script>
 		<script src="./js/signup-ajax.js"></script>
 		<script src="./js/location_detection.js"></script>
