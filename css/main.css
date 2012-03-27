@@ -37,9 +37,11 @@ html, body
 			}
 			
         .login_msg {
+			font-family: helvetica, verdana, arial, sans-serif;
 			color: red;
 			font-size: 90%;
 			position: absolute;
+			top: 7px;
 		    right: 10%;
 			text-align: center;
 			}       
@@ -54,7 +56,7 @@ html, body
 		width: 100%;
 		height: 30px;
 		/*background-color: #328AC5; *//*temp.. just so i can see wtf i am doing here #2E2E2E; */
-		background-color: #2E2E2E;
+		background-color: black;
 		border-bottom-width: 1px;
 		border-bottom-style: solid;
 		border-bottom-color: black;
@@ -128,9 +130,7 @@ html, body
 	                display: none;
 	                
 	                border-radius: 10px;
-					 
-					 
-					 }
+					}
 	   
         
         #submit-signup{
@@ -149,7 +149,7 @@ html, body
 		
 		}	
 	
-            #footer {
+            .footer {
                 width: 100%;
                 height: 40px;
                 border-top-width: 1px;
@@ -176,13 +176,13 @@ html, body
                 font-size: 75%;
                 
 				}		
-				#footer ul li
+				.footer ul li
 					{
 					display: inline-block;
 					
 					}
 				
-				#footer ul li:hover
+				.footer ul li:hover
 					{
 					color: black;
 					background-color: white;
@@ -295,6 +295,39 @@ html, body
 			border-radius: 10px;
 			opacity: 90%;
 			}
+			
+			
+	/***	LOCATION SLECTIONMAP	***/		
+			
+		.headerNav {
+			position: absolute;
+			top: -10px;
+			left: 400px;
+			height: 30px;
+			font-family: helvetica, verdana, arial, sans-serif;
+			color: white;
+			background-color: black;
+			text-align: center;
+			font-size: 75%;
+			}		
+			.headerNav ul li {
+				display: inline-block;
+				}
+			
+			.headerNav ul li:hover {
+				color: black;
+				background-color: white;
+				
+				}	
+			
+			
+			
+			/*
+		#showMapButton{
+			position: absolute;
+			left: 30%;
+			}
+			*/
 
 	/* EVENT VIEW AREA*/
 		

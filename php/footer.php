@@ -1,5 +1,5 @@
 <div id ="wrap">
-    <div id='footer'>
+    <div class='footer'>
 		<ul>
 			<li><span id="about-button"> About </span></li>
 			&nbsp;&nbsp;&nbsp;&nbsp;

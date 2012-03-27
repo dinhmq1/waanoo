@@ -95,6 +95,8 @@ function get_all_event_list($event_id)
 
 $lat = $_REQUEST['latitude'];
 $lon = $_REQUEST['longitude'];
+$lat = preg_replace("#[^0-9\.-]#", "", $lat);
+$lon = preg_replace("#[^0-9\.-]#", "", $lon);
 
 $qry = "SELECT * FROM YQL_event_address";
 $res = mysqli_query($cxn, $qry)
@@ -104,13 +106,7 @@ $distances = array(); // create an emptry array
 
 while($row = mysqli_fetch_assoc($res)){
 	extract($row);
-
-	//from above section where coordinates are pulled from google using XML
-	$d_lat = $lat - $x_coord;
-	$d_lng = $lon - $y_coord;
-
-	//computes distance using pythagorean theorem
-	$d_total = sqrt(pow($d_lat,2)+pow($d_lng,2));
+	$d_total = distance($lat, $lon, $x_coord, $y_coord, "m");
 
 	//adds distance to the empty array in 
 	//id=key and distance=value association.
@@ -118,7 +114,7 @@ while($row = mysqli_fetch_assoc($res)){
 	}//end compare and extract loc data while.
 
 //now to sort the array
-arsort($distances, $sort_flags = SORT_NUMERIC); //now array is sorted by shortest distances first.
+asort($distances, $sort_flags = SORT_NUMERIC); //now array is sorted by shortest distances first.
 
 $search_output = "";
 //print_r($distances);
@@ -136,9 +132,6 @@ foreach ($distances as $event_id => $distance)
 	if($lat_lon_arr != null){
 		extract($lat_lon_arr);
 		}
-	
-	$lat = preg_replace("#[^0-9\.-]#", "", $lat);
-	$lon = preg_replace("#[^0-9\.-]#", "", $lon);
 	//echo $lat.$lon."<br>";
 	//echo "lat1: $lat lon1: $lon lat2: $latitude lon2: $longitude <br>";
 	//echo "lat1: ".(float)$lat." lon1: ".(float)$lon." lat2: ".(float)$latitude." lon2: ".(float)$longitude."<br>";

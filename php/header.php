@@ -22,15 +22,34 @@ else{
 
 
 <body>
-	<div id="header">&nbsp;waan<span id='infin'>∞</span>.com
-        <!-- <div id='login-text'> [login]</div> -->
+	<div id="header">
+		&nbsp;waan<span id='infin'>∞</span>.com
+        
+		<span class='headerNav'>
+			<ul>
+				<li>
+					<span id="showMapButton" onClick='open_map_selector()'> 
+					Location Wrong?</span>
+				</li>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+		        <li>
+					<span id="postEventButton">Post Event</span>
+				</li>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+		        <li>
+					<span id="advancedSearchButton">Advanced Search</span>
+				</li>
+	        </ul>
+		</span>
+		
+		
 		<span class="login_msg" id="login_msg">
 			<?php
 			echo $logged_in;
 			?>
 		</span>
-		<input type='hidden' id='loginStatus' value=<?php echo "'$logged_in_bool'"; ?> />
 		
+		<input type='hidden' id='loginStatus' value=<?php echo "'$logged_in_bool'"; ?> />
 		
         <div id="advancedButton"> 
           <img height='28' src ="images/arrow.png"/>

@@ -40,5 +40,11 @@
 		//EXECUTES SECOND
 		//navigator.geolocation is a global broswer object
 		navigator.geolocation.getCurrentPosition(show_map);
+		}
+	
+	
+	function open_map_selector(){
+		
+		
 		
 		}
