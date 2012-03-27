@@ -14,6 +14,7 @@ else{
 <html>
 <head>
 	<meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<title>Waanoo</title>
 	<?php
 	require('scripts.php');	
@@ -108,3 +109,13 @@ else{
 			</span>
         </div>
 	</div>
+
+<div id='map_wrapper'>
+	Drag the marker to change your location:
+	<div id='map_canvas'>
+	</div>
+	<span class='login-button' onClick='close_map_selector()'>
+	I'm Done!
+	</span>
+</div>
+

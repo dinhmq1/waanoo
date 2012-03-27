@@ -45,9 +45,9 @@ $(document).ready(function() {
 		);
 	
 	// geolocation scripting see -> location_detection.js
-	
+/**** MAP/ LOCATION SCRIPTING ****/
 	get_location();
-	
+	$('#map_wrapper').hide();
 	
 	
 	

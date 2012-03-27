@@ -4,8 +4,8 @@
         <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
 <!-- need for all -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<script src="js/gomap.min.js"></script>
+		<!-- calling asynch, dont need here <script src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+		<!-- NOT USING: <script src="js/gomap.min.js"></script> -->
 		<script src="js/jQrotate.2.1.js"></script>
 		
 <!-- custom scripts -->
