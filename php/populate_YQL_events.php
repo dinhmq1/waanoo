@@ -20,10 +20,10 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         return $miles;
       }
 }
-
 // about 0.5 * 0.5 units is ~ 50 miles
 // 0.1*0.1 units = 8.7 miles
-echo distance(39.127, -84.523, 39.227, -84.623, "m") . " miles<br>";
+//739.50012118743 miles = distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
+echo distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
 
 
 $url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20upcoming.events%20where%20latitude%20%3E%2035%20AND%20latitude%20%3C%2047%20AND%20longitude%20%3C%20-70%20AND%20longitude%20%3E%20-100&format=json";
@@ -57,6 +57,9 @@ if($count >= 1) {
 		$ticket_url = $decoded_json['query']['results']['event'][$i]['ticket_url'];
 		$yql_id = $decoded_json['query']['results']['event'][$i]['id'];
 		
+		$state = $decoded_json['query']['results']['event'][$i]['venue_state_name'];
+		$zip = $decoded_json['query']['results']['event'][$i]['venue_zip'];
+		
 		// dates for MySQL DATETIME format
 		$start_date_time = date("Y-m-d H:m:s", strtotime($utc_start));
 		$end_date_time = date("Y-m-d H:m:s", strtotime($utc_end));
@@ -84,11 +87,12 @@ if($count >= 1) {
 			$qry =
 				"INSERT INTO YQL_events
 				(yql_id, event_title, event_description, end_date, start_date,
-				date_created, public, country_name, venue_name, url_link)
+				date_created, public, country_name, venue_name, url_link, 
+				venue_state, venue_zip)
 				VALUES (
 				'$yql_id', '$name', '$descrip', '$end_date_time', 
 				'$start_date_time', '$posted_date_time', '$public', 
-				'$country', '$venue_name', '$ticket_url')
+				'$country', '$venue_name', '$ticket_url', '$state', '$zip')
 				";
 			
 			$res = mysqli_query($cxn, $qry)
