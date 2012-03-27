@@ -9,7 +9,10 @@
 		<script src="js/jQrotate.2.1.js"></script>
 		
 <!-- custom scripts -->
+	<!-- THIS ONE HAS ALL OF THE ready() wrapped jQuery stuff -->
 		<script src="./js/main.js"></script>
+	<!-- Below are all libraries of discreet functions -->
 		<script src="./js/signup-ajax.js"></script>
 		<script src="./js/location_detection.js"></script>
 		<script src="./js/signin.js"></script>
+		<script src="./js/signout.js"></script>

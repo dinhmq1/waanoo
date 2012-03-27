@@ -104,40 +104,49 @@ function verify_email($email){
 function main_validation($email, $password){
 	$errors = $GLOBALS['errors'];
 	$email2 = verify_email($email);
+	if($email2 != false){
+		if(verify_password($password, $email2)){
 	
-	if(verify_password($password, $email2) && $email2 != false){
-
-		$cxn = $GLOBALS['cxn'];
-		$query_email = "SELECT user_id, first_name FROM user_list WHERE email=?";
-
-		$stm2 = $cxn->prepare($query_email);
-		$stm2->bind_param("s", $email2);
-		$stm2->execute();
-		$stm2->bind_result($user_id, $first_name);
-		$stm2->fetch();
-		$stm2->close();
-		
-		/*
-		//pulled out the one in the table, so we don't need to use prepareds again.
-		$query_login_time = "UPDATE user_list SET last_login=NOW() WHERE email='$email2' ";
-		mysqli_query($cxn,$query_login_time)
-			or    die ("error: ".mysqli_error($cxn)));
-		*/
-
-		/*
-		$_SESSION['email'] = $email2;
-		$_SESSION['username'] = $username; //need to loook you up
-		$_SESSION['city'] = $city;
-		$_SESSION['state'] = $state;
-		$_SESSION['user_id'] = $user_id;
-		*/
-		
-		$arr = array("user_id" => $user_id, "name" => $first_name);
-		return $arr;
+			$cxn = $GLOBALS['cxn'];
+			$query_email = "SELECT user_id, first_name FROM user_list WHERE email=?";
+	
+			$stm2 = $cxn->prepare($query_email);
+			$stm2->bind_param("s", $email2);
+			$stm2->execute();
+			$stm2->bind_result($user_id, $first_name);
+			$stm2->fetch();
+			$stm2->close();
+			
+			
+			$last_ip = $_SERVER['REMOTE_ADDR'];
+			//pulled out the one in the table, so we don't need to use prepareds again.
+			$query_login_time = "UPDATE user_list SET last_login=NOW(), last_ip='$last_ip' WHERE user_id='$user_id' ";
+			$res = mysqli_query($cxn,$query_login_time)
+				or die ("error: ".mysqli_error($cxn));
+			
+			/// set session infos
+			$_SESSION['signed_in'] = true;
+			$_SESSION['email'] = $email2;
+			$_SESSION['fname'] = $first_name;
+			$_SESSION['user_id'] = $user_id;
+			//$_SESSION['city'] = $city;
+			//$_SESSION['state'] = $state;
+			
+			
+			$arr = array("user_id" => $user_id, "name" => $first_name);
+			return $arr;
+			}
+		else{
+			$errors .= "password did not match our records";
+			$GLOBALS['errors'] = $errors;
+			$_SESSION['signed_in'] = false;
+			return array("user_id" => 0, "name" => "failure");
+			}
 		}
 	else{
-		$errors.= "password did not match our records";
+		$errors .= "email was not found";
 		$GLOBALS['errors'] = $errors;
+		$_SESSION['signed_in'] = false;
 		return array("user_id" => 0, "name" => "failure");
 		}
 	}//end main function!

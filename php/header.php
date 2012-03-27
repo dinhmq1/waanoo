@@ -1,8 +1,8 @@
 <?php
 // DONT REMOVE THIS
 session_start();
-if(isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == true){
-	$usr = $_SESSION['username'];
+if(isset($_SESSION['signed_in'])  && $_SESSION['signed_in'] == true){
+	$usr = $_SESSION['fname'];
 	$logged_in = "Hi, $usr";
 	}
 else

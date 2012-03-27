@@ -61,6 +61,7 @@ $(document).ready(function() {
 			//var res = 1;//find_email(email);
 			var re = /\S+@\S+/g;
 			
+			// PROMISE FROM AJAX CALL
 			var promise = find_email_prom(email);
 			
 			promise.success(function (data) {

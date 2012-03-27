@@ -22,11 +22,21 @@ function signIn(){
 		
 		if(status == 1){
 			// need to modify user object here
-		
-		
+			
+			var logout = "<br><br>You are signed in as " + name +
+						" would you like to logout?<br>\
+						<span id='logout-button' class='login-button'\
+						onClick='signOutMain()'>\
+						LogOut!</span>\
+						<span id='signout-errors'></span>";
+			
+			$('#login-field').empty().append(logout);
+			
 			console.log("user logged in id: " + id);
 			name = "Hi " + name + "!";
 			$('#login_msg').empty().append(name);
+			
+			$('#advancedPanel').hide();
 			}
 		else{
 			// Login failed
