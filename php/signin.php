@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("cxn.php");
 // backend of the AJAX signin.js login script.
 

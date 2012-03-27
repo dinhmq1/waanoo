@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require('cxn.php');
 /* FROM FRONT:
