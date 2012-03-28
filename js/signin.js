@@ -37,6 +37,7 @@ function signIn(){
 			$('#login_msg').empty().append(name);
 			
 			$('#advancedPanel').hide();
+			$('#loginStatus').val('1');
 			}
 		else{
 			// Login failed

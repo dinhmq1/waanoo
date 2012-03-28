@@ -68,6 +68,8 @@ function signUpSuccessWindow(fname){
 		</div>";
 	$('#tempWindow').empty().append(window);
 	
+	$('#loginStatus').val('1');
+	
 	// CLEAR ALL FIELD VALUES:
 	$('#email').val("");
 	$('#password').val("");

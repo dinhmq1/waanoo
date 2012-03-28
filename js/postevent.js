@@ -1,11 +1,19 @@
 // main script for posting events:
 
 function open_post_event(){
-	console.log("showing event posting window");
-	$('#postEventForm-wrapper').show();
-	$('#dimmer').show();
+	var loggedin = $('#loginStatus').val();
+	console.log("logged in? " + loggedin);
 	
-	loadScriptMiniMap();
+	if(loggedin == 1 && loggedin != ""){
+		console.log("showing event posting window");
+		$('#postEventForm-wrapper').show();
+		$('#dimmer').show();
+		
+		loadScriptMiniMap();
+		}
+	else {
+		$('#advancedPanel').show();
+		}
 	}
 
 function close_post_event(){
@@ -154,6 +162,7 @@ function initMiniMap() {
 		}
 	
 	function submitNewEvent(){
+
 		console.log("submitting new event");
 		
 		var eventName = $('#eventName').val();
@@ -178,8 +187,8 @@ function initMiniMap() {
 			$('#eventPostErrors').empty().append("\
 			<font color='red'>Something was empty</font>");
 			}
-		
 		}
+
 	
 	
 	

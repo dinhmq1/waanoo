@@ -53,6 +53,7 @@ function signOutMain(){
 			
 			$('#login-field').empty().append(login);
 			$('#login_msg').empty().append("You are not logged in!");
+			$('#loginStatus').val('0');
 			}
 		else{
 			$('#signout-errors').empty().append("<font color='red'>There was an error logging out</font>");
