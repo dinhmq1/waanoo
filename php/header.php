@@ -126,7 +126,7 @@ else{
 		<form>
 			Title: <input id='eventName' type='text' /><br />
 			Where will it be?<input type='text' id='eventLocation' />
-			<span class='btn' id="setLocation">Test it!</span><br />
+			<span class='btn' id="setLocation" onClick='reset_coords()'>Test it!</span><br />
 			When will it be?:<input type="text" id="eventDateBegin" name="date" /><br />
 			When will it end?:<input type="text" id="eventDateEnd" name="date_end" /><br />
 			Describe your event: <br />
