@@ -16,3 +16,4 @@
 		<script src="./js/location_detection.js"></script>
 		<script src="./js/signin.js"></script>
 		<script src="./js/signout.js"></script>
+		<script src="./js/postevent.js"></script>

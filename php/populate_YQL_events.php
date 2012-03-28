@@ -23,7 +23,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 // about 0.5 * 0.5 units is ~ 50 miles
 // 0.1*0.1 units = 8.7 miles
 //739.50012118743 miles = distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
-echo distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
+//echo distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
 
 
 $url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20upcoming.events%20where%20latitude%20%3E%2035%20AND%20latitude%20%3C%2047%20AND%20longitude%20%3C%20-70%20AND%20longitude%20%3E%20-100&format=json";
@@ -31,9 +31,11 @@ $url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20upcoming.
 $response = file_get_contents($url);
 $decoded_json = json_decode($response, true);
 
+/*
 echo "<pre>";
 print_r($decoded_json);
 echo "</pre>";
+*/
 
 $count = $decoded_json['query']['count'];
 if($count >= 1) {

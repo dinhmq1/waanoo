@@ -34,7 +34,7 @@ else{
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
-					<span id="postEventButton">Post Event</span>
+					<span id="postEventButton" onClick='open_post_event()'>Post Event</span>
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
@@ -117,5 +117,29 @@ else{
 	<span class='login-button' onClick='close_map_selector()'>
 	I'm Done!
 	</span>
+</div>
+
+<div id='postEventForm-wrapper'>
+	<h3>Post an Event:</h5>
+	<span id='cancelPostEventBtn' onClick='close_post_event()'>Cancel!</span>
+	<div id='postEventForm'>
+		<form>
+			Title: <input id='eventName' type='text' /><br />
+			Where will it be?<input type='text' id='eventLocation' />
+			<span class='btn' id="setLocation">Test it!</span><br />
+			When will it be?:<input type="text" id="eventDateBegin" name="date" /><br />
+			When will it end?:<input type="text" id="eventDateEnd" name="date_end" /><br />
+			Describe your event: <br />
+			<textarea name="event_description" id="eventDescription" rows="3" cols="30" maxlength="500"></textarea><br />
+			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
+			Tags (eg: food, pool): <input  id='eventTags' type='text'/><br />
+		</form>
+		<span  class='btn'>Submit!</span>
+	</div>
+	
+	<div id='miniMapCanvas'>
+		<!-- this is where we look up the reverse geocoding stuff -->
+	
+	</div>
 </div>
 

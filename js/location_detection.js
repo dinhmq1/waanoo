@@ -50,11 +50,14 @@ longitude = "";
 		
 		load_events(latitude, longitude);
 		}
+		
+/*** ON CLICKS: ****/
 
 //on click for: "Location Wrong?"
 	function open_map_selector(){
 		console.log("showing map");
 		$('#map_wrapper').show();
+		$('#dimmer').show();
 		
 		// Loads the js for google maps
 		loadScript();
@@ -63,10 +66,12 @@ longitude = "";
 	function close_map_selector(){
 		console.log("hiding map");
 		$('#map_wrapper').hide();
-		
+		$('#dimmer').hide();
 		// load events again
 		load_events(latitude, longitude);
-		}
+		}		
+		
+		
 
 	function initialize() {
 		//open up the map

@@ -27,6 +27,20 @@ html, body
     width: 100%;
 	}
 	
+	#dimmer{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.5;
+		/* All popups are 100 */
+		z-index: 50;
+		}
+	
+	
+	/*** ALL HEADER STUFF ****/
         #advancedButton {
 			top: 2px;
 			right: 2px;
@@ -44,10 +58,19 @@ html, body
 			top: 7px;
 		    right: 10%;
 			text-align: center;
-			}       
-            
-            
-            
+			}  
+		
+		#logo
+			{
+			font-family: 'Quicksand', sans-serif;
+			font-size: 600%;
+			text-align: center;
+			}
+			#infin
+				{
+				font-size: 120%;
+				}
+				           
 	#header {
 		position: absolute;
 		margin: 0;
@@ -142,144 +165,6 @@ html, body
 			color: red;
 			}
         
-          
-               
-               
-	#wrap {
-		
-		}	
-	
-            .footer {
-                width: 100%;
-                height: 40px;
-                border-top-width: 1px;
-                
-                
-                
-                border-top-style: solid;
-                border-top-color: black;
-                
-                /*
-                z-index: 2;
-                position: absolute;
-                bottom: 0px;
-                margin-top: -30px;
-                */
-                /*
-                CSS has to be tricked into displaying the footer on the bottom of the page.
-                Use margin-top: -heightoffooter;
-                */
-                
-                color: white;
-                background-color: black;
-                text-align: center;
-                font-size: 75%;
-                
-				}		
-				.footer ul li
-					{
-					display: inline-block;
-					
-					}
-				
-				.footer ul li:hover
-					{
-					color: black;
-					background-color: white;
-					
-					}
-		#logo
-			{
-			font-family: 'Quicksand', sans-serif;
-			font-size: 600%;
-			text-align: center;
-			}
-			#infin
-				{
-				font-size: 120%;
-				}
-				
-				
-				
-						
- /* END PRIMARY PAGE ELEMENTS */
-
-
-
-
-/* Random shit goes here: */
-
-	#map { 
-		    width:600px; 
-		    height:350px; 
-		    margin-left: auto;
-		    margin-right:auto;
-		} 
-	
-	#e /*just for the template... also a demonstration of word-wrap attribute Comment:
-            What words would we need to wrap on the front page - it will be a header, footer
-            and search box right?
-            * 
-            * Why?--> word wrap all results that may have been user entered. 
-            * Users can input long strings that will break page formatting. 
-            * */
-		{
-		font-family: courier-new, courier;
-		width: 60%;
-		margin-left: 20%;
-		word-wrap: break-word;
-		
-		}
-
-	/*
-        #header {
-            position: absolute;
-            width: 100%;
-            height: 28px;
-            background-color: #2E2E2E;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            border-bottom-color: black;
-            z-index: 3;
-        }
-        * 
-        */
-/*        #footer {
-            width: 100%;
-            height: 30px;
-            border-top-width: 1px;
-            border-top-style: solid;
-            border-top-color: black;
-            z-index: 3;
-            position: relative;
-            display: inline;
-            list-style-type: none;
-            list-style-image: none;
-            
-        } */
-        #pageContent {
-            z-index: 2;
-            width: 450px;
-            height: 300px;
-            background-color: red;
-            position: absolute;
-            display: none;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 15%;
-            
-        }
-        #tips {
-            z-index: 3;
-            background-color: blue;
-            color: white;
-            
-        }
-        /*styling not finished due to buggy browsers ect ect, need to build it on waanoo.com
-          before I finish them off - all sorts of problems with centering in IE and safari EG:
-         marign-left: auto, margin-right:auto does not work*/
-        
-     
     /* FLOATING WINDOW */  
 		#signUpWindow {
 			z-index: 100;
@@ -289,15 +174,13 @@ html, body
 			top: 100px;
 			left: 40%;
 			
-			font-family: 'Quicksand', sans-serif;
 			color: black;
 			background-color: #E9E9F3;
 			border-radius: 10px;
-			opacity: 90%;
 			}
 			
 			
-	/***	LOCATION SLECTIONMAP	***/		
+	/***	TOP NAV BAR	***/		
 			
 		.headerNav {
 			position: absolute;
@@ -320,6 +203,8 @@ html, body
 				
 				}	
 			
+	/** GOOGLE MAPS ***/		
+			
 	#map_wrapper{
 		position: absolute;
 		top: 50px;
@@ -335,12 +220,6 @@ html, body
 			
 			}
 			
-			/*
-		#showMapButton{
-			position: absolute;
-			left: 30%;
-			}
-			*/
 
 	/* EVENT VIEW AREA*/
 		
@@ -356,6 +235,7 @@ html, body
 			
 			background-color: #F5F5F5;
 			border-radius: 10px;
+			word-wrap: break-word;
 			}
 			.eventSingle{
 				margin-left: auto;
@@ -367,3 +247,132 @@ html, body
 				background-color: white;	
 				border-radius: 10px;
 				}
+	
+	/** POST AN EVENT ***/
+	
+		#postEventForm-wrapper { 
+			z-index: 100;
+			width: 80%;
+			height: 70%;
+			position: absolute;
+			top: 30px;
+			left: 10%;
+			
+			color: black;
+			background-color: whitesmoke;
+			border-radius: 10px;
+			}      
+        
+			#cancelPostEventBtn{
+				position: absolute;
+				top: 1%;
+				right: 1%;
+				font-style: italic;
+				color: #1E1F3F;
+				background-color: #CBCCED;
+				border-radius: 5px;
+				}
+				#cancelPostEventBtn:hover {
+					color: red;
+					}
+          
+			#postEventForm {
+				text-align: left;
+				padding: 10px;
+				
+				}
+          
+			.btn{
+				font-style: italic;
+				color: #1E1F3F;
+				background-color: #CBCCED;
+				border-radius: 5px;
+				}
+				.btn:hover{
+					color: red;
+					}
+          
+			#miniMapCanvas{
+				height: 80%;
+				width: 50%;
+				position: absolute;
+				top: 15%;
+				left: 45%;
+				}
+          
+          
+          
+          
+          
+          
+
+	/*** FOOTER NAV BAR ***/
+	
+		.footer {
+			width: 100%;
+			height: 40px;
+			border-top-width: 1px;
+			border-top-style: solid;
+			border-top-color: black;
+			
+			/*
+			z-index: 2;
+			position: absolute;
+			bottom: 0px;
+			margin-top: -30px;
+			*/
+			/*
+			CSS has to be tricked into displaying the footer on the bottom of the page.
+			Use margin-top: -heightoffooter;
+			*/
+			
+			color: white;
+			background-color: black;
+			text-align: center;
+			font-size: 75%;
+			
+			}		
+			.footer ul li
+				{
+				display: inline-block;
+				
+				}
+			
+			.footer ul li:hover
+				{
+				color: black;
+				background-color: white;
+				
+				}
+		
+				
+				
+						
+ /* END PRIMARY PAGE ELEMENTS */
+
+	/* IDK WHAT THIS IS:
+        #pageContent {
+            z-index: 2;
+            width: 450px;
+            height: 300px;
+            background-color: red;
+            position: absolute;
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 15%;
+            
+        }
+        #tips {
+            z-index: 3;
+            background-color: blue;
+            color: white;
+            
+        }
+        * */
+        /*styling not finished due to buggy browsers ect ect, need to build it on waanoo.com
+          before I finish them off - all sorts of problems with centering in IE and safari EG:
+         marign-left: auto, margin-right:auto does not work*/
+        
+     
+    

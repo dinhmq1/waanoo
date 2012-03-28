@@ -19,4 +19,6 @@ Events Near You:
 <p>&nbsp;
 </p>
 
+<div id='dimmer'>
+</div>
 <?php require 'php/footer.php';?>

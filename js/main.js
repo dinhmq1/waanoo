@@ -1,5 +1,8 @@
 // some javascript goes here!
-$(document).ready(function() {   
+$(document).ready(function() {
+
+	//hide the dimmer:
+	$('#dimmer').hide();
 	
 	//modify search bar to change size with window
 	var width = $(window).width();
@@ -11,12 +14,14 @@ $(document).ready(function() {
 		function() {
 			$('#advancedPanel').show();
 			$(this).rotate(-90);
+			//$('#dimmer').show();
 			//$(this).addClass('close');
 		},
 		function() {
 			$('#advancedPanel').hide();
 			$(this).rotate(0); //haha it rotates with regards to original position...
 			//$(this).removeClass('close');
+			//$('#dimmer').hide();
 			}
 		); // end toggle
 		
@@ -25,12 +30,14 @@ $(document).ready(function() {
 		function() {
 			$('#advancedPanel').show();
 			$('#advancedButton').rotate(-90);
+			//$('#dimmer').show();
 			//$(this).addClass('close');
 		},
 		function() {
 			$('#advancedPanel').hide();
 			$('#advancedButton').rotate(0); //haha it rotates with regards to original position...
 			//$(this).removeClass('close');
+			//$('#dimmer').hide();
 			}
 		);
 		
@@ -49,7 +56,10 @@ $(document).ready(function() {
 	get_location();
 	$('#map_wrapper').hide();
 	
-	
+
+/**** EVENT POSTING SCRIPTING ***/
+
+	$('#postEventForm-wrapper').hide();
 	
 /**** SIGNUP SUBMISSION STUFF BELOW:  ****/
 	// CHECK FOR VALID EMAIL	
