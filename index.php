@@ -21,4 +21,5 @@ Events Near You:
 
 <div id='dimmer'>
 </div>
+
 <?php require 'php/footer.php';?>

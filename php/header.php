@@ -132,9 +132,10 @@ else{
 			Describe your event: <br />
 			<textarea name="event_description" id="eventDescription" rows="3" cols="30" maxlength="500"></textarea><br />
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
-			Tags (eg: food, pool): <input  id='eventTags' type='text'/><br />
+			<!-- Tags (eg: food, pool): <input  id='eventTags' type='text'/><br /> -->
 		</form>
-		<span  class='btn'>Submit!</span>
+		<span id='eventPostErrors'> </span><br>
+		<span  class='btn' onClick='submitNewEvent()'>Submit!</span>
 	</div>
 	
 	<div id='miniMapCanvas'>

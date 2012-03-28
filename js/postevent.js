@@ -75,6 +75,7 @@ function initMiniMap() {
 		
 	var revGeocoder = null;
 
+
 	function reset_position_mini(){
 		var new_pos = marker_you.getPosition();
 		latitude = new_pos.lat();
@@ -96,29 +97,105 @@ function initMiniMap() {
 		        alert("Geocoder failed due to: " + status);
 		      }
 		    });
-		
-		
 		//$('#eventLocation').val(reverseGeocodePos);
 		}
-
 
 // geocodes address and resets map position
 	function reset_coords(){
 		console.log("begin client side geocode query");
+		var geocoder = new google.maps.Geocoder();
 		
-		geocoder = new google.maps.Geocoder();
 		var address = $('#eventLocation').val();
+		
+		if(address == ""){
+			address = "45221";
+			}
+		
 		console.log(address);	
 			
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				map2.setCenter(results[0].geometry.location);
-				
 				console.log(results);
 				marker_you.setPosition(results[0].geometry.location);
-				
-				// call the other function that updates lat and lng
-				//reset_position_mini();
 				}
 			});
 		}
+
+/*** VALIDATION ***/
+
+	//outline
+		/*	possible errors:
+		 * 
+		 * -empty fields
+		 * -start date after end date
+		 * --[address should always be valid??? --> test it again and 
+		 * 		make sure that geocoding does NOT fail!]
+		 * 	-also, maybe I should break down the geocoded addy into:
+		 * 		-state
+		 * 		-country
+		 * 		-zip
+		 * 		-address
+		 * 
+		 * --[dates should always be valid- jQuery UI plugin]
+		 * 
+		 * 
+		 * More fields:
+		 * 	-venue
+		 * 	-price
+		 * 	-is it a regular occcurance?
+		 * 
+		 */
+	function testEmpty(testSubject){
+		if(testSubject == "")
+			return false;
+		else
+			return true;
+		}
+	
+	function submitNewEvent(){
+		console.log("submitting new event");
+		
+		var eventName = $('#eventName').val();
+		var eventLoc = $('#eventLocation').val();
+		var eventBegin = $('#eventDateBegin').val();
+		var eventEnd = $('#eventDateEnd').val();
+		var eventDescrip = $('#eventDescription').val();
+		
+		
+		if(testEmpty(eventName) && testEmpty(eventLoc) && 
+			testEmpty(eventDateBegin) && testEmpty(eventDateEnd) 
+			&& testEmpty(eventDescrip)){
+			
+			console.log("passed empty test validation");
+			
+			// if all correct
+			$('#eventPostErrors').empty();
+			
+			
+			}
+		else {
+			$('#eventPostErrors').empty().append("\
+			<font color='red'>Something was empty</font>");
+			}
+		
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -152,10 +152,11 @@ $(document).ready(function() {
 									// need to change "not signed in" to hello blah blah blah
 									// need to remove sign-Up button/ 
 									// need to change signin field to logout button
-									
+									$('#signup-errors').empty();
 									}
 								else{
 									console.log("Failed to sign up: ");
+									$('#signup-errors').empty().append("Sorry, Failed to sign up. Try again.");
 									}
 								}); // end promise
 							}
