@@ -48,7 +48,7 @@ longitude = "";
 		lon = "Longitude: " + longitude;
 		console.log(lat,lon);
 		
-		load_events(lat, lon);
+		load_events(latitude, longitude);
 		}
 
 //on click for: "Location Wrong?"
@@ -63,6 +63,9 @@ longitude = "";
 	function close_map_selector(){
 		console.log("hiding map");
 		$('#map_wrapper').hide();
+		
+		// load events again
+		load_events(latitude, longitude);
 		}
 
 	function initialize() {
@@ -99,4 +102,22 @@ longitude = "";
 				position: marker_pos,
 				icon: you_icon
 			});
+			
+		google.maps.event.addListener(marker_you, 'mouseup', reset_position);
+		
 		}//end init func
+
+	function reset_position(){
+		//latitude = marker_you.position.Oa;
+		//longitude = marker_you.position.Pa;
+		var new_pos = marker_you.getPosition();
+		latitude = new_pos.lat();
+		longitude = new_pos.lng();
+		
+		var current_position = new google.maps.LatLng(latitude,longitude);
+		
+		var current_position = marker_you.getPosition();
+		map.setCenter(current_position);
+			
+		console.log("lat new: " + latitude + " lng new: " + longitude);
+		}

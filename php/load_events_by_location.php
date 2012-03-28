@@ -95,8 +95,8 @@ function get_all_event_list($event_id)
 
 $lat = $_REQUEST['latitude'];
 $lon = $_REQUEST['longitude'];
-$lat = preg_replace("#[^0-9\.-]#", "", $lat);
-$lon = preg_replace("#[^0-9\.-]#", "", $lon);
+//$lat = preg_replace("#[^0-9\.-]#", "", $lat);
+//$lon = preg_replace("#[^0-9\.-]#", "", $lon);
 
 $qry = "SELECT * FROM YQL_event_address";
 $res = mysqli_query($cxn, $qry)
