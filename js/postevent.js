@@ -99,7 +99,7 @@ function initMiniMap() {
 		revGeocoder.geocode({'latLng': current_position}, function(results, status) {
 	        if (status == google.maps.GeocoderStatus.OK) {
 				// just set the field to the geocode return addy
-		          $('#eventLocation').val(results[1].formatted_address);
+		          $('#eventLocation').val(results[0].formatted_address);
 		        }
 		      else {
 		        alert("Geocoder failed due to: " + status);
@@ -161,6 +161,13 @@ function initMiniMap() {
 			return true;
 		}
 	
+	function checkSignedIn(){
+		return $.ajax({
+			type: "POST",
+			url: "./php/testsignedin.php"
+			});
+		}
+	
 	function submitNewEvent(){
 
 		console.log("submitting new event");
@@ -178,10 +185,37 @@ function initMiniMap() {
 			
 			console.log("passed empty test validation");
 			
-			// if all correct
-			$('#eventPostErrors').empty();
+			// do a call to the backend to check the session as signed in
+			var testSignIn = checkSignedIn();
+			testSignIn.success(function (data) {
 			
-			
+				if(data == 1){
+					// signed in
+					console.log("session verified login status");
+					
+					// regular expression for the dates:
+					// testing for: 2012-03-15 05:00
+					var re = /\d+-\d+-\d+ \d+:\d+/i;
+					
+					if(re.test(eventBegin) && re.test(eventEnd)){
+						console.log("passed date RE validation");
+					
+					
+						// if all correct
+						$('#eventPostErrors').empty();
+						}
+					else {
+						$('#eventPostErrors').empty().append("\
+						<font color='red'>Dates are not incorrect format.</font>");
+						}
+					}
+				else {
+					// not signed in
+					console.log("not signed in...");
+					$('#eventPostErrors').empty().append("\
+					<font color='red'>You need to be signed in to do that</font>");
+					}
+				});
 			}
 		else {
 			$('#eventPostErrors').empty().append("\

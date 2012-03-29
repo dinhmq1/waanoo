@@ -176,6 +176,33 @@ $(document).ready(function() {
 			}
 		else
 			$('#signup-errors').empty().append("Something was empty");	
+	}); //end signup validation
+		
+			
+/*** POSTING EVENT DATA PICKER ***/	
+		
+$(function() {  //shortcut for ready()
+	$("#eventDateBegin").AnyTime_picker(
+        { format: "%Y-%m-%d %H:%i",
+          formatUtcOffset: "%: (%@)",
+          hideInput: false,             //change later only for dev purposes
+          //placement: "inline" 
+          });
 	});
+	
+$(function() {  //shortcut for ready()
+	$("#eventDateEnd").AnyTime_picker(
+        { format: "%Y-%m-%d %H:%i",
+          formatUtcOffset: "%: (%@)",
+          hideInput: false,             //change later only for dev purposes
+          //placement: "inline" 
+          });
+	});
+		
+		
+		
+		
+		
+		
 		
 });  // end ready
