@@ -183,7 +183,7 @@ html, body
 		.headerNav {
 			position: absolute;
 			top: -10px;
-			left: 400px;
+			left: 350px;
 			height: 30px;
 			font-family: helvetica, verdana, arial, sans-serif;
 			color: white;
@@ -297,8 +297,21 @@ html, body
 				top: 15%;
 				left: 45%;
 				}
-          
-          
+				
+        /*** floating window ***/
+        #postEventSuccess{
+			z-index: 100;
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 100px;
+			left: 40%;
+			
+			color: black;
+			background-color: #E9E9F3;
+			border-radius: 10px;
+			
+			}  
           
           
           

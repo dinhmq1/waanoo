@@ -40,6 +40,10 @@ else{
 		        <li>
 					<span id="advancedSearchButton">Advanced Search</span>
 				</li>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+				<li>
+					<span id="myEventsButton">My Events</span>
+				</li>
 	        </ul>
 		</span>
 		

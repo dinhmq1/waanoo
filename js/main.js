@@ -199,10 +199,9 @@ $(function() {  //shortcut for ready()
           });
 	});
 		
-		
-		
-		
-		
+
+	// popup box on event submission success
+	$('#postEventSuccess').hide();
 		
 		
 });  // end ready

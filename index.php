@@ -22,4 +22,13 @@ Events Near You:
 <div id='dimmer'>
 </div>
 
+<div id='postEventSuccess'>
+<br>
+Event Posted Successfully!
+<br>
+	<div class='login-button' onClick='close_event_success_window()'>
+		Close!
+	</div>
+</div>
+
 <?php require 'php/footer.php';?>

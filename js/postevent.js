@@ -24,6 +24,11 @@ function close_post_event(){
 	}
 
 
+function close_event_success_window(){
+	$('#postEventSuccess').hide();
+	$('#dimmer').hide();
+	}
+
 
 /*** maps section ***/
 // NOTE: map object = 'map2'
@@ -242,7 +247,19 @@ function testGeocode(address){
 									dataType: "json",
 									success: function(result){
 										var msg = result.message;
-										alert("Data returned: " + msg);
+										var successMsg = result.status;
+										//alert("Data returned: " + msg);
+										if(successMsg == 1){
+											alert("Event Posted Successfully!");
+											$('#postEventForm-wrapper').hide();
+											$('#dimmer').hide();
+											$('#postEventSuccess').show();
+											}
+										else {
+											$('#eventPostErrors').empty().append("\
+											<font color='red'>Could not post event! Try Again!</font>");
+											}
+									
 										}
 									});
 								
