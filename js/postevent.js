@@ -129,6 +129,20 @@ function initMiniMap() {
 				}
 			});
 		}
+		
+// tests a geocode 
+function testGeocode(address){
+	geocoder = new google.maps.Geocoder();
+	geocoder.geocode( { 'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			return true;
+			}
+		else {
+			return false;
+			}
+		});
+	}
+
 
 /*** VALIDATION ***/
 
@@ -199,10 +213,45 @@ function initMiniMap() {
 					
 					if(re.test(eventBegin) && re.test(eventEnd)){
 						console.log("passed date RE validation");
-					
-					
-						// if all correct
-						$('#eventPostErrors').empty();
+						
+						//now to geocode the address and check to see if it is OK
+						var address = eventLoc;
+						geocoder = new google.maps.Geocoder();
+						geocoder.geocode( { 'address': address}, function(results, status) {
+							if (status == google.maps.GeocoderStatus.OK) {
+								// status is good. Go ahead an submit form with the geocoded lat and lng
+								var party_position = results[0].geometry.location
+								var lat_event = party_position.lat();
+								var lng_event = party_position.lng();
+								
+								postEventData = {
+									latitude: lat_event,
+									longitude: lng_event,
+									eventName: eventName,
+									eventLocation: address,
+									eventBegin: eventBegin,
+									eventEnd: eventEnd,
+									eventDescription: eventDescrip
+									};
+								
+								// ajax call to post our event
+								$.ajax({
+									type: "POST",
+									url: "./php/postevent.php", 
+									data: postEventData,
+									dataType: "json",
+									success: function(result){
+										var msg = result.message;
+										alert("Data returned: " + msg);
+										}
+									});
+								
+								}
+							else {
+								$('#eventPostErrors').empty().append("\
+								<font color='red'>That address is not valid!</font>");
+								}
+							});
 						}
 					else {
 						$('#eventPostErrors').empty().append("\
