@@ -181,7 +181,7 @@ $(document).ready(function() {
 			
 /*** POSTING EVENT DATA PICKER ***/	
 		
-$(function() {  //shortcut for ready()
+	$(function() {  //shortcut for ready()
 	$("#eventDateBegin").AnyTime_picker(
         { format: "%Y-%m-%d %H:%i",
           formatUtcOffset: "%: (%@)",
@@ -190,7 +190,7 @@ $(function() {  //shortcut for ready()
           });
 	});
 	
-$(function() {  //shortcut for ready()
+	$(function() {  //shortcut for ready()
 	$("#eventDateEnd").AnyTime_picker(
         { format: "%Y-%m-%d %H:%i",
           formatUtcOffset: "%: (%@)",

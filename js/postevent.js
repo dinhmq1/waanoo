@@ -20,7 +20,6 @@ function close_post_event(){
 	console.log("hiding event posting window");
 	$('#postEventForm-wrapper').hide();
 	$('#dimmer').hide();
-	
 	}
 
 

@@ -1,14 +1,20 @@
 TO DO:
 
-	-make the front end update things when signup/ signin
+	-Fix searching the to incorporate both the YQL events and user events
+	-Add server side validation for event posting
+	-Make a 'myEvents' tab
+		-you can mark events as attending
+		-this will show you events you have marked
+		-it will also show your events
 	
-	-finish client side event registration valdation
-	-figure out what info we need for events
-	-make PHP backend for event posting
+	-advanced search:
+		-this will allow you to search by date
+		-also you can search by keyword
+		
 	
-	-make an AJAX script to get login status for validation
 	
-
+	-others/ fixes
+		-make the front end update things when signup/ signin
 
 	Use promises for asychronos function calls.
 	Tell other people about promises. An callbacks. 

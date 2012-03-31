@@ -6,7 +6,7 @@ if(isset($_SESSION['signed_in'])  && $_SESSION['signed_in'] == true){
 	$logged_in = "Hi, $usr";
 	$logged_in_bool = true;
 	}
-else{
+else {
 	$logged_in = "You are not logged in!";
 	$logged_in_bool = false;
 	}
@@ -88,26 +88,26 @@ else{
 						<span class='login-button' id='signupBtn'>
 		                Sign Up!
 		                </span> 
-		                <br/>
-							<form>
-								<div id='signupPanel'> 
-								email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
-								<span id='emailIsValid'></span><br /> 
-								Password: <input type ='password' id='password' size='10' /><br /> 
-								Password again: <input type ='password' id='passwordcheck' size='10' /><br /> 
-								First Name: <input type ='text' id='firstname' size='10' /><br /> 
-								Last Name: <input type ='text' id='lastname'  size='10' /><br />
-								Sex: 
-								<select id='sex' /> <br /> <!--hey dumbass, this should be drop down-->
-									<option value='M'>male</option>
-									<option vlaue='F'>female</option>
-								</select><br/>
-								<div id='signup-errors'></div>
-								<span class='login-button' id='submit-signup'>
-								Submit!</span> <br /> 
-								<!--Should prolly restate that you can just connect with facebook here-->
-								</div>
-							</form> ";
+		<br/>
+			<form>
+				<div id='signupPanel'> 
+					email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
+					<span id='emailIsValid'></span><br /> 
+					Password: <input type ='password' id='password' size='10' /><br /> 
+					Password again: <input type ='password' id='passwordcheck' size='10' /><br /> 
+					First Name: <input type ='text' id='firstname' size='10' /><br /> 
+					Last Name: <input type ='text' id='lastname'  size='10' /><br />
+					Sex: 
+					<select id='sex' /> <br /> <!--hey dumbass, this should be drop down-->
+						<option value='M'>male</option>
+						<option vlaue='F'>female</option>
+					</select><br/>
+					<div id='signup-errors'></div>
+					<span class='login-button' id='submit-signup'>
+					Submit!</span> <br /> 
+					<!--Should prolly restate that you can just connect with facebook here-->
+				</div>
+			</form> ";
 					}
 				?>
 			</span>
