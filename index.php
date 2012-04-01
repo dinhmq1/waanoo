@@ -6,9 +6,10 @@ require 'php/header.php';
 waan<span id='infin'>∞</span>
 </div>
 
-<p>
+
 Events Near You:
-</p>
+<br />
+<br />
 
 <div class="eventViewer">
 </div>

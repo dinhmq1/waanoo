@@ -1,7 +1,7 @@
 TO DO:
-
-	-Fix searching the to incorporate both the YQL events and user events
+	
 	-Add server side validation for event posting
+	
 	-Make a 'myEvents' tab
 		-you can mark events as attending
 		-this will show you events you have marked
@@ -11,12 +11,10 @@ TO DO:
 		-this will allow you to search by date
 		-also you can search by keyword
 		
-	
-	
 	-others/ fixes
 		-make the front end update things when signup/ signin
 
-	Use promises for asychronos function calls.
+	Use promises for asychronous function calls.
 	Tell other people about promises. An callbacks. 
 	http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
 	
