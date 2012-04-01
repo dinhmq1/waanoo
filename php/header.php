@@ -34,15 +34,18 @@ else {
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
-					<span id="postEventButton" onClick='open_post_event()'>Post Event</span>
+					<span id="postEventButton" onClick='open_post_event()'>
+					Post Event</span>
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
-					<span id="advancedSearchButton">Advanced Search</span>
+					<span id="advancedSearchButton">
+					Advanced Search</span>
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 				<li>
-					<span id="myEventsButton">My Events</span>
+					<span id="myEventsButton">
+					My Events</span>
 				</li>
 	        </ul>
 		</span>
