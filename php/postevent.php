@@ -14,6 +14,41 @@ require('cxn.php');
 		};
 	*/
 	
+// CHECK FOR DUPLICATES
+function check_for_dups($all_fields){
+	extract($all_fields);
+	// $eventName pulled
+	// $eventBegin
+	
+	$start_date_begin = date("Y-m-d H:m:s", strtotime($eventBegin) - 60*60*12);
+	$start_date_end = date("Y-m-d H:m:s", strtotime($eventBegin) + 60*60*12);
+	
+	$date_create_begin = date("Y-m-d H:m:s", time() - 60*60*12);;
+	$date_create_end = date("Y-m-d H:m:s", time() - 60*60*12);;
+	
+	$qry = "SELECT * FROM user_events 
+			WHERE event_title LIKE '%?%'
+			AND (
+			(start_date > '?' AND start_date < '?')
+			OR
+			(date_created > '?' AND date_created < '?')
+			)";
+			
+	$stm = $cxn->prepare($query_post);
+	$stm->bind_param("sssss", $eventName, $start_date_begin, $start_date_end, $date_create_begin, $date_create_end);
+	$stm->execute();
+	$count = $stm->rowCount();
+	
+	if($count == 0)
+		return true;
+	else
+		return false;
+	
+	$stm->close();
+	}
+
+
+	
 // CHECK TO MAKE SURE END IS GREATER THAN BEGINING
 function dateCheckSensible($all_fields) {
 	$end = strtotime($all_fields['end']);
@@ -102,36 +137,46 @@ if(checkEmpties($all_fields)) {
 	if(dateCheckValid($all_fields)) {
 	
 		if(dateCheckSensible($all_fields)) {
+			
+			if(check_for_dups($all_fields)) {
 		
-			// enter event to main table:
-			$query_post = "INSERT INTO user_events 
-				(user_id, event_title, event_description, end_date, 
-				start_date, date_created, public) 
-				VALUES (?, ?, ?, ?, ?, NOW(), 1)";
-			$stm = $cxn->prepare($query_post);
-			$stm->bind_param("issss", $uid, $name, $descrip, $begin, $end);
-			$stm->execute();
-			$stm->close();
-			
-			// pull most recent event for ID
-			$query_id = "SELECT MAX(event_id) AS event_id FROM user_events";
-			$result = mysqli_query($cxn,$query_id)
-				or    die ("Couldn't retrieve event list.");
-			$row = mysqli_fetch_assoc($result);
-			$event_id = $row['event_id']; 
-			// NOW WE HAVE: $event_id;
-			
-			// enter event to location table
-			$qry = "INSERT INTO event_address (event_id, address_text, x_coord, y_coord) 
-					VALUES (?, ?, ?, ?)";
-			$stm = $cxn->prepare($qry);
-			$stm->bind_param("isdd", $event_id, $loc, $lat, $lng);
-			$stm->execute();
-			$stm->close();
-			
-			// Success:
-			$arr = array("status" => 1, "message" => "event success!");
-			echo json_encode($arr);
+				// enter event to main table:
+				$query_post = "INSERT INTO user_events 
+					(user_id, event_title, event_description, end_date, 
+					start_date, date_created, public) 
+					VALUES (?, ?, ?, ?, ?, NOW(), 1)";
+				$stm = $cxn->prepare($query_post);
+				$stm->bind_param("issss", $uid, $name, $descrip, $begin, $end);
+				$stm->execute();
+				$stm->close();
+				
+				// pull most recent event for ID
+				$query_id = "SELECT MAX(event_id) AS event_id FROM user_events";
+				$result = mysqli_query($cxn,$query_id)
+					or    die ("Couldn't retrieve event list.");
+				$row = mysqli_fetch_assoc($result);
+				$event_id = $row['event_id']; 
+				// NOW WE HAVE: $event_id;
+				
+				// enter event to location table
+				$qry = "INSERT INTO event_address (event_id, address_text, x_coord, y_coord) 
+						VALUES (?, ?, ?, ?)";
+				$stm = $cxn->prepare($qry);
+				$stm->bind_param("isdd", $event_id, $loc, $lat, $lng);
+				$stm->execute();
+				$stm->close();
+				
+				// Success:
+				$arr = array("status" => 1, "message" => "event success!");
+				echo json_encode($arr);
+				}
+			echo {
+				//failure
+				$arr = array("status" => 0, 
+					"message" => "Failed to create event... 
+					Duplicate event detected!");
+				echo json_encode($arr);
+				}
 			}
 		else {
 			//failure

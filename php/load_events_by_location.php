@@ -122,7 +122,6 @@ function sortByOneKey(array $array, $key, $asc = true) {
 }	
 	
 	
-	
 // YQL GET ADDY
 function get_address_YQL($event_id){
 	$cxn = $GLOBALS['cxn'];
