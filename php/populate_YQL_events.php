@@ -4,27 +4,29 @@ require("cxn.php");
 
 // GET DIFFS FOR LAT LONG
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
-
-  $theta = $lon1 - $lon2; 
-  $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
-  $dist = acos($dist); 
-  $dist = rad2deg($dist); 
-  $miles = $dist * 60 * 1.1515;
-  $unit = strtoupper($unit);
-
-  if ($unit == "K") {
-    return ($miles * 1.609344); 
-  } else if ($unit == "N") {
-      return ($miles * 0.8684);
-    } else {
-        return $miles;
-      }
-}
+	$theta = $lon1 - $lon2; 
+	$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
+	$dist = acos($dist); 
+	$dist = rad2deg($dist); 
+	$miles = $dist * 60 * 1.1515;
+	$unit = strtoupper($unit);
+	
+	if ($unit == "K") {
+	return ($miles * 1.609344); 
+	} else if ($unit == "N") {
+	  return ($miles * 0.8684);
+	} else {
+		return $miles;
+	  }
+	}
 // about 0.5 * 0.5 units is ~ 50 miles
 // 0.1*0.1 units = 8.7 miles
 //739.50012118743 miles = distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
 //echo distance(42.35, -71.123, 39.147, -84.623, "m") . " miles<br>";
 
+// latitude:  lat > 35 AND lat < 47
+// logitude: lon < -70 AND lon > -100
+//where%20latitude%20%3E%2035%20AND%20latitude%20%3C%2047%20AND%20longitude%20%3C%20-70%20AND%20longitude%20%3E%20-100&format=json";
 
 $url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20upcoming.events%20where%20latitude%20%3E%2035%20AND%20latitude%20%3C%2047%20AND%20longitude%20%3C%20-70%20AND%20longitude%20%3E%20-100&format=json";
 
@@ -38,6 +40,7 @@ echo "</pre>";
 */
 
 $count = $decoded_json['query']['count'];
+
 if($count >= 1) {
 
 	for($i = 0; $i < $count; $i++) {
@@ -67,11 +70,16 @@ if($count >= 1) {
 		$end_date_time = date("Y-m-d H:m:s", strtotime($utc_end));
 		$posted_date_time = date("Y-m-d H:m:s", strtotime($date_posted));
 		
+		
+	/******** THIS IS COMMENTED WHEN CALLED FROM ANOTHER *****/
+
+/*
 		echo "Date Posted: ".$posted_date_time;
 		echo " start datetime: ".$start_date_time;
 		echo " end datetime: ".$end_date_time;
 		echo " Lat: ".$lat." Long: ".$lon;
 		echo "<br>";
+*/
 		
 		// check if duplicate
 		$qry = "SELECT * FROM YQL_events WHERE yql_id = '$yql_id'";
@@ -107,8 +115,9 @@ if($count >= 1) {
 			
 			$id = mysqli_fetch_assoc($res);
 			$new_id = $id['event_id'];
-			
-			echo " New id added: ".$new_id;
+		
+		/******** THIS IS COMMENTED WHEN CALLED FROM ANOTHER *****/
+			//echo " New id added: ".$new_id;
 			
 			$qry = "INSERT INTO YQL_event_address
 					(event_id, address_text, x_coord, y_coord)

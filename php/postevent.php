@@ -2,6 +2,17 @@
 session_start();
 require('cxn.php');
 $GLOBALS['debug'] = false;
+
+// first off, check that we are signed in:
+if($_SESSION['signed_in'] != true) {
+	$arr = array("status" => 0, 
+		"message" => "Failed to create event... User not signed in!");
+	echo json_encode($arr);
+	exit();
+	}
+
+
+
 /* FROM FRONT:
  * 
  * postEventData = {

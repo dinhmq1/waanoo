@@ -3,7 +3,7 @@ require('cxn.php');
 session_start();
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$date_search = date("Y-m-d H:m:s", time() - 60*60*24*5); // 12 HOURS EARLIER
+$date_search = date("Y-m-d H:m:s", time() - 60*60*24*3); // 12 HOURS EARLIER
 $date_search_2 = date("Y-m-d H:m:s", time() + 60*60*24*14); // two weeks ahead
 //echo "from: ".$date_search." to: ".$date_search_2;
 define("DATE_TO_SEARCH_FROM", $date_search);
