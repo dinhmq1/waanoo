@@ -58,8 +58,8 @@ $(document).ready(function() {
 	
 
 /**** EVENT POSTING SCRIPTING ***/
-
 	$('#postEventForm-wrapper').hide();
+	
 	
 /**** SIGNUP SUBMISSION STUFF BELOW:  ****/
 	// CHECK FOR VALID EMAIL	
@@ -202,6 +202,11 @@ $(document).ready(function() {
 
 	// popup box on event submission success
 	$('#postEventSuccess').hide();
+	
+
+/**** EVENT EDITING WINDOW ****/
+
+	
 		
 		
 });  // end ready

@@ -36,10 +36,11 @@ function check_for_dups($all_fields) {
 	$eventName = '%'.$name.'%';
 	//$eventName = $name;
 	
-	$start_date_begin = date("Y-m-d H:m:s", strtotime($begin) - 60*60*24);
-	$start_date_end = date("Y-m-d H:m:s", strtotime($begin) + 60*60*24);
-	$date_create_begin = date("Y-m-d H:m:s", time() - 60*60*24);
-	$date_create_end = date("Y-m-d H:m:s", time() - 60*60*24);
+	// CHECK WITHIN 2 weeks
+	$start_date_begin = date("Y-m-d H:m:s", strtotime($begin) - 60*60*24*14);
+	$start_date_end = date("Y-m-d H:m:s", strtotime($begin) + 60*60*24*14);
+	$date_create_begin = date("Y-m-d H:m:s", time() - 60*60*24*14);
+	$date_create_end = date("Y-m-d H:m:s", time() - 60*60*24*14);
 	
 	$qry = "SELECT * FROM user_events 
 			WHERE event_title LIKE ?

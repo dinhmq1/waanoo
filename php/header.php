@@ -142,12 +142,11 @@ else {
 			<!-- Tags (eg: food, pool): <input  id='eventTags' type='text'/><br /> -->
 		</form>
 		<span id='eventPostErrors'> </span><br>
-		<span  class='btn' onClick='submitNewEvent()'>Submit!</span>
+		<span  id='eventFormSubmitBtn' class='btn' onClick='submitNewEvent()'>Submit!</span>
 	</div>
 	
 	<div id='miniMapCanvas'>
 		<!-- this is where we look up the reverse geocoding stuff -->
-	
 	</div>
 </div>
 

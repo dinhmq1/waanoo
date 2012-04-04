@@ -22,3 +22,4 @@
 		<script src="js/signout.js"></script>
 		<script src="js/postevent.js"></script>
 		<script src="js/delete_event.js"></script>
+		<script src="js/editevent.js"></script>

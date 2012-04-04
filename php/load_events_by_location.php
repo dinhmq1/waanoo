@@ -10,12 +10,29 @@ define("DATE_TO_SEARCH_FROM", $date_search);
 define("DATE_TO_SEARCH_TO", $date_search_2);
 
 function deleteBtn($user_id, $event_id) {
-	if($_SESSION['signed_in'] == true) { 
+	if(@$_SESSION['signed_in'] == true) { 
 		$uid_session = $_SESSION['user_id'];
 		if($user_id == $uid_session) {
 			return 
 				"<div class='deleteBtn' id='del_$event_id' onClick='delEvent($event_id)'>
 				Delete!
+				</div>
+				";
+			}
+		else 
+			return "";
+		}
+	else
+		return "";
+	}
+
+function editBtn($user_id, $event_id) {
+	if(@$_SESSION['signed_in'] == true) { 
+		$uid_session = $_SESSION['user_id'];
+		if($user_id == $uid_session) {
+			return 
+				"<div class='editBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
+				Edit!
 				</div>
 				";
 			}
@@ -35,11 +52,11 @@ function search_output_func_YQL($all_vars){
 	$hour = format_time($start_date);
 	$addy = get_address_YQL($event_id);
 	
-	$del_btn = deleteBtn($user_id, $event_id);
+	//$del_btn = deleteBtn($user_id, $event_id);
+	//$edit_btn = editBtn($user_id, $event_id);
 
 	$search_output .= "
 	<div class='eventSingle'>
-		$del_btn
 		<table>
 		<tr>
 		<td>
@@ -68,10 +85,12 @@ function search_output_func_users($all_vars){
 	$hour = format_time($start_date);
 	//$addy = get_address($event_id);
 	$del_btn = deleteBtn($user_id, $event_id);
+	$edit_btn = editBtn($user_id, $event_id);
 
 	$search_output .= "
 	<div class='eventSingle'>
 		$del_btn
+		$edit_btn
 		<table>
 		<tr>
 		<td>

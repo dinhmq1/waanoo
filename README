@@ -1,6 +1,9 @@
 TO DO:
 	
-	-Add server side validation for event posting
+	-Add an edit event button
+		-need to basically do the same thing as post event, but SQL statements should
+		all be UPDATE SET
+		-all pop-up boxes and ajaxy. Use same form as post event.
 	
 	-Make a 'myEvents' tab
 		-you can mark events as attending

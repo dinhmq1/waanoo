@@ -249,14 +249,15 @@ function testGeocode(address){
 										var successMsg = result.status;
 										//alert("Data returned: " + msg);
 										if(successMsg == 1){
-											alert("Event Posted Successfully!");
+											//alert("Event Posted Successfully!");
 											$('#postEventForm-wrapper').hide();
 											$('#dimmer').hide();
 											$('#postEventSuccess').show();
+											load_events(latitude, longitude);
 											}
 										else {
 											$('#eventPostErrors').empty().append("\
-											<font color='red'>Could not post event! Try Again!</font>");
+											<font color='red'>" + msg + "</font>");
 											}
 									
 										}
