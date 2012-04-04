@@ -140,6 +140,7 @@ else {
 			<textarea name="event_description" id="eventDescription" rows="3" cols="30" maxlength="500"></textarea><br />
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
 			<!-- Tags (eg: food, pool): <input  id='eventTags' type='text'/><br /> -->
+			<input type='hidden' id='oldEventID' value="" />
 		</form>
 		<span id='eventPostErrors'> </span><br>
 		<span  id='eventFormSubmitBtn' class='btn' onClick='submitNewEvent()'>Submit!</span>
