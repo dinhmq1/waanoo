@@ -206,6 +206,10 @@ $(document).ready(function() {
 
 /**** EVENT EDITING WINDOW ****/
 
+
+/*** SINGLE EVENT MAP ***/
+
+$('#EventMapWrapper').hide();
 	
 		
 		

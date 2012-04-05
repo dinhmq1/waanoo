@@ -25,3 +25,4 @@
 		<script src="js/editevent.js"></script>
 		<script src="js/loadmoreevents.js"></script>
 		<script src="js/attendance.js"></script>
+		<script src="js/eventmap.js"></script>

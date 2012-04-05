@@ -18,3 +18,4 @@ function attendingEvent($event_id) {
 			}
 		});
 	}
+

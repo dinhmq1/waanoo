@@ -64,7 +64,9 @@ function search_output_func_YQL($all_vars){
 			<h3>".strip_tags($event_title)."</h3>
 			Date: $day  Time: $hour <br>
 			Country: $country_name <br>
-			Location: $addy, $venue_state, $venue_zip <br>
+			<span onClick='openEventMap($lat, $lon, \"$addy $venue_state $venue_zip\")'>
+				<b>Location (click for map):</b> $addy, $venue_state, $venue_zip<br>
+			</span>
 			Venue Name: $venue_name <br>
 			Description: ".strip_tags($event_description)."<br>	
 			Distance: ".round($distance, 1)." miles <br>
@@ -104,7 +106,9 @@ function search_output_func_users($all_vars){
 				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
 			</li>
 			<li>
-				<b>Location:</b> ".strip_tags($venue_address)."<br>
+				<span onClick='openEventMap($lat, $lon, \"$venue_address\")'>
+					<b>Location (click for map):</b> ".strip_tags($venue_address)."<br>
+				</span>
 			</li>
 			<li>
 				<b>Description:</b> ".strip_tags($event_description)."<br>	
@@ -326,6 +330,8 @@ function pull_ALL_events($lat, $lon, $offset){
 				"venue_name" => $venue_name,
 				"venue_zip" => $venue_zip,
 				"venue_state" => $venue_state,
+				"lat" => $lat,
+				"lon" => $lon,
 				"distance"=> $distance,
 				"search_output" => $search_output
 				);
@@ -347,6 +353,8 @@ function pull_ALL_events($lat, $lon, $offset){
 				"start_date" => $start_date,
 				"end_date" => $end_date,
 				"venue_address" => $address_DB,
+				"lat" => $lat,
+				"lon" => $lon,
 				"distance"=> $distance,
 				"search_output" => $search_output
 				);

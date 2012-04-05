@@ -28,7 +28,7 @@ html, body
 	}
 	
 	#dimmer{
-		position: absolute;
+		position: fixed;
 		top: 0px;
 		left: 0px;
 		width: 100%;
@@ -213,7 +213,7 @@ html, body
 	/** GOOGLE MAPS ***/		
 			
 	#map_wrapper{
-		position: absolute;
+		position: fixed;
 		top: 50px;
 		left: 100px;
 		z-index: 200;
@@ -227,6 +227,23 @@ html, body
 			
 			}
 			
+	/*** GOOGLE MAPS FOR EVENT VIEWER***/
+	
+	#EventMapWrapper {
+		position: fixed;
+		top: 50px;
+		left: 100px;
+		z-index: 200;
+		height: 70%;
+		width: 70%;
+		background-color: whitesmoke;
+		
+		}
+		#EventMapCanvas {
+			height: 80%;
+			width: 100%;
+			
+			}
 
 	/* EVENT VIEW AREA*/
 		
@@ -319,7 +336,7 @@ html, body
 			z-index: 100;
 			width: 80%;
 			height: 70%;
-			position: absolute;
+			position: fixed;
 			top: 30px;
 			left: 10%;
 			
