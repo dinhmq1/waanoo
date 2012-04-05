@@ -245,39 +245,64 @@ html, body
 				background-color: white;	
 				border-radius: 10px;
 				}
-			.deleteBtn {
-				position: absolute;
-				/*top: 2%;*/
-				margin-right: 15%;
-				right: 2%;
-				z-index: 50;
-				width: 10%;
-				
-				font-style: italic;
-				color: #1E1F3F;
-				background-color: #CBCCED;
-				border-radius: 5px;
-				}
-				.deleteBtn:hover{
-					color: red;
+				.eventSingle ul {
+					list-style-type: none;
+					text-align: left;
+					margin-right: 25%;
 					}
+				
+			/*** ALL CHILDREN OF .eventSingle ***/		
+				.deleteBtn {
+					position: absolute;
+					/*top: 2%;*/
+					margin-right: 15%;
+					right: 2%;
+					z-index: 50;
+					width: 10%;
 					
-			.editBtn {
-				position: absolute;
-				/*top: 2%;*/
-				margin-right: 25%;
-				right: 2%;
-				z-index: 50;
-				width: 10%;
-				
-				font-style: italic;
-				color: #1E1F3F;
-				background-color: #CBCCED;
-				border-radius: 5px;
-				}
-				.editBtn:hover{
-					color: red;
+					font-style: italic;
+					color: #1E1F3F;
+					background-color: #CBCCED;
+					border-radius: 5px;
 					}
+					.deleteBtn:hover{
+						color: red;
+						}
+						
+				.editBtn {
+					position: absolute;
+					/*top: 2%;*/
+					margin-right: 25%;
+					right: 2%;
+					z-index: 50;
+					width: 10%;
+					
+					font-style: italic;
+					color: #1E1F3F;
+					background-color: #CBCCED;
+					border-radius: 5px;
+					}
+					.editBtn:hover{
+						color: red;
+						}
+						
+						
+				.attendingBtn {
+					width: 100px;
+					position: absolute;
+					margin-right: 15%;
+					margin-top:15%;
+					right: 2%;
+					z-index: 50;
+					
+					border-radius: 5px;
+					color:white;
+					background-color: #62DC7A;
+					}
+					.attendingBtn:hover {
+						background-color: #00BE26;
+						}
+				
 	
 	/** POST AN EVENT ***/
 	

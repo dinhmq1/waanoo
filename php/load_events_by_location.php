@@ -1,4 +1,5 @@
 <?php
+//error_reporting(0);
 require('cxn.php');
 session_start();
 
@@ -89,20 +90,29 @@ function search_output_func_users($all_vars){
 
 	$search_output .= "
 	<div class='eventSingle'>
+		<input id='attendQuestion_$event_id' type='hidden' value='0' />
+		<div class='attendingBtn' onClick='attendingEvent($event_id)'>
+			going ?
+		</div>
 		$del_btn
 		$edit_btn
-		<table>
-		<tr>
-		<td>
-			<h3>".strip_tags($event_title)."</h3>
-			Date: $day  Time: $hour <br>
-			Location: $venue_address<br>
-			Description: ".strip_tags($event_description)."<br>	
-			Distance: ".round($distance, 1)." miles <br>
-			Id: $event_id <br>
-		</td>	
-		</tr>
-		</table>
+		<ul>
+			<li>
+				<h3>".strip_tags($event_title)."</h3>
+			</li>
+			<li>
+				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
+			</li>
+			<li>
+				<b>Location:</b> ".strip_tags($venue_address)."<br>
+			</li>
+			<li>
+				<b>Description:</b> ".strip_tags($event_description)."<br>	
+			</li>
+			<li>
+				<b>Distance:</b> ".round($distance, 1)." miles <br>
+			</li>
+		</ul>
 	</div>
 	<br />
 	";

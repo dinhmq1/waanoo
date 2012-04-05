@@ -1,7 +1,7 @@
 <?php 
 require 'php/header.php';
 //temporary
-require("php/populate_YQL_events.php");
+//require("php/populate_YQL_events.php");
 ?>
 
 <div id="logo">

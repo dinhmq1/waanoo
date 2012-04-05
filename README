@@ -1,15 +1,14 @@
 TO DO:
 	IN ORDER:
 	
-	-add limits to query for load events
-		-see ooz source for how. 
-		-just use a load button
-	
 	-add an 'attending' button
 	
 	-fix form for login so that browser knows it is a form
 	and offers to save the password
 	
+	-need to fix pagination of events:
+		-have no fucking clue how.
+		
 	-Browser/viewing testing
 		-I.E.
 		-Different resolutions
