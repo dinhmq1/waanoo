@@ -199,7 +199,16 @@ html, body
 				color: black;
 				background-color: white;
 				
-				}	
+				}
+			
+			#latlngLoc{
+				position:absolute;
+				top: 40px;
+				left: 5%;
+				z-index:10;
+				font-size: 11px;
+				color: #9B9B9B;
+				}
 			
 	/** GOOGLE MAPS ***/		
 			

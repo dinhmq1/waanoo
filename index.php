@@ -3,6 +3,7 @@ require 'php/header.php';
 //temporary
 //require("php/populate_YQL_events.php");
 ?>
+<span id='latlngLoc'>Detected your location:</span>
 
 <div id="logo">
 waan<span id='infin'>∞</span>

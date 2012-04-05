@@ -20,6 +20,26 @@ longitude = "";
 			$(".eventViewer").empty().append(results);
 			});
 		}
+		
+// uses reverse geocoding to add and address to top of page	
+	var revGeocoder = null;
+	function setReversedGeocode(){
+		var revGeocoder = new google.maps.Geocoder();
+		var lat = latitude;
+		var lon = longitude;
+		var detectedLoc = new google.maps.LatLng(lat,lon);
+		
+		revGeocoder.geocode({'latLng': detectedLoc}, function(results, status) {
+	        if (status == google.maps.GeocoderStatus.OK) {
+				// just set the field to the geocode return addy
+				$('#latlngLoc').empty().append("Detected your location: " + results[0].formatted_address);
+		        }
+		      else {
+		        alert("Geocoder failed due to: " + status);
+		      }
+		    });
+		}
+	
 	
 //main browser location detecting function
 	function get_location() {
@@ -48,7 +68,10 @@ longitude = "";
 		lon = "Longitude: " + longitude;
 		console.log(lat,lon);
 		
+		// load events to the page
 		load_events(latitude, longitude);
+		// append addy top of page
+		setReversedGeocode();
 		}
 		
 /*** ON CLICKS: ****/
@@ -125,4 +148,5 @@ longitude = "";
 		map.setCenter(current_position);
 			
 		console.log("lat new: " + latitude + " lng new: " + longitude);
+		setReversedGeocode();
 		}
