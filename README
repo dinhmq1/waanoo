@@ -1,9 +1,26 @@
 TO DO:
+	IN ORDER:
 	
-	-Add an edit event button
-		-need to basically do the same thing as post event, but SQL statements should
-		all be UPDATE SET
-		-all pop-up boxes and ajaxy. Use same form as post event.
+	-add limits to query for load events
+		-see ooz source for how. 
+		-just use a load button
+	
+	-add an 'attending' button
+	
+	-fix form for login so that browser knows it is a form
+	and offers to save the password
+	
+	-Browser/viewing testing
+		-I.E.
+		-Different resolutions
+		-mobile
+			-maybe a mobile detection setting that 
+			can show where to find the app in the app store.
+		-older versions of I.E.
+		-look over CSS for things to fix
+		
+		
+	
 	
 	-Make a 'myEvents' tab
 		-you can mark events as attending

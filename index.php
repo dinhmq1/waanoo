@@ -36,4 +36,11 @@ Event Posted Successfully!
 	</div>
 </div>
 
+<div id="moreEventsBtn" onclick="loadMoreEvents()">
+	<input type="hidden" id="eventOffset" value="7" />
+	[LOAD MORE]
+</div>
+
+<br />
+
 <?php require 'php/footer.php';?>

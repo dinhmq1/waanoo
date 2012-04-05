@@ -216,7 +216,12 @@ function get_all_event_list_users($event_id){
 
 
 // YQL GET ADDRESS
-function pull_ALL_events($lat, $lon){
+function pull_ALL_events($lat, $lon, $offset){
+	//could be dirty
+	$offset = preg_replace("#[^0-9]#", "", $offset);
+	$rows_per_page = 7;
+	//echo $offset;
+	
 	
 	// DO YQL SECTION FIRST
 	$cxn = $GLOBALS['cxn'];
@@ -226,6 +231,7 @@ function pull_ALL_events($lat, $lon){
 			WHERE 
 			'$d' <= (SELECT end_date FROM YQL_events 
 			WHERE event_id = YQL_event_address.event_id)
+			LIMIT $offset, $rows_per_page
 			";
 	$res = mysqli_query($cxn, $qry)
 		or die ("couldn't do the db loc thing...");
@@ -254,6 +260,7 @@ function pull_ALL_events($lat, $lon){
 			WHERE
 			'$d' <= (SELECT end_date FROM user_events 
 			WHERE event_id = event_address.event_id)
+			LIMIT $offset, $rows_per_page
 			";
 	$res = mysqli_query($cxn, $qry)
 		or die ("couldn't do the db loc thing...");
@@ -346,7 +353,16 @@ function pull_ALL_events($lat, $lon){
 $lat = $_REQUEST['latitude'];
 $lon = $_REQUEST['longitude'];
 
-$search_output = pull_ALL_events($lat, $lon);
+// TRYING TO JUST DO ONE SCRIPT SO WE ADD SOME OPTIONS
+if(isset($_REQUEST['offset'])) {
+	$offset = $_REQUEST['offset'];
+	}
+else {
+	// the first 15
+	$offset = 0;
+	}
+	
+$search_output = pull_ALL_events($lat, $lon, $offset);
 
 // spit out the formatted stuff
 echo $search_output;	
