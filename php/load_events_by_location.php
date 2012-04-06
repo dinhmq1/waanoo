@@ -44,6 +44,28 @@ function editBtn($user_id, $event_id) {
 		return "";
 	}
 
+function attendBtn($user_id, $event_id) {
+	if(@$_SESSION['signed_in'] == true) {
+		$cxn = $GLOBALS['cxn'];
+		$sql = "SELECT * FROM attendees 
+				WHERE user_id = '$user_id' 
+				AND
+				event_id = '$event_id'";
+		$qry = mysqli_query($cxn, $sql)
+			or die("failed to select ftom attendees table");
+		$row = mysqli_fetch_assoc($qry);
+		if($row == null) {
+			return "Attending ?";
+			}
+		else {
+			return "<span style='background-color: #32C43C;' >Attending!</span>";
+			}
+		}
+	else {
+		return "Attending ?";
+		}
+	}
+
 
 // ONLY FOR YQL EVENTS
 function search_output_func_YQL($all_vars){
@@ -89,12 +111,12 @@ function search_output_func_users($all_vars){
 	//$addy = get_address($event_id);
 	$del_btn = deleteBtn($user_id, $event_id);
 	$edit_btn = editBtn($user_id, $event_id);
+	$attend_btn = attendBtn($user_id, $event_id);
 
 	$search_output .= "
 	<div class='eventSingle'>
-		<input id='attendQuestion_$event_id' type='hidden' value='0' />
-		<div class='attendingBtn' onClick='attendingEvent($event_id)'>
-			going ?
+		<div class='attendingBtn' id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+			$attend_btn
 		</div>
 		$del_btn
 		$edit_btn
