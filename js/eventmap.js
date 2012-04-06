@@ -42,6 +42,7 @@ var directionsService;
 function getDirections() {
 	// pull global current lat and lng
 	$('#EventDirections').show();
+	$('#EventDirectionsDisplay').empty();
 	var lat = latitude;
 	var lon = longitude;
 	var addy = $('#eventAddressText').text();

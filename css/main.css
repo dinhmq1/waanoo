@@ -250,9 +250,14 @@ html, body
 			position: fixed;
 			top: 50px;
 			right: 50px;
-			height: 90%;
+			height: 80%;
 			background-color: whitesmoke;
+			overflow: auto;
 			}
+			#EventDirectionsDisplay {
+				font-size: 75%;
+				}
+
 
 	/* EVENT VIEW AREA*/
 		
