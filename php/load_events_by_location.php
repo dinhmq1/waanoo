@@ -86,7 +86,7 @@ function search_output_func_YQL($all_vars){
 			<h3>".strip_tags($event_title)."</h3>
 			Date: $day  Time: $hour <br>
 			Country: $country_name <br>
-			<span onClick='openEventMap($lat, $lon, \"$addy $venue_state $venue_zip\")'>
+			<span class='clickForMap' onClick='openEventMap($lat, $lon, \"$addy $venue_state $venue_zip\")'>
 				<b>Location (click for map):</b> $addy, $venue_state, $venue_zip<br>
 			</span>
 			Venue Name: $venue_name <br>
@@ -128,7 +128,7 @@ function search_output_func_users($all_vars){
 				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
 			</li>
 			<li>
-				<span onClick='openEventMap($lat, $lon, \"$venue_address\")'>
+				<span class='clickForMap' onClick='openEventMap($lat, $lon, \"$venue_address\")'>
 					<b>Location (click for map):</b> ".strip_tags($venue_address)."<br>
 				</span>
 			</li>

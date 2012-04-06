@@ -232,17 +232,26 @@ html, body
 	#EventMapWrapper {
 		position: fixed;
 		top: 50px;
-		left: 100px;
+		left: 50px;
 		z-index: 200;
 		height: 70%;
-		width: 70%;
+		width: 60%;
 		background-color: whitesmoke;
 		
 		}
 		#EventMapCanvas {
 			height: 80%;
 			width: 100%;
+			}
 			
+		#EventDirections {
+			z-index: 199;
+			width: 30%;
+			position: fixed;
+			top: 50px;
+			right: 50px;
+			height: 90%;
+			background-color: whitesmoke;
 			}
 
 	/* EVENT VIEW AREA*/
@@ -327,6 +336,12 @@ html, body
 					}
 					.attendingBtn:hover {
 						background-color: #5BCAE8;
+						}
+				.clickFormap{
+					color: black;
+					}
+					.clickForMap:hover {
+						color: red;
 						}
 				
 	

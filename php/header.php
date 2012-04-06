@@ -154,10 +154,17 @@ else {
 
 <div id='EventMapWrapper'>
 	Event Address: <span id='eventAddressText'></span>
+	
 	<div id='EventMapCanvas'>
 	</div>
-	
-	<span class='login-button' onClick='closeEventMap()'>
-	I'm Done!
+	<span class='login-button' onClick='getDirections()'>
+		Get Directions
 	</span>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='login-button' onClick='closeEventMap()'>
+		I'm Done!
+	</span>
+</div>
+<div id='EventDirections'>
+	<div id='EventDirectionsDisplay'></div>
 </div>

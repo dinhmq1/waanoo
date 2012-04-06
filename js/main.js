@@ -210,5 +210,6 @@ $(document).ready(function() {
 /*** SINGLE EVENT MAP ***/
 
 $('#EventMapWrapper').hide();
+$('#EventDirections').hide();
 		
 });  // end ready

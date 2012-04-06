@@ -1,8 +1,10 @@
 TO DO:
 	IN ORDER:
+
+	-directions fixing: if directions are very long it should have a scroll bar
 	
-	-add an 'attending' button
-	
+	-generally, the site is ugly, it is only functional
+		
 	-fix form for login so that browser knows it is a form
 	and offers to save the password
 	
@@ -18,8 +20,6 @@ TO DO:
 		-older versions of I.E.
 		-look over CSS for things to fix
 		
-		
-	
 	
 	-Make a 'myEvents' tab
 		-you can mark events as attending
