@@ -130,5 +130,19 @@ $(document).ready(function() {
 	
 /*** MY EVENTS ***/
 	$('#myEventsWrapper').hide();
+	
+/*** Hotkey to close out pop-up ***/
+	$(document).keydown(function(e){
+	if(e.keycode == 27) {
+		console.log("escape key");
+		$("#dimmer").hide();
+		$('#EventMapWrapper').hide();
+		$('#EventDirections').hide();
+		
+		
+		
+		}
+	});	
+	
 		
 });  // end ready
