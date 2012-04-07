@@ -17,7 +17,7 @@ function loadMoreEvents(){
 		
 		$.post("./php/load_events_by_location.php", coords, function(results){
 			// new offset:
-			var newOff = 7 + Number(off);
+			var newOff = 10 + Number(off);
 			$('#eventOffset').val(newOff);
 			console.log("new offset: " + newOff);
 			

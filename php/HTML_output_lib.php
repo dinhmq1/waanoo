@@ -186,7 +186,7 @@ function format_date($in_date){
 	}
 	
 function format_time($in_date){
-	return date("H:m", strtotime($in_date));
+	return date("h:m", strtotime($in_date));
 	}
 	
 

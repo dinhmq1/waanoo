@@ -95,7 +95,7 @@ function pull_ALL_events($lat, $lon, $offset){
 	$offset = preg_replace("#[^0-9]#", "", $offset);
 	$rows_per_page = 7;
 	if($GLOBALS['include_YQL'] == false)
-		$rows_per_page = 14;
+		$rows_per_page = 10;
 	
 	// date searching
 	$d = DATE_TO_SEARCH_FROM;

@@ -25,9 +25,9 @@ Events Near You:
 
 <br />
 
-<div id="moreEventsBtn" onclick="loadMoreEvents()">
-	<input type="hidden" id="eventOffset" value="14" />
-	<a href='#' class='btnTemplate'>LOAD MORE!</a>
+<div id="moreEventsBtn" onclick="loadMoreEvents()" class='btnTemplate'>
+	<input type="hidden" id="eventOffset" value="10" />
+	LOAD MORE!
 </div>
 
 
@@ -38,7 +38,7 @@ Events Near You:
 	<br />
 		<div onClick='close_event_success_window()' 
 			style='width:50%; margin-left:25%;'>
-			<a href='#' class='btnTemplate'>Close!</a>
+			<a href='#' >Close!</a>
 		</div>
 </div>
 <br />
