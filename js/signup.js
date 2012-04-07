@@ -1,5 +1,9 @@
 // signup logic
-
+	function showSignUp() {
+		$('#signupPanel').show();
+		}
+	
+	
 	// ON SignUp submit
 	function signUpMain(){
 		console.log("Validating the sign up fields");

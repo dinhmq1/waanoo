@@ -72,7 +72,8 @@ else {
 						" would you like to logout?<br>
 						<span id='logout-button' class='login-button'
 						onClick='signOutMain()'>
-						LogOut!</span>
+							<a href='#' class='btnTemplate'>Sign Out!</a>
+							</span>
 						<span id='signout-errors'></span>";
 					}
 				else{
@@ -94,8 +95,8 @@ else {
 						<span id='loginNotes'></span>
 		                <br />
 		                Don't have an account? <br /> 
-						<span class='login-button' id='signupBtn' style='font-size:85%;'>
-							Sign Up!
+						<span id='signupBtn' style='font-size:85%;'>
+							<a href='#' class='btnTemplate'>Sign Up!</a>
 		                </span> 
 		<br/>
 			<form>
@@ -112,8 +113,9 @@ else {
 						<option vlaue='F'>female</option>
 					</select><br/>
 					<div id='signup-errors'></div>
-					<span class='login-button' id='submit-signup'>
-					Submit!</span> <br /> 
+					<span id='submit-signup' onClick='signUpMain()'>
+						<a href='#' class='btnTemplate'>Submit!</a>
+						</span> <br /> 
 					<!--Should prolly restate that you can just connect with facebook here-->
 				</div>
 			</form> ";
@@ -127,19 +129,23 @@ else {
 	Drag the marker to change your location:
 	<div id='map_canvas'>
 	</div>
-	<span class='login-button' onClick='close_map_selector()'>
-	I'm Done!
+	<span onClick='close_map_selector()'>
+	<a href='#' class='btnTemplate'>I'm Done!</a>
 	</span>
 </div>
 
 <div id='postEventForm-wrapper'>
 	<h3>Post an Event:</h5>
-	<span id='cancelPostEventBtn' onClick='close_post_event()'>Cancel!</span>
+	<span id='cancelPostEventBtn' onClick='close_post_event()'>
+		<a href='#' class='btnTemplate'>Cancel</a>
+		</span>
 	<div id='postEventForm'>
 		<form>
 			Title: <input id='eventName' type='text' /><br />
 			Where will it be?<input type='text' id='eventLocation' />
-			<span class='btn' id="setLocation" onClick='reset_coords()'>Test it!</span><br />
+				<span id="setLocation" onClick='reset_coords()'>
+				<a href='#' class='btnTemplate'>Test -></a>
+				</span><br />
 			When will it be?:<input type="text" id="eventDateBegin" name="date" /><br />
 			When will it end?:<input type="text" id="eventDateEnd" name="date_end" /><br />
 			Describe your event: <br />
@@ -149,7 +155,9 @@ else {
 			<input type='hidden' id='oldEventID' value="" />
 		</form>
 		<span id='eventPostErrors'> </span><br>
-		<span  id='eventFormSubmitBtn' class='btn' onClick='submitNewEvent()'>Submit!</span>
+		<span  id='eventFormSubmitBtn' onClick='submitNewEvent()'>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='btnTemplate'>Submit!</a>
+		</span>
 	</div>
 	
 	<div id='miniMapCanvas'>
@@ -163,12 +171,12 @@ else {
 	
 	<div id='EventMapCanvas'>
 	</div>
-	<span class='login-button' onClick='getDirections()'>
-		Get Directions
+	<span onClick='getDirections()'>
+		<a href='#' class='btnTemplate'>Get Directions</a>
 	</span>
 	&nbsp;&nbsp;&nbsp;&nbsp;
-	<span class='login-button' onClick='closeEventMap()'>
-		I'm Done!
+	<span onClick='closeEventMap()'>
+		<a href='#' class='btnTemplate'>I'm Done!</a>
 	</span>
 </div>
 <div id='EventDirections'>

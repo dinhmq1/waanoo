@@ -19,7 +19,7 @@ function deleteBtn($user_id, $event_id) {
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			return 
 				"<div class='deleteBtn' id='del_$event_id' onClick='delEvent($event_id)'>
-				Delete!
+				<a href='#' class='btnTemplate'>Delete!</a>
 				</div>
 				";
 			}
@@ -36,7 +36,7 @@ function editBtn($user_id, $event_id) {
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			return 
 				"<div class='editBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
-				Edit!
+				<a href='#' class='btnTemplate'>Edit!</a>
 				</div>
 				";
 			}
@@ -105,8 +105,7 @@ function search_output_func_users($all_vars){
 			<li>
 					<b>Location:</b> ".strip_tags($venue_address)."
 					&nbsp;&nbsp;
-					<span class='attendingBtn' onClick='openEventMap($lat, $lon, \"$venue_address\")'> Show Map
-					</span>
+					
 					<br>
 			</li>
 			<li>
@@ -116,8 +115,11 @@ function search_output_func_users($all_vars){
 				<b>Distance:</b> ".round($distance, 1)." miles <br>
 			</li>
 			<li>
-				<span class='attendingBtn' id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-					$attend_btn
+					<span onClick='openEventMap($lat, $lon, \"$venue_address\")'>
+					<a href='#' class='btnTemplate'>Show Map</a>
+					</span>
+				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+					<a href='#' class='btnTemplate'>$attend_btn</a>
 				</span>
 					&nbsp;&nbsp;&nbsp;
 					<small>RSVP'd so far: $count_attend</small>

@@ -27,7 +27,8 @@ function signIn(){
 						" would you like to logout?<br>\
 						<span id='logout-button' class='login-button'\
 						onClick='signOutMain()'>\
-						LogOut!</span>\
+							<a href='#' class='btnTemplate'>Log Out!</a>\
+						</span>\
 						<span id='signout-errors'></span>";
 			
 			$('#login-field').empty().append(logout);

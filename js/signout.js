@@ -31,9 +31,9 @@ function signOutMain(){
 						<span id='loginNotes'></span>\
 		                <br />\
 		                Don't have an account? <br /> \
-						<span class='login-button' id='signupBtn'>\
-		                Sign Up!\
-		                </span> \
+							<span id='signupBtn' onClick='showSignUp()'>\
+								<a href='#' class='btnTemplate'>Sign Up!</a>\
+							</span> \
 		                \
 		                <br/>\
 							<form>\
@@ -50,8 +50,9 @@ function signOutMain(){
 									<option vlaue='F'>female</option>\
 								</select><br/>\
 								<div id='signup-errors'></div>\
-								<span class='login-button' id='submit-signup' onClick='signUpMain()'>\
-								Submit!</span> <br /> \
+									<span id='submit-signup' onClick='signUpMain()'>\
+									<a href='#' class='btnTemplate'>Submit!</a>\
+									</span> <br /> \
 								<!--Should prolly restate that you can just connect with facebook here-->\
 								</div>\
 							</form> ";
