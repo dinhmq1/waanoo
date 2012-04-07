@@ -78,18 +78,24 @@ else {
 				else{
 					echo 
 					"login with facebook:<br />
-						email:
+					
+						<form id='loginMainForm' action='#'>
+								email:
 							<input type='text' id='login-email' size='10' />
-						password:
+								password:
 							<input type='password' id='login-password' size='10' />
-						<span class='login-button' onClick='signIn()'>
-						GO!
-						</span>
+							<!--
+							<span class='login-button' onClick='signIn()'>
+								GO!
+							-->
+							<input class='login-button' type='submit' value='Submit' style='font-size:85%;'/>
+						</form>
+						
 						<span id='loginNotes'></span>
 		                <br />
 		                Don't have an account? <br /> 
-						<span class='login-button' id='signupBtn'>
-		                Sign Up!
+						<span class='login-button' id='signupBtn' style='font-size:85%;'>
+							Sign Up!
 		                </span> 
 		<br/>
 			<form>

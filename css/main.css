@@ -183,7 +183,11 @@ html, body
 		.headerNav {
 			position: absolute;
 			top: -10px;
-			left: 350px;
+			/*
+			 * left: 350px;
+			 */
+			margin-left: 17%;
+			
 			height: 30px;
 			font-family: helvetica, verdana, arial, sans-serif;
 			color: white;
