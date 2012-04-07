@@ -9,6 +9,9 @@
 	width: 80%;
 	margin-left: 10%;
 	background-color: whitesmoke;
+	border-style: groove;
+	border-width:thick;
+	border-color: black;
 }
 
 
