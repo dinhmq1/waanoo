@@ -2,9 +2,15 @@
 //ids used: EventMapWrapper... EventMapCanvas
 
 function closeEventMap() {
-	$('#dimmer').hide();
+	
 	$('#EventMapWrapper').hide();
 	$('#EventDirections').hide();
+	var res = $('#myEventsWrapper').is(":visible");
+	console.log("is #myEventsWrapper visible?--> " + res);
+		
+	if(res != true) {
+		$('#dimmer').hide();
+		}
 	}
 
 
