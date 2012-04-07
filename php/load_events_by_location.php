@@ -3,6 +3,9 @@
 require('cxn.php');
 session_start();
 
+// FLAG FOR INCLUDE YQL DB EVENTS
+$GLOBALS['include_YQL'] = false;
+
 // RESTRICTION ON ONLY NEW EVENTS PULLED
 $date_search = date("Y-m-d H:m:s", time() - 60*60*24*3); // 12 HOURS EARLIER
 $date_search_2 = date("Y-m-d H:m:s", time() + 60*60*24*14); // two weeks ahead
@@ -13,7 +16,7 @@ define("DATE_TO_SEARCH_TO", $date_search_2);
 function deleteBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) { 
 		$uid_session = $_SESSION['user_id'];
-		if($user_id == $uid_session) {
+		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			return 
 				"<div class='deleteBtn' id='del_$event_id' onClick='delEvent($event_id)'>
 				Delete!
@@ -30,7 +33,7 @@ function deleteBtn($user_id, $event_id) {
 function editBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) { 
 		$uid_session = $_SESSION['user_id'];
-		if($user_id == $uid_session) {
+		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			return 
 				"<div class='editBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
 				Edit!
@@ -264,40 +267,47 @@ function pull_ALL_events($lat, $lon, $offset){
 	//could be dirty
 	$offset = preg_replace("#[^0-9]#", "", $offset);
 	$rows_per_page = 7;
-	//echo $offset;
+	if($GLOBALS['include_YQL'] == false)
+		$rows_per_page = 14;
 	
+	// date searching
+	$d = DATE_TO_SEARCH_FROM;
+	$d2 = DATE_TO_SEARCH_TO;
 	
 	// DO YQL SECTION FIRST
 	$cxn = $GLOBALS['cxn'];
-	$d = DATE_TO_SEARCH_FROM;
-	$d2 = DATE_TO_SEARCH_TO;
-	$qry = "SELECT * FROM YQL_event_address
-			WHERE 
-			'$d' <= (SELECT end_date FROM YQL_events 
-			WHERE event_id = YQL_event_address.event_id)
-			LIMIT $offset, $rows_per_page
-			";
-	$res = mysqli_query($cxn, $qry)
-		or die ("couldn't do the db loc thing...");
-	
 	$main_array = array(); // create an emptry array
-	while($row = mysqli_fetch_assoc($res)){
-		extract($row);
-		$d_total = distance($lat, $lon, $x_coord, $y_coord, "m");
-		
-		// the sub array
-		$event = array(
-			"origin" => "YQL", 
-			"id" => $event_id,
-			"distance" => $d_total,
-			"address_DB" => 0,
-			"lat" => $x_coord,
-			"lon" => $y_coord
-			);
-		//$distances[$event_id] = $d_total;
-		array_push($main_array, $event);
-		}//end compare and extract loc data while.
 	
+	if($GLOBALS['include_YQL'] == true) {
+		
+		$qry = "SELECT * FROM YQL_event_address
+				WHERE 
+				'$d' <= (SELECT end_date FROM YQL_events 
+				WHERE event_id = YQL_event_address.event_id)
+				LIMIT $offset, $rows_per_page
+				";
+		$res = mysqli_query($cxn, $qry)
+			or die ("couldn't do the db loc thing...");
+		
+		
+		while($row = mysqli_fetch_assoc($res)){
+			extract($row);
+			$d_total = distance($lat, $lon, $x_coord, $y_coord, "m");
+			
+			// the sub array
+			$event = array(
+				"origin" => "YQL", 
+				"id" => $event_id,
+				"distance" => $d_total,
+				"address_DB" => 0,
+				"lat" => $x_coord,
+				"lon" => $y_coord
+				);
+			//$distances[$event_id] = $d_total;
+			array_push($main_array, $event);
+			}//end compare and extract loc data while.
+		
+		}
 	
 	// DO USER SECTION NEXT
 	$qry = "SELECT * FROM event_address

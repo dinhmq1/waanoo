@@ -109,12 +109,12 @@ function main_validation($email, $password){
 		if(verify_password($password, $email2)){
 	
 			$cxn = $GLOBALS['cxn'];
-			$query_email = "SELECT user_id, first_name FROM user_list WHERE email=?";
+			$query_email = "SELECT user_id, first_name, privlege_level FROM user_list WHERE email=?";
 	
 			$stm2 = $cxn->prepare($query_email);
 			$stm2->bind_param("s", $email2);
 			$stm2->execute();
-			$stm2->bind_result($user_id, $first_name);
+			$stm2->bind_result($user_id, $first_name, $privleges);
 			$stm2->fetch();
 			$stm2->close();
 			
@@ -130,6 +130,7 @@ function main_validation($email, $password){
 			$_SESSION['email'] = $email2;
 			$_SESSION['fname'] = $first_name;
 			$_SESSION['user_id'] = $user_id;
+			$_SESSION['privleges'] = $privleges;
 			//$_SESSION['city'] = $city;
 			//$_SESSION['state'] = $state;
 			

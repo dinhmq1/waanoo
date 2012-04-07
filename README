@@ -1,7 +1,8 @@
 TO DO:
 	IN ORDER:
-
-	-directions fixing: if directions are very long it should have a scroll bar
+	
+	-admin options. privlege levels.
+	-store the last good address for the user in DB.
 	
 	-generally, the site is ugly, it is only functional
 		

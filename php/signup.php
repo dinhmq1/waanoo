@@ -176,23 +176,25 @@ function main_validation($email, $password1, $password2, $fname, $lname, $sex){
 		$password = sha1($password1);
 		$cxn = $GLOBALS['cxn'];
 		$last_ip = $_SERVER['REMOTE_ADDR'];
-	
-		$query = "INSERT INTO user_list (email, password, first_name, last_name, date_added, last_login, last_ip) 
-				VALUES(?, ?, ?, ?, NOW(), NOW(), ?)";
+		$priv = "user";
+		
+		$query = "INSERT INTO user_list (email, password, first_name, last_name, date_added, last_login, last_ip, privlege_level, sex) 
+				VALUES(?, ?, ?, ?, NOW(), NOW(), ?, ?, ?)";
 		$stm2 = $cxn->prepare($query);
-		$stm2->bind_param("sssss", $email, $password, $fname, $lname, $last_ip);
+		//echo $email."...".$password."...".$fname."...".$lname."...".$last_ip."...".$priv."...".$sex;
+		$stm2->bind_param("sssssss", $email, $password, $fname, $lname, $last_ip, $priv, $sex);
 		$stm2->execute();
 		$stm2->close();
 		
 		// pull user ID for session data
 		$uid = get_user_id($email);
-
 	
 		//// set session infos
 		$_SESSION['signed_in'] = true;
 		$_SESSION['fname'] = $fname;
-		$_SESSION['email'] = $email2;
-		$_SESSION['user_id'] = $user_id;
+		$_SESSION['email'] = $email;
+		$_SESSION['user_id'] = $uid;
+		$_SESSION['privleges'] = "user";
 		//$_SESSION['city'] = $city;
 		//$_SESSION['state'] = $state;
 		

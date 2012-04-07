@@ -3,6 +3,8 @@ session_start();
 require("cxn.php");
 $id = $_REQUEST['eventId'];
 
+// add options in here for is user level = admin
+
 if($_SESSION['signed_in'] == true) {
 	// not prepared, using pregreplace
 	$id = preg_replace("#[^0-9]#", "", $id);
@@ -11,7 +13,7 @@ if($_SESSION['signed_in'] == true) {
 		or die("could not pull user_id".mysqli_error($cxn));
 	$row = mysqli_fetch_assoc($res);
 	
-	if($row['user_id'] == $_SESSION['user_id']) {
+	if($row['user_id'] == $_SESSION['user_id'] or $_SESSION['privleges'] == "admin") {
 		// now delete the event:
 		$qry = "DELETE FROM user_events WHERE event_id = $id";
 		$res = mysqli_query($cxn, $qry)
