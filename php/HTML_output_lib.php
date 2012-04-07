@@ -102,7 +102,7 @@ function search_output_func_users($all_vars){
 				<b>Distance:</b> ".round($distance, 1)." miles <br>
 			</li>
 			<li>
-					<span onClick='openEventMap($lat, $lon, \"$venue_address\")'>
+					<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
 					<a href='#' class='btnTemplate'>Show Map</a>
 					</span>
 				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
@@ -186,7 +186,7 @@ function format_date($in_date){
 	}
 	
 function format_time($in_date){
-	return date("h:m", strtotime($in_date));
+	return date("h:m a", strtotime($in_date));
 	}
 	
 

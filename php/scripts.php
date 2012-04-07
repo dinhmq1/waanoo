@@ -29,3 +29,4 @@
 		<script src="js/attendance.js"></script>
 		<script src="js/eventmap.js"></script>
 		<script src="js/my_events.js"></script>
+		<script src="js/advanced_search.js"></script>

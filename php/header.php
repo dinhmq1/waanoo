@@ -2,7 +2,7 @@
 // DONT MOVE/REMOVE THIS: MUST BE HERE BEFORE ANY CONTENT SENT TO BROWSER!!!!!!
 session_start();
 if(isset($_SESSION['signed_in'])  && $_SESSION['signed_in'] == true){
-	$usr = $_SESSION['fname'];
+	$usr = strip_tags($_SESSION['fname']);
 	$logged_in = "Hi, $usr";
 	$logged_in_bool = true;
 	}
@@ -30,22 +30,26 @@ else {
 			<ul>
 				<li>
 					<span id="showMapButton" onClick='open_map_selector()'> 
-					Location Wrong?</span>
+						<a href="#">Location Wrong?</a>
+					</span>
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
 					<span id="postEventButton" onClick='open_post_event()'>
-					Post Event</span>
+						<a href="#">Post Event</a>
+					</span>
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
-					<span id="advancedSearchButton">
-					Advanced Search</span>
+					<span id="advancedSearchButton" onclick='advancedSearchBtn()'>
+						<a href="#">Advanced Search</a>
+					</span>
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 				<li>
 					<span id="myEventsButton" onClick="openMyEvents()">
-					My Events</span>
+						<a href="#">My Events</a>
+					</span>
 				</li>
 	        </ul>
 		</span>
