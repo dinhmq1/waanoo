@@ -69,6 +69,67 @@ function attendBtn($user_id, $event_id) {
 		}
 	}
 
+function getNumAttend($event_id) {
+	$cxn = $GLOBALS['cxn'];
+	$sql = "SELECT * FROM attendees
+			WHERE event_id = '$event_id'
+			";
+	$res = mysqli_query($cxn, $sql)
+		or die("error getting the attendees");
+	$row_count = mysqli_num_rows($res);
+	return $row_count;
+	}
+	
+function search_output_func_users($all_vars){
+	extract($all_vars);
+	
+	$day = format_date($start_date);
+	$hour = format_time($start_date);
+	//$addy = get_address($event_id);
+	$del_btn = deleteBtn($user_id, $event_id);
+	$edit_btn = editBtn($user_id, $event_id);
+	$attend_btn = attendBtn($user_id, $event_id);
+	$count_attend = getNumAttend($event_id);
+	
+	$search_output .= "
+	<div class='eventSingle'>
+		$del_btn
+		$edit_btn
+		<ul>
+			<li>
+				<h3>".strip_tags($event_title)."</h3>
+			</li>
+			<li>
+				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
+			</li>
+			<li>
+					<b>Location:</b> ".strip_tags($venue_address)."
+					&nbsp;&nbsp;
+					<span class='attendingBtn' onClick='openEventMap($lat, $lon, \"$venue_address\")'> Show Map
+					</span>
+					<br>
+			</li>
+			<li>
+				<b>Description:</b> ".strip_tags($event_description)."<br>	
+			</li>
+			<li>
+				<b>Distance:</b> ".round($distance, 1)." miles <br>
+			</li>
+			<li>
+				<span class='attendingBtn' id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+					$attend_btn
+				</span>
+					&nbsp;&nbsp;&nbsp;
+					<small>RSVP'd so far: $count_attend</small>
+			</li>
+		</ul>
+	</div>
+	<br />
+	";
+	
+	return $search_output;
+	}
+
 
 // ONLY FOR YQL EVENTS
 function search_output_func_YQL($all_vars){
@@ -107,54 +168,6 @@ function search_output_func_YQL($all_vars){
 	<br />
 	";
 
-	return $search_output;
-	}
-	
-function search_output_func_users($all_vars){
-	extract($all_vars);
-	
-	$day = format_date($start_date);
-	$hour = format_time($start_date);
-	//$addy = get_address($event_id);
-	$del_btn = deleteBtn($user_id, $event_id);
-	$edit_btn = editBtn($user_id, $event_id);
-	$attend_btn = attendBtn($user_id, $event_id);
-
-	$search_output .= "
-	<div class='eventSingle'>
-		$del_btn
-		$edit_btn
-		<ul>
-			<li>
-				<h3>".strip_tags($event_title)."</h3>
-			</li>
-			<li>
-				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
-			</li>
-			<li>
-					<b>Location:</b> ".strip_tags($venue_address)."
-					&nbsp;&nbsp;
-					<span class='attendingBtn' onClick='openEventMap($lat, $lon, \"$venue_address\")'> Show Map
-					</span>
-					<br>
-			</li>
-			<li>
-				<b>Description:</b> ".strip_tags($event_description)."<br>	
-			</li>
-			<li>
-				<b>Distance:</b> ".round($distance, 1)." miles <br>
-			</li>
-			<li>
-				<span class='attendingBtn' id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-				$attend_btn
-				</span>
-			</li>
-		</ul>
-	</div>
-	<br />
-	";
-	
-	
 	return $search_output;
 	}
 
