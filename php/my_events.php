@@ -162,9 +162,9 @@ if($_SESSION['signed_in'] == true) {
 	$result = mysqli_query($cxn,$query_events)
 		or die("failed to find events");
 	
-	$array =array();
-	
-	if($row == null) {
+	$count = mysqli_num_rows($result);
+		
+	if($count == 0) {
 		//user has no events!
 		$arr = array("status" => 1, "content" => "You have not created any events!");
 		echo json_encode($arr);
@@ -187,7 +187,7 @@ if($_SESSION['signed_in'] == true) {
 		
 		$current_lat = $_REQUEST['current_lat'];
 		$current_lon = $_REQUEST['current_lon'];
-		$distance = distance($x_coord, $y_coord, $current_lat, $current_lng, "m");
+		$distance = distance($x_coord, $y_coord, $current_lat, $current_lon, "m");
 		
 		/* after everything is extracted:
 			assemble the event and make the html output
@@ -207,7 +207,7 @@ if($_SESSION['signed_in'] == true) {
 				"search_output" => $search_output
 				);
 		
-			$search_output = search_output_func_YQL($all_vars); //see search_functions.php
+			$search_output = search_output_func_users($all_vars); //see search_functions.php
 		}
 	
 	$arr = array("status" => 1, "content" => $search_output);
