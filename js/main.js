@@ -133,14 +133,20 @@ $(document).ready(function() {
 	
 /*** Hotkey to close out pop-up ***/
 	$(document).keydown(function(e){
-	if(e.keycode == 27) {
-		console.log("escape key");
-		$("#dimmer").hide();
-		$('#EventMapWrapper').hide();
-		$('#EventDirections').hide();
-		
-		
-		
+		//console.log("keypress");
+		//console.log(e.keyCode);
+		if(e.keyCode == 27) {
+			//console.log("escape key");
+			// THIS IS ALSO A FULL LIST OF POPUPS
+			$("#dimmer").hide();
+			$('#EventMapWrapper').hide();
+			$('#EventDirections').hide();
+			$('#myEventsWrapper').hide();
+			$('#postEventForm-wrapper').hide();
+			$('#map_wrapper').hide();
+			$('#advancedPanel').hide();
+			$('#tempWindow').hide();
+			$('#postEventSuccess').hide();
 		}
 	});	
 	

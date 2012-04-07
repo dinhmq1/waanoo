@@ -21,11 +21,14 @@ function openMyEvents()
 			var status = result.status;
 			console.log("Content" + content + status);
 			
-			if(status == 1) {
+			if(status == 2) {
 				$('#myEventsContents').empty().append(content);
 				}
+			else if (status == 1) {
+				$('#myEventsContents').empty().append("<br /> <br /> <br /> You are not logged in!");
+				}
 			else {
-				$('#myEventsContents').empty().append("Sorry, could not load events!");
+				$('#myEventsContents').empty().append("<br /> <br /> <br /> Sorry, could not load events!");
 				}
 			}
 			
