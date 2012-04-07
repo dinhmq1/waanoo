@@ -126,5 +126,9 @@ $(document).ready(function() {
 
 	$('#EventMapWrapper').hide();
 	$('#EventDirections').hide();
+	
+	
+/*** MY EVENTS ***/
+	$('#myEventsWrapper').hide();
 		
 });  // end ready

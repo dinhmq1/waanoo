@@ -1,6 +1,7 @@
 <!--The main css-->
         <link rel="stylesheet" type="text/css" href="./css/main.css" />
         <link rel="stylesheet" type="text/css" href="./css/anytime.css" />
+        <link rel="stylesheet" type="text/css" href="./css/my_events.css" />
     <!-- SEE FOR FONTS: http://www.google.com/webfonts#ChoosePlace:select --> 
         <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
         

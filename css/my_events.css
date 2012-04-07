@@ -1,0 +1,18 @@
+/* ID's for my events pop-up window */
+
+#myEventsWrapper
+{
+	z-index: 100;
+	position: fixed;
+	top: 50px;
+	height: 80%;
+	width: 80%;
+	margin-left: 10%;
+	background-color: whitesmoke;
+}
+
+
+
+
+	
+	

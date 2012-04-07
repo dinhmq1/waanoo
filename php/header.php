@@ -182,3 +182,32 @@ else {
 <div id='EventDirections'>
 	<div id='EventDirectionsDisplay'></div>
 </div>
+
+
+<div id="myEventsWrapper">
+	<span onClick="closeMyEvents()">
+		<a href="#" class="btnTemplate" >close</a>
+	</span>
+	<div id="myEventsContents">
+		
+		
+	</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
