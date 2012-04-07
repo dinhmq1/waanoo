@@ -44,7 +44,7 @@ else {
 				</li>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 				<li>
-					<span id="myEventsButton">
+					<span id="myEventsButton" onClick="openMyEvents()">
 					My Events</span>
 				</li>
 	        </ul>

@@ -27,3 +27,4 @@
 		<script src="js/loadmoreevents.js"></script>
 		<script src="js/attendance.js"></script>
 		<script src="js/eventmap.js"></script>
+		<script src="js/my_events.js"></script>
