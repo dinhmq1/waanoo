@@ -126,7 +126,7 @@ function search_output_func_users($all_vars){
 			</li>
 		</ul>
 	</div>
-	<br />
+	&nbsp;
 	";
 	
 	return $search_output;

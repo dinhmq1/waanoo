@@ -9,7 +9,6 @@ require 'php/header.php';
 waan<span id='infin'>∞</span>
 </div>
 
-
 Events Near You:
 <br />
 <br />
@@ -20,28 +19,28 @@ Events Near You:
 <div id="tempWindow">
 </div>
 
-<p>&nbsp;
-</p>
 
 <div id='dimmer'>
 </div>
 
-<div id='postEventSuccess'>
 <br />
-Event Posted Successfully!
-<br />
-<br />
-	<div class='login-button' onClick='close_event_success_window()' 
-		style='width:50%; margin-left:25%;'>
-		Close!
-	</div>
-</div>
 
 <div id="moreEventsBtn" onclick="loadMoreEvents()">
-	<input type="hidden" id="eventOffset" value="7" />
-	[LOAD MORE]
+	<input type="hidden" id="eventOffset" value="14" />
+	<a href='#' class='btnTemplate'>LOAD MORE!</a>
 </div>
 
+
+<div id='postEventSuccess'>
+	<br />
+	Event Posted Successfully!
+	<br />
+	<br />
+		<div onClick='close_event_success_window()' 
+			style='width:50%; margin-left:25%;'>
+			<a href='#' class='btnTemplate'>Close!</a>
+		</div>
+</div>
 <br />
 
 <?php require 'php/footer.php';?>

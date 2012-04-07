@@ -60,6 +60,7 @@ longitude = "";
 
 //this function is the callback of the browser location detector
 	function show_map(position){
+		// NOTE: GLOBALS
 		latitude = position.coords.latitude;
 		longitude = position.coords.longitude;
 		

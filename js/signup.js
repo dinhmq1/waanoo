@@ -162,8 +162,8 @@ function signUpSuccessWindow(fname){
 		Hi " + fname + " \
 		Thanks for signing up! <br \> \
 		You are now logged in! <br \>\
-		<span class='login-button' onClick=closeMe('#signUpWindow')> \
-		Close \
+		<span onClick=closeMe('#signUpWindow')> \
+			<a href='#' class='btnTemplate'>Close!</a>\
 		</span>\
 		</div>";
 	$('#tempWindow').empty().append(window);
