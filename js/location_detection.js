@@ -83,7 +83,7 @@ longitude = "";
 		$('#dimmer').show();
 		
 		// Loads the js for google maps
-		loadScript();
+		initialize();
 		}
 // on click for: "I'm Done!"
 	function close_map_selector(){

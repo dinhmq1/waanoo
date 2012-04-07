@@ -9,7 +9,7 @@ function open_post_event(){
 		$('#postEventForm-wrapper').show();
 		$('#dimmer').show();
 		
-		loadScriptMiniMap();
+		initMiniMap();
 		}
 	else {
 		$('#advancedPanel').show();

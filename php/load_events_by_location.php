@@ -86,9 +86,13 @@ function search_output_func_YQL($all_vars){
 			<h3>".strip_tags($event_title)."</h3>
 			Date: $day  Time: $hour <br>
 			Country: $country_name <br>
-			<span class='clickForMap' onClick='openEventMap($lat, $lon, \"$addy $venue_state $venue_zip\")'>
-				<b>Location (click for map):</b> $addy, $venue_state, $venue_zip<br>
-			</span>
+				<b>Location:</b> $addy, $venue_state, $venue_zip
+					&nbsp;&nbsp;
+					<span class='attendingBtn' onClick='openEventMap($lat, $lon, \"$addy $venue_state $venue_zip\")'> 
+						Show Map
+					</span>
+					<br>
+			
 			Venue Name: $venue_name <br>
 			Description: ".strip_tags($event_description)."<br>	
 			Distance: ".round($distance, 1)." miles <br>
@@ -115,9 +119,6 @@ function search_output_func_users($all_vars){
 
 	$search_output .= "
 	<div class='eventSingle'>
-		<div class='attendingBtn' id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-			$attend_btn
-		</div>
 		$del_btn
 		$edit_btn
 		<ul>
@@ -128,15 +129,22 @@ function search_output_func_users($all_vars){
 				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
 			</li>
 			<li>
-				<span class='clickForMap' onClick='openEventMap($lat, $lon, \"$venue_address\")'>
-					<b>Location (click for map):</b> ".strip_tags($venue_address)."<br>
-				</span>
+					<b>Location:</b> ".strip_tags($venue_address)."
+					&nbsp;&nbsp;
+					<span class='attendingBtn' onClick='openEventMap($lat, $lon, \"$venue_address\")'> Show Map
+					</span>
+					<br>
 			</li>
 			<li>
 				<b>Description:</b> ".strip_tags($event_description)."<br>	
 			</li>
 			<li>
 				<b>Distance:</b> ".round($distance, 1)." miles <br>
+			</li>
+			<li>
+				<span class='attendingBtn' id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+				$attend_btn
+				</span>
 			</li>
 		</ul>
 	</div>

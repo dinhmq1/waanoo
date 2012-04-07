@@ -329,12 +329,13 @@ html, body
 						
 				.attendingBtn {
 					width: 100px;
-					position: absolute;
+					/*position: absolute;
 					margin-right: 15%;
 					margin-top:15%;
 					right: 2%;
-					z-index: 50;
+					z-index: 50;*/
 					
+					font-size: 75%;
 					border-radius: 5px;
 					color:white;
 					background-color: #699ECA;
@@ -342,6 +343,7 @@ html, body
 					.attendingBtn:hover {
 						background-color: #5BCAE8;
 						}
+						
 				.clickFormap{
 					color: black;
 					}
