@@ -9,7 +9,14 @@ require 'php/header.php';
 waan<span id='infin'>∞</span>
 </div>
 
-Events Near You:
+Events Near You:&nbsp;&nbsp;
+	<span id="loadByLocation" onClick="loadEventsByLocation()">
+		<a class='btnTemplate' href="#" >By Location</a>
+	</span>
+	&nbsp;&nbsp;
+	<span id="loadByDate"onClick="loadEventsByDate()">
+		<a class='btnTemplate' href="#" >By Date</a>
+	</span>
 <br />
 <br />
 

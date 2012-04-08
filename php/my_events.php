@@ -23,7 +23,7 @@ if($_SESSION['signed_in'] == true) {
 	
 	$search_output = "";
 	
-	while($row = mysqli_fetch_assoc($result)){
+	while($row = mysqli_fetch_assoc($result)) {
 		//event_id	user_id	event_title	event_description	end_date	start_date	date_created	public
 		extract($row);
 		

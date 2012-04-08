@@ -26,3 +26,32 @@ function loadMoreEvents(){
 			});
 
 	}
+
+function loadEventsByLocation() {
+	var lat = latitude;
+	var lon = longitude;
+	load_events(lat, lon)
+	}
+
+function loadEventsByDate() {
+	
+	latLng = {
+		lat: latitude,
+		lon: longitude
+		};
+	
+	$.ajax({
+		type: "POST",
+		url: "./php/load_events_by_date.php", 
+		data: latLng,
+		dataType: "json",
+		success: function(result){
+			var status = result.status;
+			var content = result.content;
+			console.log("Status of search: " + status);
+			if(status == 1) {
+				$('.eventViewer').empty().append(content);
+				}
+			}
+		});
+	}

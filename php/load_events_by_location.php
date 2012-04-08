@@ -227,7 +227,6 @@ function pull_ALL_events($lat, $lon, $offset){
 				);
 		
 			$search_output = search_output_func_users($all_vars); //see search_functions.php
-				
 			}
 		}//end loop for location search	 FOREACH
 	return $search_output;
