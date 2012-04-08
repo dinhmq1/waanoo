@@ -1,6 +1,7 @@
 // facebook SDK from facebook.com:
 
-window.fbAsyncInit = function() {
+// main thing to establish cnx
+	window.fbAsyncInit = function() {
           FB.init({
             appId      : '203207116448613',
             status     : true, 
@@ -16,6 +17,11 @@ window.fbAsyncInit = function() {
            d.getElementsByTagName('head')[0].appendChild(js);
          }(document));
 
-
+// need to check if user is already signed in
 	
-// main thing to establish cnx
+function displayUser(user) {
+       var userName = document.getElementById('userName');
+       var greetingText = document.createTextNode('Greetings, '
+         + user.name + '.');
+   userName.appendChild(greetingText);
+     }

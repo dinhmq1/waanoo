@@ -45,7 +45,11 @@ longitude = "";
 	function get_location() {
 		//EXECUTES FROM THE .ready()
 		//navigator.geolocation is a global broswer object
-		navigator.geolocation.getCurrentPosition(show_map);
+		if($.browser.msie) {//returns true for ie
+			navigator.geolocation.getCurrentPosition(show_map);
+			}
+		else
+			navigator.geolocation.getCurrentPosition(show_map);
 		}
 	
 //this is for calling the google maps thing asynchronously

@@ -11,9 +11,11 @@ else {
 	$logged_in_bool = false;
 	}
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" value="IE=9">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<html xmlns:fb="https://www.facebook.com/2008/fbml">
 	
@@ -91,28 +93,23 @@ else {
 							<input type='text' id='login-email' size='10' />
 								password:
 							<input type='password' id='login-password' size='10' />
-							<!--
-							<span class='login-button' onClick='signIn()'>
-								GO!
-							-->
+							
 							<input class='login-button' type='submit' value='Submit' style='font-size:85%;'/>
 						</form>
-						
-					<!--
 						<span id='loginNotes'></span>
+					<!--	
 							<span id='facebookBtn'>
 							<b>Facebook Login</b></span>
 					-->			
-								
+		<!-- DISABLED TEMPORARILY 				
 				<div id='fb-root'></div>				
-				<!-- FACEBOOK: needs to come after the fb-root div -->
-				<script src='fb/fbauth.js'></script>
+\				<script src='fb/fbauth.js'></script>
 				
 				<div class='fb-login-button'>Login with Facebook</div>
 				<div id='loader' style='display:none'>
 					<img src='images/ajax-loader-transp-arrows.gif' alt='loading' />
 				</div>
-				
+				-->
 		<!--		
 		<div class='fb-registration' data-fields=\"[{'name':'name'}, {'name':'email'}, {'name':'favorite_car','description':'What is your favorite car?','type':'text'}]\" 
 	        data-redirect-uri=\"http://waanoo.com\" >
@@ -179,7 +176,7 @@ else {
 			Describe your event: 
 			&nbsp; &nbsp; &nbsp; <span id="descriptionCount">0</span> / 500
 			<br />
-			<textarea name="event_description" id="eventDescription" rows="3" cols="40" maxlength="500"></textarea><br />
+			<textarea name="event_description" id="eventDescription" rows="4" cols="40" maxlength="500"></textarea><br />
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
 		<!--
 			Tags: <input id='eventTags' type='text' /><br />

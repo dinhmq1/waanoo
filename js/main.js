@@ -64,8 +64,9 @@ $(document).ready(function() {
 /*** login ***/
 
 	$("#loginMainForm").submit(function(event) {
+		console.log("submitting signin");
 		event.preventDefault();
-		signIn()
+		signIn();
 		});
 	
 	
@@ -95,23 +96,18 @@ $(document).ready(function() {
 			
 /*** POSTING EVENT DATA PICKER ***/	
 		
-	$(function() {  //shortcut for ready()
-	$("#eventDateBegin").AnyTime_picker(
-        { format: "%Y-%m-%d %H:%i",
-          formatUtcOffset: "%: (%@)",
-          hideInput: false,             //change later only for dev purposes
-          //placement: "inline" 
-          });
-	});
+	$("#eventDateBegin").AnyTime_picker({ 
+		format: "%Y-%m-%d %H:%i",
+        formatUtcOffset: "%: (%@)",
+        hideInput: false 
+		});
 	
-	$(function() {  //shortcut for ready()
 	$("#eventDateEnd").AnyTime_picker(
         { format: "%Y-%m-%d %H:%i",
           formatUtcOffset: "%: (%@)",
-          hideInput: false,             //change later only for dev purposes
+          hideInput: false            //change later only for dev purposes
           //placement: "inline" 
           });
-	});
 		
 
 	// popup box on event submission success
@@ -191,6 +187,11 @@ $(document).ready(function() {
 /*** FOOTER popups ***/
 	$('#aboutWaanoo').hide();
 	$('#contactWaanoo').hide();
+	
+	
+/*** ajax loaders ***/
+
+	$('#ajaxLoaderLoadEvents').hide();
 	
 	
 	

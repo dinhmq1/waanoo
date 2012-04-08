@@ -3,10 +3,8 @@ function callSignOut(){
 	
 	return $.ajax({
 		type: "POST",
-		url: "./php/signout.php", 
-		//dataType: "json"
+		url: "./php/signout.php"
 		});
-	
 	}
 
 

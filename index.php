@@ -17,6 +17,10 @@ Events Near You:&nbsp;&nbsp;
 	<span id="loadByDate"onClick="loadEventsByDate()">
 		<a class='btnTemplate' href="#" >By Date</a>
 	</span>
+	&nbsp;&nbsp;
+	<span id="ajaxLoaderLoadEvents">
+		<img src="images/ajax-loader-transp-arrows.gif" />
+	</span>
 <br />
 <br />
 

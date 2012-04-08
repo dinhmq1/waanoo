@@ -65,14 +65,9 @@ function find_email($email){
 		}
 	}//end find_email()
 
-
-
-
 function verify_email($email){
+	$errors = $GLOBALS['errors'];
 	if(!empty($email)){
-	
-		$errors = $GLOBALS['errors'];
-		//other p.m 
 		// preg_match("#[^0-9 a-z\.-_]+@[0-9 a-z\.-_]+$#i", $email)
 		if (preg_match("/^\w[[:alnum:]\.-_]+@[[:alnum:]\.-_]+\.[[:alnum:]]{2,4}$/i", $email) and filter_var($email, FILTER_VALIDATE_EMAIL))
 			{
