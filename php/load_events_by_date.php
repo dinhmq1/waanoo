@@ -8,10 +8,14 @@ $date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
 $distance_tolerance = 50; // miles
 
 function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
+	
+	$rows_per_page = 10;
 	$cxn = $GLOBALS['cxn'];
 	$sql = "SELECT * FROM user_events
 			WHERE end_date >= '$date_search'
-			ORDER BY end_date ASC";
+			ORDER BY end_date ASC
+			LIMIT $offset, $rows_per_page";
+			
 	$res = mysqli_query($cxn, $sql)
 			or die("could not pull events");
 	//echo $sql;

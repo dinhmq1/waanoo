@@ -33,6 +33,7 @@ Events Near You:&nbsp;&nbsp;
 <br />
 
 <div id="moreEventsBtn" onclick="loadMoreEvents()" class='btnTemplate'>
+	<input type="hidden" id="searchType" value="location" />
 	<input type="hidden" id="eventOffset" value="10" />
 	LOAD MORE!
 </div>
