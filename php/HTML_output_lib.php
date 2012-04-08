@@ -87,16 +87,18 @@ function search_output_func_users($all_vars){
 				<h3>".strip_tags($event_title)."</h3>
 			</li>
 			<li>
-				<b>Date:</b> ".strip_tags($day)."  Time: ".strip_tags($hour)." <br>
+				<b>Date:</b> ".strip_tags($day)." <br>
+                                 <b>Time:</b> ".strip_tags($hour)." <br>
 			</li>
 			<li>
 					<b>Location:</b> ".strip_tags($venue_address)."
 					&nbsp;&nbsp;
 					
-					<br>
+					<br><br>
 			</li>
 			<li>
-				<b>Description:</b> ".strip_tags($event_description)."<br>	
+				<b>Description:</b> <br>
+                                ".strip_tags($event_description)."<br>	
 			</li>
 			<li>
 				<b>Distance:</b> ".round($distance, 1)." miles <br>

@@ -293,7 +293,7 @@ html, body
 			}
 			.eventSingle{
 				margin-left: auto;
-	            margin-right: auto;
+                                margin-right: auto;
 				width: 100%;
 				
 				border-width: 0px;
@@ -305,6 +305,7 @@ html, body
 					list-style-type: none;
 					text-align: left;
 					margin-right: 25%;
+                                        font-size: 80%;
 					}
 				
 			/*** ALL CHILDREN OF .eventSingle ***/		
