@@ -15,6 +15,8 @@ else {
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<html xmlns:fb="https://www.facebook.com/2008/fbml">
+	
 	<title>Waanoo</title>
 	<?php
 	require('scripts.php');	
@@ -82,7 +84,7 @@ else {
 					}
 				else{
 					echo 
-					"login with facebook:<br />
+					"login:<br />
 					
 						<form id='loginMainForm' action='#'>
 								email:
@@ -96,12 +98,34 @@ else {
 							<input class='login-button' type='submit' value='Submit' style='font-size:85%;'/>
 						</form>
 						
+					<!--
 						<span id='loginNotes'></span>
-		                <br />
-		                Don't have an account? <br /> 
-						<span id='signupBtn' style='font-size:85%;'>
-							<a href='#' class='btnTemplate'>Sign Up!</a>
-		                </span> 
+							<span id='facebookBtn'>
+							<b>Facebook Login</b></span>
+					-->			
+								
+				<div id='fb-root'></div>				
+				<!-- FACEBOOK: needs to come after the fb-root div -->
+				<script src='fb/fbauth.js'></script>
+				
+				<div class='fb-login-button'>Login with Facebook</div>
+				<div id='loader' style='display:none'>
+					<img src='images/ajax-loader-transp-arrows.gif' alt='loading' />
+				</div>
+				
+		<!--		
+		<div class='fb-registration' data-fields=\"[{'name':'name'}, {'name':'email'}, {'name':'favorite_car','description':'What is your favorite car?','type':'text'}]\" 
+	        data-redirect-uri=\"http://waanoo.com\" >
+	      </div>
+	      -->
+				<div id='user-info'></div>
+									
+	                <br />
+	                
+	                Don't have an account? <br /> 
+					<span id='signupBtn' style='font-size:85%;'>
+						<a href='#' class='btnTemplate'>Sign Up!</a>
+	                </span> 
 		<br/>
 			<form>
 				<div id='signupPanel'> 

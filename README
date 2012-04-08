@@ -1,14 +1,29 @@
 TO DO:
 	IN ORDER:
-	
+	/// CONCRETE THINGS:
 	-work on facebook authentication.
 		-then import facebook events.
 	
+	-add ajax loader icons:
+		-basically just a swirling gif that you show on the page right before the 
+		request, and then remove right after.
+	
+	-add the extra fields for event registration
+		-scripting for the backend for this
+		
+	-pictures. Need pictures. Need good ajax library for images...
+		-use iFrames?
+		
+		
+		
+	/// HAZY THINGS	
 	-store the last good address for the user in DB.
+		-then if we timeout detecting location, use this.
 	
 	-generally, the site is ugly, it is only functional
 
 
+	/// DOWN THE ROAD THINGS
 	-Browser/viewing testing
 		-I.E.
 		-Different resolutions
@@ -30,6 +45,8 @@ TO DO:
 	Tell other people about promises. An callbacks. 
 	http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
 	
+
+
 
 Basic site structure:
 

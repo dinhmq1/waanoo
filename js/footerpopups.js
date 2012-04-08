@@ -3,19 +3,23 @@
 function aboutBtn() {
 	console.log("about button");
 	$('#aboutWaanoo').show();
+	$('#dimmer').show();
 	}
 
 function aboutBoxClose() {
 	$('#aboutWaanoo').hide();
+	$('#dimmer').hide();
 	}
 
 function contactBtn(){
 	console.log("contact button");
 	$('#contactWaanoo').show();
+	$('#dimmer').show();
 	}
 
 function contactBoxClose() {
 	$('#contactWaanoo').hide();
+	$('#dimmer').hide();
 	}
 
 /** temporary **/
