@@ -193,25 +193,5 @@ else {
 		<a href="#" class="btnTemplate" >close</a>
 	</span>
 	<div id="myEventsContents">
-		
-		
 	</div>
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

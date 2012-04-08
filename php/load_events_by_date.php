@@ -4,7 +4,7 @@ require("HTML_output_lib.php");
 session_start();
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$date_search = date("Y-m-d H:m:s", time() - 60*60*24*2); // 24 HOURS EARLIER
+$date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
 $distance_tolerance = 50; // miles
 
 function main($lat, $lon, $offset, $date_search, $distance_tolerance) {

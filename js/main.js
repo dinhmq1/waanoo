@@ -150,5 +150,13 @@ $(document).ready(function() {
 		}
 	});	
 	
+
+/*** FOOTER popups ***/
+	$('#aboutWaanoo').hide();
+	$('#contactWaanoo').hide();
+	
+	
+	
+	
 		
 });  // end ready

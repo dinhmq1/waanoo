@@ -1,0 +1,36 @@
+/*** MORE popup windows, footer only ***/
+
+#aboutWaanoo {
+	z-index: 100;
+	position: fixed;
+	top: 50px;
+	
+	height: 60%;
+	width: 60%;
+	margin-left: 10%;
+	background-color: whitesmoke;
+	border-style: groove;
+	border-width: 1px;
+	border-color: black;
+
+	overflow: auto;
+	
+	padding: 20px;
+	}
+
+
+#contactWaanoo {
+	z-index: 100;
+	position: fixed;
+	top: 50px;
+	height: 60%;
+	width: 60%;
+	margin-left: 10%;
+	background-color: whitesmoke;
+
+	border-style: groove;
+	border-width: 1px;
+	border-color: black;
+
+	overflow: auto;
+	}
