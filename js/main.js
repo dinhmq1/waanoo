@@ -91,7 +91,6 @@ $(document).ready(function() {
 					
 			});	
 		});
-		
 
 			
 /*** POSTING EVENT DATA PICKER ***/	
@@ -117,6 +116,42 @@ $(document).ready(function() {
 
 	// popup box on event submission success
 	$('#postEventSuccess').hide();
+	
+	
+	// char count for the description
+	$('#eventDescription').keyup(function(){
+		var txt = $('#eventDescription').val();
+		var count = txt.length;
+		if(count >= 500) {
+			$('#descriptionCount').empty().append("<font color='red'>" + count + "</font>");
+			}
+		else {
+			$('#descriptionCount').empty().append("<font color='green'>" + count + "</font>");
+			}
+		});
+		
+		
+	// checkbox for contacting:
+	$('#contactingOptions').hide();
+	
+	$('#allowContactEvtent').change( function(){
+		var contact = $('#allowContactEvtent').attr('checked');
+		console.log("contact value=" + contact);
+		if(contact == "checked"){
+			$('#contactingOptions').show();
+			}
+		else {
+			$('#contactingOptions').hide();
+			}
+		});
+	
+	// event tags
+	$('#eventTagsChoices').hide();
+	$('#eventTags').click( function() {
+		$('#eventTagsChoices').show();
+		console.log("tags clicked");
+		});
+	
 	
 
 /**** EVENT EDITING WINDOW ****/

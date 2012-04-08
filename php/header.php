@@ -152,10 +152,46 @@ else {
 				</span><br />
 			When will it be?:<input type="text" id="eventDateBegin" name="date" /><br />
 			When will it end?:<input type="text" id="eventDateEnd" name="date_end" /><br />
-			Describe your event: <br />
-			<textarea name="event_description" id="eventDescription" rows="3" cols="30" maxlength="500"></textarea><br />
+			Describe your event: 
+			&nbsp; &nbsp; &nbsp; <span id="descriptionCount">0</span> / 500
+			<br />
+			<textarea name="event_description" id="eventDescription" rows="3" cols="40" maxlength="500"></textarea><br />
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
-			<!-- Tags (eg: food, pool): <input  id='eventTags' type='text'/><br /> -->
+		<!--
+			Tags: <input id='eventTags' type='text' /><br />
+				<div id='eventTagsChoices'>
+				Education: <input type="checkbox" id="t_education" value="education" /><br />
+				Food: <input type="checkbox" id="t_food" value="food" /><br />
+				Free Food: <input type="checkbox" id="t_ffood" value="free_food" /><br />
+				Dancing: <input type="checkbox" id="t_dance" value="dancing" /><br />
+				Club: <input type="checkbox" id="t_club" value="club" /><br />
+				Religion: <input type="checkbox" id="t_religion" value="religion" /><br />
+				Sports: <input type="checkbox" id="t_sports" value="sports" /><br />
+				Jobs: <input type="checkbox" id="t_jobs" value="jobs" /><br />
+				Live music: <input type="checkbox" id="t_lmusic" value="live_music" /><br />
+				Ethnic: <input type="checkbox" id="t_ethnic" value="ethnic" /><br />
+				University of cincinnati: <input type="checkbox" id="t_uc" value="UC" /><br />
+				CCM <input type="checkbox" id="t_ccm" value="CCM" /><br />
+				DAPP <input type="checkbox" id="t_daap" value="DAAP" /><br />
+				Science <input type="checkbox" id="t_science" value="science" /><br />
+				Engineering <input type="checkbox" id="t_eng" value="egineering" /><br />
+				
+				Custom: <input type="text" id="t_custom" /><br />
+				<br />
+					<span id='eventTagsBtn' onClick='closeEventTags()'>
+						<a href='#' class='btnTemplate'>Close</a>
+					</span>
+				</div>
+			
+			Allow Users to Contact you? &nbsp; <input type="checkbox" id="allowContactEvtent" value="contact" /><br />
+			<span id='contactingOptions'>
+			<select id='eventContactType'>
+				<option value='email'>email</option>
+				<option value='phone'>phone</option>
+			</select>
+			Contact Info:<input type="text" id="contactInfo" /><br />
+			</span>
+		-->
 			<input type='hidden' id='oldEventID' value="" />
 		</form>
 		<span id='eventPostErrors'> </span><br>

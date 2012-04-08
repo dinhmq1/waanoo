@@ -421,6 +421,25 @@ html, body
 				left: 45%;
 				}
 				
+			#eventTagsChoices {
+				z-index: 300;
+				position: fixed;
+				top: 50px;
+				
+				padding: 20px;
+				
+				height: 60%;
+				width: 60%;
+				margin-left: 20%;
+				background-color: whitesmoke;
+				border-style: groove;
+				border-width: 1px;
+				border-color: black;
+			
+				overflow: auto;
+				}
+				
+				
         /*** floating window ***/
         #postEventSuccess{
 			z-index: 100;

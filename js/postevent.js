@@ -29,6 +29,10 @@ function close_event_success_window(){
 	}
 
 
+function closeEventTags(){
+	$('#eventTagsChoices').hide();
+	}
+
 /*** maps section ***/
 // NOTE: map object = 'map2'
 
@@ -254,6 +258,13 @@ function testGeocode(address){
 											$('#dimmer').hide();
 											$('#postEventSuccess').show();
 											load_events(latitude, longitude);
+											
+											// clear out the form fields on success
+											$('#eventName').val("");
+											$('#eventLocation').val("");
+											$('#eventDateBegin').val("");
+											$('#eventDateEnd').val("");
+											$('#eventDescription').val("");
 											}
 										else {
 											$('#eventPostErrors').empty().append("\
@@ -262,7 +273,6 @@ function testGeocode(address){
 									
 										}
 									});
-								
 								}
 							else {
 								$('#eventPostErrors').empty().append("\
@@ -288,23 +298,3 @@ function testGeocode(address){
 			<font color='red'>Something was empty</font>");
 			}
 		}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

@@ -1,17 +1,14 @@
 TO DO:
 	IN ORDER:
 	
-	-need to add RSPV #
+	-work on facebook authentication.
+		-then import facebook events.
+	
 	-store the last good address for the user in DB.
 	
 	-generally, the site is ugly, it is only functional
-		
-	-fix form for login so that browser knows it is a form
-	and offers to save the password
-	
-	-need to fix pagination of events:
-		-have no fucking clue how.
-		
+
+
 	-Browser/viewing testing
 		-I.E.
 		-Different resolutions
@@ -21,11 +18,6 @@ TO DO:
 		-older versions of I.E.
 		-look over CSS for things to fix
 		
-	
-	-Make a 'myEvents' tab
-		-you can mark events as attending
-		-this will show you events you have marked
-		-it will also show your events
 	
 	-advanced search:
 		-this will allow you to search by date
