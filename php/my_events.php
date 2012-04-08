@@ -13,7 +13,7 @@ if($_SESSION['signed_in'] == true) {
 		or die("failed to find events");
 	
 	$count = mysqli_num_rows($result);
-		
+			
 	if($count == 0) {
 		//user has no events!
 		$arr = array("status" => 1, "content" => "You have not created any events!");

@@ -1,6 +1,4 @@
 // load more events onclick
-
-
 // SEE LOCATION_DETECTION.JS for default loader function
 function loadMoreEvents(){
 	var off = $('#eventOffset').val();

@@ -4,7 +4,7 @@ require("HTML_output_lib.php");
 session_start();
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
+$date_search = date("Y-m-d H:m:s", time() - 60*60*24*2); // 24 HOURS EARLIER
 $distance_tolerance = 50; // miles
 
 function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
@@ -13,7 +13,7 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
 	$cxn = $GLOBALS['cxn'];
 	$sql = "SELECT * FROM user_events
 			WHERE end_date >= '$date_search'
-			ORDER BY end_date ASC
+			ORDER BY start_date ASC
 			LIMIT $offset, $rows_per_page";
 			
 	$res = mysqli_query($cxn, $sql)
