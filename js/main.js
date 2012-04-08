@@ -192,8 +192,9 @@ $(document).ready(function() {
 /*** ajax loaders ***/
 
 	$('#ajaxLoaderLoadEvents').hide();
-	
-	
+	$('#ajaxLoaderLoadMore').hide();
+	$('#ajaxLoaderPostEvent').hide();
+	$('#ajaxLoaderSignUp').hide();
 	
 /***fb auth ***/
 	

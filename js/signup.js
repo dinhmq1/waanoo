@@ -6,6 +6,7 @@
 	
 	// ON SignUp submit
 	function signUpMain(){
+		$('#ajaxLoaderSignUp').show();
 		console.log("Validating the sign up fields");
 		// do validations:
 		var email = $('#email').val();
@@ -58,6 +59,7 @@
 								// if status is 1, success
 								if(status === 1){
 									// set the header to say: "you are logged in", and name
+									$('#ajaxLoaderSignUp').hide();
 									$("#login_msg").empty().append("Hi " + usr);
 									
 									$('#signupPanel').hide();
@@ -73,27 +75,37 @@
 									$('#signup-errors').empty();
 									}
 								else {
+									$('#ajaxLoaderSignUp').hide();
 									console.log("Failed to sign up: ");
 									$('#signup-errors').empty().append("Sorry, Failed to sign up. Try again.");
 									}
 								}); // end promise
 							}
 						else {
+							$('#ajaxLoaderSignUp').hide();
 							console.log("email already in use");
 							$('#signup-errors').empty().append("Sorry, that email is already in use!");
 							}	
 						}
-					else
+					else {
 						$('#signup-errors').empty().append("Email is not in correct format");
+						$('#ajaxLoaderSignUp').hide();
+						}
 					}
-				else
+				else {
 					$('#signup-errors').empty().append("Password is not long enough");
+					$('#ajaxLoaderSignUp').hide();
+					}
 				}
-			else
+			else {
 				$('#signup-errors').empty().append("Passwords don't match");
+				$('#ajaxLoaderSignUp').hide();
+				}
 			}
-		else
-			$('#signup-errors').empty().append("Something was empty");	
+		else {
+			$('#signup-errors').empty().append("Something was empty");
+			$('#ajaxLoaderSignUp').hide();
+			}	
 	} //end signup validation
 		
 
@@ -156,6 +168,7 @@ function closeMe(idInpt){
 	$(idInpt).hide();
 	}	
 	
+	
 function signUpSuccessWindow(fname){
 	var window = "<div id='signUpWindow'> \
 		<br\> \
@@ -166,7 +179,7 @@ function signUpSuccessWindow(fname){
 			<a href='#' class='btnTemplate'>Close!</a>\
 		</span>\
 		</div>";
-	$('#tempWindow').empty().append(window);
+	//$('#tempWindow').empty().append(window);
 	
 	$('#loginStatus').val('1');
 	

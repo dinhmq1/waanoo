@@ -4,6 +4,7 @@ function loadMoreEvents(){
 	var off = $('#eventOffset').val();
 	var searchType = $('#searchType').val();
 	
+	$('#ajaxLoaderLoadMore').show();
 	if(searchType == "location") {
 		//GLOBALS:
 		var lat = latitude;
@@ -16,13 +17,16 @@ function loadMoreEvents(){
 			};
 		
 		$('#ajaxLoaderLoadEvents').show();
-			
+		
 		$.post("./php/load_events_by_location.php", coords, function(results){
 			// new offset:
 			var newOff = 10 + Number(off);
 			$('#eventOffset').val(newOff);
 			console.log("new offset: " + newOff);
+			
 			$('#ajaxLoaderLoadEvents').hide();
+			$('#ajaxLoaderLoadMore').hide();
+			
 			// with results:
 			$('.eventViewer').append(results);
 			$('#searchType').val("location");
@@ -46,7 +50,9 @@ function loadMoreEvents(){
 				var status = result.status;
 				var content = result.content;
 				console.log("Status of search: " + status);
+				
 				$('#ajaxLoaderLoadEvents').hide();
+				$('#ajaxLoaderLoadMore').hide();
 					
 				if(status == 1) {
 					var newOff = 10 + Number(off);

@@ -140,7 +140,12 @@ else {
 					<div id='signup-errors'></div>
 					<span id='submit-signup' onClick='signUpMain()'>
 						<a href='#' class='btnTemplate'>Submit!</a>
-						</span> <br /> 
+						</span> 
+					&nbsp;&nbsp;&nbsp;
+						<span id='ajaxLoaderSignUp'>
+							<img src='images/ajax-loader-transp-arrows.gif' />
+						</span>
+					<br /> 
 					<!--Should prolly restate that you can just connect with facebook here-->
 				</div>
 			</form> ";
@@ -218,6 +223,10 @@ else {
 		<span id='eventPostErrors'> </span><br>
 		<span  id='eventFormSubmitBtn' onClick='submitNewEvent()'>
 			&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='btnTemplate'>Submit!</a>
+		</span>
+		&nbsp;&nbsp;&nbsp;
+		<span id="ajaxLoaderPostEvent">
+			<img src="images/ajax-loader-transp-arrows.gif" />
 		</span>
 	</div>
 	
