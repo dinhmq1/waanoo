@@ -17,6 +17,10 @@ Events Near You:&nbsp;&nbsp;
 	<span id="loadByDate"onClick="loadEventsByDate()">
 		<a class='btnTemplate' href="#" >By Date</a>
 	</span>
+	&nbsp;&nbsp;
+	<span id="ajaxLoaderLoadEvents">
+		<img src="images/ajax-loader-transp-arrows.gif" />
+	</span>
 <br />
 <br />
 
@@ -35,7 +39,11 @@ Events Near You:&nbsp;&nbsp;
 <div id="moreEventsBtn" onclick="loadMoreEvents()" class='btnTemplate'>
 	<input type="hidden" id="searchType" value="location" />
 	<input type="hidden" id="eventOffset" value="10" />
-	LOAD MORE!
+	LOAD MORE! 
+	&nbsp;&nbsp;&nbsp;
+	<span id="ajaxLoaderLoadMore">
+		<img src="images/ajax-loader-transp-arrows.gif" />
+	</span>
 </div>
 
 

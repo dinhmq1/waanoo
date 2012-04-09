@@ -13,7 +13,7 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
 	$cxn = $GLOBALS['cxn'];
 	$sql = "SELECT * FROM user_events
 			WHERE end_date >= '$date_search'
-			ORDER BY end_date ASC
+			ORDER BY start_date ASC
 			LIMIT $offset, $rows_per_page";
 			
 	$res = mysqli_query($cxn, $sql)

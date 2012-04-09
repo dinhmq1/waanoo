@@ -1,11 +1,10 @@
 // load more events onclick
-
-
 // SEE LOCATION_DETECTION.JS for default loader function
 function loadMoreEvents(){
 	var off = $('#eventOffset').val();
 	var searchType = $('#searchType').val();
 	
+	$('#ajaxLoaderLoadMore').show();
 	if(searchType == "location") {
 		//GLOBALS:
 		var lat = latitude;
@@ -16,12 +15,17 @@ function loadMoreEvents(){
 			longitude: lon,
 			offset: off
 			};
-			
+		
+		$('#ajaxLoaderLoadEvents').show();
+		
 		$.post("./php/load_events_by_location.php", coords, function(results){
 			// new offset:
 			var newOff = 10 + Number(off);
 			$('#eventOffset').val(newOff);
 			console.log("new offset: " + newOff);
+			
+			$('#ajaxLoaderLoadEvents').hide();
+			$('#ajaxLoaderLoadMore').hide();
 			
 			// with results:
 			$('.eventViewer').append(results);
@@ -36,7 +40,7 @@ function loadMoreEvents(){
 		lon: longitude,
 		offset: off
 		};
-	
+		$('#ajaxLoaderLoadEvents').show();
 		$.ajax({
 			type: "POST",
 			url: "./php/load_events_by_date.php", 
@@ -47,6 +51,8 @@ function loadMoreEvents(){
 				var content = result.content;
 				console.log("Status of search: " + status);
 				
+				$('#ajaxLoaderLoadEvents').hide();
+				$('#ajaxLoaderLoadMore').hide();
 					
 				if(status == 1) {
 					var newOff = 10 + Number(off);
@@ -76,12 +82,14 @@ function loadEventsByDate() {
 		lon: longitude
 		};
 	
+	$('#ajaxLoaderLoadEvents').show();
 	$.ajax({
 		type: "POST",
 		url: "./php/load_events_by_date.php", 
 		data: latLng,
 		dataType: "json",
 		success: function(result){
+			$('#ajaxLoaderLoadEvents').hide();
 			var status = result.status;
 			var content = result.content;
 			console.log("Status of search: " + status);

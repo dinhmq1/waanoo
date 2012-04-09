@@ -75,7 +75,7 @@ html, body
 		#logo
 			{
 			font-family: 'Quicksand', sans-serif;
-			font-size: 600%;
+			font-size: 400%;
 			text-align: center;
 			}
 			#infin
@@ -421,6 +421,25 @@ html, body
 				top: 15%;
 				left: 45%;
 				}
+				
+			#eventTagsChoices {
+				z-index: 300;
+				position: fixed;
+				top: 50px;
+				
+				padding: 20px;
+				
+				height: 60%;
+				width: 60%;
+				margin-left: 20%;
+				background-color: whitesmoke;
+				border-style: groove;
+				border-width: 1px;
+				border-color: black;
+			
+				overflow: auto;
+				}
+				
 				
         /*** floating window ***/
         #postEventSuccess{

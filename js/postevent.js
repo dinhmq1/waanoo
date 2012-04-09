@@ -29,6 +29,10 @@ function close_event_success_window(){
 	}
 
 
+function closeEventTags(){
+	$('#eventTagsChoices').hide();
+	}
+
 /*** maps section ***/
 // NOTE: map object = 'map2'
 
@@ -188,6 +192,7 @@ function testGeocode(address){
 	
 	function submitNewEvent(){
 
+		$('#ajaxLoaderPostEvent').show();
 		console.log("submitting new event");
 		
 		var eventName = $('#eventName').val();
@@ -250,27 +255,39 @@ function testGeocode(address){
 										//alert("Data returned: " + msg);
 										if(successMsg == 1){
 											//alert("Event Posted Successfully!");
+											$('#ajaxLoaderPostEvent').hide();
+											
 											$('#postEventForm-wrapper').hide();
 											$('#dimmer').hide();
-											$('#postEventSuccess').show();
+											//$('#postEventSuccess').show();
 											load_events(latitude, longitude);
+											
+											// clear out the form fields on success
+											$('#eventName').val("");
+											$('#eventLocation').val("");
+											$('#eventDateBegin').val("");
+											$('#eventDateEnd').val("");
+											$('#eventDescription').val("");
+											
 											}
 										else {
+											$('#ajaxLoaderPostEvent').hide();
 											$('#eventPostErrors').empty().append("\
 											<font color='red'>" + msg + "</font>");
 											}
 									
 										}
 									});
-								
 								}
 							else {
+								$('#ajaxLoaderPostEvent').hide();
 								$('#eventPostErrors').empty().append("\
 								<font color='red'>That address is not valid!</font>");
 								}
 							});
 						}
 					else {
+						$('#ajaxLoaderPostEvent').hide();
 						$('#eventPostErrors').empty().append("\
 						<font color='red'>Dates are not incorrect format.</font>");
 						}
@@ -278,33 +295,15 @@ function testGeocode(address){
 				else {
 					// not signed in
 					console.log("not signed in...");
+					$('#ajaxLoaderPostEvent').hide();
 					$('#eventPostErrors').empty().append("\
 					<font color='red'>You need to be signed in to do that</font>");
 					}
 				});
 			}
 		else {
+			$('#ajaxLoaderPostEvent').hide();
 			$('#eventPostErrors').empty().append("\
 			<font color='red'>Something was empty</font>");
 			}
 		}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

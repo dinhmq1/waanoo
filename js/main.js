@@ -64,8 +64,9 @@ $(document).ready(function() {
 /*** login ***/
 
 	$("#loginMainForm").submit(function(event) {
+		console.log("submitting signin");
 		event.preventDefault();
-		signIn()
+		signIn();
 		});
 	
 	
@@ -91,32 +92,62 @@ $(document).ready(function() {
 					
 			});	
 		});
-		
 
 			
 /*** POSTING EVENT DATA PICKER ***/	
 		
-	$(function() {  //shortcut for ready()
-	$("#eventDateBegin").AnyTime_picker(
-        { format: "%Y-%m-%d %H:%i",
-          formatUtcOffset: "%: (%@)",
-          hideInput: false,             //change later only for dev purposes
-          //placement: "inline" 
-          });
-	});
+	$("#eventDateBegin").AnyTime_picker({ 
+		format: "%Y-%m-%d %H:%i",
+        formatUtcOffset: "%: (%@)",
+        hideInput: false 
+		});
 	
-	$(function() {  //shortcut for ready()
 	$("#eventDateEnd").AnyTime_picker(
         { format: "%Y-%m-%d %H:%i",
           formatUtcOffset: "%: (%@)",
-          hideInput: false,             //change later only for dev purposes
+          hideInput: false            //change later only for dev purposes
           //placement: "inline" 
           });
-	});
 		
 
 	// popup box on event submission success
 	$('#postEventSuccess').hide();
+	
+	
+	// char count for the description
+	$('#eventDescription').keyup(function(){
+		var txt = $('#eventDescription').val();
+		var count = txt.length;
+		if(count >= 500) {
+			$('#descriptionCount').empty().append("<font color='red'>" + count + "</font>");
+			}
+		else {
+			$('#descriptionCount').empty().append("<font color='green'>" + count + "</font>");
+			}
+		});
+		
+		
+	// checkbox for contacting:
+	$('#contactingOptions').hide();
+	
+	$('#allowContactEvtent').change( function(){
+		var contact = $('#allowContactEvtent').attr('checked');
+		console.log("contact value=" + contact);
+		if(contact == "checked"){
+			$('#contactingOptions').show();
+			}
+		else {
+			$('#contactingOptions').hide();
+			}
+		});
+	
+	// event tags
+	$('#eventTagsChoices').hide();
+	$('#eventTags').click( function() {
+		$('#eventTagsChoices').show();
+		console.log("tags clicked");
+		});
+	
 	
 
 /**** EVENT EDITING WINDOW ****/
@@ -147,8 +178,37 @@ $(document).ready(function() {
 			$('#advancedPanel').hide();
 			$('#tempWindow').hide();
 			$('#postEventSuccess').hide();
+			$('#aboutWaanoo').hide();
+			$('#contactWaanoo').hide();
 		}
 	});	
 	
+
+/*** FOOTER popups ***/
+	$('#aboutWaanoo').hide();
+	$('#contactWaanoo').hide();
+	
+	
+/*** ajax loaders ***/
+
+	$('#ajaxLoaderLoadEvents').hide();
+	$('#ajaxLoaderLoadMore').hide();
+	$('#ajaxLoaderPostEvent').hide();
+	$('#ajaxLoaderSignUp').hide();
+	
+/***fb auth ***/
+	
+	/*
+
+	$('#facebookBtn').click( function() {
+	   // var pos = screenCenterPos(800, 500);
+		var url = 'fb/channel.php';
+		signinWin = window.open(url, "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0,left=" + ($(window).width() / 2) + ",top=" + ($(window).height() / 2));
+		setTimeout(CheckLoginStatus, 2000);
+		signinWin.focus();
+		return false;
+	    });	
+	
+	*/
 		
 });  // end ready

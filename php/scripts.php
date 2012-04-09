@@ -2,9 +2,9 @@
         <link rel="stylesheet" type="text/css" href="./css/main.css" />
         <link rel="stylesheet" type="text/css" href="./css/anytime.css" />
         <link rel="stylesheet" type="text/css" href="./css/my_events.css" />
+        <link rel="stylesheet" type="text/css" href="./css/footerpopups.css" />
     <!-- SEE FOR FONTS: http://www.google.com/webfonts#ChoosePlace:select --> 
         <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
-        
 <!-- need for all -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<!-- calling asynch, dont need here -->
@@ -12,8 +12,7 @@
 		<!-- NOT USING: <script src="js/gomap.min.js"></script> -->
 		<script src="js/jQrotate.2.1.js"></script>
 	<!-- anytime plugin by Andrew M. Andrews III -->
-		<script src="js/anytimec.js"></script>
-		
+		<script src="js/anytimec.js"></script>	
 <!-- custom scripts -->
 	<!-- THIS ONE HAS ALL OF THE ready() wrapped jQuery stuff -->
 		<script src="js/main.js"></script>
@@ -30,3 +29,5 @@
 		<script src="js/eventmap.js"></script>
 		<script src="js/my_events.js"></script>
 		<script src="js/advanced_search.js"></script>
+		<script src="js/footerpopups.js"></script>
+	
