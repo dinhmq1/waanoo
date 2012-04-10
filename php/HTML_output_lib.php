@@ -82,38 +82,57 @@ function search_output_func_users($all_vars){
 	<div class='eventSingle'>
 		$del_btn
 		$edit_btn
-		<ul>
-			<li>
-				<h3>".strip_tags($event_title)."</h3>
-			</li>
-			<li>
-				<b>Date:</b> ".strip_tags($day)." <br>
-                                 <b>Time:</b> ".strip_tags($hour)." <br>
-			</li>
-			<li>
-					<b>Location:</b> ".strip_tags($venue_address)."
-					&nbsp;&nbsp;
-					
+		
+                <h3><b>".strip_tags($event_title)."</b></h3>
+                <table class='eventSingle'>
+			
+                        
+			<tr>
+				<td><b>Date:</b></td> 
+                                <td>".strip_tags($day)."</td> 
+                        </tr> 
+                        
+                        
+                        <tr>
+                                 <td><b>Time:</b></td>
+                                 <td>".strip_tags($hour)." </td>
+			</tr>
+                        
+                        
+			<tr>
+				<td><b>Location:</b></td>
+                                <td>".strip_tags($venue_address)."</td>
+					&nbsp;&nbsp;					
 					<br><br>
-			</li>
-			<li>
-				<b>Description:</b> <br>
-                                ".strip_tags($event_description)."<br>	
-			</li>
-			<li>
-				<b>Distance:</b> ".round($distance, 1)." miles <br>
-			</li>
-			<li>
-					<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
+			</tr>
+                        
+
+			<tr>
+				<td><b>Description:</b></td>
+                                <td>".strip_tags($event_description)."</td>	
+			</tr>
+                        
+
+			<tr>
+				<td><b>Distance:</b></td>
+                                <td>".round($distance, 1)." miles </td>
+			</tr>
+                
+                
+			<tr>
+					<td onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
 					<a href='#' class='btnTemplate'>Show Map</a>
-					</span>
-				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+					</td>
+				<td id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 					<a href='#' class='btnTemplate'>$attend_btn</a>
-				</span>
-					&nbsp;&nbsp;&nbsp;
-					<small>RSVP'd so far: $count_attend</small>
-			</li>
-		</ul>
+                                           &nbsp;&nbsp;<small>RSVP'd so far: $count_attend</small>
+				</td>
+					
+				<td>
+                                    
+                                </td>
+			</tr>
+		</table>
 	</div>
 	&nbsp;
 	";
