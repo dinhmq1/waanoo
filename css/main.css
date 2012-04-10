@@ -282,13 +282,13 @@ html, body
                         margin-right: auto;
 			width: 70%;
 			
-			padding: 5px;
+			padding: 10px;
 			border-width: 0px;
 			border-color: black;
 			border-style: solid;
 			
-			background-color: #000000;
-			border-radius: 10px;
+			background-color: #F1F1F1;
+			border-radius: 3px;
 			word-wrap: break-word;
 			}
 			.eventSingle{
@@ -297,7 +297,7 @@ html, body
 				width: 100%;
 				
 				border: 1px groove black;
-				
+				border-color: #D2D2D2;
 				background-color: #FFFFFF;	
 				border-radius: 0px;
 				}
@@ -307,6 +307,7 @@ html, body
 					 * BUTTONS. IT WILL GO UNDERNEATH THEM **/
 					margin-right: 25%;
 					font-style: italic;
+					font-weight: bold;
 					color: #447799;
 					}           
 					.eventSingleInner h3 {

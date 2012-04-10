@@ -110,34 +110,47 @@ $(document).ready(function() {
           });
 		
 	$("#eventDateBegin").change(function() {
-		
+		/*
 		var dateBegin = $("#eventDateBegin").val();
 		
 		// NOT DONE:
 		// push date ahead of current date 60 mins if needed
-		/*
 		var firstTime = strtotime(datebegin);
 		var ts = (new Date()).getTime();
 		
-		if( firstTime < (ts + 60*60)) // at least an hour ahead
-			var dateBegin = d.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins
-			* 
-			*/
-		
+		if(firstTime < (ts + 60*60)) { // at least an hour ahead
+			var month = ts.getMonth() + 1;
+			if(month < 10)
+				month = "0" + month.toString();
+			var day = ts.getDate();	
+			if(day < 10)
+				day = "0" + day.toString();
+			var hrs = ts.getHours();
+			if(hrs < 10)
+				hrs = "0" + hrs.toString();
+			var mins = ts.getMinutes();
+			if(mins < 10) 
+				mins = "0" + mins.toString();
+			var dateBegin = ts.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins
+			$("#eventDateBegin").val(dateBegin);
+			}
+		*/
+		var dateBeginAgain = $("#eventDateBegin").val();
 		// push date ahead 3 hrs.
-		var newTime = strtotime(dateBegin) + 60*60*3; // + 3 hrs
+		var newTime = strtotime(dateBeginAgain) + 60*60*3; // + 3 hrs
 		console.log(newTime);
 		var d = new Date(newTime * 1000);
-		var month = d.getMonth() + 1;
+		
+		month = d.getMonth() + 1;
 		if(month < 10)
 			month = "0" + month.toString();
-		var day = d.getDate();	
+		day = d.getDate();	
 		if(day < 10)
 			day = "0" + day.toString();
-		var hrs = d.getHours();
+		hrs = d.getHours();
 		if(hrs < 10)
 			hrs = "0" + hrs.toString();
-		var mins = d.getMinutes();
+		mins = d.getMinutes();
 		if(mins < 10) 
 			mins = "0" + mins.toString();
 		var newDateEnd = d.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins;
