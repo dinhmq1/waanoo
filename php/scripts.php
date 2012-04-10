@@ -30,4 +30,5 @@
 		<script src="js/my_events.js"></script>
 		<script src="js/advanced_search.js"></script>
 		<script src="js/footerpopups.js"></script>
+		<script src="js/strtotime.js"></script>
 	

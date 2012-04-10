@@ -74,7 +74,7 @@ function initMiniMap() {
 		you_icon = 'images/person_you.png';
 		marker_pos = new google.maps.LatLng(lat_m,lng_m);
 	
-		marker_you = new google.maps.Marker({
+		marker_pos = new google.maps.Marker({
 				map:map2,
 				draggable:true,
 				animation: google.maps.Animation.BOUNCE,
@@ -85,7 +85,7 @@ function initMiniMap() {
 		// make reverse geocoder object
 		revGeocoder = new google.maps.Geocoder();
 		// make a listener for the marker
-		google.maps.event.addListener(marker_you, 'mouseup', reset_position_mini);
+		google.maps.event.addListener(marker_pos, 'mouseup', reset_position_mini);
 		
 		}//end init func
 		
@@ -93,14 +93,14 @@ function initMiniMap() {
 
 
 	function reset_position_mini(){
-		var new_pos = marker_you.getPosition();
-		latitude = new_pos.lat();
-		longitude = new_pos.lng();
-		var current_position = new google.maps.LatLng(latitude,longitude);
+		var new_pos = marker_pos.getPosition();
+		latitude_event = new_pos.lat();
+		longitude_event = new_pos.lng();
+		var current_position = new google.maps.LatLng(latitude_event,longitude_event);
 		
-		var current_position = marker_you.getPosition();
+		var current_position = marker_pos.getPosition();
 		map2.setCenter(current_position);
-		console.log("lat new: " + latitude + " lng new: " + longitude);
+		console.log("lat new: " + latitude_event + " lng new: " + longitude_event);
 		
 		
 		// SHOULD GET REVERSE GEOCODE AND UPDATE INTO THE CORECT FIELD:

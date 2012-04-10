@@ -5,6 +5,9 @@ function attendingEvent(event_id) {
 	var testSignIn = checkSignedIn();
 	testSignIn.success(function (data) {
 		//check for truth
+	var loader = "#attendingLoader_" + event_id;
+	$(loader).css("display", "inline");
+		
 		if(data == 1){
 			// user is signed in
 			// call add attendance function
@@ -20,23 +23,28 @@ function attendingEvent(event_id) {
 				success: function(result) {
 					var msg = result.message;
 					var status = result.status;
-					
 					var btnID = "#attendingBtn_" + event_id;
 					
+					$(btnID).removeClass("btnTemplateGreen");
+					$(btnID).removeClass("btnTemplate");
 					if(status == 2){
 						// RSPV recorded
 						console.log("recorded status as attending");
-						$(btnID).empty().append("Attending!");
-						$(btnID).css("background-color", "#32C43C");
+						$(btnID).addClass("btnTemplateGreen");
+						$(btnID).empty().append("Already Attending");
+						$(loader).css("display", "none");
 						}
 					else if(status == 1) {
 						// already attending
 						console.log("recorded status as not attending");
-						$(btnID).empty().append("Not Attending!");
-						$(btnID).css("background-color", "#DC2C28");
+						$(btnID).addClass("btnTemplate");
+						$(btnID).empty().append("Attending?");
+						$(loader).css("display", "none");
 						}
 					else {
 						console.log("user not signed in");
+						$(btnID).addClass("btnTemplate");
+						$(loader).css("display", "none");
 						}
 					}
 				});
