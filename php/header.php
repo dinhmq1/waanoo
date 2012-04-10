@@ -78,7 +78,7 @@ else {
 					
 					echo "<br><br>You are signed in as ".$usr.
 						" would you like to logout?<br>
-						<span id='logout-button' class='login-button'
+						<span id='logout-button'
 						onClick='signOutMain()'>
 							<a href='#' class='btnTemplate'>Sign Out!</a>
 							</span>
@@ -103,7 +103,7 @@ else {
 					-->			
 		<!-- DISABLED TEMPORARILY 				
 				<div id='fb-root'></div>				
-\				<script src='fb/fbauth.js'></script>
+			<script src='fb/fbauth.js'></script>
 				
 				<div class='fb-login-button'>Login with Facebook</div>
 				<div id='loader' style='display:none'>
@@ -127,7 +127,7 @@ else {
 			<form>
 				<div id='signupPanel'> 
 					email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
-					<span id='emailIsValid'></span><br /> 
+						<span id='emailIsValid'></span><br /> 
 					Password: <input type ='password' id='password' size='10' /><br /> 
 					Password again: <input type ='password' id='passwordcheck' size='10' /><br /> 
 					First Name: <input type ='text' id='firstname' size='10' /><br /> 

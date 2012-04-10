@@ -43,16 +43,37 @@ function attendBtn($user_id, $event_id) {
 				event_id = '$event_id'";
 		$qry = mysqli_query($cxn, $sql)
 			or die("failed to select ftom attendees table");
-		$row = mysqli_fetch_assoc($qry);
-		if($row == null) {
-			return "Attending ?";
+		$count = mysqli_num_rows($qry);
+		if($count == 0) {
+			return "
+				<span id='attendingBtn_$event_id' class='btnTemplate' onClick='attendingEvent($event_id)'>
+					Attending?
+				</span>
+					&nbsp;
+				<span id='attendingLoader_$event_id' style='display:none'>
+					<img src='images/ajax-loader-transp-arrows.gif' />
+				</span>";
 			}
 		else {
-			return "<span style='background-color: #32C43C;' >Attending!</span>";
+			return "
+				<span id='attendingBtn_$event_id' class='btnTemplateGreen' onClick='attendingEvent($event_id)'>
+					Already Attending
+				</span>
+					&nbsp;
+				<span id='attendingLoader_$event_id' style='display:none'>
+					<img src='images/ajax-loader-transp-arrows.gif' />
+				</span>";
 			}
 		}
 	else {
-		return "Attending ?";
+		return "
+			<span id='attendingBtn_$event_id' class='btnTemplate' onClick='attendingEvent($event_id)'>
+				Attending?
+			</span>
+				&nbsp;
+			<span id='attendingLoader_$event_id' style='display:none'>
+				<img src='images/ajax-loader-transp-arrows.gif' />
+			</span>";
 		}
 	}
 
@@ -122,6 +143,7 @@ function search_output_func_users($all_vars){
 			<tr>
 					<td onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
 					<a href='#' class='btnTemplate'>Show Map</a>
+<<<<<<< HEAD
 					</td>
 				<td id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 					<a href='#' class='btnTemplate'>$attend_btn</a>
@@ -133,6 +155,15 @@ function search_output_func_users($all_vars){
                                 </td>
 			</tr>
 		</table>
+=======
+					</span>
+					$attend_btn
+				
+					&nbsp;&nbsp;&nbsp;
+					<small>RSVP'd so far: $count_attend</small>
+			</li>
+		</ul>
+>>>>>>> 95d58d22f451f5877361b6d668e0af7cae482a85
 	</div>
 	&nbsp;
 	";

@@ -8,7 +8,7 @@ if(@$_SESSION['signed_in'] == true) {
 	// in this field:	event_id	user_id	event_title	event_description	end_date	start_date	date_created	public
 	$sql = "SELECT 
 			user_id, event_title, event_description, end_date, start_date, date_created, public 
-			FROM user_events WHERE event_id=? ";
+			FROM user_events WHERE event_id=?";
 	$stm = $cxn->prepare($sql);
 	$stm->bind_param("i", $id);
 	$stm->execute();
@@ -58,5 +58,4 @@ else {
 		);
 	echo json_encode($arr);
 	}
-
 ?>

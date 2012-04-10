@@ -40,12 +40,12 @@ Events Near You:&nbsp;&nbsp;
 	<input type="hidden" id="searchType" value="location" />
 	<input type="hidden" id="eventOffset" value="10" />
 	LOAD MORE! 
-	&nbsp;&nbsp;&nbsp;
+	
+</div>
+&nbsp;&nbsp;&nbsp;
 	<span id="ajaxLoaderLoadMore">
 		<img src="images/ajax-loader-transp-arrows.gif" />
 	</span>
-</div>
-
 
 <div id='postEventSuccess'>
 	<br />

@@ -109,6 +109,28 @@ $(document).ready(function() {
           //placement: "inline" 
           });
 		
+	$("#eventDateBegin").change(function() {
+		var dateBegin = $("#eventDateBegin").val();
+		//var currentTime = new Date();
+		var newTime = strtotime(dateBegin) + 60*60*3; // + 3 hrs
+		console.log(newTime);
+		var d = new Date(newTime * 1000);
+		var month = d.getMonth() + 1;
+		if(month < 10)
+			month = "0" + month.toString();
+		var day = d.getDate();	
+		if(day < 10)
+			day = "0" + day.toString();
+		var hrs = d.getHours();
+		if(hrs < 10)
+			hrs = "0" + hrs.toString();
+		var mins = d.getMinutes();
+		if(mins < 10) 
+			mins = "0" + mins.toString();
+		var newDateEnd = d.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins;
+		console.log(newDateEnd);
+		$("#eventDateEnd").val(newDateEnd);
+		});
 
 	// popup box on event submission success
 	$('#postEventSuccess').hide();

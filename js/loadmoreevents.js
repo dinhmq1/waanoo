@@ -73,6 +73,7 @@ function loadEventsByLocation() {
 	var lon = longitude;
 	$('#searchType').val("location");
 	load_events(lat, lon)
+	$('#eventOffset').val("10");
 	}
 	
 
@@ -96,6 +97,7 @@ function loadEventsByDate() {
 			if(status == 1) {
 				$('.eventViewer').empty().append(content);
 				$('#searchType').val("date");
+				$('#eventOffset').val("10");
 				}
 			}
 		});

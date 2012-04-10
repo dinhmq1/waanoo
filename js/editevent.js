@@ -27,12 +27,12 @@ function editEvent(eventID){
 					"start_date" => $start_date,
 					"public" => $public,
 					"address_text" => $address_text,
-					"date_created" => $date_created  */
+					"date_created" => $date_created  
+				*/
 				
 				$('#eventName').val(result.event_title);
 				$('#eventLocation').val(result.address_text);
 				$('#eventDateBegin').val(result.start_date);
-				$('#eventDateEnd').val(result.end_date);
 				$('#eventDateEnd').val(result.end_date);
 				$('#eventDescription').val(result.event_description);
 				$('#oldEventID').val(eventID);
@@ -61,6 +61,7 @@ function reSubmitEvent() {
 		
 		var eventName = $('#eventName').val();
 		var eventLoc = $('#eventLocation').val();
+		// fuckit, the got switched somewhere, so switchem again
 		var eventBegin = $('#eventDateBegin').val();
 		var eventEnd = $('#eventDateEnd').val();
 		var eventDescrip = $('#eventDescription').val();
@@ -125,6 +126,13 @@ function reSubmitEvent() {
 											//$('#postEventSuccess').show();
 											alert("Event updated!");
 											load_events(latitude, longitude);
+											
+											$('#eventName').val("");
+											$('#eventLocation').val("");
+											$('#eventDateBegin').val("");
+											$('#eventDateEnd').val("");
+											$('#eventDescription').val("");
+											
 											}
 										else {
 											$('#eventPostErrors').empty().append("\
