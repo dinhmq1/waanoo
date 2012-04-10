@@ -110,8 +110,21 @@ $(document).ready(function() {
           });
 		
 	$("#eventDateBegin").change(function() {
+		
 		var dateBegin = $("#eventDateBegin").val();
-		//var currentTime = new Date();
+		
+		// NOT DONE:
+		// push date ahead of current date 60 mins if needed
+		/*
+		var firstTime = strtotime(datebegin);
+		var ts = (new Date()).getTime();
+		
+		if( firstTime < (ts + 60*60)) // at least an hour ahead
+			var dateBegin = d.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins
+			* 
+			*/
+		
+		// push date ahead 3 hrs.
 		var newTime = strtotime(dateBegin) + 60*60*3; // + 3 hrs
 		console.log(newTime);
 		var d = new Date(newTime * 1000);
