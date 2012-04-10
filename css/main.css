@@ -283,7 +283,7 @@ html, body
 			width: 70%;
 			
 			padding: 10px;
-			border-width: 0px;
+			border-width: 1px;
 			border-color: black;
 			border-style: solid;
 			
@@ -296,7 +296,7 @@ html, body
                                 margin-right: auto;
 				width: 100%;
 				
-				border: 1px groove black;
+				border-width: 1px;
 				
 				background-color: #E5E5FF;	
 				border-radius: 10px;
@@ -311,8 +311,8 @@ html, body
                                         list-style-type: none;
 					text-align: left;
                                         padding: 10px;
-					margin-right: 25%;
-                                        margin-top: 0%;
+					/**margin-right: 25%;**/
+                                        
                                         font-size: 80%; 
                                         }
                                         table.eventSingle td {
