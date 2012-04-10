@@ -103,56 +103,57 @@ function search_output_func_users($all_vars){
 	<div class='eventSingle'>
 		$del_btn
 		$edit_btn
-		
-                <h3><b>".strip_tags($event_title)."</b></h3>
-                <table class='eventSingle'>
-			
-                        
+		<div class='eventTitle'>
+            ".strip_tags($event_title)."
+        </div>    
+            <hr />
+            
+            <table class='eventSingleInner'>         
 			<tr>
 				<td><b>Date:</b></td> 
-                                <td>".strip_tags($day)."</td> 
-                        </tr> 
-                        
-                        
-                        <tr>
-                                 <td><b>Time:</b></td>
-                                 <td>".strip_tags($hour)." </td>
+                <td>".strip_tags($day)."</td> 
+            </tr> 
+                                    
+            <tr>
+				 <td><b>Time:</b></td>
+				 <td>".strip_tags($hour)." </td>
 			</tr>
                         
                         
 			<tr>
 				<td><b>Location:</b></td>
-                                <td>".strip_tags($venue_address)."</td>
-					&nbsp;&nbsp;					
-					<br><br>
+                <td>".strip_tags($venue_address)."</td>
 			</tr>
-                        
-
+            
 			<tr>
 				<td><b>Description:</b></td>
-                                <td>".strip_tags($event_description)."</td>	
+                <td>".strip_tags($event_description)."</td>	
 			</tr>
                         
 
 			<tr>
 				<td><b>Distance:</b></td>
-                                <td>".round($distance, 1)." miles </td>
+                <td>".round($distance, 1)." miles </td>
 			</tr>
-                
-                
+            
+            <!--
+            <tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+            </tr> 
+                -->
 			<tr>
-					<td onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
-					<a href='#' class='btnTemplate'>Show Map</a>
-
-					</td>
-				<td id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-					<a href='#' class='btnTemplate'>$attend_btn</a>
-                                           &nbsp;&nbsp;<small>RSVP'd so far: $count_attend</small>
+				<td >
+				&nbsp;
 				</td>
-					
-			
-                                    
-       
+				
+				<td>
+				<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
+				<a href='#' class='btnTemplate'>Show Map</a>
+				</span>
+				$attend_btn
+                &nbsp;&nbsp;<small>RSVP'd so far: $count_attend</small>
+				</td>
 			</tr>
 		</table>
 

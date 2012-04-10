@@ -282,25 +282,31 @@ html, body
                         margin-right: auto;
 			width: 70%;
 			
+<<<<<<< HEAD
 			padding: 10px;
 			border-width: 1px;
+=======
+			padding: 5px;
+			border-width: 0px;
+>>>>>>> 8c229736d4f1e255cd85e993970e6f558f4e21d2
 			border-color: black;
 			border-style: solid;
 			
-			/**background-color: #A4A4FF;**/
+			background-color: #000000;
 			border-radius: 10px;
 			word-wrap: break-word;
 			}
 			.eventSingle{
 				margin-left: auto;
-                                margin-right: auto;
+                margin-right: auto;
 				width: 100%;
 				
 				border-width: 1px;
 				
-				background-color: #E5E5FF;	
-				border-radius: 10px;
+				background-color: #FFFFFF;	
+				border-radius: 0px;
 				}
+<<<<<<< HEAD
                                 
                                 .eventSingle h3 {
                                     text-align: center;
@@ -319,6 +325,36 @@ html, body
                                             padding-right:10px;
                                             
                                         }
+=======
+                     
+                .eventTitle {
+					/* EVENT TITLE CANNOT CONFLICT WITH THE 
+					 * BUTTONS. IT WILL GO UNDERNEATH THEM **/
+					margin-right: 25%;
+					font-style: italic;
+					color: #447799;
+					}           
+					.eventSingleInner h3 {
+						text-align: center;  
+						}
+					.eventSingleInner b {
+						font-size: 75%;
+						color: #447799;
+						}
+					
+							table.eventSingleInner tr {
+							list-style-type: none;
+							text-align: left;
+							padding: 10px;
+							margin-right: 25%;
+							margin-top: 0%;
+							font-size: 80%; 
+							}
+							table.eventSingleInner td {
+								padding-right:10px;
+								
+							}
+>>>>>>> 8c229736d4f1e255cd85e993970e6f558f4e21d2
 				
 			/*** ALL CHILDREN OF .eventSingle ***/		
 				.deleteBtn {
@@ -343,7 +379,7 @@ html, body
 				.editBtn {
 					position: absolute;
 					/*top: 2%;*/
-					margin-right: 25%;
+					margin-right: 24%;
 					right: 2%;
 					z-index: 20;
 					/* width: 10%; */

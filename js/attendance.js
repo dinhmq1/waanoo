@@ -53,6 +53,7 @@ function attendingEvent(event_id) {
 			alert("you must sign in to do that!");
 			$('#advancedPanel').show();
 			$('#advancedButton').rotate(-90);
+			$(loader).css("display", "none");
 			}
 		});
 	}
