@@ -143,27 +143,20 @@ function search_output_func_users($all_vars){
 			<tr>
 					<td onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
 					<a href='#' class='btnTemplate'>Show Map</a>
-<<<<<<< HEAD
+
 					</td>
 				<td id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 					<a href='#' class='btnTemplate'>$attend_btn</a>
                                            &nbsp;&nbsp;<small>RSVP'd so far: $count_attend</small>
 				</td>
 					
-				<td>
+			
                                     
-                                </td>
+       
 			</tr>
 		</table>
-=======
-					</span>
-					$attend_btn
-				
-					&nbsp;&nbsp;&nbsp;
-					<small>RSVP'd so far: $count_attend</small>
-			</li>
-		</ul>
->>>>>>> 95d58d22f451f5877361b6d668e0af7cae482a85
+
+		
 	</div>
 	&nbsp;
 	";
