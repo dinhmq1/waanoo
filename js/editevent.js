@@ -61,6 +61,7 @@ function reSubmitEvent() {
 		
 		var eventName = $('#eventName').val();
 		var eventLoc = $('#eventLocation').val();
+		// fuckit, the got switched somewhere, so switchem again
 		var eventBegin = $('#eventDateBegin').val();
 		var eventEnd = $('#eventDateEnd').val();
 		var eventDescrip = $('#eventDescription').val();
@@ -125,6 +126,13 @@ function reSubmitEvent() {
 											//$('#postEventSuccess').show();
 											alert("Event updated!");
 											load_events(latitude, longitude);
+											
+											$('#eventName').val("");
+											$('#eventLocation').val("");
+											$('#eventDateBegin').val("");
+											$('#eventDateEnd').val("");
+											$('#eventDescription').val("");
+											
 											}
 										else {
 											$('#eventPostErrors').empty().append("\

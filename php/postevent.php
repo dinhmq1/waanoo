@@ -78,7 +78,7 @@ function check_for_dups($all_fields) {
 function dateCheckSensible($all_fields) {
 	$end = strtotime($all_fields['end']);
 	$start = strtotime($all_fields['begin']);
-	if($end > $start && $end > time())
+	if($end > $start && $start > time())
 		return true;
 	else
 		return false;
@@ -172,7 +172,7 @@ if(checkEmpties($all_fields)) {
 						start_date, date_created, public) 
 						VALUES (?, ?, ?, ?, ?, NOW(), 1)";
 					$stm = $cxn->prepare($query_post);
-					$stm->bind_param("issss", $uid, $name, $descrip, $begin, $end);
+					$stm->bind_param("issss", $uid, $name, $descrip, $end, $begin);
 					$stm->execute();
 					$stm->close();
 					

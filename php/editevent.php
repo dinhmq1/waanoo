@@ -112,7 +112,7 @@ if(checkEmpties($all_fields)) {
 					// enter event to main table:
 					$query_post = "UPDATE user_events
 						SET  user_id=?, event_title=?, event_description=?, 
-						end_date=?, start_date=?
+						 start_date=?, end_date=?
 						WHERE event_id=?";
 					$stm = $cxn->prepare($query_post);
 					$stm->bind_param("issssi", $uid, $name, $descrip, $begin, $end, $oldID);
