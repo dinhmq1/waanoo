@@ -282,8 +282,17 @@ html, body
                         margin-right: auto;
 			width: 70%;
 			
+<<<<<<< HEAD
 			padding: 10px;
+=======
+<<<<<<< HEAD
+			padding: 10px;
+			border-width: 1px;
+=======
+			padding: 5px;
+>>>>>>> 3bf9b205b7450b9d99586cb337f1229b087a28fe
 			border-width: 0px;
+>>>>>>> 8c229736d4f1e255cd85e993970e6f558f4e21d2
 			border-color: black;
 			border-style: solid;
 			
@@ -296,11 +305,36 @@ html, body
                 margin-right: auto;
 				width: 100%;
 				
+<<<<<<< HEAD
 				border: 1px groove black;
 				border-color: #D2D2D2;
+=======
+				border-width: 1px;
+				
+>>>>>>> 3bf9b205b7450b9d99586cb337f1229b087a28fe
 				background-color: #FFFFFF;	
 				border-radius: 0px;
 				}
+<<<<<<< HEAD
+                                
+                                .eventSingle h3 {
+                                    text-align: center;
+                                   
+                                }
+                                
+                                        table.eventSingle tr {
+                                        list-style-type: none;
+					text-align: left;
+                                        padding: 10px;
+					/**margin-right: 25%;**/
+                                        
+                                        font-size: 80%; 
+                                        }
+                                        table.eventSingle td {
+                                            padding-right:10px;
+                                            
+                                        }
+=======
                      
                 .eventTitle {
 					/* EVENT TITLE CANNOT CONFLICT WITH THE 
@@ -330,6 +364,7 @@ html, body
 								padding-right:10px;
 								
 							}
+>>>>>>> 8c229736d4f1e255cd85e993970e6f558f4e21d2
 				
 			/*** ALL CHILDREN OF .eventSingle ***/		
 				.deleteBtn {
