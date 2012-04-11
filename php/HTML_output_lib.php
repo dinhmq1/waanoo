@@ -37,10 +37,11 @@ function editBtn($user_id, $event_id) {
 function attendBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) {
 		$cxn = $GLOBALS['cxn'];
+		$user_id = $_SESSION['user_id'];
 		$sql = "SELECT * FROM attendees 
-				WHERE user_id = '$user_id' 
+				WHERE (user_id = '$user_id' 
 				AND
-				event_id = '$event_id'";
+				event_id = '$event_id')";
 		$qry = mysqli_query($cxn, $sql)
 			or die("failed to select ftom attendees table");
 		$count = mysqli_num_rows($qry);
@@ -65,7 +66,7 @@ function attendBtn($user_id, $event_id) {
 				</span>";
 			}
 		}
-	else {
+	else { //NOT SIGNED IN
 		return "
 			<span id='attendingBtn_$event_id' class='btnTemplate' onClick='attendingEvent($event_id)'>
 				Attending?
@@ -90,7 +91,7 @@ function getNumAttend($event_id) {
 	
 function search_output_func_users($all_vars){
 	extract($all_vars);
-	
+	$user_id = $_SESSION['user_id'];
 	$day = format_date($start_date);
 	$hour = format_time($start_date);
 	//$addy = get_address($event_id);

@@ -28,7 +28,7 @@ if(@$_SESSION['signed_in'] == true) {
 		$arr = array("msg" => "you are now attending!", "status" => 2);
 		echo json_encode($arr);
 		}
-	else {
+	else if($count == 1) {
 		// user already marked as attending. Remove from list.
 		$sql = "DELETE FROM attendees
 				WHERE  user_id = '$uid' 
@@ -38,6 +38,10 @@ if(@$_SESSION['signed_in'] == true) {
 			or die("failed to delete attendance record");
 
 		$arr = array("msg" => "you are no longer attending", "status" => 1);
+		echo json_encode($arr);
+		}
+	else {
+		$arr = array("msg" => "more than one somehow?", "status" => 2);
 		echo json_encode($arr);
 		}
 	}
