@@ -33,6 +33,7 @@ function attendingEvent(event_id) {
 						$(btnID).addClass("btnTemplateGreen");
 						$(btnID).empty().append("Already Attending");
 						$(loader).css("display", "none");
+						getAttendCount(event_id);
 						}
 					else if(status == 1) {
 						// already attending
@@ -40,6 +41,7 @@ function attendingEvent(event_id) {
 						$(btnID).addClass("btnTemplate");
 						$(btnID).empty().append("Attending?");
 						$(loader).css("display", "none");
+						getAttendCount(event_id);
 						}
 					else {
 						console.log("user not signed in");
@@ -54,6 +56,32 @@ function attendingEvent(event_id) {
 			$('#advancedPanel').show();
 			$('#advancedButton').rotate(-90);
 			$(loader).css("display", "none");
+			}
+		});
+	}
+
+function getAttendCount(event_id) {
+	// att_count_$event_id
+	var count_id = "#att_count_" + event_id;
+	
+	var data =  {
+				eventID: event_id
+				};
+	
+	$.ajax({
+		type: "POST",
+		url: "./php/attendcount.php",
+		data: data,
+		dataType: "json",
+		success: function(result){
+			// do stuff on result
+			var res = result.status;
+			var count = result.count;
+			
+			if(res == 1) {
+				console.log("new count: " + count);
+				$(count_id).empty().append(count);
+				}
 			}
 		});
 	}

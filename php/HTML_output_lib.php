@@ -153,7 +153,7 @@ function search_output_func_users($all_vars){
 				<a href='#' class='btnTemplate'>Show Map</a>
 				</span>
 				$attend_btn
-                &nbsp;&nbsp;<small>RSVP'd so far: $count_attend</small>
+                &nbsp;&nbsp;<small>RSVP'd so far:</small> <span id='att_count_$event_id'>$count_attend</span>
 				</td>
 			</tr>
 		</table>
