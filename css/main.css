@@ -282,10 +282,24 @@ html, body
             margin-right: auto;
 			width: 70%;
 			
+<<<<<<< HEAD
 			padding: 10px;
 			border-width: 1px;
 
 			border-width: 0px;
+=======
+
+			padding: 10px;
+
+
+			padding: 10px;
+			border-width: 1px;
+
+			padding: 5px;
+
+			border-width: 0px;
+
+>>>>>>> 5e553951b55d5cb12d411040d4be397a8e62de75
 			border-color: black;
 			border-style: solid;
 			
@@ -295,18 +309,26 @@ html, body
 			}
 			.eventSingle{
 				margin-left: auto;
-                margin-right: auto;
+                                margin-right: auto;
 				width: 100%;
 				
 
 				border: 1px groove black;
 				border-color: #D2D2D2;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e553951b55d5cb12d411040d4be397a8e62de75
 				border-width: 1px;
 				
 
 				background-color: #FFFFFF;	
 				border-radius: 0px;
 				}
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 5e553951b55d5cb12d411040d4be397a8e62de75
                                 
                                 .eventSingle h3 {
                                     text-align: center;
@@ -325,6 +347,10 @@ html, body
                                             padding-right:10px;
                                             
                                         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e553951b55d5cb12d411040d4be397a8e62de75
                      
                 .eventTitle {
 					/* EVENT TITLE CANNOT CONFLICT WITH THE 
@@ -333,6 +359,7 @@ html, body
 					font-style: italic;
 					font-weight: bold;
 					color: #447799;
+                                        
 					}           
 					.eventSingleInner h3 {
 						text-align: center;  
