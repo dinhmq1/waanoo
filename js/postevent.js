@@ -200,7 +200,11 @@ function testGeocode(address){
 		var eventBegin = $('#eventDateBegin').val();
 		var eventEnd = $('#eventDateEnd').val();
 		var eventDescrip = $('#eventDescription').val();
+		var imgFileName = $('#imgFileLocation').val();
+		var isImage = $('#isThereImage').val();
 		
+		console.log("filename: " + imgFileName);
+		console.log("ImageOK: " + isImage);
 		
 		if(testEmpty(eventName) && testEmpty(eventLoc) && 
 			testEmpty(eventDateBegin) && testEmpty(eventDateEnd) 
@@ -212,7 +216,7 @@ function testGeocode(address){
 			var testSignIn = checkSignedIn();
 			testSignIn.success(function (data) {
 			
-				if(data == 1){
+				if(data == 1) {
 					// signed in
 					console.log("session verified login status");
 					

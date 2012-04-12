@@ -5,9 +5,11 @@ require 'php/header.php';
 ?>
 <span id='latlngLoc'>Detected your location:</span>
 
-<div id="logo">
-waan<span id='infin'>∞</span>
-</div>
+ 
+	<div id="logo">
+	waan<span id='infin'>∞</span>
+	</div>
+
 
 Events Near You:&nbsp;&nbsp;
 	<span id="loadByLocation" onClick="loadEventsByLocation()">

@@ -91,7 +91,8 @@ function getNumAttend($event_id) {
 	
 function search_output_func_users($all_vars){
 	extract($all_vars);
-	$user_id = $_SESSION['user_id'];
+	if(isset($_SESSION['user_id'])) 
+		$user_id = $_SESSION['user_id'];
 	$day = format_date($start_date);
 	$hour = format_time($start_date);
 	//$addy = get_address($event_id);

@@ -45,11 +45,17 @@ longitude = "";
 	function get_location() {
 		//EXECUTES FROM THE .ready()
 		//navigator.geolocation is a global broswer object
-		if($.browser.msie) {//returns true for ie
+		try {
 			navigator.geolocation.getCurrentPosition(show_map);
-			}
-		else
-			navigator.geolocation.getCurrentPosition(show_map);
+			
+		} catch(err) {
+			alert("Your browser does not support geolocation! Upgrade!\n" + err.message);
+			// this is temporary: IpinfoDB is going to be the fix. JSON based returning.
+			latitude = 39.1475722;
+			longitude = -84.5944051;
+			load_events(latitude, longitude);
+			setReversedGeocode();
+			};
 		}
 	
 //this is for calling the google maps thing asynchronously

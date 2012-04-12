@@ -182,8 +182,11 @@ else {
 			&nbsp; &nbsp; &nbsp; <span id="descriptionCount">0</span> / 500
 			<br />
 			<textarea name="event_description" id="eventDescription" rows="4" cols="40" maxlength="500"></textarea><br />
+			Upload Image: <a href="#" class='btnTemplate' id='uploader'>upload!</a> 
+				<small>(popup)</small>
+			
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
-		<!--
+			<!--
 			Tags: <input id='eventTags' type='text' /><br />
 				<div id='eventTagsChoices'>
 				Education: <input type="checkbox" id="t_education" value="education" /><br />
@@ -217,7 +220,10 @@ else {
 			</select>
 			Contact Info:<input type="text" id="contactInfo" /><br />
 			</span>
-		-->
+			-->
+			
+			<input type='hidden' id='imgFileLocation' value='' />
+			<input type='hidden' id='isThereImage' value='0' />
 			<input type='hidden' id='oldEventID' value="" />
 		</form>
 		<span id='eventPostErrors'> </span><br>
