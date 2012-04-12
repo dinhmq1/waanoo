@@ -115,6 +115,67 @@ function clean_fields($fields){
 	return $fields;
 	}	
 	
+
+// process image:
+	//Steps:
+	/*
+	 * 1) Resize image and copy to thumbnails
+	 * 2) save link
+	 * 3) Resize image and copy to medium sizes
+	 * 4) save link
+	 * 5) Delete original image from temp
+	 * 6) If ALL OK:
+	 * 		-return links to the main logic to put in DB
+	 * 7) IN MAIN:
+	 * 		-'event_images' table structure:
+	 * 		-image_id	event_id	image_url	description	date_uploaded	list_order	active img_size
+	 */
+
+function resizeAndSubmitImg($imageName, $event_id) {
+	$cxn = $GLOBALS['cxn'];
+	$image = new SimpleImage();
+	//:--> ../images/img_temp/$imageName
+	$imageTempDir = "../images/img_temp/".$imageName;
+	
+	$imageThumbnail = "../images/img_db/img_thumbnail/".$imageName;
+	$imageThumbURL = "images/img_db/img_thumbnail/".$imageName;
+	$imageMedium = "../images/img_db/img_medium/".$imageName;
+	$imageMedURL = "images/img_db/img_medium/".$imageName;
+	$image->load($imageTempDir); //this loads the image from our 'temp_img' directory.
+	
+	// others:
+		//../images/img_db/img_medium/
+		//../images/img_db/img_thumbnail/
+	//section actually resizes images
+	$image->resizeToWidth(500); 
+	$image->save($imageMedium);
+	
+	$image->resizeToWidth(100);
+	$image->save($imageThumbnail);
+	
+	// for thumb
+	$description = "";
+	$sql = "INSERT INTO event_images 
+			(event_id, image_url, description, date_uploaded, list_order, active, img_size)
+			VALUES (?, ?, ?, NOW(), 1, 1, 1)
+			";
+	$stm = $cxn->prepare($sql);
+	$stm->bind_param("iss", $event_id, $imageThumbURL, $description);
+	$stm->execute();
+	$stm->close();
+		
+	
+	// for medium
+	$sql = "INSERT INTO event_images 
+			(event_id, image_url, description, date_uploaded, list_order, active, img_size)
+			VALUES (?, ?, ?, NOW(), 1, 1, 2)
+			";
+	$stm = $cxn->prepare($sql);
+	$stm->bind_param("iss", $event_id, $imageMedURL, $description);
+	$stm->execute();
+	$stm->close();
+	}
+	
 // pull from front
 $latitude = $_REQUEST['latitude'];
 $longitude = $_REQUEST['longitude'];
@@ -123,6 +184,8 @@ $eventLocation = $_REQUEST['eventLocation'];
 $eventBegin = $_REQUEST['eventBegin'];
 $eventEnd = $_REQUEST['eventEnd'];
 $eventDescrip = $_REQUEST['eventDescription'];
+$isImage = $_REQUEST['isImageSubmitted'];
+$imageName = $_REQUEST['imageFileName'];
 
 // encode to array for easy passing
 $all_fields = array(
@@ -134,7 +197,6 @@ $all_fields = array(
 	"end" => $eventEnd,
 	"descrip" => $eventDescrip
 	);
-
 
 /// TO DO:
 	/*
@@ -191,6 +253,12 @@ if(checkEmpties($all_fields)) {
 					$stm->bind_param("isdd", $event_id, $loc, $lat, $lng);
 					$stm->execute();
 					$stm->close();
+					
+					/// NOW TO PROCESS IMAGE
+					if($isImage == 1) {
+						// then we will submit the image
+						resizeAndSubmitImg($imageName, $event_id);
+						}
 					
 					// Success:
 					$arr = array("status" => 1, "message" => "event success!");

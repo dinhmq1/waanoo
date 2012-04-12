@@ -181,10 +181,10 @@ else {
 			Describe your event: 
 			&nbsp; &nbsp; &nbsp; <span id="descriptionCount">0</span> / 500
 			<br />
-			<textarea name="event_description" id="eventDescription" rows="4" cols="40" maxlength="500"></textarea><br />
+			<textarea name="event_description" id="eventDescription" rows="4" cols="35" maxlength="500"></textarea><br />
 			Upload Image: <a href="#" class='btnTemplate' id='uploader'>upload!</a> 
-				<small>(popup)</small>
-			
+				<!--	<small>(popup)</small> -->
+				<span id='imgUploadedSpot'></span>
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
 			<!--
 			Tags: <input id='eventTags' type='text' /><br />

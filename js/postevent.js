@@ -237,6 +237,14 @@ function testGeocode(address){
 								var lat_event = party_position.lat();
 								var lng_event = party_position.lng();
 								
+								// image uploading info:
+								
+								if(isImage == 1) 
+									isImage = true;
+								else 
+									isImage = false;
+								
+								
 								postEventData = {
 									latitude: lat_event,
 									longitude: lng_event,
@@ -244,7 +252,9 @@ function testGeocode(address){
 									eventLocation: address,
 									eventBegin: eventBegin,
 									eventEnd: eventEnd,
-									eventDescription: eventDescrip
+									eventDescription: eventDescrip,
+									isImageSubmitted: isImage,
+									imageFileName: imgFileName
 									};
 								
 								// ajax call to post our event

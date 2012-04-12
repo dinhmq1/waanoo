@@ -256,19 +256,20 @@ $('#uploader').click(function() {
 		    if (w.closed) {
 		     clearTimeout(watchClose);
 		     //Do something here...
-/*
-Steps:
-	-have JS set a cookie if the image uploads OK/ or session variable???
-	-IF OK:
-	-get the link for the image and show a thumbnail here
-	-then set the location of the image temporarily 
-	-if the user posts the event, the PHP script, takes the location of the image
-	copies it to a permenant location, resizes image: thumbnail, lrg
-	then finally we store these links in the DB.
-
-*/
+		/*
+		 *
+		Steps:
+		-have JS set a cookie if the image uploads OK/ or session variable???
+		-IF OK:
+		-get the link for the image and show a thumbnail here
+		-then set the location of the image temporarily 
+		-if the user posts the event, the PHP script, takes the location of the image
+		copies it to a permenant location, resizes image: thumbnail, lrg
+		then finally we store these links in the DB.
+		*/
+			var file = $('#imgFileLocation').val();
 			console.log("img uploader window closed!");
-			$('#suc').append("window Closes <br>");
+			$("#imgUploadedSpot").empty().append("<img src='images/img_temp/" + file + "' width='100' />");
 		    }
 	    } catch (e) {}
 	 }, 100);
