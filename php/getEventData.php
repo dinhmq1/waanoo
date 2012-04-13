@@ -29,7 +29,7 @@ if(@$_SESSION['signed_in'] == true) {
 
 	
 	// make sure user is correct:
-	if($_SESSION['user_id'] == $user_id) {
+	if($_SESSION['user_id'] == $user_id or $_SESSION['privleges'] == "admin") {
 		$arr = array(
 			"status" => 1, 
 			"msg" => "completed", 
