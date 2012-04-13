@@ -9,8 +9,8 @@ $GLOBALS['include_YQL'] = false;
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
 $date_search = date("Y-m-d H:m:s", time() - 60*60*24*1); // 12 HOURS EARLIER
-$date_search_2 = date("Y-m-d H:m:s", time() + 60*60*24*14); // two weeks ahead
-//echo "from: ".$date_search." to: ".$date_search_2;
+$date_search_2 = date("Y-m-d H:m:s", time() + 60*60*24*45); // two weeks ahead
+// echo "from: ".$date_search." to: ".$date_search_2;
 define("DATE_TO_SEARCH_FROM", $date_search);
 define("DATE_TO_SEARCH_TO", $date_search_2);
 
@@ -22,21 +22,21 @@ function sortByOneKey(array $array, $key, $asc = true) {
     $values = array();
     foreach ($array as $id => $value) {
         $values[$id] = isset($value[$key]) ? $value[$key] : '';
-    }
+		}
         
     if ($asc) {
         asort($values);
-    }
+		}
     else {
         arsort($values);
-    }
+		}
         
     foreach ($values as $key => $value) {
         $result[$key] = $array[$key];
-    }
+		}
         
     return $result;
-}	
+	}	
 	
 	
 // YQL GET ADDY
@@ -92,10 +92,12 @@ function get_all_event_list_users($event_id){
 // YQL GET ADDRESS
 function pull_ALL_events($lat, $lon, $offset){
 	//could be dirty
+	/*
 	$offset = preg_replace("#[^0-9]#", "", $offset);
 	$rows_per_page = 7;
 	if($GLOBALS['include_YQL'] == false)
 		$rows_per_page = 10;
+		*/
 	
 	// date searching
 	$d = DATE_TO_SEARCH_FROM;
@@ -106,13 +108,13 @@ function pull_ALL_events($lat, $lon, $offset){
 	$main_array = array(); // create an emptry array
 	
 	if($GLOBALS['include_YQL'] == true) {
-		
 		$qry = "SELECT * FROM YQL_event_address
 				WHERE 
 				'$d' <= (SELECT end_date FROM YQL_events 
 				WHERE event_id = YQL_event_address.event_id)
-				LIMIT $offset, $rows_per_page
 				";
+				//LIMIT $offset, $rows_per_page
+				
 		$res = mysqli_query($cxn, $qry)
 			or die ("couldn't do the db loc thing...");
 		
@@ -133,16 +135,16 @@ function pull_ALL_events($lat, $lon, $offset){
 			//$distances[$event_id] = $d_total;
 			array_push($main_array, $event);
 			}//end compare and extract loc data while.
-		
-		}
+		}// END YQL
+	
 	
 	// DO USER SECTION NEXT
 	$qry = "SELECT * FROM event_address
 			WHERE
 			'$d' <= (SELECT end_date FROM user_events 
-			WHERE event_id = event_address.event_id)
-			LIMIT $offset, $rows_per_page
-			";
+			WHERE event_id = event_address.event_id)";
+			//LIMIT $offset, $rows_per_page
+			
 	$res = mysqli_query($cxn, $qry)
 		or die ("couldn't do the db loc thing...");
 	
@@ -163,71 +165,87 @@ function pull_ALL_events($lat, $lon, $offset){
 		}//end compare and extract loc data while.
 	
 	
-	
-	
 	// NOW SORT THIS multidimen array
 	$main_array = sortByOneKey($main_array, "distance");
 	
 	// MAIN LOOP
 	$search_output = "";
-	foreach ($main_array as $event_array){
-			/*
-					echo "<pre>";
-					print_r($event_array);
-					echo "</pre>";
-			*/
-		// THIS PULLS EVENT INFO VIA ID
-		//print_r($event_array);
-		extract($event_array);
-		
-		if($origin == "YQL"){
-		
-			$event_row = get_all_event_list_YQL($id);
-			if($event_row != null){
-				extract($event_row);
-				}
+	
+	// you have to do the limit down here haha
+	$offset = preg_replace("#[^0-9]#", "", $offset);
+	$rows_per_page = 10;
+	if($GLOBALS['include_YQL'] == false)
+		$rows_per_page = 10;
+	
+	$i = 0;
+	foreach($main_array as $event_array) {
+		// offset = 
+		if($i > ($offset + $rows_per_page)) {
+			//echo "break tripped: i=$i and Offset=$offset, rows/page=$rows_per_page";
+			break;
+			}
+		if(!($i < $offset)) {
+			//echo "continue tripped: i=$i and offset=$offset"; 
 
-			$all_vars = array(
-				"event_id" => $event_id,
-				"user_id" => 0,
-				"event_description" => $event_description,
-				"event_title" => $event_title,
-				"start_date" => $start_date,
-				"country_name" => $country_name,
-				"venue_name" => $venue_name,
-				"venue_zip" => $venue_zip,
-				"venue_state" => $venue_state,
-				"lat" => $lat,
-				"lon" => $lon,
-				"distance"=> $distance,
-				"search_output" => $search_output
-				);
-		
-			$search_output = search_output_func_YQL($all_vars); //see search_functions.php
-			}
-		else if($origin == "user"){
-			// do user stuff here
-			$event_row = get_all_event_list_users($id);
-			if($event_row != null){
-				extract($event_row);
-				}
+				/*
+						echo "<pre>";
+						print_r($event_array);
+						echo "</pre>";
+				*/
+			// THIS PULLS EVENT INFO VIA ID
+			//print_r($event_array);
+			extract($event_array);
 			
-			$all_vars = array(
-				"event_id" => $event_id,
-				"user_id" => $user_id,
-				"event_description" => $event_description,
-				"event_title" => $event_title,
-				"start_date" => $start_date,
-				"end_date" => $end_date,
-				"venue_address" => $address_DB,
-				"lat" => $lat,
-				"lon" => $lon,
-				"distance"=> $distance,
-				"search_output" => $search_output
-				);
-		
-			$search_output = search_output_func_users($all_vars); //see search_functions.php
-			}
+			if($origin == "YQL"){
+			
+				$event_row = get_all_event_list_YQL($id);
+				if($event_row != null){
+					extract($event_row);
+					}
+	
+				$all_vars = array(
+					"event_id" => $event_id,
+					"user_id" => 0,
+					"event_description" => $event_description,
+					"event_title" => $event_title,
+					"start_date" => $start_date,
+					"country_name" => $country_name,
+					"venue_name" => $venue_name,
+					"venue_zip" => $venue_zip,
+					"venue_state" => $venue_state,
+					"lat" => $lat,
+					"lon" => $lon,
+					"distance"=> $distance,
+					"search_output" => $search_output
+					);
+			
+				$search_output = search_output_func_YQL($all_vars); //see search_functions.php
+				}
+			else if($origin == "user"){
+				// do user stuff here
+				$event_row = get_all_event_list_users($id);
+				if($event_row != null){
+					extract($event_row);
+					}
+				
+				$all_vars = array(
+					"event_id" => $event_id,
+					"user_id" => $user_id,
+					"event_description" => $event_description,
+					"event_title" => $event_title,
+					"start_date" => $start_date,
+					"end_date" => $end_date,
+					"venue_address" => $address_DB,
+					"lat" => $lat,
+					"lon" => $lon,
+					"distance"=> $distance,
+					"search_output" => $search_output
+					);
+			
+				$search_output = search_output_func_users($all_vars); //see search_functions.php
+				}
+			}// end inner else
+		$i++;
 		}//end loop for location search	 FOREACH
 	return $search_output;
 	}
@@ -248,6 +266,8 @@ else {
 	
 $search_output = pull_ALL_events($lat, $lon, $offset);
 
+
+// echo "offset: $offset";
 // spit out the formatted stuff
 echo $search_output;	
 ?>

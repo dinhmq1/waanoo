@@ -41,8 +41,8 @@ function getEventImage($event_id) {
 			AND
 			active = 1
 			AND
-			img_size = 1";
-			//ORDER BY list_order DESC";
+			img_size = 1
+			ORDER BY list_order DESC";
 	$res = mysqli_query($cxn, $sql)
 		or die("image pull failed: ".mysqli_error($cxn));
 	// order by list order... so then list_order descending and only get first result
