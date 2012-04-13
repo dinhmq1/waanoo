@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('cxn.php');
+require('simpleimage.php');
 $GLOBALS['debug'] = false;
 
 // first off, check that we are signed in:
@@ -137,12 +138,18 @@ function resizeAndSubmitImg($imageName, $event_id) {
 	//:--> ../images/img_temp/$imageName
 	$imageTempDir = "../images/img_temp/".$imageName;
 	
-	$imageThumbnail = "../images/img_db/img_thumbnail/".$imageName;
-	$imageThumbURL = "images/img_db/img_thumbnail/".$imageName;
-	$imageMedium = "../images/img_db/img_medium/".$imageName;
-	$imageMedURL = "images/img_db/img_medium/".$imageName;
+	$imageThumbnail = "../images/img_db/img_thumbnail/$imageName";
+	$imageThumbURL = "images/img_db/img_thumbnail/$imageName";
+	$imageMedium = "../images/img_db/img_medium/$imageName";
+	$imageMedURL = "images/img_db/img_medium/$imageName";
 	$image->load($imageTempDir); //this loads the image from our 'temp_img' directory.
 	
+	/*
+	echo "eventid: $event_id, 
+		imagename: $imageName, 
+		imageThumbURL: $imageThumbURL";
+	*/
+		
 	// others:
 		//../images/img_db/img_medium/
 		//../images/img_db/img_thumbnail/
@@ -254,8 +261,9 @@ if(checkEmpties($all_fields)) {
 					$stm->execute();
 					$stm->close();
 					
+					//echo "isImage: $isImage";
 					/// NOW TO PROCESS IMAGE
-					if($isImage == 1) {
+					if($isImage == true) {
 						// then we will submit the image
 						resizeAndSubmitImg($imageName, $event_id);
 						}

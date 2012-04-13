@@ -2,7 +2,6 @@
 session_start();
 require('cxn.php');
 /* FROM FRONT:
- * 
 	email_new: email, 
 	password1: pass1,
 	password2: pass2,
@@ -165,12 +164,9 @@ function get_user_id($email){
 	}
 
 
-	
-
-
 /********** The main function **********************************************************/
 
-function main_validation($email, $password1, $password2, $fname, $lname, $sex){
+function main_validation($email, $password1, $password2, $fname, $lname, $sex) {
 	if(verify_email($email) == true and verify_password($password1, $password2, $lname) == true and validate_sex($sex) == true){
 	//$username = validate_username($username);
 		$password = sha1($password1);

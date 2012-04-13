@@ -4,11 +4,11 @@ function deleteBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) { 
 		$uid_session = $_SESSION['user_id'];
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
+			//echo "userid: $user_id, sessionid: $uid_session";
 			return 
 				"<div class='deleteBtn' id='del_$event_id' onClick='delEvent($event_id)'>
 				<a href='#' class='btnTemplate'>Delete!</a>
-				</div>
-				";
+				</div>";
 			}
 		else 
 			return "";
@@ -24,8 +24,7 @@ function editBtn($user_id, $event_id) {
 			return 
 				"<div class='editBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
 				<a href='#' class='btnTemplate'>Edit!</a>
-				</div>
-				";
+				</div>";
 			}
 		else 
 			return "";
@@ -33,6 +32,34 @@ function editBtn($user_id, $event_id) {
 	else
 		return "";
 	}
+	
+
+function getEventImage($event_id) {
+	$cxn = $GLOBALS['cxn'];
+	$sql = "SELECT * FROM event_images 
+			WHERE event_id='$event_id'
+			AND
+			active = 1
+			AND
+			img_size = 1";
+			//ORDER BY list_order DESC";
+	$res = mysqli_query($cxn, $sql)
+		or die("image pull failed: ".mysqli_error($cxn));
+	// order by list order... so then list_order descending and only get first result
+	$count = mysqli_num_rows($res);
+	$row = mysqli_fetch_assoc($res);
+	$url = $row['image_url'];
+	
+	if($count > 0) {
+		return "<div class='thumbEventImage'>
+				<img src='$url' />
+			</div>";
+		}
+	else {
+		return "";
+		}
+	}
+	
 
 function attendBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) {
@@ -91,8 +118,16 @@ function getNumAttend($event_id) {
 	
 function search_output_func_users($all_vars){
 	extract($all_vars);
+	/*
+	echo "<pre>";
+	print_r($all_vars);
+	echo "</pre>";
+	*/
+	
+	/*
 	if(isset($_SESSION['user_id'])) 
 		$user_id = $_SESSION['user_id'];
+		*/
 	$day = format_date($start_date);
 	$hour = format_time($start_date);
 	//$addy = get_address($event_id);
@@ -100,6 +135,15 @@ function search_output_func_users($all_vars){
 	$edit_btn = editBtn($user_id, $event_id);
 	$attend_btn = attendBtn($user_id, $event_id);
 	$count_attend = getNumAttend($event_id);
+	$event_img = getEventImage($event_id);
+	
+	/*
+	$user_id = @$_SESSION['user_id'];
+	$priv = @$_SESSION['privleges'];
+	$sign = @$_SESSION['signed_in'];
+	$mail = @$_SESSION['email'];
+	$debug = "uid: $user_id, privs: $priv, signedin: $sign, mail: $mail";
+	*/
 	
 	$search_output .= "
 	<div class='eventSingle'>
@@ -110,32 +154,33 @@ function search_output_func_users($all_vars){
         </div>    
             <hr />
             
+            $event_img
+            
             <table class='eventSingleInner'>         
 			<tr>
 				<td><b>Date:</b></td> 
-                <td>".strip_tags($day)."</td> 
+                <td class='eventTextRight'>".strip_tags($day)."</td> 
             </tr> 
                                     
             <tr>
 				 <td><b>Time:</b></td>
-				 <td>".strip_tags($hour)." </td>
+				 <td class='eventTextRight'>".strip_tags($hour)." </td>
 			</tr>
                         
                         
 			<tr>
 				<td><b>Location:</b></td>
-                <td>".strip_tags($venue_address)."</td>
+                <td class='eventTextRight'>".strip_tags($venue_address)."</td>
 			</tr>
             
 			<tr>
 				<td><b>Description:</b></td>
-                <td>".strip_tags($event_description)."</td>	
+                <td class='eventTextRight'>".strip_tags($event_description)."</td>	
 			</tr>
                         
-
 			<tr>
 				<td><b>Distance:</b></td>
-                <td>".round($distance, 1)." miles </td>
+                <td class='eventTextRight'>".round($distance, 1)." miles </td>
 			</tr>
             
             <!--
@@ -146,7 +191,7 @@ function search_output_func_users($all_vars){
                 -->
 			<tr>
 				<td >
-				&nbsp;
+				&nbsp; 
 				</td>
 				
 				<td>
@@ -159,7 +204,6 @@ function search_output_func_users($all_vars){
 			</tr>
 		</table>
 
-		
 	</div>
 	&nbsp;
 	";

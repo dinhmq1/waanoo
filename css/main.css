@@ -297,34 +297,38 @@ html, body
 				margin-left: auto;
                 margin-right: auto;
 				width: 100%;
-				
 
 				border: 1px groove black;
 				border-color: #D2D2D2;
 				border-width: 1px;
-				
 
 				background-color: #FFFFFF;	
 				border-radius: 0px;
 				}
-                                
-                                .eventSingle h3 {
-                                    text-align: center;
-                                   
-                                }
-                                
-                                        table.eventSingle tr {
-                                        list-style-type: none;
-										text-align: left;
-                                        padding: 10px;
-										/**margin-right: 25%;**/
-                                        
-                                        font-size: 80%; 
-                                        }
-                                        table.eventSingle td {
-                                            padding-right:10px;
-                                            
-                                        }
+					
+					.eventSingle h3 {
+						text-align: center;
+						}
+				
+						.eventSingle table tr {
+							list-style-type: none;
+							text-align: left;
+							padding: 10px;
+							/**margin-right: 25%;**/
+							font-size: 80%; 
+							}
+						.eventSingle table td {
+							
+							/*
+							right: 30%;
+							margin-right: 30%;
+							padding-right:150px;
+							color: red;
+							*/
+							}
+						.eventTextRight {
+							padding-right: 150px;
+							}
                      
                 .eventTitle {
 					/* EVENT TITLE CANNOT CONFLICT WITH THE 
@@ -342,16 +346,15 @@ html, body
 						color: #447799;
 						}
 					
-							table.eventSingleInner tr {
+							.eventSingleInner table tr {
 							list-style-type: none;
 							text-align: left;
-							padding: 10px;
 							margin-right: 25%;
 							margin-top: 0%;
 							font-size: 80%; 
 							}
-							table.eventSingleInner td {
-								padding-right:10px;
+							.eventSingleInner table td {
+								color: black;
 								
 							}
 				

@@ -282,7 +282,8 @@ function testGeocode(address){
 											$('#eventDateBegin').val("");
 											$('#eventDateEnd').val("");
 											$('#eventDescription').val("");
-											
+											$('#imgFileLocation').val("");
+											$('#isThereImage').val("0");
 											}
 										else {
 											$('#ajaxLoaderPostEvent').hide();

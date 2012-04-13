@@ -1,7 +1,6 @@
 // js for editing events
 
-function editEvent(eventID){
-	
+function editEvent(eventID) {
 	eventData = {
 				eventId: eventID
 				};
@@ -12,14 +11,14 @@ function editEvent(eventID){
 		url: "./php/getEventData.php",
 		data: eventData,
 		dataType: "json",
-		success: function(result){
+		success: function(result) {
 			// do stuff on result
 			var res = result.status;
 			var msg = result.msg;
 			
 			if(res == 1) {
 				/* FROM BACK END:
-				 * "result" => 1, 
+					"result" => 1, 
 					"msg" => "completed", 
 					"event_title" => $event_title,
 					"event_description" => $event_description,
@@ -27,8 +26,7 @@ function editEvent(eventID){
 					"start_date" => $start_date,
 					"public" => $public,
 					"address_text" => $address_text,
-					"date_created" => $date_created  
-				*/
+					"date_created" => $date_created  	*/
 				
 				$('#eventName').val(result.event_title);
 				$('#eventLocation').val(result.address_text);
@@ -44,7 +42,7 @@ function editEvent(eventID){
 				// show the form
 				//$('#postEventForm-wrapper').show();
 				// ORIGINAL METHOD FROM THE ONCLICK
-				open_post_event()
+				open_post_event();
 				}
 			else {
 				// DO SOME ALERT!
@@ -66,6 +64,11 @@ function reSubmitEvent() {
 		var eventEnd = $('#eventDateEnd').val();
 		var eventDescrip = $('#eventDescription').val();
 		var eventID = $('#oldEventID').val();
+		var imgFileName = $('#imgFileLocation').val();
+		var isImage = $('#isThereImage').val();
+		
+		console.log("filename: " + imgFileName);
+		console.log("ImageOK: " + isImage);
 		
 		if(testEmpty(eventName) && testEmpty(eventLoc) && 
 			testEmpty(eventDateBegin) && testEmpty(eventDateEnd) 
@@ -106,7 +109,9 @@ function reSubmitEvent() {
 									eventBegin: eventBegin,
 									eventEnd: eventEnd,
 									eventDescription: eventDescrip,
-									oldID: eventID
+									oldID: eventID,
+									isImageSubmitted: isImage,
+									imageFileName: imgFileName
 									};
 								
 								// ajax call to post our event
@@ -133,6 +138,8 @@ function reSubmitEvent() {
 											$('#eventDateEnd').val("");
 											$('#eventDescription').val("");
 											
+											$('#imgFileLocation').val("");
+											$('#isThereImage').val("0");
 											}
 										else {
 											$('#eventPostErrors').empty().append("\

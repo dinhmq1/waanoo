@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('cxn.php');
+require('simpleimage.php');
 $GLOBALS['debug'] = false;
 
 // first off, check that we are signed in:
@@ -51,7 +52,73 @@ function clean_fields($fields){
 		}
 	return $fields;
 	}	
+
+
+function resizeAndSubmitImg($imageName, $event_id) {
+	$cxn = $GLOBALS['cxn'];
+	$image = new SimpleImage();
+	//:--> ../images/img_temp/$imageName
+	$imageTempDir = "../images/img_temp/".$imageName;
 	
+	$imageThumbnail = "../images/img_db/img_thumbnail/$imageName";
+	$imageThumbURL = "images/img_db/img_thumbnail/$imageName";
+	$imageMedium = "../images/img_db/img_medium/$imageName";
+	$imageMedURL = "images/img_db/img_medium/$imageName";
+	$image->load($imageTempDir); //this loads the image from our 'temp_img' directory.
+	
+	/*
+	echo "eventid: $event_id, 
+		imagename: $imageName, 
+		imageThumbURL: $imageThumbURL";
+	*/
+		
+	// others:
+		//../images/img_db/img_medium/
+		//../images/img_db/img_thumbnail/
+	//section actually resizes images
+	$image->resizeToWidth(500); 
+	$image->save($imageMedium);
+	
+	$image->resizeToWidth(100);
+	$image->save($imageThumbnail);
+	
+	// DIFFERENCE FROM THE REGULAR VERSION:
+		/*	-select max list order from the imagelist where event id is matched
+		 * 	-then increment by one
+		 * 	-we are going to use the highest one
+		 */
+	$sql = "SELECT MAX(list_order) as max_list FROM event_images
+			WHERE event_id='$event_id'";
+	$res = mysqli_query($cxn, $sql)
+			or die("could not select image list_order");
+	$row = mysqli_fetch_assoc($res);
+	$list_order = $row['max_list'];
+	
+	// add one
+	$list_order++;
+	
+	// for thumb
+	$description = "";
+	$sql = "INSERT INTO event_images 
+			(event_id, image_url, description, date_uploaded, list_order, active, img_size)
+			VALUES (?, ?, ?, NOW(), ?, 1, 1)
+			";
+	$stm = $cxn->prepare($sql);
+	$stm->bind_param("issi", $event_id, $imageThumbURL, $description, $list_order);
+	$stm->execute();
+	$stm->close();
+		
+	
+	// for medium
+	$sql = "INSERT INTO event_images 
+			(event_id, image_url, description, date_uploaded, list_order, active, img_size)
+			VALUES (?, ?, ?, NOW(), ?, 1, 2)
+			";
+	$stm = $cxn->prepare($sql);
+	$stm->bind_param("issi", $event_id, $imageMedURL, $description, $list_order);
+	$stm->execute();
+	$stm->close();
+	}	
 	
 	
 // pull from front
@@ -63,7 +130,8 @@ $eventBegin = $_REQUEST['eventBegin'];
 $eventEnd = $_REQUEST['eventEnd'];
 $eventDescrip = $_REQUEST['eventDescription'];
 $oldID = $_REQUEST['oldID'];
-
+$isImage = $_REQUEST['isImageSubmitted'];
+$imageName = $_REQUEST['imageFileName'];
 
 
 // encode to array for easy passing
@@ -140,6 +208,12 @@ if(checkEmpties($all_fields)) {
 					$stm->bind_param("sddi",  $loc, $lat, $lng, $event_id);
 					$stm->execute();
 					$stm->close();
+					
+					
+					if($isImage == true) {
+						// then we will submit the image
+						resizeAndSubmitImg($imageName, $event_id);
+						}
 					
 					// Success:
 					$arr = array("status" => 1, "message" => "event success!");
