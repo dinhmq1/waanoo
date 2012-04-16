@@ -249,7 +249,7 @@ $(document).ready(function() {
 
 $('#uploader').click(function() {
 				
-	var w = window.open("php/imgPopupForm.php", "Photo Uploader!", "width=500,height=300,left=200,top=100");
+	var w = window.open("php/imgPopupForm.php", "Photo Uploader!", "width=500,height=500,left=200,top=100");
 	
 	var watchClose = setInterval(function() {
 		try {

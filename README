@@ -4,8 +4,7 @@ TO DO:
 	
 	-finish image loader w/ popup thing.
 	
-		/*
-		Steps:
+	/*  Steps:
 		-have JS set a cookie if the image uploads OK/ or session variable???
 		-IF OK:
 		-get the link for the image and show a thumbnail here
@@ -27,7 +26,6 @@ TO DO:
 		-if it fails, go ahead and geolocate via IP!!! Make little ajax
 		script for IP geolocation, or maybe you can do client side? Who does
 		this for free?
-		
 	
 	-work on facebook authentication.
 		-then import facebook events.
@@ -35,13 +33,11 @@ TO DO:
 	-add the extra fields for event registration
 		-scripting for the backend for this
 		
-
 	/// HAZY THINGS	
 	-store the last good address for the user in DB.
 		-then if we timeout detecting location, use this.
 	
 	-generally, the site is ugly, it is only functional
-
 
 	/// DOWN THE ROAD THINGS
 	-Browser/viewing testing
