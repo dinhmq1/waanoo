@@ -263,7 +263,7 @@ if(checkEmpties($all_fields)) {
 					
 					//echo "isImage: $isImage";
 					/// NOW TO PROCESS IMAGE
-					if($isImage == true) {
+					if($isImage == 1) {
 						// then we will submit the image
 						resizeAndSubmitImg($imageName, $event_id);
 						}

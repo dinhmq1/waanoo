@@ -239,11 +239,13 @@ function testGeocode(address){
 								
 								// image uploading info:
 								
+								var isImageBool = 0;
 								if(isImage == 1) 
-									isImage = true;
+									isImageBool = 1;
 								else 
-									isImage = false;
+									isImageBool = 0;
 								
+								console.log("is there an image: " + isImage);
 								
 								postEventData = {
 									latitude: lat_event,
@@ -253,7 +255,7 @@ function testGeocode(address){
 									eventBegin: eventBegin,
 									eventEnd: eventEnd,
 									eventDescription: eventDescrip,
-									isImageSubmitted: isImage,
+									isImageSubmitted: isImageBool,
 									imageFileName: imgFileName
 									};
 								

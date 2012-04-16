@@ -173,9 +173,9 @@ function pull_ALL_events($lat, $lon, $offset){
 	
 	// you have to do the limit down here haha
 	$offset = preg_replace("#[^0-9]#", "", $offset);
-	$rows_per_page = 10;
+	$rows_per_page = 9;
 	if($GLOBALS['include_YQL'] == false)
-		$rows_per_page = 10;
+		$rows_per_page = 9;
 	
 	$i = 0;
 	foreach($main_array as $event_array) {
