@@ -18,8 +18,12 @@ else {
 	<meta http-equiv="X-UA-Compatible" value="IE=9">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<html xmlns:fb="https://www.facebook.com/2008/fbml">
+            
+        <META name="description" content="Find local events and parties near you! 
+              Want to let others know about your event and/or party? Share them on Waanoo!">
+              
 	
-	<title>Waanoo</title>
+	<title>www.Waanoo.com</title>
 	<?php
 	require('scripts.php');	
 	?>
