@@ -1,31 +1,15 @@
 TO DO:
-	IN ORDER:
-	/// CONCRETE THINGS:
-	
-	-finish image loader w/ popup thing.
-	
-	/*  Steps:
-		-have JS set a cookie if the image uploads OK/ or session variable???
-		-IF OK:
-		-get the link for the image and show a thumbnail here
-		-then set the location of the image temporarily 
-		-if the user posts the event, the PHP script, takes the location of the image
-		copies it to a permenant location, resizes image: thumbnail, lrg
-		then finally we store these links in the DB.
+======
 
-		*/
-	
-	-surround geolocation w/ try catch
-	
-	try {
-	
-		} catch (e) {
-		
-		}
-	
-		-if it fails, go ahead and geolocate via IP!!! Make little ajax
-		script for IP geolocation, or maybe you can do client side? Who does
-		this for free?
+	-add to post event:
+		Check box that allows you do add event created contact info:
+		-like craigslist:
+		---> user can select either email or phone number as contact
+		---> appropriate box is appended to form if this happens.
+		---> box should be removed after event posted
+		---> add new DB column for contact info.
+		---> phone number should be 3 number fields on form
+		---> email can be regexed.
 	
 	-work on facebook authentication.
 		-then import facebook events.
@@ -65,10 +49,11 @@ TO DO:
 
 
 Basic site structure:
+====================
 
-	Main folder:
-		-contains files that will be viewed by browser directly
-		-contains documentation, sometimes an SQL dump or whatev. 
+* Main folder:
+	1. Contains files that will be viewed by browser directly
+	2. Contains documentation, sometimes an SQL dump or whatev. 
 		
 	Other folders:
 		php
