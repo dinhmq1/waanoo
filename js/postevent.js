@@ -313,7 +313,7 @@ function testGeocode(address){
 										imageFileName: imgFileName,
 										isContactInfoActive: isContactInfo,
 										contactInfoType: contactType,
-										contactInfo: contactInfo
+										contactInfoContent: contactInfo
 										};
 									
 									// ajax call to post our event
