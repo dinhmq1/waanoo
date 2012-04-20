@@ -1,5 +1,6 @@
 <?php
 
+/*** delete btn- pre filled args on js function ***/
 function deleteBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) { 
 		$uid_session = $_SESSION['user_id'];
@@ -16,6 +17,9 @@ function deleteBtn($user_id, $event_id) {
 	else
 		return "";
 	}
+	
+
+/*** edit btn for events- pre-filled args on js function***/
 
 function editBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) { 
@@ -32,7 +36,8 @@ function editBtn($user_id, $event_id) {
 	else
 		return "";
 	}
-	
+
+/*** CHECKS IF IMAGE, IF THERE IS FIND IT AND MAKE A TAG ***/
 
 function getEventImage($event_id) {
 	$cxn = $GLOBALS['cxn'];
@@ -60,6 +65,24 @@ function getEventImage($event_id) {
 		}
 	}
 	
+
+/*** SHOWS CONTACT INFORMATION IF THERE IS ANY ****/	
+	// maybe should like hide this by default? Make it an ajax call to go and get this info???
+function contactInfoOrganizer($contactInfo, $contactType, $isContactInfo) {
+	if($isContactInfo == 1) {
+		if($contactType == "email") {
+			return "<span class='contactDetails' >email at: ".strip_tags($contactInfo)."</span>";
+			}
+		if($contactType == "phone") {
+			return "<span class='contactDetails' >call at: ".strip_tags($contactInfo)."</span>";
+			}
+		}
+	else 
+		return "";
+	}
+
+
+/*** SHOWS A BUTTON THAT CALLS JS FUNCTION WITH PRE-FILLED ARGS ***/
 
 function attendBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) {
@@ -104,6 +127,8 @@ function attendBtn($user_id, $event_id) {
 			</span>";
 		}
 	}
+	
+/*** calcs number of people that click "attending" btn ***/
 
 function getNumAttend($event_id) {
 	$cxn = $GLOBALS['cxn'];
@@ -116,6 +141,8 @@ function getNumAttend($event_id) {
 	return $row_count;
 	}
 	
+/*** the main output for user created events ***/	
+	
 function search_output_func_users($all_vars){
 	extract($all_vars);
 	/*
@@ -123,11 +150,7 @@ function search_output_func_users($all_vars){
 	print_r($all_vars);
 	echo "</pre>";
 	*/
-	
-	/*
-	if(isset($_SESSION['user_id'])) 
-		$user_id = $_SESSION['user_id'];
-		*/
+
 	$day = format_date($start_date);
 	$hour = format_time($start_date);
 	//$addy = get_address($event_id);
@@ -136,6 +159,7 @@ function search_output_func_users($all_vars){
 	$attend_btn = attendBtn($user_id, $event_id);
 	$count_attend = getNumAttend($event_id);
 	$event_img = getEventImage($event_id);
+	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
 	
 	/*
 	$user_id = @$_SESSION['user_id'];
@@ -200,6 +224,8 @@ function search_output_func_users($all_vars){
 				</span>
 				$attend_btn
                 &nbsp;&nbsp;<small>RSVP'd so far:</small> <span id='att_count_$event_id'>$count_attend</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                $contact_info_div
 				</td>
 			</tr>
 		</table>
@@ -273,16 +299,18 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 		}
 	}
 
+
+/** quick date formatter ***/ 
 function format_date($in_date){
 	return date("m/d", strtotime($in_date));
 	}
 	
+/*** quick time formatter for displaying times 
+ * in standard american format from MySQL time ***/
 function format_time($in_date){
 	$hr = date("h", strtotime($in_date));
 	$hr = intval($hr);
 	return $hr.date(":m a", strtotime($in_date));
 	}
 	
-
-
 ?>

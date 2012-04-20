@@ -197,9 +197,9 @@ $(document).ready(function() {
 		
 		if(valType == "phone") {
 			$('#contactInfo').empty().append(
-			"<input type='text' size='3' id='phone1ContactInfo' />\
-			<input type='text' size='3' id='phone2ContactInfo' />\
-			<input type='text' size='4' id='phone3ContactInfo' />\
+			"<input type='text' size='3' maxlength='3' id='phone1ContactInfo' />\
+			<input type='text' size='3' maxlength='3' id='phone2ContactInfo' />\
+			<input type='text' size='4' maxlength='4' id='phone3ContactInfo' />\
 			<br />");
 			}
 		});

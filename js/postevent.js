@@ -343,6 +343,9 @@ function testGeocode(address){
 												$('#eventDescription').val("");
 												$('#imgFileLocation').val("");
 												$('#isThereImage').val("0");
+												
+												$('#allowContactEvtent').removeAttr("checked");
+												$('#eventPostErrors').empty();
 												}
 											else {
 												$('#ajaxLoaderPostEvent').hide();

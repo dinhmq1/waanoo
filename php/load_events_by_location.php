@@ -239,7 +239,10 @@ function pull_ALL_events($lat, $lon, $offset){
 					"lat" => $lat,
 					"lon" => $lon,
 					"distance"=> $distance,
-					"search_output" => $search_output
+					"search_output" => $search_output,
+					"isContactInfo" => $is_contactable,
+					"contactInfo" => $contact_info,
+					"contactType" => $contact_type
 					);
 			
 				$search_output = search_output_func_users($all_vars); //see search_functions.php

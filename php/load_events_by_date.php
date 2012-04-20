@@ -61,7 +61,10 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
 				"lat" => $x_coord,
 				"lon" => $y_coord,
 				"distance"=> $distance,
-				"search_output" => $search_output
+				"search_output" => $search_output,
+                "isContactInfo" => $is_contactable,
+                "contactInfo" => $contact_info,
+                "contactType" => $contact_type
 				);
 		
 			$search_output = search_output_func_users($all_vars); //see search_functions.php
