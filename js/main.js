@@ -189,6 +189,21 @@ $(document).ready(function() {
 			}
 		});
 	
+	$('#eventContactType').change( function() {
+		var valType = $('#eventContactType').val();
+		if(valType == "email") {
+			$('#contactInfo').empty().append("<input type='text' size='15' id='emailContactInfo' /><br />");
+			}
+		
+		if(valType == "phone") {
+			$('#contactInfo').empty().append(
+			"<input type='text' size='3' id='phone1ContactInfo' />\
+			<input type='text' size='3' id='phone2ContactInfo' />\
+			<input type='text' size='4' id='phone3ContactInfo' />\
+			<br />");
+			}
+		});
+	
 	// event tags
 	$('#eventTagsChoices').hide();
 	$('#eventTags').click( function() {

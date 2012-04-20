@@ -15,15 +15,13 @@ else {
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" value="IE=9">
+	<meta http-equiv="X-UA-Compatible" value="IE=9" />
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<html xmlns:fb="https://www.facebook.com/2008/fbml">
-            
-        <META name="description" content="Find local events and parties near you! 
-              Want to let others know about your event and/or party? Share them on Waanoo!">
+    <meta name="description" content="Find local events and parties near you! 
+              Want to let others know about your event and/or party? Share them on Waanoo!" />
               
 	
-	<title>www.Waanoo.com</title>
+	<title>Waanoo.com</title>
 	<?php
 	require('scripts.php');	
 	?>
@@ -215,16 +213,21 @@ else {
 						<a href='#' class='btnTemplate'>Close</a>
 					</span>
 				</div>
+			-->
 			
+			<br />
 			Allow Users to Contact you? &nbsp; <input type="checkbox" id="allowContactEvtent" value="contact" /><br />
 			<span id='contactingOptions'>
 			<select id='eventContactType'>
 				<option value='email'>email</option>
 				<option value='phone'>phone</option>
 			</select>
-			Contact Info:<input type="text" id="contactInfo" /><br />
+			Contact Info:
+				<span id='contactInfo'>
+					<input type="text" id="emailContactInfo" /><br />
+				</span>	
 			</span>
-			-->
+			
 			
 			<input type='hidden' id='imgFileLocation' value='' />
 			<input type='hidden' id='isThereImage' value='0' />

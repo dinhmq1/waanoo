@@ -190,6 +190,30 @@ function testGeocode(address){
 			});
 		}
 	
+	// pull phone inputs and test 
+	function testContactPhone(){
+		var p1 = $('#phone1ContactInfo').val();
+		var p2 = $('#phone2ContactInfo').val();
+		var p3 = $('#phone3ContactInfo').val();
+		
+		var re = /\d{3}/i;
+		if(re.test(p1) && re.test(p2) && re.test(p3))
+			return true;
+		else
+			return false;
+		}
+	
+	// email validation test
+	function testContactEmail() {
+		var email = $('#emailContactInfo').val();
+		
+		var re = /\S+@\S+/g;
+		if(re.test(email)) 
+			return true;
+		else
+			return false;
+		}
+	
 	function submitNewEvent(){
 
 		$('#ajaxLoaderPostEvent').show();
@@ -202,6 +226,33 @@ function testGeocode(address){
 		var eventDescrip = $('#eventDescription').val();
 		var imgFileName = $('#imgFileLocation').val();
 		var isImage = $('#isThereImage').val();
+		var contact = $('#allowContactEvtent').attr('checked');
+		
+		// get optional contact info
+		var isContactInfo = 0;
+		var isContactInfoValid = false;  // so if (0 and False) or (1 and true)
+		if(contact == "checked") {
+			isContactInfo = 1;
+			var contactType = $('#eventContactType').val();
+			if(contactType == "email") {
+				var contactInfo = $('#emailContactInfo').val();
+				isContactInfoValid = testContactEmail();
+				}
+			if(contactType == "phone") {
+				var contactInfo = {
+					phone1: $('#phone1ContactInfo').val(),
+					phone2: $('#phone2ContactInfo').val(),
+					phone3: $('#phone3ContactInfo').val()
+					}; // JSON for phone
+				isContactInfoValid = testContactPhone();	
+				}
+			}
+		else {
+			isContactInfo = 0;
+			var contactInfo = "none";
+			var contactType = "none";
+			}
+			
 		
 		console.log("filename: " + imgFileName);
 		console.log("ImageOK: " + isImage);
@@ -227,81 +278,93 @@ function testGeocode(address){
 					if(re.test(eventBegin) && re.test(eventEnd)){
 						console.log("passed date RE validation");
 						
-						//now to geocode the address and check to see if it is OK
-						var address = eventLoc;
-						geocoder = new google.maps.Geocoder();
-						geocoder.geocode( { 'address': address}, function(results, status) {
-							if (status == google.maps.GeocoderStatus.OK) {
-								// status is good. Go ahead an submit form with the geocoded lat and lng
-								var party_position = results[0].geometry.location
-								var lat_event = party_position.lat();
-								var lng_event = party_position.lng();
-								
-								// image uploading info:
-								
-								var isImageBool = 0;
-								if(isImage == 1) 
-									isImageBool = 1;
-								else 
-									isImageBool = 0;
-								
-								console.log("is there an image: " + isImage);
-								
-								postEventData = {
-									latitude: lat_event,
-									longitude: lng_event,
-									eventName: eventName,
-									eventLocation: address,
-									eventBegin: eventBegin,
-									eventEnd: eventEnd,
-									eventDescription: eventDescrip,
-									isImageSubmitted: isImageBool,
-									imageFileName: imgFileName
-									};
-								
-								// ajax call to post our event
-								$.ajax({
-									type: "POST",
-									url: "./php/postevent.php", 
-									data: postEventData,
-									dataType: "json",
-									success: function(result){
-										var msg = result.message;
-										var successMsg = result.status;
-										//alert("Data returned: " + msg);
-										if(successMsg == 1){
-											//alert("Event Posted Successfully!");
-											$('#ajaxLoaderPostEvent').hide();
-											
-											$('#postEventForm-wrapper').hide();
-											$('#dimmer').hide();
-											//$('#postEventSuccess').show();
-											load_events(latitude, longitude);
-											
-											// clear out the form fields on success
-											$('#eventName').val("");
-											$('#eventLocation').val("");
-											$('#eventDateBegin').val("");
-											$('#eventDateEnd').val("");
-											$('#eventDescription').val("");
-											$('#imgFileLocation').val("");
-											$('#isThereImage').val("0");
-											}
-										else {
-											$('#ajaxLoaderPostEvent').hide();
-											$('#eventPostErrors').empty().append("\
-											<font color='red'>" + msg + "</font>");
-											}
+						// Validate for contact info
+						if((isContactInfo == 0 && isContactInfoValid == false) || (isContactInfo == 1 && isContactInfoValid == true)) {
+							console.log("passed contact info validation");
+							//now to geocode the address and check to see if it is OK
+							var address = eventLoc;
+							geocoder = new google.maps.Geocoder();
+							geocoder.geocode( { 'address': address}, function(results, status) {
+								if (status == google.maps.GeocoderStatus.OK) {
+									// status is good. Go ahead an submit form with the geocoded lat and lng
+									var party_position = results[0].geometry.location
+									var lat_event = party_position.lat();
+									var lng_event = party_position.lng();
 									
-										}
-									});
-								}
-							else {
-								$('#ajaxLoaderPostEvent').hide();
-								$('#eventPostErrors').empty().append("\
-								<font color='red'>That address is not valid!</font>");
-								}
-							});
+									// image uploading info:
+									
+									var isImageBool = 0;
+									if(isImage == 1) 
+										isImageBool = 1;
+									else 
+										isImageBool = 0;
+									
+									console.log("is there an image: " + isImage);
+									
+									postEventData = {
+										latitude: lat_event,
+										longitude: lng_event,
+										eventName: eventName,
+										eventLocation: address,
+										eventBegin: eventBegin,
+										eventEnd: eventEnd,
+										eventDescription: eventDescrip,
+										isImageSubmitted: isImageBool,
+										imageFileName: imgFileName,
+										isContactInfoActive: isContactInfo,
+										contactInfoType: contactType,
+										contactInfo: contactInfo
+										};
+									
+									// ajax call to post our event
+									$.ajax({
+										type: "POST",
+										url: "./php/postevent.php", 
+										data: postEventData,
+										dataType: "json",
+										success: function(result){
+											var msg = result.message;
+											var successMsg = result.status;
+											//alert("Data returned: " + msg);
+											if(successMsg == 1){
+												//alert("Event Posted Successfully!");
+												$('#ajaxLoaderPostEvent').hide();
+												
+												$('#postEventForm-wrapper').hide();
+												$('#dimmer').hide();
+												//$('#postEventSuccess').show();
+												load_events(latitude, longitude);
+												
+												// clear out the form fields on success
+												$('#eventName').val("");
+												$('#eventLocation').val("");
+												$('#eventDateBegin').val("");
+												$('#eventDateEnd').val("");
+												$('#eventDescription').val("");
+												$('#imgFileLocation').val("");
+												$('#isThereImage').val("0");
+												}
+											else {
+												$('#ajaxLoaderPostEvent').hide();
+												$('#eventPostErrors').empty().append("\
+												<font color='red'>" + msg + "</font>");
+												}
+										
+											}
+										});
+									}
+								else {
+									$('#ajaxLoaderPostEvent').hide();
+									$('#eventPostErrors').empty().append("\
+									<font color='red'>That address is not valid!</font>");
+									}
+								});
+							} // end if for contact info validation
+						else {
+							$('#ajaxLoaderPostEvent').hide();
+							$('#eventPostErrors').empty().append("\
+							<font color='red'>Contact info not valid!</font>");
+							}
 						}
 					else {
 						$('#ajaxLoaderPostEvent').hide();
