@@ -310,7 +310,7 @@ function format_date($in_date){
 function format_time($in_date){
 	$hr = date("h", strtotime($in_date));
 	$hr = intval($hr);
-	return $hr.date(":m a", strtotime($in_date));
+	return $hr.date(":i a", strtotime($in_date));
 	}
 	
 ?>
