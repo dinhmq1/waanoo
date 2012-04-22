@@ -40,6 +40,8 @@ html, body
 		a:active {text-decoration:none;}
 	
 	#dimmer{
+		display: none;
+		
 		position: fixed;
 		top: 0px;
 		left: 0px;
@@ -229,6 +231,8 @@ html, body
 	/** GOOGLE MAPS ***/		
 			
 	#map_wrapper{
+		display: none;
+		
 		position: fixed;
 		top: 50px;
 		left: 100px;
@@ -246,6 +250,8 @@ html, body
 	/*** GOOGLE MAPS FOR EVENT VIEWER***/
 	
 	#EventMapWrapper {
+		display: none;
+		
 		position: fixed;
 		top: 50px;
 		left: 50px;
@@ -261,6 +267,8 @@ html, body
 			}
 			
 		#EventDirections {
+			display: none;
+		
 			z-index: 199;
 			width: 30%;
 			position: fixed;
@@ -426,6 +434,8 @@ html, body
 	/** POST AN EVENT ***/
 	
 		#postEventForm-wrapper { 
+			display: none;
+		
 			z-index: 100;
 			width: 80%;
 			height: 70%;
@@ -498,6 +508,8 @@ html, body
 				
         /*** floating window ***/
         #postEventSuccess{
+			display: none;
+			
 			z-index: 100;
 			width: 200px;
 			height: 200px;
@@ -642,6 +654,4 @@ html, body
         /*styling not finished due to buggy browsers ect ect, need to build it on waanoo.com
           before I finish them off - all sorts of problems with centering in IE and safari EG:
          marign-left: auto, margin-right:auto does not work*/
-        
-     
-    
+

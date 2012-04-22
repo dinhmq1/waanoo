@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
 	//hide the dimmer:
-	$('#dimmer').hide();
+	//$('#dimmer').hide();
 	
 	//modify search bar to change size with window
 	var width = $(window).width();
@@ -54,11 +54,11 @@ $(document).ready(function() {
 	// geolocation scripting see -> location_detection.js
 /**** MAP/ LOCATION SCRIPTING ****/
 	get_location();
-	$('#map_wrapper').hide();
+	//$('#map_wrapper').hide();
 	
 
 /**** EVENT POSTING SCRIPTING ***/
-	$('#postEventForm-wrapper').hide();
+	//$('#postEventForm-wrapper').hide();
 	
 	
 /*** login ***/
@@ -159,7 +159,7 @@ $(document).ready(function() {
 		});
 
 	// popup box on event submission success
-	$('#postEventSuccess').hide();
+	//$('#postEventSuccess').hide();
 	
 	
 	// char count for the description
@@ -218,12 +218,12 @@ $(document).ready(function() {
 
 /*** SINGLE EVENT MAP ***/
 
-	$('#EventMapWrapper').hide();
-	$('#EventDirections').hide();
+	//$('#EventMapWrapper').hide();
+	//$('#EventDirections').hide();
 	
 	
 /*** MY EVENTS ***/
-	$('#myEventsWrapper').hide();
+	//$('#myEventsWrapper').hide();
 	
 /*** Hotkey to close out pop-up ***/
 	$(document).keydown(function(e){
@@ -248,8 +248,8 @@ $(document).ready(function() {
 	
 
 /*** FOOTER popups ***/
-	$('#aboutWaanoo').hide();
-	$('#contactWaanoo').hide();
+	//$('#aboutWaanoo').hide();
+	//$('#contactWaanoo').hide();
 	
 	
 /*** ajax loaders ***/

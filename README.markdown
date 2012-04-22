@@ -68,7 +68,7 @@ Basic site structure:
 		img
 		-contains images
 		- 'img/stock' will be basic site images like arrows, ect
-		- 'img/img_db' will hold all images accessed by the mysql database.
+		- 'img/imgdb' will hold all images accessed by the mysql database.
 		
 		
 		
@@ -106,6 +106,19 @@ useful code for this project:
 	http://code.google.com/apis/maps/documentation/places/
 			
 			
+		
+		
+Layout
+======
+
+* backgound color: #EEEDEA
+* content bars: #F8F8F8	
+		
+		
+		
+		
+		
+		
 		
 	
 	
