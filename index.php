@@ -17,6 +17,7 @@ require 'php/header.php';
             <img src='images/buttons/btns_headline/btn_location_inactive.png' />
         </a>
 	</span>
+    
 	&nbsp;&nbsp;
 	<span id="loadByDate"onClick="loadEventsByDate()">
 		<a href="#" >
@@ -24,9 +25,31 @@ require 'php/header.php';
         </a>
 	</span>
 	&nbsp;&nbsp;
-	<span id="ajaxLoaderLoadEvents">
+	
+    
+    <span id="postEventButton" onClick='open_post_event()'>
+        <a href="#">
+            <img src='images/buttons/btns_headline/btn_post_inactive.png' />
+        </a>
+    </span>
+    
+    &nbsp;&nbsp;
+    <span id="myEventsButton" onClick="openMyEvents()">
+        <a href="#">
+            <img src='images/buttons/btns_headline/btn_myevents_inactive.png' />
+        </a>
+    </span>
+    
+    &nbsp;&nbsp;
+    <span id="showMapButton" onClick='open_map_selector()'> 
+        <a href="#"><button>Fix Location</button></a>
+    </span>
+    
+    &nbsp;&nbsp;
+    <span id="ajaxLoaderLoadEvents">
 		<img src="images/ajax-loader-transp-arrows.gif" />
 	</span>
+    
 <br />
 <br />
 

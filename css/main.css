@@ -103,6 +103,40 @@ html, body
 			text-align: left;
 			font-family: 'Quicksand', sans-serif;
 		}
+		
+		#headerLogo {
+			position: absolute;
+			top: 8px;
+			
+			}
+		
+		#loginMainForm {
+			position: relative;
+			text-align: right;
+			}
+		
+		#signupBtn {
+			position: relative;
+			float: right;
+			text-align: right;
+			}
+			
+		.loginField {
+			border-radius: 5px;
+			}
+			
+		.login-button {
+				font-size: 100%;
+				color: black;
+				background-color: #EEEDEA;
+				border-radius: 3px;
+				}
+				.login-button:hover
+					{
+					color: red;
+					}
+					
+					
             #advancedPanel {
 				z-index: 75;
                 right:0px;
@@ -133,18 +167,7 @@ html, body
 		#loginNotes{
 			color: red;
 			}
-			.login-button
-				{
-				font-size: 150%;
-				font-style: italic;
-				color: #1E1F3F;
-				background-color: #CBCCED;
-				border-radius: 5px;
-				}
-				.login-button:hover
-					{
-					color: red;
-					}
+			
                 #signupPanel {
 					 width: 70%;
 					 height: 70%;
@@ -176,6 +199,11 @@ html, body
 			text-align: center;
 			color: red;
 			}
+        
+        
+        
+        
+        
         
     /* FLOATING WINDOW */  
 		#signUpWindow {

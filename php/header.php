@@ -30,15 +30,14 @@ else {
 
 <body>
 	<div id="header">
-		&nbsp;waan<span id='infin'>∞</span>.com
+		<img id='headerLogo' src='images/logos/logo_header.png' />
         
 		<span class='headerNav'>
 			<ul>
 				<li>
-					<span id="showMapButton" onClick='open_map_selector()'> 
-						<a href="#">Location Wrong?</a>
-					</span>
+					
 				</li>
+				<!--
 					&nbsp;&nbsp;&nbsp;&nbsp;
 		        <li>
 					<span id="postEventButton" onClick='open_post_event()'>
@@ -57,29 +56,39 @@ else {
 						<a href="#">My Events</a>
 					</span>
 				</li>
+				-->
 	        </ul>
 		</span>
 		
-		
+		<!--
 		<span class="login_msg" id="login_msg">
 			<?php
 			echo $logged_in;
 			?>
 		</span>
+		-->
 		
 		<input type='hidden' id='loginStatus' value=<?php echo "'$logged_in_bool'"; ?> />
 		
+		<!--
         <div id="advancedButton"> 
           <img height='28' src ="images/arrow.png"/>
         </div>
+        -->
+        
+        <!--
         
         <div id="advancedPanel">
 			<span id='login-field'>
+			
+			-->
+			
 			<?php
 				if($logged_in_bool == true){
 					
-					echo "<br><br>You are signed in as ".$usr.
-						" would you like to logout?<br>
+					echo "
+						>Hi".$usr.
+						"
 						<span id='logout-button'
 						onClick='signOutMain()'>
 							<a href='#' class='btnTemplate'>Sign Out!</a>
@@ -87,44 +96,43 @@ else {
 						<span id='signout-errors'></span>";
 					}
 				else{
-					echo 
-					"login:<br />
-					
+					echo "
 						<form id='loginMainForm' action='#'>
-								email:
-							<input type='text' id='login-email' size='10' />
-								password:
-							<input type='password' id='login-password' size='10' />
-							
-							<input class='login-button' type='submit' value='Submit' style='font-size:85%;'/>
+							<input class='loginField' type='text' id='login-email' placeholder=' email' size='10' />
+							<input class='loginField' type='password' id='login-password' placeholder=' password' size='10' />
+							<input class='login-button' type='submit' value='sign in' style='font-size:85%;'/>
+						
+						<div class='login-button'  id='signupBtn'>
+							<a href='#'>
+							<button>sign up!</button>
+							</a>
+						</div> 
 						</form>
+						
+						
 						<span id='loginNotes'></span>
-					<!--	
-							<span id='facebookBtn'>
-							<b>Facebook Login</b></span>
-					-->			
-		<!-- DISABLED TEMPORARILY 				
-				<div id='fb-root'></div>				
-			<script src='fb/fbauth.js'></script>
-				
-				<div class='fb-login-button'>Login with Facebook</div>
-				<div id='loader' style='display:none'>
-					<img src='images/ajax-loader-transp-arrows.gif' alt='loading' />
-				</div>
-				-->
-		<!--		
-		<div class='fb-registration' data-fields=\"[{'name':'name'}, {'name':'email'}, {'name':'favorite_car','description':'What is your favorite car?','type':'text'}]\" 
-	        data-redirect-uri=\"http://waanoo.com\" >
-	      </div>
-	      -->
-				<div id='user-info'></div>
-									
-	                <br />
-	                
-	                Don't have an account? <br /> 
-					<span id='signupBtn' style='font-size:85%;'>
-						<a href='#' class='btnTemplate'>Sign Up!</a>
-	                </span> 
+						
+								<!--	
+										<span id='facebookBtn'>
+										<b>Facebook Login</b></span>
+								-->			
+								<!-- 
+								DISABLED TEMPORARILY 				
+								<div id='fb-root'></div>				
+								<script src='fb/fbauth.js'></script>
+
+								<div class='fb-login-button'>Login with Facebook</div>
+								<div id='loader' style='display:none'>
+								<img src='images/ajax-loader-transp-arrows.gif' alt='loading' />
+								</div>
+								-->
+								<!--		
+								<div class='fb-registration' data-fields=\"[{'name':'name'}, {'name':'email'}, {'name':'favorite_car','description':'What is your favorite car?','type':'text'}]\" 
+								data-redirect-uri=\"http://waanoo.com\" >
+								</div>
+								-->
+								 
+		<div id='user-info'></div>
 		<br/>
 			<form>
 				<div id='signupPanel'> 
