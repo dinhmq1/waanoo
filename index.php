@@ -7,9 +7,11 @@ require 'php/header.php';
 
     
     <br />
+    <br />
 	<div id="logo">
 	<img src='images/logos/logo_main.png' />
 	</div>
+    <br />
 
 
 	<span id="loadByLocation" onClick="loadEventsByLocation()">
@@ -88,5 +90,17 @@ require 'php/header.php';
 		</div>
 </div>
 <br />
+
+
+<div id='singleEventWrapper'>
+    <div class='closer' onClick='closeSingleEvent()'>
+        <a href='#'>
+            <img src='images/buttons/ps-x-button-50.png' width='30' />
+        </a>
+    </div>
+    
+    <div id='singleEventContent'>
+        </div>
+</div>
 
 <?php require 'php/footer.php';?>

@@ -6,6 +6,14 @@
 	 *
 	 */ 
 /* * { margin: 0; padding: 0;} the * applys to everything within the document,we could use this instead*/
+
+/*
+@font-face {
+	font-family: gotham-rounded-med;
+	src: url('fonts/GothamRoundedMedium.ttf');
+	}
+	*/
+
 html, body
 	{
 	margin: 0;
@@ -17,7 +25,7 @@ html, body
 				* 
 				* */
 				
-	font-family: helvetica, verdana, arial, sans-serif;
+	font-family: 'Karla', sans-serif;
 	text-align: center;
 	background-color: #EEEDEA;
 	color: black;
@@ -65,7 +73,7 @@ html, body
 			}
 			
         .login_msg {
-			font-family: helvetica, verdana, arial, sans-serif;
+			font-family: 'Karla', sans-serif;
 			color: red;
 			font-size: 90%;
 			position: absolute;
@@ -74,16 +82,6 @@ html, body
 			text-align: center;
 			}  
 		
-		#logo
-			{
-			font-family: 'Quicksand', sans-serif;
-			font-size: 400%;
-			text-align: center;
-			}
-			#infin
-				{
-				font-size: 120%;
-				}
 				           
 	#header {
 		position: absolute;
@@ -101,7 +99,7 @@ html, body
 			/*text formatting: */
 			color: white;
 			text-align: left;
-			font-family: 'Quicksand', sans-serif;
+			font-family: 'Karla', sans-serif;
 		}
 		
 		#headerLogo {

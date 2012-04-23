@@ -1,6 +1,8 @@
 /* EVENT VIEW AREA*/
 		
 		.eventViewer{
+            font-family: 'Karla', sans-serif;
+
 			margin-left: auto;
             margin-right: auto;
 			width: 55%;
@@ -64,12 +66,22 @@
 .eventInfoContainer {
     display: inline-block;
     position: relative;
-    width: 50%;
+    float: left;
+    padding-left: 10px;
+    
+    width: 70%;
     text-align: left;
     }
         .space { 
-            line-height: 1px; 
+            line-height: 200%; 
             }
+
+.eventEditBtnContainer {
+    display: inline-block;
+    position: relative;
+    
+    float: right;
+    }
 
 .eventBtnContainer {
     display: inline-block;
@@ -82,3 +94,71 @@
             }
         
 
+
+/*** SINGLE EVENT ***/
+
+#singleEventWrapper {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    height: 50%;
+    width: 60%;
+    
+    z-index: 100;
+    overflow: auto;
+    background-color: #F8F8F8;	
+    border-radius: 5px;
+    }
+
+    .closer {
+        position: relative;
+        display: inline-block;
+        
+        margin-right: 2px;
+        float: right;
+        border-radius: 5px;
+        }
+        
+        
+    .singleEventContent {
+        
+        display: inline-block;
+        position: relative;
+        }
+
+    .singleEventImage {
+        display: inline-block;
+        position: relative;
+        float: left;
+        
+        padding: 10px;
+        }
+        
+    .singleEventText {
+        display: inline-block;
+        position: relative;
+        float: left;
+        width: 50%;
+        
+        text-align: left;
+        }
+        
+    .singleEventButtons {
+        display: inline-block;
+        position: relative;
+        float: right;
+        }
+        
+    .singleEventDescription {
+        position: relative;
+        text-align: left;
+        padding: 10px;
+        
+        clear:both;
+        }
+
+        .lrgImage {
+            width: 200px;
+            height: 200px;
+            }

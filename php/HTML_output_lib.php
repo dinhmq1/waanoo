@@ -39,7 +39,7 @@ function editBtn($user_id, $event_id) {
 
 /*** CHECKS IF IMAGE, IF THERE IS FIND IT AND MAKE A TAG ***/
 
-function getEventImage($event_id) {
+function getEventImageSmall($event_id) {
 	$cxn = $GLOBALS['cxn'];
 	$sql = "SELECT * FROM event_images 
 			WHERE event_id='$event_id'
@@ -56,9 +56,32 @@ function getEventImage($event_id) {
 	$url = $row['image_url'];
 	
 	if($count > 0) {
-		return "
-				<img class='thumbImg' src='$url' />
-			";
+		return "<img class='thumbImg' src='$url' />";
+		}
+	else {
+		return "<img class='thumbImg' src='./images/buttons/placeholder_icons/placeholder_150.png' />";
+		}
+	}
+	
+
+function getEventImageLarge($event_id) {
+	$cxn = $GLOBALS['cxn'];
+	$sql = "SELECT * FROM event_images 
+			WHERE event_id='$event_id'
+			AND
+			active = 1
+			AND
+			img_size = 1
+			ORDER BY list_order DESC";
+	$res = mysqli_query($cxn, $sql)
+		or die("image pull failed: ".mysqli_error($cxn));
+	// order by list order... so then list_order descending and only get first result
+	$count = mysqli_num_rows($res);
+	$row = mysqli_fetch_assoc($res);
+	$url = $row['image_url'];
+	
+	if($count > 0) {
+		return "<img class='lrgImage' src='$url' />";
 		}
 	else {
 		return "<img class='thumbImg' src='./images/buttons/placeholder_icons/placeholder_150.png' />";
@@ -100,7 +123,6 @@ function attendBtn($user_id, $event_id) {
 				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 				<img src='images/buttons/btns_content/btn_attend_inactive.png' />
 				</span>
-					&nbsp;
 				<span id='attendingLoader_$event_id' style='display:none'>
 					<img src='images/ajax-loader-transp-arrows.gif' />
 				</span>";
@@ -110,7 +132,6 @@ function attendBtn($user_id, $event_id) {
 				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 				<img src='images/buttons/btns_content/btn_attend_active.png' />
 				</span>
-					&nbsp;
 				<span id='attendingLoader_$event_id' style='display:none'>
 					<img src='images/ajax-loader-transp-arrows.gif' />
 				</span>";
@@ -121,7 +142,6 @@ function attendBtn($user_id, $event_id) {
 			<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 			<img src='images/buttons/btns_content/btn_attend_inactive.png' />
 			</span>
-				&nbsp;
 			<span id='attendingLoader_$event_id' style='display:none'>
 				<img src='images/ajax-loader-transp-arrows.gif' />
 			</span>";
@@ -141,12 +161,14 @@ function getNumAttend($event_id) {
 	return $row_count;
 	}
 	
-/** event description shortner **/
+/*** event field shortner ***/
 
-function eventDescriptionShortner($event_description) {
-	$newDescrip = substr($event_description, 0, 50);
-	return $newDescrip;
-	}	
+function eventFieldShortner($eventField, $len) {
+	if(strlen($eventField) > $len)
+		return substr($eventField, 0, $len)." ... ";
+	else 
+		return $eventField;
+	}
 	
 	
 /*** the main output for user created events ***/	
@@ -166,9 +188,11 @@ function search_output_func_users($all_vars){
 	$edit_btn = editBtn($user_id, $event_id);
 	$attend_btn = attendBtn($user_id, $event_id);
 	$count_attend = getNumAttend($event_id);
-	$event_img = getEventImage($event_id);
+	$event_img = getEventImageSmall($event_id);
 	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
-	$event_description = eventDescriptionShortner($event_description);
+	
+	$event_description = eventFieldShortner($event_description, 75);
+	$event_title = eventFieldShortner($event_title, 40);
 	
 	$search_output .= "
 	<div class='eventSingle'>
@@ -177,40 +201,38 @@ function search_output_func_users($all_vars){
 			$event_img
 		</div>
 		
-		<div class='eventInfoContainer'>
-			
-			<span class='eventTitle'>"
-			.strip_tags($event_title)." 
-			</span>
-			
-			<p class='space'></p>
+		<div class='eventInfoContainer' onClick='eventSingleViewer($event_id)'>
+			<div class='space'>
+				<span class='eventTitle'><b>"
+				.strip_tags($event_title)." 
+				</b></span><br />
 				
-			<b>Date: </b>".strip_tags($day)."
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				| 
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <b>Time: </b> ".strip_tags($hour)."            
-
-			<p class='space'></p>
+				<b>Date: </b>".strip_tags($day)."
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					| 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>Time: </b> ".strip_tags($hour)." 
+			</div>	
+						
+			<b>Description: </b>".strip_tags($event_description)."<br />	
 			
-			<b>Description: </b>".strip_tags($event_description)." ... <br />
-			
-				
-            <!-- HOLD OFF ON THIS:        
-				<b>Location: </b>".strip_tags($venue_address)."       -->
+            <!-- HOLD OFF ON THIS: -->
 			<!--
 				<b>Distance: </b>".round($distance, 1)." miles. <br />
-			-->
-			
-            $contact_info_div <br />
+				<b>Location: </b>".strip_tags($venue_address)."
+				$contact_info_div <br />
+            -->
 	    </div>        
            
-            
-        <div class='eventBtnContainer'>
+        <div class='eventEditBtnContainer'>
+			<br />
 			$del_btn
 			<br />
 			$edit_btn
 			<br />
+        </div>  
+           
+        <div class='eventBtnContainer'>
 			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
 			<a href='#'>
 				<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
@@ -228,9 +250,86 @@ function search_output_func_users($all_vars){
             
 	</div>
 	";
-	
 	return $search_output;
 	}
+
+
+
+
+function singleEventOutput($all_vars) {
+	extract($all_vars);
+	
+	$day = format_date($start_date);
+	$hour = format_time($start_date);
+	$del_btn = deleteBtn($user_id, $event_id);
+	$edit_btn = editBtn($user_id, $event_id);
+	$attend_btn = attendBtn($user_id, $event_id);
+	$count_attend = getNumAttend($event_id);
+	$event_image = getEventImageLarge($event_id);
+	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
+	
+	$event_description = eventFieldShortner($event_description, 75);
+	$event_title = eventFieldShortner($event_title, 40);
+	
+	$eventContent = "
+		<div class='singleEventImage'>
+				$event_image
+			</div>
+		
+		<div class='singleEventText'>
+			<span class='eventTitle'><b>"
+				.strip_tags($event_title)." 
+				</b></span><br />
+				
+				<b>Date: </b>".strip_tags($day)."
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					| 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>Time: </b> ".strip_tags($hour)." 
+				
+				<br />
+				<b>Distance: </b>".round($distance, 1)." miles. <br />
+				<b>Location: </b>".strip_tags($venue_address)."
+				
+            $contact_info_div <br />
+		</div>
+		
+		<div class='singleEventButtons'>
+			<br />
+			$del_btn
+			<br />
+			$edit_btn
+			<br />
+			$attend_btn
+			<br />
+			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
+				<a href='#'>
+				<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
+				</a>
+			</span>
+			<br />
+			<br />
+			<small>RSVP'd:</small> 
+				<span id='att_count_$event_id'>
+					$count_attend
+				</span>
+		</div>
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<div class='singleEventDescription'>
+			<b>Description: </b>".strip_tags($event_description)."<br />
+		</div>	
+		";
+	
+	return $eventContent;
+	}
+
+
 
 
 // ONLY FOR YQL EVENTS

@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="./css/events.css" />
         <link rel="stylesheet" type="text/css" href="./css/footerpopups.css" />
     <!-- SEE FOR FONTS: http://www.google.com/webfonts#ChoosePlace:select --> 
-        <link href='http://fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
 <!-- need for all -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<!-- calling asynch, dont need here -->
@@ -33,5 +33,6 @@
 		<script src="js/footerpopups.js"></script>
 		<script src="js/strtotime.js"></script>
 		<script src="js/googleanalytics.js"></script>
+		<script src='js/single_event.js'></script>
 		
 	
