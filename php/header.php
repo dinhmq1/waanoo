@@ -158,12 +158,11 @@ else {
 	</div>
 
 <div id='map_wrapper'>
-	Drag the marker to change your location:
-	<div id='map_canvas'>
-	</div>
-	<span onClick='close_map_selector()'>
-	<a href='#' class='btnTemplate'>I'm Done!</a>
+	Move marker to reset location ... 
+		<span onClick='close_map_selector()'>
+		<a href='#' class='btnTemplate'>I'm Done!</a>
 	</span>
+	<div id='map_canvas'></div>
 </div>
 
 <div id='postEventForm-wrapper'>

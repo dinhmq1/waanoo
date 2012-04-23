@@ -1,6 +1,21 @@
 TO DO:
 ======
-
+	
+	* for design:
+		1. add a canvas based image resizer: we should be able to select a 
+		perfect square.
+		2. The image is then saved as this perfect square resize.
+		3. Finally, we should still keep the large image so that we can display it on the single event viewing
+		4. Make single event viewer box.
+		5. loading bars for uploading image.
+		6. loading bar for when you first load the page.
+		7. For now the images can be reposition with javascript based on their dimensions
+		
+		
+	* fix timepicker so that it is not 24hr clock
+	
+	
+	_THIS IS DONE_ - just need to add for edit events
 	-add to post event:
 		Check box that allows you do add event created contact info:
 		-like craigslist:
@@ -10,6 +25,8 @@ TO DO:
 		---> add new DB column for contact info.
 		---> phone number should be 3 number fields on form
 		---> email can be regexed.
+		
+		
 	
 	-work on facebook authentication.
 		-then import facebook events.
@@ -113,7 +130,7 @@ Layout
 
 * backgound color: #EEEDEA
 * content bars: #F8F8F8	
-		
+* popup opacity: 0.95;
 		
 		
 		
@@ -123,6 +140,7 @@ Layout
 	
 	
 Search algorith outline:
+=========================
 
  --> take user input:
  

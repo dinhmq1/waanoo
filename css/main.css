@@ -19,7 +19,7 @@ html, body
 				
 	font-family: helvetica, verdana, arial, sans-serif;
 	text-align: center;
-	background-color: white;
+	background-color: #EEEDEA;
 	color: black;
 	font-size: 20px;
 	position: relative;
@@ -116,7 +116,7 @@ html, body
                 border-style: solid;
                 
                 position: absolute;
-                background-color: whitesmoke;
+                background-color: #F8F8F8;
                 display: none;
                 
                 border-radius: 10px;
@@ -160,7 +160,7 @@ html, body
 	                border-style: solid;
 	                
 	                position: absolute;
-	                background-color: whitesmoke;
+	                background-color: #F8F8F8;
 	                z-index: 80;
 	                display: none;
 	                
@@ -228,7 +228,7 @@ html, body
 				color: #9B9B9B;
 				}
 			
-	/** GOOGLE MAPS ***/		
+	/** Change location popup ***/		
 			
 	#map_wrapper{
 		display: none;
@@ -239,10 +239,13 @@ html, body
 		z-index: 200;
 		height: 70%;
 		width: 70%;
-		background-color: whitesmoke;
+		background-color: #F8F8F8;
+		
+		opacity: .95;
+		border-radius: 5px;
 		}
 		#map_canvas{
-			height: 80%;
+			height: 90%;
 			width: 100%;
 			
 			}
@@ -258,7 +261,7 @@ html, body
 		z-index: 200;
 		height: 70%;
 		width: 60%;
-		background-color: whitesmoke;
+		background-color: #F8F8F8;
 		
 		}
 		#EventMapCanvas {
@@ -275,7 +278,7 @@ html, body
 			top: 50px;
 			right: 50px;
 			height: 80%;
-			background-color: whitesmoke;
+			background-color: #F8F8F8;
 			overflow: auto;
 			}
 			#EventDirectionsDisplay {
@@ -283,152 +286,7 @@ html, body
 				}
 
 
-	/* EVENT VIEW AREA*/
-		
-		.eventViewer{
-			margin-left: auto;
-            margin-right: auto;
-			width: 70%;
-			
-			padding: 10px;
-			border-width: 1px;
-
-			border-width: 0px;
-			border-color: black;
-			border-style: solid;
-			
-			background-color: #F1F1F1;
-			border-radius: 3px;
-			word-wrap: break-word;
-			}
-			.eventSingle{
-				margin-left: auto;
-                margin-right: auto;
-				width: 100%;
-
-				border: 1px groove black;
-				border-color: #D2D2D2;
-				border-width: 1px;
-
-				background-color: #FFFFFF;	
-				border-radius: 0px;
-				}
-					
-					.eventSingle h3 {
-						text-align: center;
-						}
-				
-						.eventSingle table tr {
-							list-style-type: none;
-							text-align: left;
-							padding: 10px;
-							/**margin-right: 25%;**/
-							font-size: 80%; 
-							}
-						.eventSingle table td {
-							
-							/*
-							right: 30%;
-							margin-right: 30%;
-							padding-right:150px;
-							color: red;
-							*/
-							}
-						.eventTextRight {
-							padding-right: 150px;
-							}
-                     
-                .eventTitle {
-					/* EVENT TITLE CANNOT CONFLICT WITH THE 
-					 * BUTTONS. IT WILL GO UNDERNEATH THEM **/
-					margin-right: 25%;
-					font-style: italic;
-					font-weight: bold;
-					color: #447799;
-					}           
-					.eventSingleInner h3 {
-						text-align: center;  
-						}
-					.eventSingleInner b {
-						font-size: 75%;
-						color: #447799;
-						}
-					
-							.eventSingleInner table tr {
-							list-style-type: none;
-							text-align: left;
-							margin-right: 25%;
-							margin-top: 0%;
-							font-size: 80%; 
-							}
-							.eventSingleInner table td {
-								color: black;
-								
-							}
-				
-			/*** ALL CHILDREN OF .eventSingle ***/		
-				.deleteBtn {
-					position: absolute;
-					/*top: 2%;*/
-					margin-right: 15%;
-					right: 2%;
-					z-index: 20;
-
-					/*width: 10%; */
-					/*
-					font-style: italic;
-					color: #1E1F3F;
-					background-color: #CBCCED;
-					border-radius: 5px;
-					*/
-					}
-					.deleteBtn:hover{
-						color: red;
-						}
-						
-				.editBtn {
-					position: absolute;
-					/*top: 2%;*/
-					margin-right: 24%;
-					right: 2%;
-					z-index: 20;
-					/* width: 10%; */
-					
-					/*
-					font-style: italic;
-					color: #1E1F3F;
-					background-color: #CBCCED;
-					border-radius: 5px;
-					*/
-					}
-					.editBtn:hover{
-						color: red;
-						}
-						
-						
-				.attendingBtn {
-					width: 100px;
-					/*position: absolute;
-					margin-right: 15%;
-					margin-top:15%;
-					right: 2%;
-					z-index: 50;*/
-					
-					font-size: 75%;
-					border-radius: 5px;
-					color:white;
-					background-color: #699ECA;
-					}
-					.attendingBtn:hover {
-						background-color: #5BCAE8;
-						}
-						
-				.clickFormap{
-					color: black;
-					}
-					.clickForMap:hover {
-						color: red;
-						}
+	
 				
 	
 	/** POST AN EVENT ***/
@@ -444,7 +302,7 @@ html, body
 			left: 10%;
 			
 			color: black;
-			background-color: whitesmoke;
+			background-color: #F8F8F8;
 			border-radius: 10px;
 			}      
         
@@ -497,7 +355,7 @@ html, body
 				height: 60%;
 				width: 60%;
 				margin-left: 20%;
-				background-color: whitesmoke;
+				background-color: #F8F8F8;
 				border-style: groove;
 				border-width: 1px;
 				border-color: black;

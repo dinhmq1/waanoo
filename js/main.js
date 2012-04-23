@@ -306,5 +306,10 @@ $('#uploader').click(function() {
 	    });	
 	
 	*/
+/*** IMG BUTTON SWAP ***/
+
+	
+	
+	
 		
 });  // end ready

@@ -56,12 +56,12 @@ function getEventImage($event_id) {
 	$url = $row['image_url'];
 	
 	if($count > 0) {
-		return "<div class='thumbEventImage'>
-				<img src='$url' />
-			</div>";
+		return "
+				<img class='thumbImg' src='$url' />
+			";
 		}
 	else {
-		return "";
+		return "<img class='thumbImg' src='./images/buttons/placeholder_icons/placeholder_150.png' />";
 		}
 	}
 	
@@ -97,8 +97,8 @@ function attendBtn($user_id, $event_id) {
 		$count = mysqli_num_rows($qry);
 		if($count == 0) {
 			return "
-				<span id='attendingBtn_$event_id' class='btnTemplate' onClick='attendingEvent($event_id)'>
-					Attending?
+				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+				<img src='images/buttons/btns_content/btn_attend_inactive.png' />
 				</span>
 					&nbsp;
 				<span id='attendingLoader_$event_id' style='display:none'>
@@ -107,8 +107,8 @@ function attendBtn($user_id, $event_id) {
 			}
 		else {
 			return "
-				<span id='attendingBtn_$event_id' class='btnTemplateGreen' onClick='attendingEvent($event_id)'>
-					Already Attending
+				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+				<img src='images/buttons/btns_content/btn_attend_active.png' />
 				</span>
 					&nbsp;
 				<span id='attendingLoader_$event_id' style='display:none'>
@@ -118,8 +118,8 @@ function attendBtn($user_id, $event_id) {
 		}
 	else { //NOT SIGNED IN
 		return "
-			<span id='attendingBtn_$event_id' class='btnTemplate' onClick='attendingEvent($event_id)'>
-				Attending?
+			<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+			<img src='images/buttons/btns_content/btn_attend_inactive.png' />
 			</span>
 				&nbsp;
 			<span id='attendingLoader_$event_id' style='display:none'>
@@ -141,6 +141,14 @@ function getNumAttend($event_id) {
 	return $row_count;
 	}
 	
+/** event description shortner **/
+
+function eventDescriptionShortner($event_description) {
+	$newDescrip = substr($event_description, 0, 50);
+	return $newDescrip;
+	}	
+	
+	
 /*** the main output for user created events ***/	
 	
 function search_output_func_users($all_vars){
@@ -160,78 +168,65 @@ function search_output_func_users($all_vars){
 	$count_attend = getNumAttend($event_id);
 	$event_img = getEventImage($event_id);
 	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
-	
-	/*
-	$user_id = @$_SESSION['user_id'];
-	$priv = @$_SESSION['privleges'];
-	$sign = @$_SESSION['signed_in'];
-	$mail = @$_SESSION['email'];
-	$debug = "uid: $user_id, privs: $priv, signedin: $sign, mail: $mail";
-	*/
+	$event_description = eventDescriptionShortner($event_description);
 	
 	$search_output .= "
 	<div class='eventSingle'>
-		$del_btn
-		$edit_btn
-		<div class='eventTitle'>
-            ".strip_tags($event_title)."
-        </div>    
-            <hr />
-            
-            $event_img
-            
-            <table class='eventSingleInner'>         
-			<tr>
-				<td><b>Date:</b></td> 
-                <td class='eventTextRight'>".strip_tags($day)."</td> 
-            </tr> 
-                                    
-            <tr>
-				 <td><b>Time:</b></td>
-				 <td class='eventTextRight'>".strip_tags($hour)." </td>
-			</tr>
-                        
-                        
-			<tr>
-				<td><b>Location:</b></td>
-                <td class='eventTextRight'>".strip_tags($venue_address)."</td>
-			</tr>
-            
-			<tr>
-				<td><b>Description:</b></td>
-                <td class='eventTextRight'>".strip_tags($event_description)."</td>	
-			</tr>
-                        
-			<tr>
-				<td><b>Distance:</b></td>
-                <td class='eventTextRight'>".round($distance, 1)." miles </td>
-			</tr>
-            
-            <!--
-            <tr>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-            </tr> 
-                -->
-			<tr>
-				<td >
-				&nbsp; 
-				</td>
+		
+		<div class='eventImgContainer'>
+			$event_img
+		</div>
+		
+		<div class='eventInfoContainer'>
+			
+			<span class='eventTitle'>"
+			.strip_tags($event_title)." 
+			</span>
+			
+			<p class='space'></p>
 				
-				<td>
-				<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
-				<a href='#' class='btnTemplate'>Show Map</a>
-				</span>
-				$attend_btn
-                &nbsp;&nbsp;<small>RSVP'd so far:</small> <span id='att_count_$event_id'>$count_attend</span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                $contact_info_div
-				</td>
-			</tr>
-		</table>
+			<b>Date: </b>".strip_tags($day)."
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				| 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b>Time: </b> ".strip_tags($hour)."            
 
+			<p class='space'></p>
+			
+			<b>Description: </b>".strip_tags($event_description)." ... <br />
+			
+				
+            <!-- HOLD OFF ON THIS:        
+				<b>Location: </b>".strip_tags($venue_address)."       -->
+			<!--
+				<b>Distance: </b>".round($distance, 1)." miles. <br />
+			-->
+			
+            $contact_info_div <br />
+	    </div>        
+           
+            
+        <div class='eventBtnContainer'>
+			$del_btn
+			<br />
+			$edit_btn
+			<br />
+			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
+			<a href='#'>
+				<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
+				</a>
+			</span>
+			
+			<br />
+			$attend_btn
+			<br />
+			<small>RSVP'd:</small> 
+				<span id='att_count_$event_id'>
+					$count_attend
+				</span>
+        </div>
+            
 	</div>
-	&nbsp;
 	";
 	
 	return $search_output;
@@ -302,7 +297,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 
 /** quick date formatter ***/ 
 function format_date($in_date){
-	return date("m/d", strtotime($in_date));
+	return date("m.d.Y", strtotime($in_date));
 	}
 	
 /*** quick time formatter for displaying times 

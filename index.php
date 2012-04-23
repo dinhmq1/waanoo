@@ -5,19 +5,23 @@ require 'php/header.php';
 ?>
 <span id='latlngLoc'>Detected your location:</span>
 
- 
+    
+    <br />
 	<div id="logo">
-	waan<span id='infin'>∞</span>
+	<img src='images/logos/logo_main.png' />
 	</div>
 
 
-Events Near You:&nbsp;&nbsp;
 	<span id="loadByLocation" onClick="loadEventsByLocation()">
-		<a class='btnTemplate' href="#" >By Location</a>
+		<a href="#" >
+            <img src='images/buttons/btns_headline/btn_location_inactive.png' />
+        </a>
 	</span>
 	&nbsp;&nbsp;
 	<span id="loadByDate"onClick="loadEventsByDate()">
-		<a class='btnTemplate' href="#" >By Date</a>
+		<a href="#" >
+            <img src='images/buttons/btns_headline/btn_date_inactive.png' />
+        </a>
 	</span>
 	&nbsp;&nbsp;
 	<span id="ajaxLoaderLoadEvents">
@@ -27,6 +31,7 @@ Events Near You:&nbsp;&nbsp;
 <br />
 
 <div class="eventViewer">
+    <img src="images/ajax-loader-transp-arrows.gif" />
 </div>
 
 <div id="tempWindow">
