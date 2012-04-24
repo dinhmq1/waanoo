@@ -18,8 +18,7 @@ else {
 	<meta http-equiv="X-UA-Compatible" value="IE=9" />
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta name="description" content="Find local events and parties near you! 
-              Want to let others know about your event and/or party? Share them on Waanoo!" />
-              
+              Want to let others know about your event and/or party? Share them on Waanoo!" /> 
 	
 	<title>Waanoo.com</title>
 	<?php
@@ -31,69 +30,23 @@ else {
 <body>
 	<div id="header">
 		<img id='headerLogo' src='images/logos/logo_header.png' />
-        
-		<span class='headerNav'>
-			<ul>
-				<li>
-					
-				</li>
-				<!--
-					&nbsp;&nbsp;&nbsp;&nbsp;
-		        <li>
-					<span id="postEventButton" onClick='open_post_event()'>
-						<a href="#">Post Event</a>
-					</span>
-				</li>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-		        <li>
-					<span id="advancedSearchButton" onclick='advancedSearchBtn()'>
-						<a href="#">Advanced Search</a>
-					</span>
-				</li>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-				<li>
-					<span id="myEventsButton" onClick="openMyEvents()">
-						<a href="#">My Events</a>
-					</span>
-				</li>
-				-->
-	        </ul>
-		</span>
-		
-		<!--
-		<span class="login_msg" id="login_msg">
-			<?php
-			echo $logged_in;
-			?>
-		</span>
-		-->
 		
 		<input type='hidden' id='loginStatus' value=<?php echo "'$logged_in_bool'"; ?> />
 		
-		<!--
-        <div id="advancedButton"> 
-          <img height='28' src ="images/arrow.png"/>
-        </div>
-        -->
-        
-        <!--
-        
-        <div id="advancedPanel">
-			<span id='login-field'>
-			
-			-->
+		<!-- the following occurs entirely within this wrapper -->
+		<div id='login-logout-wrapper'>
 			
 			<?php
-				if($logged_in_bool == true){
-					
+				if($logged_in_bool == true){	
 					echo "
-						>Hi".$usr.
-						"
-						<span id='logout-button'
-						onClick='signOutMain()'>
-							<a href='#' class='btnTemplate'>Sign Out!</a>
+						<div id='logoutWrapper'>
+						Hi ".$usr.
+						"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span id='logout-button' onClick='signOutMain()'>
+							<a href='#' class='tempBtn'>Sign Out!</a>
 							</span>
-						<span id='signout-errors'></span>";
+						<span id='signout-errors'></span>
+						</div>";
 					}
 				else{
 					echo "
@@ -101,69 +54,41 @@ else {
 							<input class='loginField' type='text' id='login-email' placeholder=' email' size='10' />
 							<input class='loginField' type='password' id='login-password' placeholder=' password' size='10' />
 							<input class='login-button' type='submit' value='sign in' style='font-size:85%;'/>
-						
-						<div class='login-button'  id='signupBtn'>
-							<a href='#'>
-							<button>sign up!</button>
-							</a>
-						</div> 
+							<div class='login-button' id='signupBtn'>
+								<a href='#'>
+								<button>sign up!</button>
+								</a>
+							</div> 
 						</form>
 						
-						
-						<span id='loginNotes'></span>
-						
+					<span id='loginNotes'></span>
 								<!--	
-										<span id='facebookBtn'>
-										<b>Facebook Login</b></span>
+									<span id='facebookBtn'>
+									<b>Facebook Login</b></span>
 								-->			
 								<!-- 
-								DISABLED TEMPORARILY 				
-								<div id='fb-root'></div>				
-								<script src='fb/fbauth.js'></script>
-
-								<div class='fb-login-button'>Login with Facebook</div>
-								<div id='loader' style='display:none'>
-								<img src='images/ajax-loader-transp-arrows.gif' alt='loading' />
-								</div>
+									DISABLED TEMPORARILY 				
+									<div id='fb-root'></div>				
+									<script src='fb/fbauth.js'></script>
+	
+									<div class='fb-login-button'>Login with Facebook</div>
+									<div id='loader' style='display:none'>
+									<img src='images/ajax-loader-transp-arrows.gif' alt='loading' />
+									</div>
 								-->
 								<!--		
-								<div class='fb-registration' data-fields=\"[{'name':'name'}, {'name':'email'}, {'name':'favorite_car','description':'What is your favorite car?','type':'text'}]\" 
-								data-redirect-uri=\"http://waanoo.com\" >
-								</div>
-								-->
-								 
-		<div id='user-info'></div>
-		<br/>
-			<form>
-				<div id='signupPanel'> 
-					email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
-						<span id='emailIsValid'></span><br /> 
-					Password: <input type ='password' id='password' size='10' /><br /> 
-					Password again: <input type ='password' id='passwordcheck' size='10' /><br /> 
-					First Name: <input type ='text' id='firstname' size='10' /><br /> 
-					Last Name: <input type ='text' id='lastname'  size='10' /><br />
-					Sex: 
-					<select id='sex' /> <br /> <!--hey dumbass, this should be drop down-->
-						<option value='M'>male</option>
-						<option vlaue='F'>female</option>
-					</select><br/>
-					<div id='signup-errors'></div>
-					<span id='submit-signup' onClick='signUpMain()'>
-						<a href='#' class='btnTemplate'>Submit!</a>
-						</span> 
-					&nbsp;&nbsp;&nbsp;
-						<span id='ajaxLoaderSignUp'>
-							<img src='images/ajax-loader-transp-arrows.gif' />
-						</span>
-					<br /> 
-					<!--Should prolly restate that you can just connect with facebook here-->
-				</div>
-			</form> ";
+									<div class='fb-registration' data-fields=\"[{'name':'name'}, {'name':'email'}, {'name':'favorite_car','description':'What is your favorite car?','type':'text'}]\" 
+									data-redirect-uri=\"http://waanoo.com\" >
+									</div>
+								--> 
+							<div id='user-info'></div>
+						<br/>
+					";
 					}
 				?>
-			</span>
-        </div>
-	</div>
+			
+        </div> <!-- end #login-logout-wrapper -->
+	</div><!-- end #header -->
 
 <div id='map_wrapper'>
 	Move marker to reset location ... 
@@ -281,3 +206,30 @@ else {
 	<div id="myEventsContents">
 	</div>
 </div>
+
+
+<form>
+	<div id='signupPanel'> 
+		email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
+			<span id='emailIsValid'></span><br /> 
+		Password: <input type ='password' id='password' size='10' /><br /> 
+		Password again: <input type ='password' id='passwordcheck' size='10' /><br /> 
+		First Name: <input type ='text' id='firstname' size='10' /><br /> 
+		Last Name: <input type ='text' id='lastname'  size='10' /><br />
+		Sex: 
+		<select id='sex' /> <br /> <!--hey dumbass, this should be drop down-->
+			<option value='M'>male</option>
+			<option vlaue='F'>female</option>
+		</select><br/>
+		<div id='signup-errors'></div>
+		<span id='submit-signup' onClick='signUpMain()'>
+			<a href='#' class='btnTemplate'>Submit!</a>
+			</span> 
+		&nbsp;&nbsp;&nbsp;
+			<span id='ajaxLoaderSignUp'>
+				<img src='images/ajax-loader-transp-arrows.gif' />
+			</span>
+		<br /> 
+		<!--Should prolly restate that you can just connect with facebook here-->
+	</div>
+</form>

@@ -58,7 +58,7 @@ html, body
 		background-color: black;
 		opacity: 0.5;
 		/* All popups are 100 */
-		z-index: 50;
+		z-index: 25;
 		}
 	
 	
@@ -101,6 +101,14 @@ html, body
 			text-align: left;
 			font-family: 'Karla', sans-serif;
 		}
+		
+		#logoutWrapper {
+			position: relative;
+			display: inline-block;
+			float: right;
+			padding: 5px;
+			}
+		
 		
 		#headerLogo {
 			position: absolute;

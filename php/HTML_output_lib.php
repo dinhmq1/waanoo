@@ -7,8 +7,8 @@ function deleteBtn($user_id, $event_id) {
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			//echo "userid: $user_id, sessionid: $uid_session";
 			return 
-				"<div class='deleteBtn' id='del_$event_id' onClick='delEvent($event_id)'>
-				<a href='#' class='btnTemplate'>Delete!</a>
+				"<div class='tempBtn' id='del_$event_id' onClick='delEvent($event_id)'>
+				<a href='#'>Delete!</a>
 				</div>";
 			}
 		else 
@@ -26,8 +26,8 @@ function editBtn($user_id, $event_id) {
 		$uid_session = $_SESSION['user_id'];
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			return 
-				"<div class='editBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
-				<a href='#' class='btnTemplate'>Edit!</a>
+				"<div class='tempBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
+				<a href='#'>Edit!</a>
 				</div>";
 			}
 		else 
@@ -84,7 +84,7 @@ function getEventImageLarge($event_id) {
 		return "<img class='lrgImage' src='$url' />";
 		}
 	else {
-		return "<img class='thumbImg' src='./images/buttons/placeholder_icons/placeholder_150.png' />";
+		return "<img class='lrgImage' src='./images/buttons/placeholder_icons/placeholder_200.png' />";
 		}
 	}
 	
@@ -120,8 +120,8 @@ function attendBtn($user_id, $event_id) {
 		$count = mysqli_num_rows($qry);
 		if($count == 0) {
 			return "
-				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-				<img src='images/buttons/btns_content/btn_attend_inactive.png' />
+				<span  onClick='attendingEvent($event_id)'>
+				<img id='attendingBtn_$event_id' src='images/buttons/btns_content/btn_attend_inactive.png' />
 				</span>
 				<span id='attendingLoader_$event_id' style='display:none'>
 					<img src='images/ajax-loader-transp-arrows.gif' />
@@ -223,14 +223,16 @@ function search_output_func_users($all_vars){
 				$contact_info_div <br />
             -->
 	    </div>        
-           
+        
+        <!-- NOPE
         <div class='eventEditBtnContainer'>
 			<br />
 			$del_btn
 			<br />
 			$edit_btn
 			<br />
-        </div>  
+        </div> 
+			-->
            
         <div class='eventBtnContainer'>
 			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
@@ -268,8 +270,8 @@ function singleEventOutput($all_vars) {
 	$event_image = getEventImageLarge($event_id);
 	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
 	
-	$event_description = eventFieldShortner($event_description, 75);
-	$event_title = eventFieldShortner($event_title, 40);
+	//$event_description = eventFieldShortner($event_description, 75);
+	//$event_title = eventFieldShortner($event_title, 40);
 	
 	$eventContent = "
 		<div class='singleEventImage'>
@@ -277,17 +279,17 @@ function singleEventOutput($all_vars) {
 			</div>
 		
 		<div class='singleEventText'>
+			
 			<span class='eventTitle'><b>"
 				.strip_tags($event_title)." 
 				</b></span><br />
-				
+			<div class='space'>	
 				<b>Date: </b>".strip_tags($day)."
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					| 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<b>Time: </b> ".strip_tags($hour)." 
-				
-				<br />
+			</div>
 				<b>Distance: </b>".round($distance, 1)." miles. <br />
 				<b>Location: </b>".strip_tags($venue_address)."
 				

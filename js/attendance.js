@@ -30,22 +30,19 @@ function attendingEvent(event_id) {
 					if(status == 2){
 						// RSPV recorded
 						console.log("recorded status as attending");
-						$(btnID).addClass("btnTemplateGreen");
-						$(btnID).empty().append("Already Attending");
+						$(btnID).attr("src", "./images/buttons/btns_content/btn_attend_active.png");
 						$(loader).css("display", "none");
 						getAttendCount(event_id);
 						}
 					else if(status == 1) {
 						// already attending
 						console.log("recorded status as not attending");
-						$(btnID).addClass("btnTemplate");
-						$(btnID).empty().append("Attending?");
+						$(btnID).attr("src", "./images/buttons/btns_content/btn_attend_inactive.png");
 						$(loader).css("display", "none");
 						getAttendCount(event_id);
 						}
 					else {
 						console.log("user not signed in");
-						$(btnID).addClass("btnTemplate");
 						$(loader).css("display", "none");
 						}
 					}
