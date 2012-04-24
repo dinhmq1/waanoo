@@ -79,28 +79,5 @@ require 'php/header.php';
 		<img src="images/ajax-loader-transp-arrows.gif" />
 	</span>
 
-<div id='postEventSuccess'>
-	<br />
-	Event Posted Successfully!
-	<br />
-	<br />
-		<div onClick='close_event_success_window()' 
-			style='width:50%; margin-left:25%;'>
-			<a href='#' >Close!</a>
-		</div>
-</div>
-<br />
-
-
-<div id='singleEventWrapper'>
-    <div class='closer' onClick='closeSingleEvent()'>
-        <a href='#'>
-            <img src='images/buttons/ps-x-button-50.png' width='30' />
-        </a>
-    </div>
-    
-    <div id='singleEventContent'>
-        </div>
-</div>
-
+<?php require("php/all_popups.php"); ?>
 <?php require 'php/footer.php';?>

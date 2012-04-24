@@ -137,7 +137,7 @@ function attendBtn($user_id, $event_id) {
 				</span>";
 			}
 		}
-	else { //NOT SIGNED IN
+	else {    //NOT SIGNED IN
 		return "
 			<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
 			<img src='images/buttons/btns_content/btn_attend_inactive.png' />
@@ -316,13 +316,11 @@ function singleEventOutput($all_vars) {
 					$count_attend
 				</span>
 		</div>
-		
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
 		<div class='singleEventDescription'>
 			<b>Description: </b>".strip_tags($event_description)."<br />
 		</div>	
