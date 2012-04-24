@@ -38,7 +38,7 @@ function openMyEvents() {
 				});//end ajax
 			}// signed in
 		else {
-			$('#advancedPanel').show();
+			alert("you have to be signed in to do that!");
 			console.log("user not logged in");
 			}// not signed in
 		});// end promise

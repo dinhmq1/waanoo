@@ -12,7 +12,7 @@ function open_post_event(){
 		initMiniMap();
 		}
 	else {
-		$('#advancedPanel').show();
+		alert("you have to be signed in to do that!");
 		}
 	}
 
@@ -62,10 +62,10 @@ function initMiniMap() {
 		var map_center = new google.maps.LatLng(lat,lng);
 		// NOTE: mapTypeId is required... lol wow.
 		var myOptions = {
-						center: map_center,
-						zoom: 12,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-						};
+			center: map_center,
+			zoom: 12,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
 						
 		//this needs to be global because im going to call it later. A lot.
 		map2 = new google.maps.Map(document.getElementById("miniMapCanvas"),myOptions);

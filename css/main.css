@@ -178,14 +178,15 @@ html, body
 					 width: 70%;
 					 height: 70%;
 					 right:0px;
-					 top: 120px;
+					 top: 30px;
 
+					text-align: left;
 					 color: black;
 	                padding: 15px;
 	                width: 375px;
-	                height: 180px;
-	                border-width: 0px;
-	                border-color: black;
+	                height: 200px;
+	                border-width: 2px;
+	                border-color: #EEEDEA;
 	                border-style: solid;
 	                
 	                position: absolute;
@@ -297,6 +298,10 @@ html, body
 		width: 60%;
 		background-color: #F8F8F8;
 		
+		border-width: 2px;
+	    border-color: #EEEDEA;
+	    border-style: solid;
+		border-radius: 5px;
 		}
 		#EventMapCanvas {
 			height: 80%;
