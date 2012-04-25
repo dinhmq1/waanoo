@@ -7,7 +7,7 @@ function open_post_event(){
 	if(loggedin == 1 && loggedin != ""){
 		console.log("showing event posting window");
 		$('#postEventForm-wrapper').show();
-		$('#dimmer').show();
+		controlDimmer(1);
 		
 		initMiniMap();
 		}
@@ -19,13 +19,13 @@ function open_post_event(){
 function close_post_event(){
 	console.log("hiding event posting window");
 	$('#postEventForm-wrapper').hide();
-	$('#dimmer').hide();
+	controlDimmer(-1);
 	}
 
 
 function close_event_success_window(){
 	$('#postEventSuccess').hide();
-	$('#dimmer').hide();
+	controlDimmer(-1);
 	}
 
 
@@ -331,7 +331,7 @@ function testGeocode(address){
 												$('#ajaxLoaderPostEvent').hide();
 												
 												$('#postEventForm-wrapper').hide();
-												$('#dimmer').hide();
+												controlDimmer(-1);
 												//$('#postEventSuccess').show();
 												load_events(latitude, longitude);
 												

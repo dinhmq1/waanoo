@@ -180,6 +180,11 @@ html, body
 			}
 			
                 #signupPanel {
+					position: absolute;
+	                background-color: #F8F8F8;
+	                z-index: 80;
+	                display: none;
+	                
 					 width: 70%;
 					 height: 70%;
 					 right:0px;
@@ -193,11 +198,6 @@ html, body
 	                border-width: 2px;
 	                border-color: #EEEDEA;
 	                border-style: solid;
-	                
-	                position: absolute;
-	                background-color: #F8F8F8;
-	                z-index: 80;
-	                display: none;
 	                
 	                border-radius: 10px;
 					}

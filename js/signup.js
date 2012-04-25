@@ -1,6 +1,7 @@
 // signup logic
 	function showSignUp() {
 		$('#signupPanel').show();
+        controlDimmer(1);
 		}
 	
 	
@@ -166,6 +167,7 @@ function find_email_prom(email){
 	
 function closeMe(idInpt){
 	$(idInpt).hide();
+    controlDimmer(-1);
 	}	
 	
 	

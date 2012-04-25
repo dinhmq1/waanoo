@@ -2,20 +2,14 @@
 //ids used: EventMapWrapper... EventMapCanvas
 
 function closeEventMap() {
-	
 	$('#EventMapWrapper').hide();
 	$('#EventDirections').hide();
-	var res = $('#myEventsWrapper').is(":visible");
-	console.log("is #myEventsWrapper visible?--> " + res);
-		
-	if(res != true) {
-		$('#dimmer').hide();
-		}
+    controlDimmer(-1);
 	}
 
 
 function openEventMap(lat, lon, addy) {
-	$('#dimmer').show();
+	controlDimmer(1);
 	$('#EventMapWrapper').show();
 	$('#eventAddressText').empty().append(addy);
 	

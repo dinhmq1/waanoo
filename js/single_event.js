@@ -4,7 +4,8 @@ function eventSingleViewer(event_id){
     console.log("singleview for:" + event_id);
     
     $('#singleEventWrapper').show();
-    $('#dimmer').show();
+    
+   controlDimmer(1);
     
     eventData = {
         eventID: event_id,
@@ -29,6 +30,8 @@ function eventSingleViewer(event_id){
 
 function closeSingleEvent() {
     $('#singleEventWrapper').hide();
-    $('#dimmer').hide();
+    
+    controlDimmer(-1);
+    
     $('#singleEventContent').empty();
     }

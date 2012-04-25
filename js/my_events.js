@@ -8,7 +8,8 @@ function openMyEvents() {
 		if(data == 1){
 			console.log("Open My Events was clicked.");
 			$('#myEventsWrapper').show();
-			$('#dimmer').show();
+            
+			controlDimmer(1);
 			
 			var toSend = {
 				current_lat: latitude,
@@ -44,8 +45,8 @@ function openMyEvents() {
 		});// end promise
 	}
 
-function closeMyEvents()
-{
+function closeMyEvents(){
 	$('#myEventsWrapper').hide();
-	$('#dimmer').hide();
+    
+	controlDimmer(-1);
 }

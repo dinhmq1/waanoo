@@ -1,6 +1,10 @@
 TO DO:
 ======
 	
+    * dimmer fix: added a counter main.js as global 'isPOPUP = 0;'
+        * new event handler to track changes to this counter... 
+    
+    
 	* for design:
 		1. add a canvas based image resizer: we should be able to select a 
 		perfect square.

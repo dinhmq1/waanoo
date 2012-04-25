@@ -91,7 +91,7 @@ longitude = "";
 	function open_map_selector(){
 		console.log("showing map");
 		$('#map_wrapper').show();
-		$('#dimmer').show();
+		controlDimmer(1);
 		
 		// Loads the js for google maps
 		initialize();
@@ -100,7 +100,8 @@ longitude = "";
 	function close_map_selector(){
 		console.log("hiding map");
 		$('#map_wrapper').hide();
-		$('#dimmer').hide();
+		controlDimmer(-1);
+		
 		// load events again
 		load_events(latitude, longitude);
 		}		

@@ -1,8 +1,5 @@
 <!-- POPUPS FOR SITE -->
 
-<!-- Increment this each time a popup is opened!! If zero, you can close dimmer! -->
-<input id='isPopupOpen' type='hidden' value='0' />
-
 <div id='map_wrapper'>
     <div id='map_canvas'></div>
 		<span onClick='close_map_selector()'>

@@ -1,4 +1,5 @@
 // some javascript goes here!
+
 $(document).ready(function() {
 
 	//hide the dimmer:
@@ -42,7 +43,8 @@ $(document).ready(function() {
 		);
 		
 	// toggles Sign-Up panel
-		$('#signupPanel').hide();
+		//$('#signupPanel').hide();
+		
 		$('#signupBtn').toggle(function(){
 			$('#signupPanel').show();
 			},
@@ -246,6 +248,7 @@ $(document).ready(function() {
 		}
 	});	
 	
+
 
 /*** FOOTER popups ***/
 	//$('#aboutWaanoo').hide();
