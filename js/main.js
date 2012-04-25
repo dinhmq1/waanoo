@@ -46,7 +46,14 @@ $(document).ready(function() {
 	
 	});
 	
+	$('body').on("mouseover mouseoff", "#loginMainForm", function() {
 	
+		$("#loginMainForm").submit(function(event) {
+		console.log("submitting signin");
+		event.preventDefault();
+		signIn();
+		});
+	});
 
 	//modify search bar to change size with window
 	var width = $(window).width();

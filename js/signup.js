@@ -184,6 +184,18 @@ function signUpSuccessWindow(fname){
 	//$('#tempWindow').empty().append(window);
 	
 	$('#loginStatus').val('1');
+    
+    // also reset the bar to be a loggout bar:
+    
+    $('#login-logout-wrapper').empty().append("<div id='logoutWrapper'>\
+						Hi " + fname +
+						"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+						<span id='logout-button' onClick='signOutMain()'>\
+							<a href='#' class='testBlackBtn'>Sign Out!</a>\
+							</span>\
+						<span id='signout-errors'></span>\
+						</div>");
+    
 	
 	// CLEAR ALL FIELD VALUES:
 	$('#email').val("");
