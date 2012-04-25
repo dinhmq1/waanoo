@@ -6,10 +6,12 @@ function deleteBtn($user_id, $event_id) {
 		$uid_session = $_SESSION['user_id'];
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			//echo "userid: $user_id, sessionid: $uid_session";
+			
+			// LEFT OUT: <img src='./images/buttons/btns_content/btn_delete_inactive.png' />
 			return 
-				"<span id='del_$event_id' onClick='delEvent($event_id)'>
+				"<span id='del_$event_id' class='testBlackBtn' onClick='delEvent($event_id)'>
 					<a href='#'>
-						<img src='./images/buttons/btns_content/btn_delete_inactive.png' />
+						DELETE
 					</a>
 				</span>";
 			}
@@ -27,10 +29,11 @@ function editBtn($user_id, $event_id) {
 	if(@$_SESSION['signed_in'] == true) { 
 		$uid_session = $_SESSION['user_id'];
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
+			// LEFT OUT: <img src='./images/buttons/btns_content/btn_edit_inactive.png' />
 			return 
-				"<span id='edit_$event_id' onClick='editEvent($event_id)'>
+				"<span id='edit_$event_id' class='testBlackBtn' onClick='editEvent($event_id)'>
 					<a href='#'>
-						<img src='./images/buttons/btns_content/btn_edit_inactive.png' />
+						&nbsp;&nbsp; EDIT &nbsp;&nbsp;
 					</a>
 				</span>";
 			}
@@ -125,7 +128,9 @@ function attendBtn($user_id, $event_id) {
 		if($count == 0) {
 			return "
 				<span  onClick='attendingEvent($event_id)'>
-				<img id='attendingBtn_$event_id' src='images/buttons/btns_content/btn_attend_inactive.png' />
+					<a href='#'>
+					<img class='attendImg' id='attendingBtn_$event_id' src='images/buttons/btns_content/btn_attend_inactive.png' />
+					</a>
 				</span>
 				<span id='attendingLoader_$event_id' style='display:none'>
 					<img src='images/ajax-loader-transp-arrows.gif' />
@@ -134,17 +139,21 @@ function attendBtn($user_id, $event_id) {
 		else {
 			return "
 				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-				<img src='images/buttons/btns_content/btn_attend_active.png' />
+					<a href='#'>
+					<img class='attendImg' src='images/buttons/btns_content/btn_attend_active.png' />
+					</a>
 				</span>
 				<span id='attendingLoader_$event_id' style='display:none'>
-					<img src='images/ajax-loader-transp-arrows.gif' />
+					<img  src='images/ajax-loader-transp-arrows.gif' />
 				</span>";
 			}
 		}
 	else {    //NOT SIGNED IN
 		return "
 			<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-			<img src='images/buttons/btns_content/btn_attend_inactive.png' />
+				<a href='#'>
+				<img class='attendImg' src='images/buttons/btns_content/btn_attend_inactive.png' />
+				</a>
 			</span>
 			<span id='attendingLoader_$event_id' style='display:none'>
 				<img src='images/ajax-loader-transp-arrows.gif' />
@@ -199,7 +208,7 @@ function search_output_func_users($all_vars){
 	$event_title = eventFieldShortner($event_title, 40);
 	
 	$search_output .= "
-	<div class='eventSingle'>
+	<div class='eventSingle' id='event_num_$event_id'>
 		
 		<div class='eventImgContainer'>
 			$event_img
@@ -242,7 +251,7 @@ function search_output_func_users($all_vars){
            
         <div class='eventBtnContainer'>
 			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
-			<a href='#'>
+			<a href='#event_num_$event_id'>
 				<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
 				</a>
 			</span>

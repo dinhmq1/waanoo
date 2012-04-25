@@ -531,6 +531,14 @@ html, body
 
 		
 
+.testBlackBtn a {
+		text-decoration:none;
+		color: white;
+		}	
+		.testBlackBtn a:hover {
+			text-decoration:none;
+			color: white;
+			}
 
 /************* FOOTER ****************/	
 		

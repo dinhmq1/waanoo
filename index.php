@@ -14,38 +14,48 @@ require 'php/header.php';
     <br />
 
 
-	<span id="loadByLocation" onClick="loadEventsByLocation()">
+	<span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByLocation()">
 		<a href="#" >
-            <img src='images/buttons/btns_headline/btn_location_inactive.png' />
+            <!-- <img src='images/buttons/btns_headline/btn_location_inactive.png' />
+            -->
+            LOCATION
         </a>
 	</span>
     
 	&nbsp;&nbsp;
-	<span id="loadByDate"onClick="loadEventsByDate()">
+	<span id="loadByDate" class='testBlackBtn' onClick="loadEventsByDate()">
 		<a href="#" >
-            <img src='images/buttons/btns_headline/btn_date_inactive.png' />
+            <!-- <img src='images/buttons/btns_headline/btn_date_inactive.png' />
+            -->
+            DATE
         </a>
 	</span>
 	&nbsp;&nbsp;
 	
     
-    <span id="postEventButton" onClick='open_post_event()'>
+    <span id="postEventButton" class='testBlackBtn' onClick='open_post_event()'>
         <a href="#">
-            <img src='images/buttons/btns_headline/btn_post_inactive.png' />
+            <!-- <img src='images/buttons/btns_headline/btn_post_inactive.png' />
+            -->
+            POST
         </a>
     </span>
     
     &nbsp;&nbsp;
-    <span id="myEventsButton" onClick="openMyEvents()">
+    <span id="myEventsButton" class='testBlackBtn' onClick="openMyEvents()">
         <a href="#">
-            <img src='images/buttons/btns_headline/btn_myevents_inactive.png' />
+            <!-- <img src='images/buttons/btns_headline/btn_myevents_inactive.png' />
+            -->
+            MY EVENTS
         </a>
     </span>
     
     &nbsp;&nbsp;
-    <span id="showMapButton" onClick='open_map_selector()'> 
+    <span id="showMapButton" class='testBlackBtn' onClick='open_map_selector()'> 
         <a href="#">
-            <img src='images/buttons/btns_headline/btn_fixlocation_inactive.png' />
+            <!-- <img src='images/buttons/btns_headline/btn_fixlocation_inactive.png' />
+            -->
+            FIX LOCATION
         </a>
     </span>
     
@@ -73,8 +83,9 @@ require 'php/header.php';
 <div id="moreEventsBtn" onclick="loadMoreEvents()">
 	<input type="hidden" id="searchType" value="location" />
 	<input type="hidden" id="eventOffset" value="10" />
-	<img src='images/buttons/btns_headline/btn_load_inactive.png' />
-	
+    <a href="#" >
+        <img src='images/buttons/btns_headline/btn_load_inactive.png' />
+	</a>
 </div>
 &nbsp;&nbsp;&nbsp;
 	<span id="ajaxLoaderLoadMore">

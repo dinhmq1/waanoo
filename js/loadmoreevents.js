@@ -61,6 +61,7 @@ function loadMoreEvents(){
 				
 					$('.eventViewer').append(content);
 					$('#searchType').val("date");
+                    
 					}
 				}
 			});
@@ -98,6 +99,7 @@ function loadEventsByDate() {
 				$('.eventViewer').empty().append(content);
 				$('#searchType').val("date");
 				$('#eventOffset').val("10");
+                
 				}
 			}
 		});

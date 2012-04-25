@@ -2,9 +2,52 @@
 
 $(document).ready(function() {
 
-	//hide the dimmer:
-	//$('#dimmer').hide();
+	// STOP ALL <a> clicks
 	
+	$("a").click( function(event) {
+			console.log("removed click for a link");
+			event.preventDefault();
+		});
+
+	/** Binding POST ajax  a trick to bind fucking everything new:**/
+	/*	Decent explanation:
+	 * 	http://stackoverflow.com/questions/8752321/jquery-live-vs-on-method-for-adding-a-click-event-after-loading-dynamic-ht
+	 *  so go like: $("parent that does not change").on("event", "child that does change", function() {
+	 */
+	$("body").on("mouseover mouseoff", '.eventSingle', function(e){
+
+		$("a").click( function(event) {
+			//console.log("removed click for a link");
+			event.preventDefault();
+		});
+		
+	/** image mouse overs **/
+	
+		$('.btnShowMap').mouseover( function() {
+			//console.log("hovered map btn");
+			$(this).attr('src','images/buttons/btns_content/btn_map_active.png');
+		});
+		
+		$('.btnShowMap').mouseout( function() {
+			$(this).attr('src','images/buttons/btns_content/btn_map_inactive.png');
+		});
+		
+	/** event feed mouseovers **/
+	
+		$('.eventSingle').mouseover( function() {
+			//console.log("hovered event");
+			$(this).css("background-color", "white");
+			
+			});
+		
+		$('.eventSingle').mouseout( function() {
+			$(this).css("background-color", "#F8F8F8");
+			});
+	
+	});
+	
+	
+
 	//modify search bar to change size with window
 	var width = $(window).width();
 	$('#srch_bar').attr({size: width*0.04});
