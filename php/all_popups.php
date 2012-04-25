@@ -144,7 +144,7 @@
 		Sex: 
 		<select id='sex' /> <br /> <!--hey dumbass, this should be drop down-->
 			<option value='M'>male</option>
-			<option vlaue='F'>female</option>
+			<option value='F'>female</option>
 		</select><br/>
 		<div id='signup-errors'></div>
 		<span id='submit-signup' onClick='signUpMain()'>

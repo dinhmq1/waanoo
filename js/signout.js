@@ -17,13 +17,14 @@ function signOutMain(){
 			var login = "<form id='loginMainForm' action='#'>\
 							<input class='loginField' type='text' id='login-email' placeholder=' email' size='10' />\
 							<input class='loginField' type='password' id='login-password' placeholder=' password' size='10' />\
-							<input class='login-button' type='submit' value='sign in' style='font-size:85%;'/>\
-							<div class='login-button' id='signupBtn'>\
+							<input class='testBlackBtn' type='submit' value='submit'  />\
+							&nbsp;&nbsp;&nbsp;\
+							<div id='signupBtn'>\
 								<a href='#'>\
-								<button>sign up!</button>\
+									<img src='./images/buttons/btns_content/btn_signup_inactive.png' />\
 								</a>\
 							</div> \
-						</form>";
+						</form>	";
 			
 			$('#login-logout-wrapper').empty().append(login);
 			//$('#login_msg').empty().append("You are not logged in!");

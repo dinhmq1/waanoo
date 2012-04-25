@@ -15,7 +15,7 @@ function find_email($email)
 	$stm->fetch();
 	$stm->close();
 
-	if ($db_email == $email)
+	if($db_email == $email or !(preg_match("/^\w[[:alnum:]\.-_]+@[[:alnum:]\.-_]+\.[[:alnum:]]{2,4}$/i", $email)) or !(filter_var($email, FILTER_VALIDATE_EMAIL)))
 		{
 		return true;
 		}

@@ -24,7 +24,7 @@ function signIn(){
 				var logout = "<div id='logoutWrapper'>Hi " + name +
 						"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
 						<span id='logout-button' onClick='signOutMain()'>\
-							<a href='#' class='tempBtn'>Sign Out!</a>\
+							<a href='#' class='testBlackBtn'>Sign Out!</a>\
 							</span>\
 						<span id='signout-errors'></span>\
 						</div>";

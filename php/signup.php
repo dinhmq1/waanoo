@@ -1,6 +1,8 @@
 <?php
 session_start();
 require('cxn.php');
+$GLOBALS['$debug'] = false;
+
 /* FROM FRONT:
 	email_new: email, 
 	password1: pass1,
@@ -16,6 +18,11 @@ $password2 = $_REQUEST['password2'];
 $fname = $_REQUEST['first_name'];
 $lname = $_REQUEST['last_name'];
 $sex = $_REQUEST['user_sex'];
+
+if($GLOBALS['$debug'] == true) {
+	echo $sex;
+	}
+
 
 // DONT NEED ERROR MESSAGES. DOING FRONT END VERIFICATION
 
@@ -177,7 +184,9 @@ function main_validation($email, $password1, $password2, $fname, $lname, $sex) {
 		$query = "INSERT INTO user_list (email, password, first_name, last_name, date_added, last_login, last_ip, privlege_level, sex) 
 				VALUES(?, ?, ?, ?, NOW(), NOW(), ?, ?, ?)";
 		$stm2 = $cxn->prepare($query);
-		//echo $email."...".$password."...".$fname."...".$lname."...".$last_ip."...".$priv."...".$sex;
+		if($GLOBALS['$debug'] == true) {
+			echo $email."...".$password."...".$fname."...".$lname."...".$last_ip."...".$priv."...".$sex;
+			}
 		$stm2->bind_param("sssssss", $email, $password, $fname, $lname, $last_ip, $priv, $sex);
 		$stm2->execute();
 		$stm2->close();
