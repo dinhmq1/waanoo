@@ -7,9 +7,11 @@ function deleteBtn($user_id, $event_id) {
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			//echo "userid: $user_id, sessionid: $uid_session";
 			return 
-				"<div class='tempBtn' id='del_$event_id' onClick='delEvent($event_id)'>
-				<a href='#'>Delete!</a>
-				</div>";
+				"<span id='del_$event_id' onClick='delEvent($event_id)'>
+					<a href='#'>
+						<img src='./images/buttons/btns_content/btn_delete_inactive.png' />
+					</a>
+				</span>";
 			}
 		else 
 			return "";
@@ -26,9 +28,11 @@ function editBtn($user_id, $event_id) {
 		$uid_session = $_SESSION['user_id'];
 		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
 			return 
-				"<div class='tempBtn' id='edit_$event_id' onClick='editEvent($event_id)'>
-				<a href='#'>Edit!</a>
-				</div>";
+				"<span id='edit_$event_id' onClick='editEvent($event_id)'>
+					<a href='#'>
+						<img src='./images/buttons/btns_content/btn_edit_inactive.png' />
+					</a>
+				</span>";
 			}
 		else 
 			return "";
@@ -201,6 +205,7 @@ function search_output_func_users($all_vars){
 			$event_img
 		</div>
 		
+		<a href='#' >
 		<div class='eventInfoContainer' onClick='eventSingleViewer($event_id)'>
 			<div class='space'>
 				<span class='eventTitle'><b>"
@@ -223,6 +228,7 @@ function search_output_func_users($all_vars){
 				$contact_info_div <br />
             -->
 	    </div>        
+        </a>
         
         <!-- NOPE
         <div class='eventEditBtnContainer'>
@@ -298,10 +304,7 @@ function singleEventOutput($all_vars) {
 		
 		<div class='singleEventButtons'>
 			<br />
-			$del_btn
-			<br />
-			$edit_btn
-			<br />
+			
 			$attend_btn
 			<br />
 			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
@@ -315,7 +318,16 @@ function singleEventOutput($all_vars) {
 				<span id='att_count_$event_id'>
 					$count_attend
 				</span>
+			
+			<br />
+			<br />
+			<br />
+			$del_btn
+			<br />
+			$edit_btn
+			<br />
 		</div>
+		
 			<br />
 			<br />
 			<br />

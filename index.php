@@ -44,7 +44,9 @@ require 'php/header.php';
     
     &nbsp;&nbsp;
     <span id="showMapButton" onClick='open_map_selector()'> 
-        <a href="#"><button>Fix Location</button></a>
+        <a href="#">
+            <img src='images/buttons/btns_headline/btn_fixlocation_inactive.png' />
+        </a>
     </span>
     
     &nbsp;&nbsp;
@@ -68,10 +70,10 @@ require 'php/header.php';
 
 <br />
 
-<div id="moreEventsBtn" onclick="loadMoreEvents()" class='btnTemplate'>
+<div id="moreEventsBtn" onclick="loadMoreEvents()">
 	<input type="hidden" id="searchType" value="location" />
 	<input type="hidden" id="eventOffset" value="10" />
-	LOAD MORE! 
+	<img src='images/buttons/btns_headline/btn_load_inactive.png' />
 	
 </div>
 &nbsp;&nbsp;&nbsp;

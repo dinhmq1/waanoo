@@ -43,7 +43,7 @@ else {
 						Hi ".$usr.
 						"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span id='logout-button' onClick='signOutMain()'>
-							<a href='#' class='tempBtn'>Sign Out!</a>
+							<a href='#' class='testBlackBtn'>Sign Out!</a>
 							</span>
 						<span id='signout-errors'></span>
 						</div>";
@@ -53,13 +53,19 @@ else {
 						<form id='loginMainForm' action='#'>
 							<input class='loginField' type='text' id='login-email' placeholder=' email' size='10' />
 							<input class='loginField' type='password' id='login-password' placeholder=' password' size='10' />
-							<input class='login-button' type='submit' value='sign in' style='font-size:85%;'/>
-							<div class='login-button' id='signupBtn'>
+							
+							<input class='testBlackBtn' type='submit' value='submit'  />
+								
+							&nbsp;&nbsp;&nbsp;
+							
+							<div id='signupBtn'>
 								<a href='#'>
-								<button>sign up!</button>
+									<img src='./images/buttons/btns_content/btn_signup_inactive.png' />
 								</a>
 							</div> 
-						</form>
+							
+						</form>	
+						
 						
 					<span id='loginNotes'></span>
 								<!--	
@@ -89,3 +95,4 @@ else {
 			
         </div> <!-- end #login-logout-wrapper -->
 	</div><!-- end #header -->
+	

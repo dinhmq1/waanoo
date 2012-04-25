@@ -4,24 +4,27 @@
 <input id='isPopupOpen' type='hidden' value='0' />
 
 <div id='map_wrapper'>
-	Move marker to reset location ... 
+    <div id='map_canvas'></div>
 		<span onClick='close_map_selector()'>
-		<a href='#' class='btnTemplate'>I'm Done!</a>
+		<a href='#'>
+            <img src="./images/buttons/btns_content/btn_done_inactive.png" />
+        </a>
 	</span>
-	<div id='map_canvas'></div>
+	
 </div>
+
 
 <div id='postEventForm-wrapper'>
 	<h3>Post an Event:</h5>
 	<span id='cancelPostEventBtn' onClick='close_post_event()'>
-		<a href='#' class='btnTemplate'>Cancel</a>
+		<a href='#' class='testBlackBtn'>Cancel</a>
 		</span>
 	<div id='postEventForm'>
 		<form>
 			Title: <input id='eventName' type='text' /><br />
 			Where will it be?<input type='text' id='eventLocation' />
 				<span id="setLocation" onClick='reset_coords()'>
-				<a href='#' class='btnTemplate'>Test -></a>
+				<a href='#' class='testBlackBtn'>Test -></a>
 				</span><br />
 			When will it be?:<input type="text" id="eventDateBegin" name="date" /><br />
 			When will it end?:<input type="text" id="eventDateEnd" name="date_end" /><br />
@@ -29,7 +32,7 @@
 			&nbsp; &nbsp; &nbsp; <span id="descriptionCount">0</span> / 500
 			<br />
 			<textarea name="event_description" id="eventDescription" rows="4" cols="35" maxlength="500"></textarea><br />
-			Upload Image: <a href="#" class='btnTemplate' id='uploader'>upload!</a> 
+			Upload Image: <a href="#" class='testBlackBtn' id='uploader'>upload!</a> 
 				<!--	<small>(popup)</small> -->
 				<span id='imgUploadedSpot'></span>
 			<!-- Upload a photo for your event:<input type="file" name="image"><br /> -->
@@ -55,7 +58,7 @@
 				Custom: <input type="text" id="t_custom" /><br />
 				<br />
 					<span id='eventTagsBtn' onClick='closeEventTags()'>
-						<a href='#' class='btnTemplate'>Close</a>
+						<a href='#' class='testBlackBtn'>Close</a>
 					</span>
 				</div>
 			-->
@@ -80,7 +83,7 @@
 		</form>
 		<span id='eventPostErrors'> </span><br>
 		<span  id='eventFormSubmitBtn' onClick='submitNewEvent()'>
-			&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='btnTemplate'>Submit!</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='testBlackBtn'>Submit!</a>
 		</span>
 		&nbsp;&nbsp;&nbsp;
 		<span id="ajaxLoaderPostEvent">
@@ -100,11 +103,11 @@
 	<div id='EventMapCanvas'>
 	</div>
 	<span onClick='getDirections()'>
-		<a href='#' class='btnTemplate'>Get Directions</a>
+		<a href='#' class='testBlackBtn'>Get Directions</a>
 	</span>
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<span onClick='closeEventMap()'>
-		<a href='#' class='btnTemplate'>I'm Done!</a>
+		<a href='#' class='testBlackBtn'>I'm Done!</a>
 	</span>
 </div>
 <div id='EventDirections'>
@@ -145,7 +148,7 @@
 		</select><br/>
 		<div id='signup-errors'></div>
 		<span id='submit-signup' onClick='signUpMain()'>
-			<a href='#' class='btnTemplate'>Submit!</a>
+			<a href='#' class='testBlackBtn'>Submit!</a>
 			</span> 
 		&nbsp;&nbsp;&nbsp;
 			<span id='ajaxLoaderSignUp'>

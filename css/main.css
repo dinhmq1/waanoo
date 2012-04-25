@@ -35,9 +35,10 @@ html, body
     width: 100%;
 	}
 	
+	
 	a {
 		text-decoration:none;
-		color: white;
+		color: black;
 		}
 		a:link {text-decoration:none;}
 		a:visited {text-decoration:none;}
@@ -46,6 +47,7 @@ html, body
 			color: black;
 			}
 		a:active {text-decoration:none;}
+		
 	
 	#dimmer{
 		display: none;
@@ -141,6 +143,9 @@ html, body
 					{
 					color: red;
 					}
+							
+					
+					
 					
 					
             #advancedPanel {
@@ -161,16 +166,16 @@ html, body
                 
                 border-radius: 10px;
                 }
+                
+                
 		/* Begin login field attributes -Note: These are all under header inheritance!*/
-		#login-field
-			{
-			position: absolute;
-            top:2px;
-			right: 4%;
-			font-size: 14px;
-			}
+		
 			
 		#loginNotes{
+			
+			position: absolute;
+			top: 50px;
+			left: 90%;
 			color: red;
 			}
 			
@@ -424,7 +429,122 @@ html, body
           
           
 
-	/*** FOOTER NAV BAR ***/
+	
+		
+/*** BUTTON TEMPLATES ... from: http://www.cssbuttongenerator.com/ ***/
+
+
+	/*** BLUE ***/
+	/*
+		.testBlackBtn {
+			-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+			-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+			box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+			background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+			background-color:#79bbff;
+			-moz-border-radius:1px;
+			-webkit-border-radius:1px;
+			border-radius:1px;
+			display:inline-block;
+			color:#ffffff;
+			font-family:arial;
+			font-size:12px;
+			font-weight:bold;
+			padding:4px 16px;
+			text-decoration:none;
+			text-shadow:1px 1px 0px #528ecc;
+		}.testBlackBtn:hover {
+			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
+			background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
+			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
+			background-color:#378de5;
+		}.testBlackBtn:active {
+			position:relative;
+			top:1px;
+			}
+		
+		
+	.testBlackBtnGreen {
+		-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+		box-shadow:inset 0px 1px 0px 0px #caefab;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+		background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+		background-color:#77d42a;
+		-moz-border-radius:1px;
+		-webkit-border-radius:1px;
+		border-radius:1px;
+		display:inline-block;
+		color:#306108;
+		font-family:arial;
+		font-size:12px;
+		font-weight:bold;
+		padding:4px 16px;
+		text-decoration:none;
+		text-shadow:1px 1px 0px #aade7c;
+	}.testBlackBtnGreen:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+		background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+		background-color:#5cb811;
+	}.testBlackBtnGreen:active {
+		position:relative;
+		top:1px;
+		}	
+*/		
+		
+		
+		
+.testBlackBtn {
+	-moz-box-shadow:inset 0px 1px 0px 0px #949494;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #949494;
+	box-shadow:inset 0px 1px 0px 0px #949494;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #424242), color-stop(1, #000000) );
+	background:-moz-linear-gradient( center top, #424242 5%, #000000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#000000');
+	background-color:#424242;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	border:1px solid #141414;
+	display:inline-block;
+	color:#ffffff;
+	font-family:'Karla', sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	padding:3px 9px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #000000;
+}.testBlackBtn:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #424242) );
+	background:-moz-linear-gradient( center top, #000000 5%, #424242 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#424242');
+	background-color:#000000;
+	color: white;
+}.testBlackBtn:active {
+	position:relative;
+	top:1px;
+}
+
+		
+
+
+/************* FOOTER ****************/	
+		
+	.footer a {
+		text-decoration:none;
+		color: white;
+		}	
+		.footer a:hover {
+			text-decoration:none;
+			color: black;
+			}
+		
+		
+		/*** FOOTER NAV BAR ***/
 	
 		.footer {
 			width: 100%;
@@ -463,67 +583,8 @@ html, body
 				
 				}
 		
-/*** BUTTON TEMPLATES ... from: http://www.cssbuttongenerator.com/ ***/
-	
-	/*** BLUE ***/
-		.btnTemplate {
-			-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-			-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-			box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
-			background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
-			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
-			background-color:#79bbff;
-			-moz-border-radius:1px;
-			-webkit-border-radius:1px;
-			border-radius:1px;
-			display:inline-block;
-			color:#ffffff;
-			font-family:arial;
-			font-size:12px;
-			font-weight:bold;
-			padding:4px 16px;
-			text-decoration:none;
-			text-shadow:1px 1px 0px #528ecc;
-		}.btnTemplate:hover {
-			background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
-			background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
-			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
-			background-color:#378de5;
-		}.btnTemplate:active {
-			position:relative;
-			top:1px;
-			}
 		
 		
-	.btnTemplateGreen {
-		-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
-		-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
-		box-shadow:inset 0px 1px 0px 0px #caefab;
-		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
-		background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
-		background-color:#77d42a;
-		-moz-border-radius:1px;
-		-webkit-border-radius:1px;
-		border-radius:1px;
-		display:inline-block;
-		color:#306108;
-		font-family:arial;
-		font-size:12px;
-		font-weight:bold;
-		padding:4px 16px;
-		text-decoration:none;
-		text-shadow:1px 1px 0px #aade7c;
-	}.btnTemplateGreen:hover {
-		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
-		background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
-		background-color:#5cb811;
-	}.btnTemplateGreen:active {
-		position:relative;
-		top:1px;
-		}	
 		
 		
  /* END PRIMARY PAGE ELEMENTS */

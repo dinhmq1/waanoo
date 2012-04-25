@@ -25,8 +25,8 @@ function attendingEvent(event_id) {
 					var status = result.status;
 					var btnID = "#attendingBtn_" + event_id;
 					
-					$(btnID).removeClass("btnTemplateGreen");
-					$(btnID).removeClass("btnTemplate");
+    ////*** REMOVED SOME STUFF REFFING THE BUTTON HERE
+                    
 					if(status == 2){
 						// RSPV recorded
 						console.log("recorded status as attending");
