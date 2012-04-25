@@ -66,7 +66,7 @@ function getEventImageSmall($event_id) {
 		return "<img class='thumbImg' src='$url' />";
 		}
 	else {
-		return "<img class='thumbImg' src='./images/buttons/placeholder_icons/placeholder_150.png' />";
+		return "<img class='thumbImg' style='opacity: 0.75;' src='./images/buttons/placeholder_icons/placeholder_150.png' />";
 		}
 	}
 	
@@ -91,7 +91,7 @@ function getEventImageLarge($event_id) {
 		return "<img class='lrgImage' src='$url' />";
 		}
 	else {
-		return "<img class='lrgImage' src='./images/buttons/placeholder_icons/placeholder_200.png' />";
+		return "<img class='lrgImage' style='opacity: 0.75;' src='./images/buttons/placeholder_icons/placeholder_200.png' />";
 		}
 	}
 	

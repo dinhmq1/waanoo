@@ -12,6 +12,8 @@ function eventSingleViewer(event_id){
         latitude: latitude,
         longitude: longitude
         };
+    console.log("lat lng: ");
+    console.log(eventData);
     
     $.ajax({
 		type: "POST",

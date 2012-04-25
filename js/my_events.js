@@ -15,7 +15,7 @@ function openMyEvents() {
 				current_lat: latitude,
 				current_lon: longitude
 				};
-			
+                
 			$.ajax({
 				type: "POST",
 				url: "./php/my_events.php",

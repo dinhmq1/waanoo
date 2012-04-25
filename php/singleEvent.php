@@ -25,8 +25,11 @@ try {
     extract($row);
     
     // lat and lon from front
-    $lat = preg_replace("#[^0-9\.]#", "", $lat);
-    $lon = preg_replace("#[^0-9\.]#", "", $lon);
+    $lat = preg_replace("#[^0-9\.-]#", "", $lat);
+    $lon = preg_replace("#[^0-9\.-]#", "", $lon);
+    
+    // debug:
+    //echo $lat."_".$lon."_".$x_coord."_".$y_coord;
     $distance = distance($lat, $lon, $x_coord, $y_coord, "m");
     
     $all_vars = array(
