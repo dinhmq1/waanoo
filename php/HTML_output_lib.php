@@ -225,7 +225,12 @@ function search_output_func_users($all_vars){
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					| 
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<b>Time: </b> ".strip_tags($hour)." 
+				<b>Time: </b> ".strip_tags($hour)."
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					| 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>Distance: </b>".round($distance, 1)." miles. 
+				 
 			</div>	
 						
 			<b>Description: </b>".strip_tags($event_description)."<br />	

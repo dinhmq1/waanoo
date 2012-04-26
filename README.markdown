@@ -1,6 +1,12 @@
 TO DO:
 ======
 	
+    * note: In main.js I added an event handler inside of the .on() 
+    that prevents default on all <a> tags. This should be redone: there
+    shoulb be a '.disableLink' class and then you can do it like this:
+        $('.disableLink a').click( function(event) { event.preventDefault(); });
+    
+    
     * dimmer fix: added a counter main.js as global 'isPOPUP = 0;'
         * new event handler to track changes to this counter... 
     
