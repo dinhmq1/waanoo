@@ -1,4 +1,5 @@
 cxn.php
 .DS*
 facebook*
-
+images/img_db/*
+images/img_temp/*

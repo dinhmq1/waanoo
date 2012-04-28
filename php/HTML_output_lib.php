@@ -101,10 +101,10 @@ function getEventImageLarge($event_id) {
 function contactInfoOrganizer($contactInfo, $contactType, $isContactInfo) {
 	if($isContactInfo == 1) {
 		if($contactType == "email") {
-			return "<span class='contactDetails' >email at: ".strip_tags($contactInfo)."</span>";
+			return "<span class='contactDetails' ><b>email at:</b> ".strip_tags($contactInfo)."</span>";
 			}
 		if($contactType == "phone") {
-			return "<span class='contactDetails' >call at: ".strip_tags($contactInfo)."</span>";
+			return "<span class='contactDetails' ><b>call at:</b> ".strip_tags($contactInfo)."</span>";
 			}
 		}
 	else 
@@ -311,7 +311,7 @@ function singleEventOutput($all_vars) {
 				<b>Time: </b> ".strip_tags($hour)." 
 			</div>
 				<b>Distance: </b>".round($distance, 1)." miles. <br />
-				<b>Location: </b>".strip_tags($venue_address)."
+				<b>Location: </b>".strip_tags($venue_address)." <br />
 				
             $contact_info_div <br />
 		</div>

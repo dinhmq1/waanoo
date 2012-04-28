@@ -53,6 +53,32 @@ function clean_fields($fields){
 	return $fields;
 	}	
 
+// clean contact info for email:
+function verify_email($email){
+	if (!empty($email)){	
+		if (preg_match("/^\w[[:alnum:]\.-_]+@[[:alnum:]\.-_]+\.[[:alnum:]]{2,4}$/i", $email) and filter_var($email, FILTER_VALIDATE_EMAIL)){
+			return true;
+			}
+		else
+			return false;	
+		}//end if not empty clause
+	else
+		return false;
+	} // end verify email. 
+	
+	
+// clean contact info for phone:
+function verify_phone($phone) {
+	print_r($phone);
+	$p1 = $phone['phone1'];
+	$p2 = $phone['phone2'];
+	$p3 = $phone['phone3'];
+	
+	if(preg_match("/[0-9]{3}/", $p1) and preg_match("/[0-9]{3}/", $p2) and preg_match("/[0-9]{4}/", $p3)) 
+		return true;
+	else
+		return false;
+	}
 
 function resizeAndSubmitImg($imageName, $event_id) {
 	$cxn = $GLOBALS['cxn'];
@@ -133,6 +159,10 @@ $oldID = $_REQUEST['oldID'];
 $isImage = $_REQUEST['isImageSubmitted'];
 $imageName = $_REQUEST['imageFileName'];
 
+$isContactInfo = $_REQUEST['isContactInfoActive'];
+$contactType = $_REQUEST['contactInfoType'];
+$contactInfo = $_REQUEST['contactInfoContent'];
+
 
 // encode to array for easy passing
 $all_fields = array(
@@ -166,6 +196,22 @@ extract($all_fields);
 $uid = $_SESSION['user_id'];
 
 
+// process the contact info, if any
+$isOk = false;
+if($isContactInfo == 1) {
+	if($contactType == "email") {
+		$isOk = verify_email($contactInfo);
+		}
+	
+	if($contactType == "phone") {
+		$isOk = verify_phone($contactInfo);
+		$contactInfo = $contactInfo['phone1'].$contactInfo['phone2'].$contactInfo['phone3'];
+		}
+	}
+else
+	$isContactInfo = 0; // in case something nasty happened.
+
+
 // main validation check
 if(checkEmpties($all_fields)) {
 	
@@ -174,16 +220,17 @@ if(checkEmpties($all_fields)) {
 		if(dateCheckSensible($all_fields)) {
 			
 			// to lazy to remove this stucture
-			if(1) {
+			if(($isContactInfo == 0 and $isOk == false) or ($isContactInfo == 1 and $isOk == true)) {
 				// debugger option
 				if($GLOBALS['debug'] == false){
 					// enter event to main table:
 					$query_post = "UPDATE user_events
 						SET  user_id=?, event_title=?, event_description=?, 
-						 start_date=?, end_date=?
+						 start_date=?, end_date=?,
+                         is_contactable=?, contact_type=?, contact_info=?
 						WHERE event_id=?";
 					$stm = $cxn->prepare($query_post);
-					$stm->bind_param("issssi", $uid, $name, $descrip, $begin, $end, $oldID);
+					$stm->bind_param("issssissi", $uid, $name, $descrip, $begin, $end, $isContactInfo, $contactType, $contactInfo, $oldID);
 					$stm->execute();
 					$stm->close();
 					
@@ -223,7 +270,7 @@ if(checkEmpties($all_fields)) {
 			else {
 				//failure
 				$arr = array("status" => 0, "message" => "Failed to create event... 
-					Duplicate event detected!");
+					Contact info invalid!");
 				echo json_encode($arr);
 				}
 			}
