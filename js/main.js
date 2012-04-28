@@ -43,9 +43,25 @@ $(document).ready(function() {
 		$('.eventSingle').mouseout( function() {
 			$(this).css("background-color", "#F8F8F8");
 			});
+            
+    /*** Modify the X button on the single event viewer to be in the top right corner of the singleEvent Viewer
+     ***/ /*
+        $('.eventSingle').click( function() {
+            console.log("repositioned closer");
+            var topOff = $('#singleEventWrapper').offset().top;
+            var leftOff = $('#singleEventWrapper').offset().left;
+            leftOff += $('#singleEventWrapper').width();
+            $('#singleEventCloser').css({
+                position: "absolute",
+                zIndex: "500",
+                top: String(topOff) + "px",
+                left: String(leftOff) +"px"
+                });
+        });  */
 	
 	});
 	
+    
 	$('body').on("mouseover mouseoff", "#loginMainForm", function() {
 	
 		$("#loginMainForm").submit(function(event) {
@@ -55,10 +71,14 @@ $(document).ready(function() {
 		});
 	});
 
+
+
+
+    /*
 	//modify search bar to change size with window
 	var width = $(window).width();
 	$('#srch_bar').attr({size: width*0.04});
-	
+	*/
 	
 	//Shows Login Panel
 		$('#advancedButton').toggle(
