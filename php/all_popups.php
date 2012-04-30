@@ -95,7 +95,7 @@
 
 
 <div id='EventMapWrapper'>
-	Event Address: <span id='eventAddressText'></span>
+	<span id='eventAddressText'></span>
 	
 	<div id='EventMapCanvas'>
 	</div>
@@ -139,8 +139,12 @@
 	<div id='signupPanel'> 
 		email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
 			<span id='emailIsValid'></span><br /> 
-		Password: <input type ='password' id='password' size='10' /><br /> 
-		Password again: <input type ='password' id='passwordcheck' size='10' /><br /> 
+		Password: <input type ='password' id='password' size='10' />
+            <span id='password1Validating'></span>
+            <br /> 
+		Password again: <input type ='password' id='passwordcheck' size='10' />
+            <span id='password2Validating'></span>
+            <br /> 
 		First Name: <input type ='text' id='firstname' size='10' /><br /> 
 		Last Name: <input type ='text' id='lastname'  size='10' /><br />
 		Sex: 

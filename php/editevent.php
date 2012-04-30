@@ -69,7 +69,7 @@ function verify_email($email){
 	
 // clean contact info for phone:
 function verify_phone($phone) {
-	print_r($phone);
+	//print_r($phone);
 	$p1 = $phone['phone1'];
 	$p2 = $phone['phone2'];
 	$p3 = $phone['phone3'];

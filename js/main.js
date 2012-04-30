@@ -69,6 +69,16 @@ $(document).ready(function() {
 		event.preventDefault();
 		signIn();
 		});
+        
+        // SIGNUP BUTTON!
+        // this needs to be .on'ed also!
+        $('#signupBtn').toggle(function(){
+			$('#signupPanel').show();
+			},
+			function(){
+			$('#signupPanel').hide();
+			}
+		);
 	});
 
 
@@ -112,16 +122,6 @@ $(document).ready(function() {
 			}
 		);
 		
-	// toggles Sign-Up panel
-		//$('#signupPanel').hide();
-		
-		$('#signupBtn').toggle(function(){
-			$('#signupPanel').show();
-			},
-			function(){
-			$('#signupPanel').hide();
-			}
-		);
 	
 	// geolocation scripting see -> location_detection.js
 /**** MAP/ LOCATION SCRIPTING ****/
@@ -165,7 +165,29 @@ $(document).ready(function() {
 			});	
 		});
 
-			
+    // check for password len
+    $('#password').keyup(function(){
+        var pass1 = $('#password').val();
+       // console.log(pass1);
+        if(pass1.length < 8)
+            $('#password1Validating').empty().append("<font color='red'>too short...</font>");
+        else
+            $('#password1Validating').empty().append("<font color='green'>good</font>");
+
+    });
+    
+    // check psswd match
+    $('#passwordcheck').keyup(function(){
+        var pass1 = $('#password').val();
+        var pass2 = $('#passwordcheck').val();
+       // console.log(pass1 + pass2);
+        if(pass1 == pass2)
+            $('#password2Validating').empty().append("<font color='green'>match!</font>");
+        else
+            $('#password2Validating').empty().append("<font color='red'>not a match</font>");
+    });
+            
+            
 /*** POSTING EVENT DATA PICKER ***/	
 		
 	$("#eventDateBegin").AnyTime_picker({ 
@@ -303,18 +325,7 @@ $(document).ready(function() {
 		//console.log(e.keyCode);
 		if(e.keyCode == 27) {
 			//console.log("escape key");
-			// THIS IS ALSO A FULL LIST OF POPUPS
-			$("#dimmer").hide();
-			$('#EventMapWrapper').hide();
-			$('#EventDirections').hide();
-			$('#myEventsWrapper').hide();
-			$('#postEventForm-wrapper').hide();
-			$('#map_wrapper').hide();
-			$('#advancedPanel').hide();
-			$('#tempWindow').hide();
-			$('#postEventSuccess').hide();
-			$('#aboutWaanoo').hide();
-			$('#contactWaanoo').hide();
+			controlDimmer(-1);
 		}
 	});	
 	

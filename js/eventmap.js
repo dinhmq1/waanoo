@@ -8,10 +8,10 @@ function closeEventMap() {
 	}
 
 
-function openEventMap(lat, lon, addy) {
+function openEventMap(lat, lon, addy, title) {
 	controlDimmer(1);
 	$('#EventMapWrapper').show();
-	$('#eventAddressText').empty().append(addy);
+	$('#eventAddressText').empty().append("<b>" + title + "</b><br />" + addy);
 	
 	var map_center = new google.maps.LatLng(lat,lon);
 	// NOTE: mapTypeId is required... lol wow.

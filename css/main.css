@@ -591,33 +591,12 @@ html, body
 				
 				}
 		
-		
-		
-		
-		
  /* END PRIMARY PAGE ELEMENTS */
 
-	/* IDK WHAT THIS IS:
-        #pageContent {
-            z-index: 2;
-            width: 450px;
-            height: 300px;
-            background-color: red;
-            position: absolute;
-            display: none;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 15%;
-            
-        }
-        #tips {
-            z-index: 3;
-            background-color: blue;
-            color: white;
-            
-        }
-        * */
-        /*styling not finished due to buggy browsers ect ect, need to build it on waanoo.com
-          before I finish them off - all sorts of problems with centering in IE and safari EG:
-         marign-left: auto, margin-right:auto does not work*/
 
+
+    /* IE FIXES */
+    
+   a, a:active, a:focus {
+    outline: none;
+    }

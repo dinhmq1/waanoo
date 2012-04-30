@@ -1,6 +1,14 @@
 TO DO:
 ======
 	
+    * in single event: fix attending btn.
+    * in update php files.
+    * put space btwn phone number parts on HTMLouputlib
+    
+    
+    
+    
+    
     * note: In main.js I added an event handler inside of the .on() 
     that prevents default on all <a> tags. This should be redone: there
     shoulb be a '.disableLink' class and then you can do it like this:

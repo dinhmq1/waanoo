@@ -20,7 +20,7 @@ function signOutMain(){
 							<input class='testBlackBtn' type='submit' value='submit'  />\
 							&nbsp;&nbsp;&nbsp;\
 							<div id='signupBtn'>\
-								<a href='#'>\
+								<a href='#' >\
 									<img src='./images/buttons/btns_content/btn_signup_inactive.png' />\
 								</a>\
 							</div> \

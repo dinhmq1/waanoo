@@ -255,7 +255,7 @@ function search_output_func_users($all_vars){
 			-->
            
         <div class='eventBtnContainer'>
-			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
+			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\", \"".strip_tags($event_title)."\")'>
 			<a href='#event_num_$event_id'>
 				<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
 				</a>
@@ -318,10 +318,11 @@ function singleEventOutput($all_vars) {
 		
 		<div class='singleEventButtons'>
 			<br />
-			
-			$attend_btn
+			<!--
+                $attend_btn
+                -->
 			<br />
-			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\")'>
+			<span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\", \"".strip_tags($event_title)."\")'>
 				<a href='#'>
 				<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
 				</a>
