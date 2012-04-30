@@ -188,12 +188,15 @@ function signUpSuccessWindow(fname){
     // also reset the bar to be a loggout bar:
     
     $('#login-logout-wrapper').empty().append("<div id='logoutWrapper'>\
-						Hi " + fname +
-						"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                        <span id='nameMsg'>\
+                            Hi " + fname +
+                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
+                            </span>\
 						<span id='logout-button' onClick='signOutMain()'>\
 							<a href='#' class='testBlackBtn'>Sign Out!</a>\
 							</span>\
 						<span id='signout-errors'></span>\
+                        &nbsp;\
 						</div>");
     
 	

@@ -108,9 +108,16 @@ html, body
 			position: relative;
 			display: inline-block;
 			float: right;
-			padding: 5px;
+			padding: 0px;
 			}
-		
+            #nameMsg {
+                position: relative;
+                top: 3px;
+                }
+            #logout-button {
+                position: relative;
+                top: 1px;
+                }
 		
 		#headerLogo {
 			position: absolute;
@@ -121,13 +128,19 @@ html, body
 		#loginMainForm {
 			position: relative;
 			text-align: right;
+            margin: 0px;
+            padding: 0px;
 			}
 		
 		#signupBtn {
 			position: relative;
 			float: right;
+            top: 2px;
 			text-align: right;
+            
 			}
+        
+        
 			
 		.loginField {
 			border-radius: 5px;
@@ -261,9 +274,10 @@ html, body
 			
 			#latlngLoc{
 				position:absolute;
-				top: 40px;
-				left: 5%;
+				top: 32px;
+				left: 3%;
 				z-index:10;
+                opacity: 0.5;
 				font-size: 11px;
 				color: #9B9B9B;
 				}
@@ -599,4 +613,9 @@ html, body
     
    a, a:active, a:focus {
     outline: none;
+    border: none;
     }
+    img {
+        outline: none;
+        border: none;
+        }

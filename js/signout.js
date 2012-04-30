@@ -19,11 +19,11 @@ function signOutMain(){
 							<input class='loginField' type='password' id='login-password' placeholder=' password' size='10' />\
 							<input class='testBlackBtn' type='submit' value='submit'  />\
 							&nbsp;&nbsp;&nbsp;\
-							<div id='signupBtn'>\
-								<a href='#' >\
-									<img src='./images/buttons/btns_content/btn_signup_inactive.png' />\
+							<a href='#' id='signupBtn' class='testBlackBtn'>\
+									<!-- <img src='./images/buttons/btns_content/btn_signup_inactive.png' /> -->\
+                                    sign up!\
 								</a>\
-							</div> \
+							&nbsp;\
 						</form>	";
 			
 			$('#login-logout-wrapper').empty().append(login);

@@ -40,12 +40,15 @@ else {
 				if($logged_in_bool == true){	
 					echo "
 						<div id='logoutWrapper'>
-						Hi ".$usr.
-						"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id='nameMsg'>
+                            Hi ".$usr.
+                            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
 						<span id='logout-button' onClick='signOutMain()'>
 							<a href='#' class='testBlackBtn'>Sign Out!</a>
 							</span>
 						<span id='signout-errors'></span>
+                        &nbsp;
 						</div>";
 					}
 				else{
@@ -58,12 +61,11 @@ else {
 								
 							&nbsp;&nbsp;&nbsp;
 							
-							<div id='signupBtn'>
-								<a href='#'>
-									<img src='./images/buttons/btns_content/btn_signup_inactive.png' />
+								<a href='#' id='signupBtn' class='testBlackBtn'>
+									<!-- <img src='./images/buttons/btns_content/btn_signup_inactive.png' /> -->
+                                    sign up!
 								</a>
-							</div> 
-							
+							&nbsp;
 						</form>	
 						
 						
