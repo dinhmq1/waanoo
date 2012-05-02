@@ -394,10 +394,16 @@ html, body
 				.btn:hover{
 					color: red;
 					}
+                    
+            #dragNdropMsg {
+                position: absolute;
+				top: 8%;
+				left: 45%;
+                }
           
 			#miniMapCanvas{
 				height: 80%;
-				width: 50%;
+				width: 55%;
 				position: absolute;
 				top: 15%;
 				left: 45%;

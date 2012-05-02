@@ -12,7 +12,7 @@
 
 
 <div id='postEventForm-wrapper'>
-	<h3>Post an Event:</h5>
+	<h3 style='text-align: left; padding-left: 20px;'>Post an Event! </h3>
 	<span id='cancelPostEventBtn' onClick='close_post_event()'>
 		<a href='#' class='testBlackBtn'>Cancel</a>
 		</span>
@@ -88,9 +88,12 @@
 		</span>
 	</div>
 	
-	<div id='miniMapCanvas'>
-		<!-- this is where we look up the reverse geocoding stuff -->
-	</div>
+        <div id='dragNdropMsg'>
+        <small>note: drag and drop enabled on map</small>
+        </div>
+        <div id='miniMapCanvas'>
+            <!-- this is where we look up the reverse geocoding stuff -->
+    </div>
 </div>
 
 
