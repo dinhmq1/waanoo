@@ -168,3 +168,27 @@
             color: white;
             background-color: black;
             }
+
+
+
+
+/**** EVENT ANALYTICS ***********/
+
+    #pageviewMapWrapper {
+        display: none;
+        position: fixed;
+        top: 10%;
+        left: 10%;
+        height: 80%;
+        width: 80%;
+        
+        z-index: 500;
+        overflow: auto;
+        background-color: #F8F8F8;	
+        border-radius: 5px;
+        }
+        
+        #pageviewMap {
+            width: 100%;
+            height: 90%;
+            }

@@ -201,3 +201,16 @@
     <div id='singleEventContent'>
         </div>
 </div>
+
+
+
+<div id='pageviewMapWrapper'>
+    <div class='closer'  id='singleEventCloser' onClick='closePageviewMap()'>
+        <a href='#' class='testBlackBtn'>
+            Close
+        </a>
+    </div>
+    
+    <div id='pageviewMap'>
+        </div>
+</div>

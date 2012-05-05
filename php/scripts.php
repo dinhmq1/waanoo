@@ -33,6 +33,8 @@
 		<script src="js/footerpopups.js"></script>
 		<script src='js/single_event.js'></script>
 		<script src='js/popCounter.js'></script>
+        <script src='js/add_pageview.js'></script>
+        <script src='js/pageview_map.js'></script>
 		
 	<!-- not in-house scripts -->
 		<script src="js/strtotime.js"></script>

@@ -141,8 +141,23 @@ useful code for this project:
 	http://code.google.com/apis/maps/documentation/places/
 			
 			
+
+Latest Tables
+==============
+
+    5/5/12
+    pageviews:
+        id=int, autoinc, pk
+        event_id = int, event id foreign key_
+        lat = double (10,6)
+        lon = double (10,6)
+        timestamp = int, unix time for pageviews
 		
-		
+        
+
+        
+        
+        
 Layout
 ======
 

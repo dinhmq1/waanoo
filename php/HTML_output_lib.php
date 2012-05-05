@@ -43,6 +43,26 @@ function editBtn($user_id, $event_id) {
 	else
 		return "";
 	}
+    
+/*** Opens up a map with the pageview tracker ***/
+
+function pageviewTrackerMap($user_id, $event_id) {
+    if(@$_SESSION['signed_in'] == true) { 
+		$uid_session = $_SESSION['user_id'];
+		if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
+            return 
+				"<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id)'>
+					<a href='#'>
+						Pageview Map
+					</a>
+				</span>";
+			}
+		else 
+			return "";
+		}
+	else
+		return "";
+    }
 
 /*** CHECKS IF IMAGE, IF THERE IS FIND IT AND MAKE A TAG ***/
 
@@ -289,6 +309,7 @@ function singleEventOutput($all_vars) {
 	$count_attend = getNumAttend($event_id);
 	$event_image = getEventImageLarge($event_id);
 	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
+    $pageviewMapBtn = pageviewTrackerMap($user_id, $event_id);
 	
 	//$event_description = eventFieldShortner($event_description, 75);
 	//$event_title = eventFieldShortner($event_title, 40);
@@ -341,6 +362,8 @@ function singleEventOutput($all_vars) {
 			<br />
 			$edit_btn
 			<br />
+            $pageviewMapBtn
+            <br />
 		</div>
 		
 			<br />

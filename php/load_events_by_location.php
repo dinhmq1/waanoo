@@ -8,7 +8,7 @@ session_start();
 $GLOBALS['include_YQL'] = false;
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$DEBUG = false;
+$DEBUG = true;
 
 $date_search = date("Y-m-d H:m:s", time() - 60*60*24*1); // 12 HOURS EARLIER
 $date_search_2 = date("Y-m-d H:m:s", time() + 60*60*24*45); // two weeks ahead

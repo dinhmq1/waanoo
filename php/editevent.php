@@ -196,6 +196,24 @@ extract($all_fields);
 $uid = $_SESSION['user_id'];
 
 
+/***  only creator can edit
+ */
+$qry = "SELECT user_id FROM user_events 
+        WHERE event_id='$event_id'
+        ";
+$res = mysqli_query($cxn, $qry);
+$row = mysqli_fetch_assoc($res);
+$db_uid = $row['user_id'];
+
+if($uid != $db_uid or $_SESSION['privleges'] != "admin") {
+	$arr = array("status" => 0, 
+		"message" => "Event does not belong to user!");
+	echo json_encode($arr);
+	exit();
+	}
+/***********************************************/
+
+
 // process the contact info, if any
 $isOk = false;
 if($isContactInfo == 1) {

@@ -5,7 +5,11 @@ function eventSingleViewer(event_id){
     
     $('#singleEventWrapper').show();
     
-   controlDimmer(1);
+    // add the dimmer
+    controlDimmer(1);
+    
+    // add a pageview for the event
+    addEventPageview(event_id);
     
     eventData = {
         eventID: event_id,
@@ -23,7 +27,8 @@ function eventSingleViewer(event_id){
 		success: function(result) {
 			// do stuff on result
             if(result.status == 1) {
-                $('#singleEventContent').empty().append(result.content);
+                // add data to event data holder
+                $('#singleEventContent').empty().append(result.content);             
                 }
             }
         });
