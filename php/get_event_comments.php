@@ -31,7 +31,7 @@ function deleteBtnComment($cid, $uid, $event_id) {
     $privs = $row['privlege_level'];
     
     if($uid_session == $uid or $privs == "admin")
-        return "<a href='#' class='testBlackBtn' onClick='deleteEventComment($event_id, $cid)'>
+        return "&nbsp;<a href='#' class='testBlackBtn' onClick='deleteEventComment($event_id, $cid)'>
                     delete
                 </a>
             ";

@@ -35,7 +35,7 @@ while($row = mysqli_fetch_assoc($res)) {
 // reject if duplicate criteria met
 if($duplicate > 0) {
     $arr = array("status" => 0, 
-		"message" => "Duplicate event detected!");
+		"message" => "Duplicate comment detected!");
 	echo json_encode($arr);
 	exit();
     }
