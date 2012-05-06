@@ -59,6 +59,7 @@ function reSubmitEvent() {
 		
 		var eventName = $('#eventName').val();
 		var eventLoc = $('#eventLocation').val();
+        
 		// fuckit, the got switched somewhere, so switchem again
 		var eventBegin = $('#eventDateBegin').val();
 		var eventEnd = $('#eventDateEnd').val();
@@ -68,6 +69,10 @@ function reSubmitEvent() {
 		var isImage = $('#isThereImage').val();
         var contact = $('#allowContactEvtent').attr('checked');
         
+        // convert date to MySQL:
+        console.log("converting times");
+        //eventBegin = toMySQLTime(eventBegin);
+        //eventEnd = toMySQLTime(eventEnd);
 		
 		console.log("filename: " + imgFileName);
 		console.log("ImageOK: " + isImage);

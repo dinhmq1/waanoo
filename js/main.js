@@ -190,22 +190,24 @@ $(document).ready(function() {
             
 /*** POSTING EVENT DATA PICKER ***/	
 		
+    // "%Y-%m-%d %h:%i %p" <-- w/ am and pm
+    // 
 	$("#eventDateBegin").AnyTime_picker({ 
-		format: "%Y-%m-%d %l:%i %p",
+		format: "%Y-%m-%d %H:%i",
         formatUtcOffset: "%: (%@)",
         hideInput: false 
 		});
 	
 	$("#eventDateEnd").AnyTime_picker({
-        format: "%Y-%m-%d %l:%i %p",
+        format: "%Y-%m-%d %H:%i",
         formatUtcOffset: "%: (%@)",
         hideInput: false            //change later only for dev purposes
           //placement: "inline" 
         });
     
-    /*
+    
+    
 	$("#eventDateBegin").change(function() {
-
 		var dateBeginAgain = $("#eventDateBegin").val();
 		// push date ahead 3 hrs.
 		var newTime = strtotime(dateBeginAgain) + 60*60*3; // + 3 hrs
@@ -228,7 +230,7 @@ $(document).ready(function() {
 		console.log(newDateEnd);
 		$("#eventDateEnd").val(newDateEnd);
 		});
-    */
+    
 	
 	
 	// char count for the description

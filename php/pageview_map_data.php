@@ -34,7 +34,7 @@ $res = mysqli_query($cxn, $qry);
 $row = mysqli_fetch_assoc($res);
 $db_uid = $row['user_id'];
 
-if($uid != $db_uid or $_SESSION['privleges'] != "admin") {
+if($uid != $db_uid and $_SESSION['privleges'] != "admin") {
 	$arr = array("status" => 0, 
 		"message" => "Event does not belong to user!");
 	echo json_encode($arr);
