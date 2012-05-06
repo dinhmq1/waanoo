@@ -191,44 +191,21 @@ $(document).ready(function() {
 /*** POSTING EVENT DATA PICKER ***/	
 		
 	$("#eventDateBegin").AnyTime_picker({ 
-		format: "%Y-%m-%d %H:%i",
+		format: "%Y-%m-%d %l:%i %p",
         formatUtcOffset: "%: (%@)",
         hideInput: false 
 		});
 	
-	$("#eventDateEnd").AnyTime_picker(
-        { format: "%Y-%m-%d %H:%i",
-          formatUtcOffset: "%: (%@)",
-          hideInput: false            //change later only for dev purposes
+	$("#eventDateEnd").AnyTime_picker({
+        format: "%Y-%m-%d %l:%i %p",
+        formatUtcOffset: "%: (%@)",
+        hideInput: false            //change later only for dev purposes
           //placement: "inline" 
-          });
-		
+        });
+    
+    /*
 	$("#eventDateBegin").change(function() {
-		/*
-		var dateBegin = $("#eventDateBegin").val();
-		
-		// NOT DONE:
-		// push date ahead of current date 60 mins if needed
-		var firstTime = strtotime(datebegin);
-		var ts = (new Date()).getTime();
-		
-		if(firstTime < (ts + 60*60)) { // at least an hour ahead
-			var month = ts.getMonth() + 1;
-			if(month < 10)
-				month = "0" + month.toString();
-			var day = ts.getDate();	
-			if(day < 10)
-				day = "0" + day.toString();
-			var hrs = ts.getHours();
-			if(hrs < 10)
-				hrs = "0" + hrs.toString();
-			var mins = ts.getMinutes();
-			if(mins < 10) 
-				mins = "0" + mins.toString();
-			var dateBegin = ts.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins
-			$("#eventDateBegin").val(dateBegin);
-			}
-		*/
+
 		var dateBeginAgain = $("#eventDateBegin").val();
 		// push date ahead 3 hrs.
 		var newTime = strtotime(dateBeginAgain) + 60*60*3; // + 3 hrs
@@ -251,9 +228,7 @@ $(document).ready(function() {
 		console.log(newDateEnd);
 		$("#eventDateEnd").val(newDateEnd);
 		});
-
-	// popup box on event submission success
-	//$('#postEventSuccess').hide();
+    */
 	
 	
 	// char count for the description

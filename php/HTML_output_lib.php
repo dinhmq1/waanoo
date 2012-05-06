@@ -146,6 +146,7 @@ function attendBtn($user_id, $event_id) {
 			or die("failed to select ftom attendees table");
 		$count = mysqli_num_rows($qry);
 		if($count == 0) {
+            // ATTENDING
 			return "
 				<span  onClick='attendingEvent($event_id)'>
 					<a href='#'>
@@ -157,10 +158,11 @@ function attendBtn($user_id, $event_id) {
 				</span>";
 			}
 		else {
+            // NOT ATTENDING
 			return "
-				<span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
+				<span onClick='attendingEvent($event_id)'>
 					<a href='#'>
-					<img class='attendImg' src='images/buttons/btns_content/btn_attend_active.png' />
+					<img class='attendImg' id='attendingBtn_$event_id' src='images/buttons/btns_content/btn_attend_active.png' />
 					</a>
 				</span>
 				<span id='attendingLoader_$event_id' style='display:none'>

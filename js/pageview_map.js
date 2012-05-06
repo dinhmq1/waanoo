@@ -69,7 +69,7 @@ function parsePageviewData(pData) {
 // appends a google maps to #pageviewMap
 // inside of #pageviewMapWrapper
 // located in all_popups.php
-// PASSED: lat and lng of event.
+// PASSED: lat and lng of event, and event pageview array
 function addPageviewMap(pageviewData, lat_event, lon_event) {
 
     var map_center = new google.maps.LatLng(lat_event,longitude);
@@ -109,7 +109,6 @@ function addPageviewMap(pageviewData, lat_event, lon_event) {
         var marker_pos = new google.maps.Marker({
 				map: pageviewMapObject,
 				draggable: true,
-				animation: google.maps.Animation.BOUNCE,
 				position: pvMarker,
 				icon: flagIcon
 			});

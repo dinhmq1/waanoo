@@ -184,6 +184,8 @@
 <br />
 
 
+
+
 <div id='singleEventWrapper'>
     <div class='closer'  id='singleEventCloser' onClick='closeSingleEvent()'>
         <!--
@@ -201,6 +203,7 @@
     <div id='singleEventContent'>
         </div>
 </div>
+
 
 
 
