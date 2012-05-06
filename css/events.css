@@ -206,9 +206,23 @@
         
         z-index: 200;
         overflow: auto;
-        background-color: #F8F8F8;	
+        background-color: #EEEDEA;
         border-radius: 5px;
         }
 
+        .eventComment {
+            background-color: #F8F8F8;
+            
+            margin-left: auto;
+            margin-right: auto;
+            width: 95%;
 
+            border: 1px groove black;
+            border-color: #D2D2D2;
+            border-width: 1px;
+            border-bottom: none;	
+            
+            border-radius: 5px;
+            overflow: auto;
+            }
 

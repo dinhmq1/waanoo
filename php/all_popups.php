@@ -225,8 +225,7 @@
         Comment on this event:
         <form>
             <input id='eventIdMsg' value='0' type='hidden' />
-            <textarea id='eventMsgComment' rows="3" cols="35" maxlength="500">
-            </textarea>
+            <textarea id='eventMsgComment' rows="3" cols="35" maxlength="500"></textarea>
                 <br />
             <a href='#' class='testBlackBtn' onClick='postEventComment()'>
                 Post
