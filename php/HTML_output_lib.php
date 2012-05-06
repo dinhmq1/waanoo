@@ -64,6 +64,40 @@ function pageviewTrackerMap($user_id, $event_id) {
 		return "";
     }
 
+
+// mf ratio
+function maleToFemaleRatio($event_id) {
+    $cxn = $GLOBALS['cxn'];
+    $qry = "SELECT (SELECT sex 
+            FROM user_list 
+            WHERE user_list.user_id=attendees.user_id)
+            as sexes FROM attendees 
+            WHERE event_id='$event_id'";
+    $res = mysqli_query($cxn, $qry);
+    
+    $males = 0;
+    $females = 0;
+    while($row = mysqli_fetch_assoc($res)) {
+        $sex = $row['sexes'];
+        if($sex == "M")
+            $males++;
+        if($sex == "F")
+            $females++;
+        }
+    if($males != 0 and $females != 0){
+        return double($males) / double($females);
+        }
+    else if($males == 0 and $females == 0)
+        return "no attendees";
+    else if($males == 0)
+        return "all female";
+    else if($females == 0)
+        return "all males";
+    else
+        return 0;
+    }
+
+
 /*** CHECKS IF IMAGE, IF THERE IS FIND IT AND MAKE A TAG ***/
 
 function getEventImageSmall($event_id) {
@@ -312,6 +346,7 @@ function singleEventOutput($all_vars) {
 	$event_image = getEventImageLarge($event_id);
 	$contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
     $pageviewMapBtn = pageviewTrackerMap($user_id, $event_id);
+    $mfRatio = maleToFemaleRatio($event_id);
 	
 	//$event_description = eventFieldShortner($event_description, 75);
 	//$event_title = eventFieldShortner($event_title, 40);
@@ -356,9 +391,9 @@ function singleEventOutput($all_vars) {
 				<span id='att_count_$event_id'>
 					$count_attend
 				</span>
-			
-			<br />
-			<br />
+            <br />
+			<small>M/F Ratio: </small><br />
+            <small>$mfRatio</small><br />
 			<br />
 			$del_btn
 			<br />

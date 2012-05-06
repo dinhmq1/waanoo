@@ -154,8 +154,13 @@ Latest Tables
         timestamp = int, unix time for pageviews
 		
         
-
-        
+    5/6/12
+    event_comments:
+        message_id = int, autoinc, pk
+        event_id = int, event id foreign key_
+        user_id = int, user is foreign key_
+        timestamp = int, unix time for pageviews
+        message = varchar 500
         
         
 Layout
@@ -165,12 +170,6 @@ Layout
 * content bars: #F8F8F8	
 * popup opacity: 0.95;
 		
-		
-		
-		
-		
-		
-	
 	
 Search algorith outline:
 =========================

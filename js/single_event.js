@@ -8,6 +8,11 @@ function eventSingleViewer(event_id){
     // add the dimmer
     controlDimmer(1);
     
+    // control comments
+    showEventComments();
+    changeEventId(event_id);
+    populateEventComments();
+    
     // add a pageview for the event
     addEventPageview(event_id);
     
@@ -38,6 +43,7 @@ function eventSingleViewer(event_id){
 function closeSingleEvent() {
     $('#singleEventWrapper').hide();
     
+    hideEventComments();
     controlDimmer(-1);
     
     $('#singleEventContent').empty();

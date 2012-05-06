@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="./css/footerpopups.css" />
     <!-- SEE FOR FONTS: http://www.google.com/webfonts#ChoosePlace:select --> 
 		<link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+        
 <!-- need for all -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<!-- calling asynch, dont need here -->
@@ -14,6 +15,7 @@
 		<script src="js/jQrotate.2.1.js"></script>
 	<!-- anytime plugin by Andrew M. Andrews III -->
 		<script src="js/anytimec.js"></script>	
+        
 <!-- custom scripts -->
 	<!-- THIS ONE HAS ALL OF THE ready() wrapped jQuery stuff -->
 		<script src="js/main.js"></script>
@@ -35,11 +37,8 @@
 		<script src='js/popCounter.js'></script>
         <script src='js/add_pageview.js'></script>
         <script src='js/pageview_map.js'></script>
+        <script src='js/event_comments.js'></script>
 		
 	<!-- not in-house scripts -->
 		<script src="js/strtotime.js"></script>
 		<script src="js/googleanalytics.js"></script>
-		
-		
-		
-	
