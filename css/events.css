@@ -226,3 +226,6 @@
             overflow: auto;
             }
 
+        .eventCommentText {
+            text-align: left;
+            }

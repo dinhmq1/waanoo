@@ -15,6 +15,30 @@ require('cxn.php');
  * -write text formatter for the comments
  */
 
+// PASSED: comment_id, user_id for comment, event_id
+function deleteBtnComment($cid, $uid, $event_id) {
+    $cxn = $GLOBALS['cxn'];
+    
+    // get user ID for comment
+    $uid_session = $_SESSION['user_id'];
+    
+    $qry = "SELECT * FROM user_list
+            WHERE user_id='$uid'";
+    $res = mysqli_query($cxn, $qry);
+    $row = mysqli_fetch_assoc($res);
+    
+    // get user id for admin
+    $privs = $row['privlege_level'];
+    
+    if($uid_session == $uid or $privs == "admin")
+        return "<a href='#' class='testBlackBtn' onClick='deleteEventComment($event_id, $cid)'>
+                    delete
+                </a>
+            ";
+    else 
+        return "";
+    }
+
 function formatDate($timestamp) {
     return date("F j, Y, g:i a", $timestamp);
     }
@@ -47,12 +71,13 @@ function formatMsg($msg) {
     return substr($msg, 0, 500);
     }
     
-
-function prepareComment($msg, $timestamp, $uid) {
+// PASSED: message text, timestamp for msg, user id for comment, comment_id, event_id
+function prepareComment($msg, $timestamp, $uid, $cid, $event_id) {
     $date = formatDate($timestamp);
    // $time = formatDate($timestamp);
     $name = getUserName($uid);
     $msg = formatMsg($msg);
+    $delbtn = deleteBtnComment($cid, $uid, $event_id);
     return "<div class='eventComment'>
                 <span style='font-size:50%;'>
                     <span>$date</span>
@@ -62,8 +87,11 @@ function prepareComment($msg, $timestamp, $uid) {
                     <span style='font-size:75%;'>
                         $name</span>
                     </span>
+                    <span>
+                        $delbtn
+                        </span>
                 <br />
-                <span>
+                <span class='eventCommentText'>
                     ".strip_tags($msg)."
                 </span>
             </div>
@@ -91,8 +119,9 @@ if($numRows > 0) {
         $msg = $row['message'];
         $timestamp = $row['timestamp'];
         $uid = $row['user_id'];
+        $cid = $row['message_id'];
         
-        $txt .= prepareComment($msg, $timestamp, $uid);
+        $txt .= prepareComment($msg, $timestamp, $uid, $cid, $event_id);
         }
     
     $arr = array("status" => 1, "messages" => $txt);

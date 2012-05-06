@@ -228,7 +228,7 @@
             <textarea id='eventMsgComment' rows="3" cols="35" maxlength="500"></textarea>
                 <br />
             <a href='#' class='testBlackBtn' onClick='postEventComment()'>
-                Post
+                post
             </a>
         </form>
             <br />

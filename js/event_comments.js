@@ -74,3 +74,35 @@ function postEventComment() {
 function changeEventId(event_id) {
     $('#eventIdMsg').val(event_id);
     }
+
+
+// delete a comment
+function deleteEventComment(event_id, comment_id) {
+
+    eventData = {
+        eventID: event_id,
+        commentID: comment_id
+        };
+    
+    $.ajax({
+		type: "POST",
+		url: "./php/delete_event_comment.php",
+		data: eventData,
+		dataType: "json",
+		success: function(result) {
+			// do stuff on result
+            if(result.status == 1) {
+                console.log("success: " + result);
+                alert
+                // should be like:
+                    // do animation on the msg to hide it slowly
+                    // then reoad.
+                // reload comments
+                populateEventComments();
+                }
+            else { 
+                alert(result.message);
+                }
+            } // end success
+        }); // end AJAX call
+    }

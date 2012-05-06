@@ -39,6 +39,13 @@ if($duplicate > 0) {
 	echo json_encode($arr);
 	exit();
     }
+
+if($message == "" or strlen($message) <= 3) {
+    $arr = array("status" => 0, 
+		"message" => "You cannot post an empty message!");
+	echo json_encode($arr);
+	exit();
+    }
     
 
 $qry = "INSERT INTO event_comments
