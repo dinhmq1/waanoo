@@ -20,21 +20,23 @@ function deleteBtnComment($cid, $uid, $event_id) {
     $cxn = $GLOBALS['cxn'];
     
     // get user ID for comment
-    $uid_session = $_SESSION['user_id'];
+    $uid_session = @$_SESSION['user_id'];
     
     $qry = "SELECT * FROM user_list
-            WHERE user_id='$uid'";
+            WHERE user_id='$uid_session'";
     $res = mysqli_query($cxn, $qry);
     $row = mysqli_fetch_assoc($res);
     
     // get user id for admin
     $privs = $row['privlege_level'];
     
-    if($uid_session == $uid or $privs == "admin")
+    //echo "uid session:$uid_session  uid:$uid  privs: $privs";
+    if(@$uid_session === $uid or $privs == "admin") {
         return "&nbsp;<a href='#' class='testBlackBtn' onClick='deleteEventComment($event_id, $cid)'>
                     delete
                 </a>
             ";
+        }
     else 
         return "";
     }
