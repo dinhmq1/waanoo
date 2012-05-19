@@ -29,6 +29,9 @@ function mainSearch(searchTerm) {
             if(result.status == 1) {
                 console.log("search completed.");
                 $('.eventViewer').empty().append(result.content);
+                
+                // set search type for loader
+                $('#searchType').val("keyword");
                 }
             }
         });

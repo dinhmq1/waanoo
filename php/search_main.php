@@ -42,13 +42,18 @@ function get_event_address($event_id, $lat_user, $lon_user) {
 $searchTerm = $_REQUEST['term'];
 $lat_user = $_REQUEST['latitude'];
 $lon_user = $_REQUEST['longitude'];
+// offset checker:
+if(isset($_REQUEST['offset'])) {
+    $offset = $_REQUEST['offset'];
+    }
+else {
+    // the first 15
+    $offset = 0;
+    }
+
+// Manipulation of ajax terms:
 $term = "%$searchTerm%";//echo $term;
 
-/*
- * WHERE 
-    '$d' <= (SELECT end_date FROM YQL_events 
-    WHERE event_id = YQL_event_address.event_id)
- */
 
 // using Mysqli prepared statements
 $sql = "SELECT 
@@ -66,11 +71,12 @@ $sql = "SELECT
         FROM user_events
         WHERE ? <= start_date 
         AND 
-        event_title LIKE ?";
+        event_title LIKE ?
+        LIMIT ?, 10";
 
 $stm = $cxn->prepare($sql);
 $d = DATE_TO_SEARCH_FROM; // THIS GETS PASSED BY REF. Has to be a var.
-$stm->bind_param('ss', $d, $term);
+$stm->bind_param('ssi', $d, $term, $offset);
 $stm->execute();
 $stm->bind_result($event_id,    
     $user_id,
