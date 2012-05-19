@@ -8,30 +8,30 @@ require 'php/header.php';
     
     <br />
     <br />
-	<div id="logo">
-	<img src='images/logos/logo_main.png' />
-	</div>
+    <div id="logo">
+    <img src='images/logos/logo_main.png' />
+    </div>
     <br />
 
 
-	<span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByLocation()">
-		<a href="#" >
+    <span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByLocation()">
+        <a href="#" >
             <!-- <img src='images/buttons/btns_headline/btn_location_inactive.png' />
             -->
             LOCATION
         </a>
-	</span>
+    </span>
     
-	&nbsp;&nbsp;
-	<span id="loadByDate" class='testBlackBtn' onClick="loadEventsByDate()">
-		<a href="#" >
+    &nbsp;&nbsp;
+    <span id="loadByDate" class='testBlackBtn' onClick="loadEventsByDate()">
+        <a href="#" >
             <!-- <img src='images/buttons/btns_headline/btn_date_inactive.png' />
             -->
             DATE
         </a>
-	</span>
-	&nbsp;&nbsp;
-	
+    </span>
+    &nbsp;&nbsp;
+    
     
     <span id="postEventButton" class='testBlackBtn' onClick='open_post_event()'>
         <a href="#">
@@ -59,12 +59,23 @@ require 'php/header.php';
         </a>
     </span>
     
+    
     &nbsp;&nbsp;
     <span id="ajaxLoaderLoadEvents">
-		<img src="images/ajax-loader-transp-arrows.gif" />
-	</span>
+        <img src="images/ajax-loader-transp-arrows.gif" />
+    </span>
     
 <br />
+<br />
+
+<!-- search bar -->
+<form id='searchBarForm'>
+<input type='text' class='searchBar' id='searchBarAuto' size='30' />
+    &nbsp;
+    <!-- 
+    <a href='#' >go</a> -->
+    <input type='submit' value='go' class='testBlackBtn'/>
+    </form>
 <br />
 
 <div class="eventViewer">
@@ -81,16 +92,16 @@ require 'php/header.php';
 <br />
 
 <div id="moreEventsBtn" onclick="loadMoreEvents()">
-	<input type="hidden" id="searchType" value="location" />
-	<input type="hidden" id="eventOffset" value="10" />
+    <input type="hidden" id="searchType" value="location" />
+    <input type="hidden" id="eventOffset" value="10" />
     <a href="#" >
         <img src='images/buttons/btns_headline/btn_load_inactive.png' />
-	</a>
+    </a>
 </div>
 &nbsp;&nbsp;&nbsp;
-	<span id="ajaxLoaderLoadMore">
-		<img src="images/ajax-loader-transp-arrows.gif" />
-	</span>
+    <span id="ajaxLoaderLoadMore">
+        <img src="images/ajax-loader-transp-arrows.gif" />
+    </span>
 
 <?php require("php/all_popups.php"); ?>
 <?php require 'php/footer.php';?>

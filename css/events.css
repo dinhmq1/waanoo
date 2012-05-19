@@ -1,5 +1,5 @@
 /* EVENT VIEW AREA*/
-		
+        
 .eventViewer{
     font-family: 'Karla', sans-serif;
 
@@ -8,12 +8,18 @@
     width: 55%;
     
     padding: 0px;
-    
     font-size: 70%;
     
     background-color: #EEEDEA;
     border-radius: 5px;
     word-wrap: break-word;
+    
+    /*
+    border-style: solid;
+    border-width: 1px;
+    */
+    
+    box-shadow: 20px 5px 5px #2B2B2B;
     }
     
     .eventSingle{
@@ -29,7 +35,7 @@
         border-width: 1px;
         border-bottom: none;
 
-        background-color: #F8F8F8;	
+        background-color: #F8F8F8;  
         border-radius: 5px;
         overflow: auto;
         }
@@ -108,7 +114,7 @@
     
     z-index: 50;
     overflow: auto;
-    background-color: #F8F8F8;	
+    background-color: #F8F8F8;  
     border-radius: 5px;
     }
 
@@ -184,7 +190,7 @@
         
         z-index: 500;
         overflow: auto;
-        background-color: #F8F8F8;	
+        background-color: #F8F8F8;  
         border-radius: 5px;
         }
         
@@ -220,7 +226,7 @@
             border: 1px groove black;
             border-color: #D2D2D2;
             border-width: 1px;
-            border-bottom: none;	
+            border-bottom: none;    
             
             border-radius: 5px;
             overflow: auto;

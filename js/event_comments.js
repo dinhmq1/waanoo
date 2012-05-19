@@ -4,9 +4,11 @@ function showEventComments() {
     $('#eventCommentWrapper').show();
     }
     
+    
 function hideEventComments() {
     $('#eventCommentWrapper').hide();
     }
+
 
 // push the comments into the content area
 function populateEventComments() {
