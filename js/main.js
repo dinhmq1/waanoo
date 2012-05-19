@@ -149,35 +149,12 @@ $(document).ready(function() {
         // some call to a search function goes here.
         var searchTerm = $('#searchBarAuto').val();
         console.log("searching: " + searchTerm);
+        mainSearch(searchTerm);
     });
     
     // this is for the search. Just testing for now. Remote data source next.
     // need to write a remote data scource that looks throught stuff in DB
     // just a php script to scan titles and descriptions and addresses?
-    var availableTags = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-        ];
         
         $( "#searchBarAuto" ).autocomplete({
             source: "php/autocomplete-backend.php",

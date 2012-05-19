@@ -42,6 +42,7 @@
         <script type="text/javascript" src='js/add_pageview.js'></script>
         <script type="text/javascript" src='js/pageview_map.js'></script>
         <script type="text/javascript" src='js/event_comments.js'></script>
+        <script type="text/javascript" src='js/search.js'></script>
         
     <!-- not in-house scripts -->
         <script type="text/javascript" src="js/strtotime.js"></script>
