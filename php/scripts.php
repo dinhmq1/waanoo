@@ -19,6 +19,8 @@
         <script type="text/javascript" src="js/anytimec.js"></script>   
     <!-- custom jQ ui -->
         <script type="text/javascript" src='js/jquery/jquery-ui-1.8.20.custom.min.js'></script>
+    <!-- jQuery cookies plugin. Latest from github 5/20/12 -->
+        <script type="text/javascript" src='js/jquery/jquery.cookie.js'></script>
         
 <!-- custom scripts -->
     <!-- THIS ONE HAS ALL OF THE ready() wrapped jQuery stuff -->

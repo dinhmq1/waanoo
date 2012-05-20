@@ -45,20 +45,34 @@ showMapExecuted = false;
 //main browser location detecting function
     function get_location() {
         //EXECUTES FROM THE .ready()
-        //navigator.geolocation is a global broswer object
-        try {
-            navigator.geolocation.getCurrentPosition(show_map,geoCodeFailed,{timeout: 5000});
+        
+        // if we have cookies w/ this data get them instead:
+        if($.cookie("latitude") && $.cookie("longitude")) {
+            //alert("cookies: lat:" + $.cookie("latitude") + " lon:"+ $.cookie("longitude"));
+            latitude = $.cookie("latitude");
+            longitude = $.cookie("longitude");
             
-            // basically we wil lload it up anyway. But we will reload the events if they accept geolocation.
-            setTimeout( function() {
-                if(showMapExecuted == false){
-                    geoCodeFailed(false);
+            // load up stuff
+            load_events(latitude, longitude);
+            setReversedGeocode();
+            
+            } // use cookies, otherwise do geolocation again
+        else {
+            try {
+                //navigator.geolocation is a global broswer object, if supported!
+                navigator.geolocation.getCurrentPosition(show_map,geoCodeFailed,{timeout: 5000});
+                
+                // basically we wil lload it up anyway. But we will reload the events if they accept geolocation.
+                setTimeout( function() {
+                    if(showMapExecuted == false){
+                        geoCodeFailed(false);
+                    }
+                    }, 100);
                 }
-                }, 100);
-            }
-         catch(err) {
-            geoCodeFailed(true);
-            };
+             catch(err) {
+                geoCodeFailed(true);
+                };
+            }// end geolocation block
         }
     
     function geoCodeFailed(showAlert) {
@@ -92,6 +106,10 @@ showMapExecuted = false;
         lat = "latitude: " + latitude;
         lon = "Longitude: " + longitude;
         console.log(lat,lon);
+        
+        // make a cookie:
+        $.cookie("latitude", latitude, { expires: 365 });
+        $.cookie("longitude", longitude, { expires: 365 });
         
         // load events to the page
         load_events(latitude, longitude);
@@ -167,6 +185,10 @@ showMapExecuted = false;
         var new_pos = marker_you.getPosition();
         latitude = new_pos.lat();
         longitude = new_pos.lng();
+        
+        // reset the cookies:
+        $.cookie("latitude", latitude, { expires: 365 });
+        $.cookie("longitude", longitude, { expires: 365 });
         
         var current_position = new google.maps.LatLng(latitude,longitude);
         
