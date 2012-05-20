@@ -60,8 +60,7 @@ showMapExecuted = false;
         else {
             try {
                 //navigator.geolocation is a global broswer object, if supported!
-                navigator.geolocation.getCurrentPosition(show_map,geoCodeFailed,{timeout: 5000});
-                
+                navigator.geolocation.getCurrentPosition(show_map);
                 // basically we wil lload it up anyway. But we will reload the events if they accept geolocation.
                 setTimeout( function() {
                     if(showMapExecuted == false){
