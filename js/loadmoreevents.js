@@ -1,5 +1,10 @@
 // load more events onclick
 // SEE LOCATION_DETECTION.JS for default loader function
+
+// loadMoreEvents()
+// increments based on loader type. This is all done in Jvascript and
+// we save the offset on the page. It should actually be done in PHP with
+// GET request parameters. This should be modified.
 function loadMoreEvents(){
     var off = $('#eventOffset').val();
     var searchType = $('#searchType').val();
@@ -104,9 +109,42 @@ function loadMoreEvents(){
                 }
             });
         }// end keyword search
+        
+    if(searchType == "popularity") {
+        latLng = {
+        lat: latitude,
+        lon: longitude,
+        offset: off
+        };
+        $('#ajaxLoaderLoadEvents').show();
+        $.ajax({
+            type: "POST",
+            url: "./php/load_events_by_popularity.php", 
+            data: latLng,
+            dataType: "json",
+            success: function(result){
+                var status = result.status;
+                var content = result.content;
+                console.log("Status of search: " + status);
+                
+                $('#ajaxLoaderLoadEvents').hide();
+                $('#ajaxLoaderLoadMore').hide();
+                    
+                if(status == 1) {
+                    var newOff = 10 + Number(off);
+                    $('#eventOffset').val(newOff);
+                    console.log("new offset: " + newOff);
+                
+                    $('.eventViewer').append(content);
+                    $('#searchType').val("popularity");
+                    }
+                }
+            });
+        }
     }
     
 
+// Calls a function that loads events in location_detection.js
 function loadEventsByLocation() {
     var lat = latitude;
     var lon = longitude;
@@ -116,6 +154,8 @@ function loadEventsByLocation() {
     }
     
 
+// loads events by date ordering. 
+// still has a 50 mile radius limit.
 function loadEventsByDate() {
     latLng = {
         lat: latitude,
@@ -139,6 +179,57 @@ function loadEventsByDate() {
                 $('#eventOffset').val("10");
                 
                 }
+            else if(status == 2) {
+                    alert("All the events near you are expired!");
+                }
+            else {
+                alert("Loading events failed, try again!");
+                }
+            } // end success callback
+        });
+    }
+
+
+// loadEventsByPopularity()
+// Loads with a 50 mile radius, highest pageview count first.
+
+function loadEventsByPopularity() {
+    // our req obj
+    latLng = {
+        lat: latitude,
+        lon: longitude
+        };
+    
+    // show swirling icon
+    $('#ajaxLoaderLoadEvents').show();
+    $.ajax({
+        type: "POST",
+        url: "./php/load_events_by_popularity.php", 
+        data: latLng,
+        dataType: "json",
+        success: function(result){
+            // hide loader
+            $('#ajaxLoaderLoadEvents').hide();
+            
+            var status = result.status;
+            var content = result.content;
+            console.log("Status of search: " + status);
+            
+            if(status == 1) {
+                // add new data
+                $('.eventViewer').empty().append(content);
+                
+                // set search type
+                $('#searchType').val("popularity");
+                
+                // set offset for loadmore.
+                $('#eventOffset').val("10");
+                
+                }
+            else {
+                alert("Failed to retrieve events! Try Again!");
+                }
+                
             }
         });
     }

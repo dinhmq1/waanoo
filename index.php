@@ -13,7 +13,9 @@ require 'php/header.php';
     </div>
     <br />
 
-
+    <span style='font-size:50%;'>
+        Order By:</span>
+    
     <span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByLocation()">
         <a href="#" >
             <!-- <img src='images/buttons/btns_headline/btn_location_inactive.png' />
@@ -23,6 +25,17 @@ require 'php/header.php';
     </span>
     
     &nbsp;&nbsp;
+    <span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByPopularity()">
+        <a href="#" >
+            <!-- <img src='images/buttons/btns_headline/btn_location_inactive.png' />
+            -->
+            POPULAR
+        </a>
+    </span>
+    
+    
+    &nbsp;
+    &nbsp;
     <span id="loadByDate" class='testBlackBtn' onClick="loadEventsByDate()">
         <a href="#" >
             <!-- <img src='images/buttons/btns_headline/btn_date_inactive.png' />
@@ -30,9 +43,9 @@ require 'php/header.php';
             DATE
         </a>
     </span>
-    &nbsp;&nbsp;
-    
-    
+    &nbsp;
+    <span style='font-size:90%;'>|</span>
+    &nbsp;
     <span id="postEventButton" class='testBlackBtn' onClick='open_post_event()'>
         <a href="#">
             <!-- <img src='images/buttons/btns_headline/btn_post_inactive.png' />

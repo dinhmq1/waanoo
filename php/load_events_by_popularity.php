@@ -11,25 +11,43 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
     
     $rows_per_page = 10;
     $cxn = $GLOBALS['cxn'];
-    $sql = "SELECT * FROM user_events
-            WHERE end_date >= '$date_search'
-            ORDER BY start_date ASC
-            LIMIT $offset, $rows_per_page";
+    $sql = "SELECT COUNT( * ) AS num, event_id, 
+            (SELECT event_title FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS event_title,
+            (SELECT user_id FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS user_id,
+            (SELECT event_description FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS event_description,
+            (SELECT end_date FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS end_date,
+            (SELECT start_date FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS start_date,
+            (SELECT public FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS public,
+            (SELECT is_contactable FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS is_contactable,
+            (SELECT contact_type FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS contact_type,
+            (SELECT contact_info FROM user_events WHERE user_events.event_id = pageviews.event_id) 
+            AS contact_info
+            FROM pageviews
+            GROUP BY event_id
+            ORDER BY num DESC
+            LIMIT $offset, $rows_per_page
+            ";
             
     $res = mysqli_query($cxn, $sql)
             or die("could not pull events");
     //echo $sql;
-    
     $count = mysqli_num_rows($res);
     //echo "Count:".$count;
-    if($count == 0) {
+    if($count < 1) {
         //user has no events!
         $arr = array("status" => 2, "content" => "No events!");
         echo json_encode($arr);
         exit();
         }
-    
-    
+   
     // all results will be appended to this var:
     $search_output = "";
     while($row = mysqli_fetch_assoc($res)) {
