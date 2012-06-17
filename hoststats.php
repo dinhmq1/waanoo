@@ -18,6 +18,8 @@ require 'php/cxn.php';
 <span id='latlngLoc'>Your location:</span>
 <br />
 <br />
+<a href='index.php' class='testBlackBtn'>HOME</a>
+<br />
 <?php
 // Get event info
 $sql = "SELECT * FROM user_events WHERE event_id='$event_id'";
@@ -42,6 +44,22 @@ $row = mysqli_fetch_assoc($res);
 // more vars available:
 //user_id   email   password    first_name  last_name   date_added  last_login  last_ip     privlege_level  sex
 extract($row);
+
+// Get event images:
+$sql = "SELECT image_url FROM event_images 
+        WHERE event_id='$event_id
+        AND
+        img_size='2'
+        ORDER BY date_uploaded DESC
+        LIMIT 0, 1";
+$res = mysqli_query($cxn, $sql);
+if($res != NULL) {
+    $row = mysqli_fetch_assoc($res);
+    $image_url = $row['image_url'];
+}
+else
+    $image_url = "images/buttons/placeholder_icons/placeholder_200.png";
+    
 
 
 // Get pageviews:
@@ -113,7 +131,7 @@ foreach($rsvp_name_array as $arr) {
 
 ?>
 
-<!-- Make pageview map -->
+<!-- Make pageview map | note: need height and width explicitely set to render map! -->
 <h3>Pageview map: </h3>
     <div id='pageviewMapEmbed' style='position:relative;height:500px;width:800px;'>
     
@@ -123,6 +141,13 @@ $(document).ready(function() {
    openPageviewMap(<?php echo $event_id;?>, "pageviewMapEmbed", true);
 });
 </script>
+
+
+
+<!-- event image -->
+
+<h3>Current Image: </h3>
+<img src="<?php echo $image_url;?>" />
 
 
 <br />

@@ -5,7 +5,6 @@ require 'php/header.php';
 ?>
 <span id='latlngLoc'>Your location:</span>
 
-    
     <br />
     <br />
     <div id="logo">
@@ -17,7 +16,7 @@ require 'php/header.php';
         Order By:</span>
     
     <span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByLocation()">
-        <a href="#" >
+        <a href="#" class='noclick'>
             <!-- <img src='images/buttons/btns_headline/btn_location_inactive.png' />
             -->
             LOCATION
@@ -26,7 +25,7 @@ require 'php/header.php';
     
     &nbsp;&nbsp;
     <span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByPopularity()">
-        <a href="#" >
+        <a href="#" class='noclick'>
             <!-- <img src='images/buttons/btns_headline/btn_location_inactive.png' />
             -->
             POPULAR
@@ -37,7 +36,7 @@ require 'php/header.php';
     &nbsp;
     &nbsp;
     <span id="loadByDate" class='testBlackBtn' onClick="loadEventsByDate()">
-        <a href="#" >
+        <a href="#" class='noclick'>
             <!-- <img src='images/buttons/btns_headline/btn_date_inactive.png' />
             -->
             DATE
@@ -47,7 +46,7 @@ require 'php/header.php';
     <span style='font-size:90%;'>|</span>
     &nbsp;
     <span id="postEventButton" class='testBlackBtn' onClick='open_post_event()'>
-        <a href="#">
+        <a href="#" class='noclick'>
             <!-- <img src='images/buttons/btns_headline/btn_post_inactive.png' />
             -->
             POST
@@ -56,7 +55,7 @@ require 'php/header.php';
     
     &nbsp;&nbsp;
     <span id="myEventsButton" class='testBlackBtn' onClick="openMyEvents()">
-        <a href="#">
+        <a href="#" class='noclick'>
             <!-- <img src='images/buttons/btns_headline/btn_myevents_inactive.png' />
             -->
             MY EVENTS
@@ -65,7 +64,7 @@ require 'php/header.php';
     
     &nbsp;&nbsp;
     <span id="showMapButton" class='testBlackBtn' onClick='open_map_selector()'> 
-        <a href="#">
+        <a href="#" class='noclick'>
             <!-- <img src='images/buttons/btns_headline/btn_fixlocation_inactive.png' />
             -->
             FIX LOCATION
@@ -107,7 +106,7 @@ require 'php/header.php';
 <div id="moreEventsBtn" onclick="loadMoreEvents()">
     <input type="hidden" id="searchType" value="location" />
     <input type="hidden" id="eventOffset" value="10" />
-    <a href="#" >
+    <a href="#" class='noclick'>
         <img src='images/buttons/btns_headline/btn_load_inactive.png' />
     </a>
 </div>

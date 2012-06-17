@@ -10,7 +10,7 @@ function deleteBtn($user_id, $event_id) {
             // LEFT OUT: <img src='./images/buttons/btns_content/btn_delete_inactive.png' />
             return 
                 "<span id='del_$event_id' class='testBlackBtn' onClick='delEvent($event_id)'>
-                    <a href='#'>
+                    <a href='#' class='noclick'>
                         DELETE
                     </a>
                 </span>";
@@ -32,7 +32,7 @@ function editBtn($user_id, $event_id) {
             // LEFT OUT: <img src='./images/buttons/btns_content/btn_edit_inactive.png' />
             return 
                 "<span id='edit_$event_id' class='testBlackBtn' onClick='editEvent($event_id)'>
-                    <a href='#'>
+                    <a href='#' class='noclick'>
                         &nbsp;&nbsp; EDIT &nbsp;&nbsp;
                     </a>
                 </span>";
@@ -52,7 +52,7 @@ function pageviewTrackerMap($user_id, $event_id) {
     $allow_ALL = true;
     if($allow_ALL) {
         return "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id, 'pageviewMap', false)'>
-                    <a href='#'>
+                    <a href='#' class='noclick'>
                         Pageview Map
                     </a>
                 </span>";
@@ -63,7 +63,7 @@ function pageviewTrackerMap($user_id, $event_id) {
         if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
             return 
                 "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id, 'pageviewMap', false)'>
-                    <a href='#'>
+                    <a href='#' class='noclick'>
                         Pageview Map
                     </a>
                 </span>";
@@ -207,7 +207,7 @@ function attendBtn($user_id, $event_id) {
             // ATTENDING
             return "
                 <span  onClick='attendingEvent($event_id)'>
-                    <a href='#'>
+                    <a href='#' class='noclick'>
                     <img class='attendImg' id='attendingBtn_$event_id' src='images/buttons/btns_content/btn_attend_inactive.png' />
                     </a>
                 </span>
@@ -219,7 +219,7 @@ function attendBtn($user_id, $event_id) {
             // NOT ATTENDING
             return "
                 <span onClick='attendingEvent($event_id)'>
-                    <a href='#'>
+                    <a href='#' class='noclick'>
                     <img class='attendImg' id='attendingBtn_$event_id' src='images/buttons/btns_content/btn_attend_active.png' />
                     </a>
                 </span>
@@ -231,7 +231,7 @@ function attendBtn($user_id, $event_id) {
     else {    //NOT SIGNED IN
         return "
             <span id='attendingBtn_$event_id' onClick='attendingEvent($event_id)'>
-                <a href='#'>
+                <a href='#' class='noclick'>
                 <img class='attendImg' src='images/buttons/btns_content/btn_attend_inactive.png' />
                 </a>
             </span>
@@ -296,7 +296,7 @@ function search_output_func_users($all_vars){
             $event_img
         </div>
         
-        <a href='#' >
+        <a href='#' class='noclick'>
         <div class='eventInfoContainer' onClick='eventSingleViewer($event_id)'>
             <div class='space'>
                 <span class='eventTitle'><b>"
@@ -338,7 +338,7 @@ function search_output_func_users($all_vars){
            
         <div class='eventBtnContainer'>
             <span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\", \"".strip_tags($event_title)."\")'>
-            <a href='#event_num_$event_id'>
+            <a href='#event_num_$event_id' class='noclick'>
                 <img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
                 </a>
             </span>
@@ -409,7 +409,7 @@ function singleEventOutput($all_vars) {
                 -->
             <br />
             <span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\", \"".strip_tags($event_title)."\")'>
-                <a href='#'>
+                <a href='#' class='noclick'>
                 <img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
                 </a>
             </span>

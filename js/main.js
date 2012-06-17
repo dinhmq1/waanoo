@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     // STOP ALL <a> clicks
     
-    $("a").click( function(event) {
+    $("a.noclick").click( function(event) {
             console.log("removed click for a link");
             event.preventDefault();
         });
@@ -16,7 +16,7 @@ $(document).ready(function() {
      */
     $("body").on("mouseover mouseoff", '.eventSingle', function(e){
 
-        $("a").click( function(event) {
+        $("a.noclick").click( function(event) {
             //console.log("removed click for a link");
             event.preventDefault();
         });
