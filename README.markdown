@@ -1,8 +1,6 @@
 TO DO:
 ======
 
-* red text for button mouseovers.
-* add pageviews to the main page near RSVPs
 * host analytics:
     1. Pageview chart geographic
     2. RSVP chart geographic

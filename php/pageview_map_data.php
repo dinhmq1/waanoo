@@ -2,13 +2,18 @@
 session_start();
 require("cxn.php");
 
-// first off, check that we are signed in:
-if(@$_SESSION['signed_in'] != true) {
-	$arr = array("status" => 0, 
-		"message" => "User not signed in!");
-	echo json_encode($arr);
-	exit();
-	}
+$allow_ALL = true;
+
+if(!$allow_ALL) {
+    // first off, check that we are signed in:
+    if(@$_SESSION['signed_in'] != true) {
+        $arr = array("status" => 0, 
+            "message" => "User not signed in!");
+        echo json_encode($arr);
+        exit();
+        }
+}
+
 
 /*
  * form front
@@ -22,7 +27,7 @@ $event_id = $_REQUEST['eventID'];
 $event_id = preg_replace("#[^0-9]#", "", $event_id);
 
 // session variables
-$uid = $_SESSION['user_id'];
+$uid = @$_SESSION['user_id'];
 
 
 /***  OPTIONAL: makes it so only event creator can see map!
@@ -34,12 +39,15 @@ $res = mysqli_query($cxn, $qry);
 $row = mysqli_fetch_assoc($res);
 $db_uid = $row['user_id'];
 
-if($uid != $db_uid and $_SESSION['privleges'] != "admin") {
-	$arr = array("status" => 0, 
-		"message" => "Event does not belong to user!");
-	echo json_encode($arr);
-	exit();
-	}
+// see if we should check
+if(!$allow_ALL) {
+    if($uid != $db_uid and @$_SESSION['privleges'] != "admin") {
+        $arr = array("status" => 0, 
+            "message" => "Event does not belong to user!");
+        echo json_encode($arr);
+        exit();
+        }
+    }
 /***********************************************/
 
 

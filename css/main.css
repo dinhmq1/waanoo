@@ -545,7 +545,7 @@ html, body
     background:-moz-linear-gradient( center top, #000000 5%, #424242 100% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#424242');
     background-color:#000000;
-    color: white;
+    color: red;
 }.testBlackBtn:active {
     position:relative;
     top:1px;
@@ -559,7 +559,7 @@ html, body
         }   
         .testBlackBtn a:hover {
             text-decoration:none;
-            color: white;
+            color: red;
             }
 
 /************* FOOTER ****************/ 

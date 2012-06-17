@@ -47,12 +47,20 @@ function editBtn($user_id, $event_id) {
 /*** Opens up a map with the pageview tracker ***/
 
 function pageviewTrackerMap($user_id, $event_id) {
+    // Note- everyone can see this now!!! 
+    // But I didnt want to remove the logic, so added or true
+    $allow_ALL = true;
+    if($allow_ALL) {
+        return "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id)'>
+                    <a href='#'>
+                        Pageview Map
+                    </a>
+                </span>";
+            }
+    
     if(@$_SESSION['signed_in'] == true) { 
         $uid_session = $_SESSION['user_id'];
-        
-        // Note- everyone can see this now!!! 
-        // But I didnt want to remove the logic, so added or true
-        if($user_id == $uid_session or $_SESSION['privleges'] == "admin" or true) {
+        if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
             return 
                 "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id)'>
                     <a href='#'>
