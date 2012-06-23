@@ -47,7 +47,7 @@ extract($row);
 
 // Get event images:
 $sql = "SELECT image_url FROM event_images 
-        WHERE event_id='$event_id
+        WHERE event_id='$event_id'
         AND
         img_size='2'
         ORDER BY date_uploaded DESC
@@ -92,7 +92,8 @@ while($row = mysqli_fetch_assoc($res)) {
         "uid"=>$uid, 
         "user_first_name"=>$user_first_name, 
         "user_last_name"=>$user_last_name, 
-        "user_email"=>$user_email
+        "user_email"=>$user_email,
+        "user_sex"=>$sex
         );
     array_push($rsvp_name_array, $user);
     }
@@ -124,12 +125,39 @@ echo "<h1>Event: $event_title <br /></h1>
 // Make RSVP list:
 echo "<h3>RSVP List:</h3>";
 $arr = Array();
+$user_sex_male = 0;
+$user_sex_female = 0;
 foreach($rsvp_name_array as $arr) {
     extract($arr);
     echo "$user_first_name $user_last_name | $user_email <br />";
+    // Set user sex counts for m/f ratio
+    if($user_sex == "M")
+        $user_sex_male++;
+    else if($user_sex == "F")
+        $user_sex_female++;
     }
 
 ?>
+
+<h3>RSVP male/female ratio</h3>
+<p>
+    <?php 
+    $ratio_output = "";
+    $ratio = "";
+    // going to to males / females
+    // there are x males for every y females
+    $ratio_output = "There are $user_sex_male guys and $user_sex_female girls attending <br />";
+    if($user_sex_female != 0 && $user_sex_female != 0) {
+        $ratio = ;
+        }
+    else if($user_sex_female == 0 && $user_sex_male == 0) {
+        $ratio = "No one is attending";
+        $ratio_output = "";
+        }
+    ?>
+    <?php echo $ratio_output; ?>
+    Ratio: <?php echo $ratio; ?>
+</p>
 
 <!-- Make pageview map | note: need height and width explicitely set to render map! -->
 <h3>Pageview map: </h3>

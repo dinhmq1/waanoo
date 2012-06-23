@@ -51,7 +51,7 @@ function pageviewTrackerMap($user_id, $event_id) {
     // But I didnt want to remove the logic, so added or true
     $allow_ALL = true;
     if($allow_ALL) {
-        return "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id, 'pageviewMap', false)'>
+        return "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id, \"pageviewMap\", false)'>
                     <a href='#' class='noclick'>
                         Pageview Map
                     </a>
@@ -62,7 +62,7 @@ function pageviewTrackerMap($user_id, $event_id) {
         $uid_session = $_SESSION['user_id'];
         if($user_id == $uid_session or $_SESSION['privleges'] == "admin") {
             return 
-                "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id, 'pageviewMap', false)'>
+                "<span id='pageview_map_$event_id' class='testBlackBtn' onClick='openPageviewMap($event_id, \"pageviewMap\", false)'>
                     <a href='#' class='noclick'>
                         Pageview Map
                     </a>
@@ -265,7 +265,7 @@ function eventFieldShortner($eventField, $len) {
     
     
 /*** the main output for user created events ***/   
-    
+// outputs events in list format
 function search_output_func_users($all_vars){
     extract($all_vars);
     /*
@@ -361,7 +361,7 @@ function search_output_func_users($all_vars){
 
 
 
-
+// outputs event in large popup format
 function singleEventOutput($all_vars) {
     extract($all_vars);
     

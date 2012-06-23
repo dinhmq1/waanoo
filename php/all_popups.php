@@ -219,6 +219,19 @@
 </div>
 
 
+<!--
+<div id='rsvpMapWrapper'>
+    <div class='closer'  id='singleEventCloser' onClick='closeRSVPMap()'>
+        <a href='#' class='testBlackBtn noclick'>
+            Close
+        </a>
+    </div>
+    
+    <div id='pageviewMap'>
+        </div>
+</div>
+-->
+
 
 <div id='eventCommentWrapper'>
     <div>
