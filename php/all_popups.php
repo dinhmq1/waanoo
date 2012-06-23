@@ -110,6 +110,7 @@
         <a href='#' class='testBlackBtn noclick'>I'm Done!</a>
     </span>
 </div>
+
 <div id='EventDirections'>
     <div id='EventDirectionsDisplay'></div>
 </div>
@@ -124,9 +125,6 @@
             Close
         </a>
     </span>
-    
-    
-    
     <br />
     <br />
     

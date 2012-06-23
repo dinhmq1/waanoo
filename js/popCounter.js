@@ -22,8 +22,10 @@ isPopup = 0;
 function controlDimmer(toChange) {
     isPopup += toChange;
     
-    if(isPopup <= 0)
+    if(isPopup <= 0) {
         $('#dimmer').hide();
+        isPopup = 0;
+    }
     else
         $('#dimmer').show();
     }

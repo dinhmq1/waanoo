@@ -53,7 +53,7 @@ $sql = "SELECT image_url FROM event_images
         ORDER BY date_uploaded DESC
         LIMIT 0, 1";
 $res = mysqli_query($cxn, $sql);
-if($res != NULL) {
+if($res != NULL and mysqli_num_rows($res) > 0) {
     $row = mysqli_fetch_assoc($res);
     $image_url = $row['image_url'];
 }
@@ -148,11 +148,17 @@ foreach($rsvp_name_array as $arr) {
     // there are x males for every y females
     $ratio_output = "There are $user_sex_male guys and $user_sex_female girls attending <br />";
     if($user_sex_female != 0 && $user_sex_female != 0) {
-        $ratio = ;
+        $ratio = "The M/F ratio is: ".round($user_sex_male / $user_sex_female, 1);
         }
     else if($user_sex_female == 0 && $user_sex_male == 0) {
         $ratio = "No one is attending";
         $ratio_output = "";
+        }
+    else if($user_sex_female == 0 && $user_sex_male > 0) {
+        $ratio = "All male";
+        }
+    else if($user_sex_male == 0 && $user_sex_female > 0) {
+        $ratio = "All female";
         }
     ?>
     <?php echo $ratio_output; ?>

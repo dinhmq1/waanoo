@@ -11,9 +11,21 @@ require 'php/header.php';
     <img src='images/logos/logo_main.png' />
     </div>
     <br />
+    
+    <!-- search bar -->
+<form id='searchBarForm'>
+<input type='text' class='searchBar' id='searchBarAuto' size='20' />
+    &nbsp;
+    <!-- 
+    <a href='#' >go</a> -->
+    <input type='submit' value='&#8734;' class='testBlackBtn'/>
+    </form>
+<br />
 
+    <!-- 
     <span style='font-size:50%;'>
         Order By:</span>
+        -->
     
     <span id="loadByLocation" class='testBlackBtn' onClick="loadEventsByLocation()">
         <a href="#" class='noclick'>
@@ -80,15 +92,7 @@ require 'php/header.php';
 <br />
 <br />
 
-<!-- search bar -->
-<form id='searchBarForm'>
-<input type='text' class='searchBar' id='searchBarAuto' size='30' />
-    &nbsp;
-    <!-- 
-    <a href='#' >go</a> -->
-    <input type='submit' value='go' class='testBlackBtn'/>
-    </form>
-<br />
+
 
 <div class="eventViewer">
     <img src="images/ajax-loader-transp-arrows.gif" />

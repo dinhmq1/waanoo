@@ -327,7 +327,18 @@ $(document).ready(function() {
         //console.log(e.keyCode);
         if(e.keyCode == 27) {
             //console.log("escape key");
-            controlDimmer(-1);
+            controlDimmer(-10);
+            // kill all the popups:
+            $('#eventCommentWrapper').hide();
+            $('#pageviewMapWrapper').hide();
+            $('#singleEventWrapper').hide();
+            $('#postEventSuccess').hide();
+            $('#signupPanel').hide();
+            $('#myEventsWrapper').hide();
+            $('#EventDirections').hide();
+            $('#EventMapWrapper').hide();
+            $('#postEventForm-wrapper').hide();
+            $('#map_wrapper').hide();
         }
     }); 
     

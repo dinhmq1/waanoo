@@ -1,6 +1,9 @@
 TO DO:
 ======
 
+* new highlighting color: #DB1D46
+
+
 * host analytics:
     1. Pageview chart geographic
     2. RSVP chart geographic

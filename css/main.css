@@ -559,7 +559,7 @@ html, body
         }   
         .testBlackBtn a:hover {
             text-decoration:none;
-            color: red;
+            color: #DB1D46;
             }
 
 /************* FOOTER ****************/ 
@@ -627,3 +627,10 @@ html, body
         outline: none;
         border: none;
         }
+        
+/* Search bar */
+
+#searchBarAuto {
+    border-radius: 10px;
+    font-size: 20px;
+    }
