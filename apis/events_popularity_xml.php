@@ -5,6 +5,7 @@ require("../php/HTML_output_lib.php");
 // RESTRICTION ON ONLY NEW EVENTS PULLED
 $date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
 $distance_tolerance = 50; // miles
+$GLOBALS['NUMRESULT'] = 50;
 
 // LIMIT IS SET TO 20
 // REQUEST: 'lat' 'lon' 'offset'
@@ -28,6 +29,7 @@ function add_xml_event_node($inpt_array) {
       <contactInfo>$contactInfo</contactInfo>
       <contactType>$contactType</contactType>
       <imageURL>$urlRoot$image_url</imageURL>
+      <numberViews>$num_views</numberViews>
     </event>";
     
     return $search_output;
@@ -36,7 +38,7 @@ function add_xml_event_node($inpt_array) {
 
 function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
     
-    $rows_per_page = 20;
+    $rows_per_page = $GLOBALS['NUMRESULT'];
     $cxn = $GLOBALS['cxn'];
     $sql = "SELECT COUNT( * ) AS num, event_id, 
             (SELECT event_title FROM user_events WHERE user_events.event_id = pageviews.event_id) 
@@ -70,9 +72,12 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
     //echo "Count:".$count;
     if($count < 1) {
         //user has no events!
-        echo "<status>0</status>
+        echo "<?xml version='1.0' encoding='utf-8' ?>
+                <query>
+                <status>0</status>
                 <message>No Events!</message>
-                <numResult>0</numResult>";
+                <numResult>0</numResult>
+                </query>";
         exit();
         }
    
@@ -129,7 +134,8 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
                 "isContactInfo" => $is_contactable,
                 "contactInfo" => $contact_info,
                 "contactType" => $contact_type,
-                "image_url" => $image_url
+                "image_url" => $image_url,
+                "num_views" => $num
                 );
         
             $search_output = add_xml_event_node($all_vars); //see search_functions.php
@@ -137,10 +143,7 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
         
         }
                 
-    $content = "<status>1</status>
-                <message>Got $count events!</message>
-                <numResult>$count</numResult>
-                <events>$search_output</events>";
+    $content = "<?xml version='1.0' encoding='utf-8'?><query><status>1</status><message>Got $count events!</message><numResult>$count</numResult><events>$search_output</events></query>";
     return $content;
     }
 
@@ -160,6 +163,7 @@ if(isset($_REQUEST['lat']) == false or isset($_REQUEST['lon']) == false) {
 
 // extract the two vars from main
 $results = main($lat, $lon, $offset, $date_search, $distance_tolerance);
+//$results = preg_replace("#[ ]#", "", $results);
 
 echo $results;
 ?>
