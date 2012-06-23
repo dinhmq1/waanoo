@@ -380,6 +380,19 @@ function singleEventOutput($all_vars) {
     //$event_title = eventFieldShortner($event_title, 40);
     
     $eventContent = "
+        <div style='padding:10px;'>
+            <span class='closer'  id='singleEventCloser'>            
+                <a href='#' class='testBlackBtn noclick' onClick='closeSingleEvent()'>
+                    Close
+                </a>
+            </span>
+            &nbsp;&nbsp;&nbsp; 
+            $del_btn
+             &nbsp;&nbsp;&nbsp;
+            $edit_btn
+        </div>
+            <br />
+            
         <div class='singleEventImage'>
                 $event_image
             </div>
@@ -423,11 +436,8 @@ function singleEventOutput($all_vars) {
             <small>M/F Ratio: </small><br />
             <small>$mfRatio</small><br />
             <br />
-            $del_btn
-            <br />
-            $edit_btn
-            <br />
-            $pageviewMapBtn
+            
+            
             <br />
         </div>
         
@@ -438,7 +448,11 @@ function singleEventOutput($all_vars) {
             <br />
         <div class='singleEventDescription'>
             <b>Description: </b>".strip_tags($event_description)."<br />
-            <a href='hoststats.php?event_id=$event_id' class='testBlackBtn'>Statistics</a><br />
+            <br />
+            <a href='hoststats.php?event_id=$event_id' class='testBlackBtn'>Statistics</a>
+            &nbsp;&nbsp;&nbsp;
+            $pageviewMapBtn
+            <br />
         </div>  
         ";
     

@@ -117,20 +117,8 @@
 
 
 <div id="myEventsWrapper">
-    <span class='closer' onClick="closeMyEvents()">
-        <a href='#' class='testBlackBtn noclick'>
-            <!-- 
-            <img src='images/buttons/ps-x-button-50.png' width='30' />
-            -->
-            Close
-        </a>
-    </span>
-    <br />
-    <br />
-    
     <div id="myEventsContents">
     </div>
-    
     <div id='myEventsBlock'>
     </div>
 </div>
@@ -185,19 +173,6 @@
 
 
 <div id='singleEventWrapper'>
-    <div class='closer'  id='singleEventCloser' onClick='closeSingleEvent()'>
-        <!--
-        <a href='#'>
-            <img src='images/buttons/ps-x-button-50.png' width='30' />
-            </a>
-            -->
-        
-        <a href='#' class='testBlackBtn noclick'>
-            Close
-        </a>
-        
-    </div>
-    
     <div id='singleEventContent'>
         </div>
 </div>

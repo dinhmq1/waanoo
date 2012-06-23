@@ -116,6 +116,8 @@
     overflow: auto;
     background-color: #F8F8F8;  
     border-radius: 5px;
+    
+    font-size: 70%;
     }
 
 /*
@@ -147,6 +149,7 @@
         position: relative;
         float: left;
         width: 50%;
+        
         
         text-align: left;
         }
@@ -192,6 +195,8 @@
         overflow: auto;
         background-color: #F8F8F8;  
         border-radius: 5px;
+        
+        font-size: 70%;
         }
         
         #pageviewMap {
@@ -214,6 +219,8 @@
         overflow: auto;
         background-color: #EEEDEA;
         border-radius: 5px;
+        
+        font-size: 80%;
         }
 
         .eventComment {

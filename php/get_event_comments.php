@@ -81,7 +81,7 @@ function prepareComment($msg, $timestamp, $uid, $cid, $event_id) {
     $msg = formatMsg($msg);
     $delbtn = deleteBtnComment($cid, $uid, $event_id);
     return "<div class='eventComment'>
-                <span style='font-size:50%;'>
+                <span style='font-size:65%;'>
                     <span>$date</span>
                     &nbsp;&nbsp;
                     |
@@ -93,6 +93,7 @@ function prepareComment($msg, $timestamp, $uid, $cid, $event_id) {
                         $delbtn
                         </span>
                 <br />
+                <hr style='width:60%;line-height:50%;padding:0px;'/>
                 <span class='eventCommentText'>
                     ".strip_tags($msg)."
                 </span>
