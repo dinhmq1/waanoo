@@ -5,14 +5,16 @@ session_start();
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
 $date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
+$date_search_advance_limit = date("Y-m-d H:m:s", time() + 60*60*24*45); 
 $distance_tolerance = 50; // miles
 
-function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
+function main($lat, $lon, $offset, $date_search, $distance_tolerance, $date_search_advance_limit) {
     
     $rows_per_page = 10;
     $cxn = $GLOBALS['cxn'];
     $sql = "SELECT * FROM user_events
             WHERE end_date >= '$date_search'
+            AND start_date <= '$date_search_advance_limit'
             ORDER BY start_date ASC
             LIMIT $offset, $rows_per_page";
             
@@ -87,7 +89,7 @@ $lat = $_REQUEST['lat'];
 $lon = $_REQUEST['lon'];
 
 // extract the two vars from main
-$results = main($lat, $lon, $offset, $date_search, $distance_tolerance);
+$results = main($lat, $lon, $offset, $date_search, $distance_tolerance, $date_search_advance_limit);
 extract($results);
 
 // echo out as json to frontend

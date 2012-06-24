@@ -49,21 +49,36 @@ function formatTime($timestamp) {
     return date("g:i a",$timestamp);
     }
 
-function getUserName($uid) {
+// passed in user_id from event;
+function getUserName($uid, $event_id) {
+    // this selects the username of the message on the event
     $cxn = $GLOBALS['cxn'];
     $qry = "SELECT * FROM user_list
             WHERE user_id='$uid'";
     $res = mysqli_query($cxn, $qry);
     $row = mysqli_fetch_assoc($res);
-    
     $fname = $row['first_name'];
     $lname = $row['last_name'];
     $privs = $row['privlege_level'];
-    $db_uid = $row['user_id'];
+    
+    // select the event and check if the user id for the message == user id for event
+    $qry2 = "SELECT user_id AS event_creator FROM user_events
+            WHERE 
+            event_id='$event_id'";
+    $res2 = mysqli_query($cxn, $qry2);
+    $row2 = mysqli_fetch_assoc($res2);
+    if($row2 != NULL) {
+        $event_creator = $row2['event_creator'];
+    }
+    else {
+        $event_creator = 0;
+    }
+    
+    //echo $event_creator." and uid is: ".$uid;
     if($privs == "admin"){
         return "<font color='red'>$fname $lname *admin</font>";
         }
-    if($uid == $db_uid) {
+    if($event_creator == $uid) {
         return "<font color='blue'>$fname $lname *event owner</font>";
         }
     return "$fname $lname";
@@ -77,7 +92,7 @@ function formatMsg($msg) {
 function prepareComment($msg, $timestamp, $uid, $cid, $event_id) {
     $date = formatDate($timestamp);
    // $time = formatDate($timestamp);
-    $name = getUserName($uid);
+    $name = getUserName($uid, $event_id);
     $msg = formatMsg($msg);
     $delbtn = deleteBtnComment($cid, $uid, $event_id);
     return "<div class='eventComment'>

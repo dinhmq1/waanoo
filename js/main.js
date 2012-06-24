@@ -156,7 +156,7 @@ $(document).ready(function() {
     // need to write a remote data scource that looks throught stuff in DB
     // just a php script to scan titles and descriptions and addresses?
         
-        $( "#searchBarAuto" ).autocomplete({
+        $("#searchBarAuto").autocomplete({
             source: "php/autocomplete-backend.php",
             minLength: 1,
             select: function( event, ui ) {
@@ -213,18 +213,47 @@ $(document).ready(function() {
     });
             
             
+/*** POSTING EVENT ACCORDION ***/
+//$( "#accordion" ).accordion();
+
+
+$('.accordion .head').click(function() {
+        $(this).next().toggle("slow");
+        return false;
+    }).next().hide();
+          
+          
+$('#selectTags').change(function(){
+    console.log($('#selectTags').val());
+    var newTag = $('#selectTags').val();
+    var oldTags = $('#txtTagsInpt').val();
+    
+    if(oldTags.length > 50) {
+       $('#lblTagInputErrors').empty().append("<font color='red'>tags too long</font>");
+    }
+    else {
+        if(oldTags != "") 
+            oldTags = oldTags + "," + newTag;
+        else
+            oldTags = newTag;
+        $('#lblTagInputErrors').empty().append("<font color='green'>tag added</font>");
+        }
+    $('#txtTagsInpt').val(oldTags);
+    });
+            
+            
 /*** POSTING EVENT DATA PICKER ***/ 
         
     // "%Y-%m-%d %h:%i %p" <-- w/ am and pm
     // 
     $("#eventDateBegin").AnyTime_picker({ 
-        format: "%Y-%m-%d %H:%i",
+        format: "%Y-%m-%d %h:%i %p",
         formatUtcOffset: "%: (%@)",
         hideInput: false 
         });
     
     $("#eventDateEnd").AnyTime_picker({
-        format: "%Y-%m-%d %H:%i",
+        format: "%Y-%m-%d %h:%i %p",
         formatUtcOffset: "%: (%@)",
         hideInput: false            //change later only for dev purposes
           //placement: "inline" 
@@ -239,21 +268,37 @@ $(document).ready(function() {
         console.log(newTime);
         var d = new Date(newTime * 1000);
         
-        month = d.getMonth() + 1;
+        var month = d.getMonth() + 1;
         if(month < 10)
             month = "0" + month.toString();
-        day = d.getDate();  
+        var day = d.getDate();  
         if(day < 10)
             day = "0" + day.toString();
-        hrs = d.getHours();
+            
+        // hours: 
+        var amPm = "AM";
+        var hrs = d.getHours();
         if(hrs < 10)
             hrs = "0" + hrs.toString();
-        mins = d.getMinutes();
+        if(hrs > 12) {
+            hrs = hrs - 12;
+            amPm = "PM";
+            }
+        var mins = d.getMinutes();
         if(mins < 10) 
             mins = "0" + mins.toString();
-        var newDateEnd = d.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins;
+        var newDateEnd = d.getFullYear() + "-" + month + "-" + day + " " + hrs + ":" + mins + " " + amPm;
         console.log(newDateEnd);
         $("#eventDateEnd").val(newDateEnd);
+        
+        // Check if 45 days ahead
+        var dateNow = new Date();
+        console.log("date seconds" + d.getTime() + " now seconds:" + dateNow.getTime());
+        if(d.getTime() - dateNow.getTime() > 60*60*24*45*1000) {
+            $('#lblEventDateErrors').empty().append("<font color='red'>Warning: events more than 45 days ahead will not show up in the default searches.</font>");
+        }
+        else 
+            $('#lblEventDateErrors').empty();
         });
     
     
@@ -339,6 +384,7 @@ $(document).ready(function() {
             $('#EventMapWrapper').hide();
             $('#postEventForm-wrapper').hide();
             $('#map_wrapper').hide();
+            $('#postEventMiniMap').hide();
         }
     }); 
     

@@ -8,7 +8,9 @@ require 'php/header.php';
     <br />
     <br />
     <div id="logo">
+    <a href='/'>
     <img src='images/logos/logo_main.png' />
+    </a>
     </div>
     <br />
     
@@ -120,4 +122,5 @@ require 'php/header.php';
     </span>
 
 <?php require("php/all_popups.php"); ?>
+
 <?php require 'php/footer.php';?>

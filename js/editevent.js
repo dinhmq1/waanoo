@@ -71,8 +71,8 @@ function reSubmitEvent() {
         
         // convert date to MySQL:
         console.log("converting times");
-        //eventBegin = toMySQLTime(eventBegin);
-        //eventEnd = toMySQLTime(eventEnd);
+        eventBegin = toMySQLTime(eventBegin);
+        eventEnd = toMySQLTime(eventEnd);
         
         console.log("filename: " + imgFileName);
         console.log("ImageOK: " + isImage);

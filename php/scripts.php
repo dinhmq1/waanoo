@@ -18,7 +18,7 @@
     <!-- anytime plugin by Andrew M. Andrews III -->
         <script type="text/javascript" src="js/anytimec.js"></script>   
     <!-- custom jQ ui -->
-        <script type="text/javascript" src='js/jquery/jquery-ui-1.8.20.custom.min.js'></script>
+        <script type="text/javascript" src='js/jquery/jquery-ui-1.8.21.custom.min.js'></script>
     <!-- jQuery cookies plugin. Latest from github 5/20/12 -->
         <script type="text/javascript" src='js/jquery/jquery.cookie.js'></script>
         

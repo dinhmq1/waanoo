@@ -8,8 +8,6 @@ function open_post_event(){
         console.log("showing event posting window");
         $('#postEventForm-wrapper').show();
         controlDimmer(1);
-        
-        initMiniMap();
         }
     else {
         alert("you have to be signed in to do that!");
@@ -118,11 +116,14 @@ function initMiniMap() {
 
 // geocodes address and resets map position
     function reset_coords(){
+        console.log("opening mini map for event");
+        initMiniMap();
+        
+        $('#postEventMiniMap').show();
+        
         console.log("begin client side geocode query");
         var geocoder = new google.maps.Geocoder();
-        
         var address = $('#eventLocation').val();
-        
         if(address == ""){
             address = "45221";
             }
@@ -137,6 +138,10 @@ function initMiniMap() {
                 }
             });
         }
+// shows 
+    function closePostEventMinimap() {
+        $('#postEventMiniMap').hide();
+    }
         
 // tests a geocode 
 function testGeocode(address){
@@ -210,6 +215,7 @@ function testGeocode(address){
         var re = /\S+@\S+/g;
         if(re.test(email)) 
             return true;
+            
         else
             return false;
         }
@@ -252,7 +258,7 @@ function testGeocode(address){
             var minsNew = mins.exec(inTime);
             console.log("minsNew:" + minsNew[0]);
             
-            var newTime = d[0] + " " + parseInt(hrsNew[1]) + ":" + minsNew[1];
+            var newTime = d[0] + " " + parseInt(hrsNew[0]) + ":" + minsNew[1];
             console.log("newtime:" + newTime);
             
             return newTime;
@@ -275,8 +281,8 @@ function testGeocode(address){
         
         // convert date to MySQL:
         console.log("converting times");
-        //eventBegin = toMySQLTime(eventBegin);
-        //eventEnd = toMySQLTime(eventEnd);
+        eventBegin = toMySQLTime(eventBegin);
+        eventEnd = toMySQLTime(eventEnd);
         
         // get optional contact info
         var isContactInfo = 0;
@@ -325,9 +331,9 @@ function testGeocode(address){
                     // testing for: 2012-03-15 05:00
                     var re = /\d+-\d+-\d+ \d+:\d+/i;
                     
+                    console.log("testing: eventBegin:" + eventBegin + "eventEnd:" + eventEnd);
                     if(re.test(eventBegin) && re.test(eventEnd)){
                         console.log("passed date RE validation");
-                        
                         // Validate for contact info
                         if((isContactInfo == 0 && isContactInfoValid == false) || (isContactInfo == 1 && isContactInfoValid == true)) {
                             console.log("passed contact info validation");

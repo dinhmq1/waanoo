@@ -48,6 +48,9 @@ html, body
             }
         a:active {text-decoration:none;}
         
+    hr {
+     width:75%;
+    }
     
     #dimmer{
         display: none;
@@ -353,16 +356,40 @@ html, body
             display: none;
         
             z-index: 100;
-            width: 80%;
-            height: 70%;
+            width: 70%;
+            height: 80%;
             position: fixed;
             top: 30px;
-            left: 10%;
+            left: 15%;
             
             color: black;
             background-color: #F8F8F8;
             border-radius: 10px;
-            }      
+            
+            overflow:auto;
+            }   
+            
+            .accordion {
+               /* line-height: 80%;
+                */
+            }
+            
+            .head {
+                width:80%;
+                margin-left:auto;
+                margin-right:auto;
+                background-color:#DB1D46;
+                border-radius:10px;
+                border-style:solid;
+                border-width:1px;
+                border-color:black;
+                color: #DB1D46;
+            }
+            
+            .accordionChild {
+                background-color:#F8F8F8;
+                color: black;
+            }   
         
             #cancelPostEventBtn{
                 position: absolute;
@@ -394,19 +421,26 @@ html, body
                 .btn:hover{
                     color: red;
                     }
-                    
+               
+        #postEventMiniMap{
+            position: fixed;
+            display: none;
+            width: 50%;
+            height: 50%;
+            top:20%;
+            left:25%;
+            z-index:300;
+            background-color:#F8F8F8;
+            box-shadow:5px 5px 10px 10px #5E5E5E;
+            }
+            
             #dragNdropMsg {
-                position: absolute;
-                top: 8%;
-                left: 45%;
+            
                 }
           
             #miniMapCanvas{
-                height: 80%;
-                width: 55%;
-                position: absolute;
-                top: 15%;
-                left: 45%;
+                height: 70%;
+                width: 100%;
                 }
                 
             #eventTagsChoices {
