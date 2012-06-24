@@ -250,6 +250,7 @@ function pull_ALL_events($lat, $lon, $offset){
             //print_r($event_array);
             extract($event_array);
             
+            $count_outputted = 0;
             if($origin == "YQL"){
             
                 $event_row = get_all_event_list_YQL($id);
@@ -284,7 +285,8 @@ function pull_ALL_events($lat, $lon, $offset){
                 if($event_row != null){
                     extract($event_row);
                     }
-                    
+                
+                $count_outputted += 1;
                 $image_url = getImageURL($event_id);
                 
                 $all_vars = array(
@@ -311,7 +313,7 @@ function pull_ALL_events($lat, $lon, $offset){
         $i++;
         }//end loop for location search  FOREACH
         
-    $content = "<?xml version='1.0' encoding='utf-8'?><query><status>1</status><message>Got $i events!</message><numResult>$i</numResult><events>$search_output</events></query>";
+    $content = "<?xml version='1.0' encoding='utf-8'?><query><status>1</status><message>Got $count_outputted events!</message><numResult>$count_outputted</numResult><events>$search_output</events></query>";
 
     return $content;
     }

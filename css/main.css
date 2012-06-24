@@ -431,7 +431,7 @@ html, body
             left:25%;
             z-index:300;
             background-color:#F8F8F8;
-            box-shadow:5px 5px 10px 10px #5E5E5E;
+            
             }
             
             #dragNdropMsg {
@@ -668,3 +668,12 @@ html, body
     border-radius: 10px;
     font-size: 20px;
     }
+
+/* Global popup style */
+
+ .popup {
+    box-shadow:5px 5px 10px 10px #5E5E5E;
+    border-style: groove;
+    border-width: 1px;
+    border-color: black;
+ }

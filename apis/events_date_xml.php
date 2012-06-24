@@ -74,7 +74,8 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
         $row_addy = mysqli_fetch_assoc($res2);
         //address_id    event_id    address_text    x_coord y_coord
         extract($row_addy);
-        $distance = distance($x_coord, $y_coord, $lat, $lon, "m");
+        $distance = distance($x_coord, $y_coord, (double)$lat, (double)$lon, "m");
+        //echo $distance."<br />";
         
         // Get image:
         // Get event images:
@@ -98,7 +99,9 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
         /* after everything is extracted:
             assemble the event and make the html output
             */
+        $count_outputted = 0;
         if($distance <= $distance_tolerance) {
+            $count_outputted += 1;
             $all_vars = array(
                 "event_id" => $event_id,
                 "user_id" => $user_id,
@@ -121,7 +124,7 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
             }
         
         }
-    $content = "<?xml version='1.0' encoding='utf-8'?><query><status>1</status><message>Got $count events!</message><numResult>$count</numResult><events>$search_output</events></query>";
+    $content = "<?xml version='1.0' encoding='utf-8'?><query><status>1</status><message>Got $count_outputted events!</message><numResult>$count_outputted</numResult><events>$search_output</events></query>";
     return $content;
     }
 

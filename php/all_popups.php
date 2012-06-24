@@ -1,6 +1,6 @@
 <!-- POPUPS FOR SITE -->
 
-<div id='map_wrapper'>
+<div id='map_wrapper' class='popup'>
     <div id='map_canvas'></div>
         <span onClick='close_map_selector()'>
         <a href='#' class='noclick'>
@@ -11,7 +11,7 @@
 </div>
 
 
-<div id='postEventForm-wrapper'>
+<div id='postEventForm-wrapper' class='popup'>
     <h3 style='text-align: left; padding-left: 20px;'>Post an Event! </h3>
     <span id='cancelPostEventBtn' onClick='close_post_event()'>
         <a href='#' class='testBlackBtn noclick'>Cancel</a>
@@ -197,7 +197,7 @@
         </span>
 </div>
 
-<div id='postEventMiniMap'>
+<div id='postEventMiniMap' class='popup'>
     <p>Your Event:</p>
     <div id='miniMapCanvas'></div>
     <span id="setLocation" onClick='closePostEventMinimap()'>
@@ -206,7 +206,7 @@
 </div>
 
 
-<div id='EventMapWrapper'>
+<div id='EventMapWrapper' class='popup'>
     <span id='eventAddressText'></span>
     
     <div id='EventMapCanvas'>
@@ -220,12 +220,15 @@
     </span>
 </div>
 
-<div id='EventDirections'>
+<div id='EventDirections' class='popup'>
     <div id='EventDirectionsDisplay'></div>
 </div>
 
 
-<div id="myEventsWrapper">
+<div id="myEventsWrapper" class='popup'>
+    <div onClick='closeMyEvents()'>
+            <a href='#' class='testBlackBtn noclick'>Close!</a>
+        </div>
     <div id="myEventsContents">
     </div>
     <div id='myEventsBlock'>
@@ -234,7 +237,7 @@
 
 
 <form>
-    <div id='signupPanel'> 
+    <div id='signupPanel' class='popup'> 
         email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
             <span id='emailIsValid'></span><br /> 
         Password: <input type ='password' id='password' size='10' />
@@ -266,7 +269,7 @@
 
 
 
-<div id='postEventSuccess'>
+<div id='postEventSuccess' class='popup'>
     <br />
     Event Posted Successfully!
     <br />
@@ -281,7 +284,7 @@
 
 
 
-<div id='singleEventWrapper'>
+<div id='singleEventWrapper' class='popup'>
     <div id='singleEventContent'>
         </div>
 </div>
@@ -289,7 +292,7 @@
 
 
 
-<div id='pageviewMapWrapper'>
+<div id='pageviewMapWrapper' class='popup'>
     <div class='closer'  id='singleEventCloser' onClick='closePageviewMap()'>
         <a href='#' class='testBlackBtn noclick'>
             Close
@@ -315,7 +318,7 @@
 -->
 
 
-<div id='eventCommentWrapper'>
+<div id='eventCommentWrapper' class='popup'>
     <div>
         Comment on this event:
         <form>
