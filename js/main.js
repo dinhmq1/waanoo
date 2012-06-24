@@ -264,8 +264,22 @@ $('#selectTags').change(function(){
     $("#eventDateBegin").change(function() {
         var dateBeginAgain = $("#eventDateBegin").val();
         // push date ahead 3 hrs.
+        // 0123-56-89- 10/11:
+        // looks lke this: 2012-06-24 04:04 PM ... too complicated for shitty broswers.
+        var yrMoDay = dateBeginAgain.substr(0,10);
+        var origHours = dateBeginAgain.substr(11,2);
+        var origMins = dateBeginAgain.substr(14,2);
+        var origAmPm = dateBeginAgain.substr(17,2);
+        
+        if(origAmPm == "PM") {
+            origHours = parseInt(origHours) + 12;
+        }
+        console.log("converted to 24 hours time:" + origHours + ":" + origMins);
+        dateBeginAgain = yrMoDay + " " + origHours + ":" + origMins;
+        
+        // push date ahead 3 hrs
         var newTime = strtotime(dateBeginAgain) + 60*60*3; // + 3 hrs
-        console.log(newTime);
+        console.log("parsed date string to:" + newTime + " from:" + dateBeginAgain);
         var d = new Date(newTime * 1000);
         
         var month = d.getMonth() + 1;

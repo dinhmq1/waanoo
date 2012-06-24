@@ -1,6 +1,10 @@
 TO DO:
 ======
 
+* are you fucking kidding me: Date.parse() in Firefox javascript cannot handle
+2012-06-24 04:04 PM <-- that format but Chrome does it perfectly... So now I have
+to write my own parse? Fuck you shitty browsers.
+
 * new highlighting color: #DB1D46
 
 
