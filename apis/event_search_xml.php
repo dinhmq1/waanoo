@@ -1,7 +1,6 @@
 <?php
-session_start();
-require("cxn.php");
-require('HTML_output_lib.php');
+require("../php/cxn.php");
+require("../php/HTML_output_lib.php");
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
 $DEBUG = true;
@@ -13,6 +12,32 @@ if($DEBUG == true) {
     }
 define("DATE_TO_SEARCH_FROM", $date_search);
 define("DATE_TO_SEARCH_TO", $date_search_2);
+
+
+
+function add_xml_event_node($inpt_array) {
+    extract($inpt_array);
+    $urlRoot = "http://waanoo.com/";
+    $search_output .= "
+    <event>
+      <name>".strip_tags($event_title)."</name>
+      <description>".strip_tags($event_description)."</description>
+      <eventID>$event_id</eventID> 
+      <userID>$user_id</userID>  
+      <startDate>$start_date</startDate>
+      <endDate>$end_date</endDate>
+      <venueAddress>".strip_tags($venue_address)."</venueAddress>
+      <latitude>$lat</latitude>
+      <logitude>$lon</logitude>
+      <distance>$distance</distance>
+      <isContactable>$isContactInfo</isContactable>
+      <contactInfo>".strip_tags($contactInfo)."</contactInfo>
+      <contactType>$contactType</contactType>
+      <imageURL>$urlRoot$image_url</imageURL>
+    </event>";
+    
+    return $search_output;
+    }
 
 
 /**********************************************************************/
@@ -39,9 +64,17 @@ function get_event_address($event_id, $lat_user, $lon_user) {
 /**********************************************************************/
 
 // passed from ajax.
-$searchTerm = $_REQUEST['term'];
-$lat_user = $_REQUEST['latitude'];
-$lon_user = $_REQUEST['longitude'];
+$searchTerm = @$_REQUEST['term'];
+$lat_user = @$_REQUEST['latitude'];
+$lon_user = @$_REQUEST['longitude'];
+
+if(!isset($_REQUEST['term']) and !isset($_REQUEST['latitude']) and !isset($_REQUEST['longitude'])) {
+    $lat_user = "39.125053883634465";
+    $lon_user = "-84.52039194072267";
+    $searchTerm = "bible"; // lol
+}
+
+
 // offset checker:
 if(isset($_REQUEST['offset'])) {
     $offset = $_REQUEST['offset'];
@@ -99,11 +132,30 @@ $resArr = array();
 
 // MAIN LOOP
 $search_output = "";
+$count = 0;
 
 while($stm->fetch())  {
     if($event_id != NULL) {
         $addressArray = get_event_address($event_id, $lat_user, $lon_user);
         extract($addressArray);
+        
+        // Get image:
+        // Get event images:
+        $sql3 = "SELECT image_url FROM event_images 
+                WHERE event_id='$event_id'
+                AND
+                img_size='2'
+                ORDER BY date_uploaded DESC
+                LIMIT 0, 1";
+        $res3 = mysqli_query($cxn, $sql3);
+        if($res3 != NULL) {
+            $row3 = mysqli_fetch_assoc($res3);
+            $image_url = $row3['image_url'];
+            if(strlen($image_url) < 10)
+                $image_url = "images/buttons/placeholder_icons/placeholder_200.png";
+            }
+        else
+            $image_url = "images/buttons/placeholder_icons/placeholder_200.png";
         
         $all_vars = array(
             "event_id" => $event_id,
@@ -119,10 +171,12 @@ while($stm->fetch())  {
             "search_output" => $search_output,
             "isContactInfo" => $is_contactable,
             "contactInfo" => $contact_info,
-            "contactType" => $contact_type
+            "contactType" => $contact_type,
+            "image_url" => $image_url
             );
                 
-        $search_output = search_output_func_users($all_vars);
+        $search_output = add_xml_event_node($all_vars);
+        $count++;
         }
     }
 
@@ -130,5 +184,10 @@ $stm->free_result();
 $stm->close();
 $cxn->close();
 
-echo json_encode(array("content" => $search_output, "status" => 1)); 
+echo "<?xml version='1.0' encoding='utf-8'?>
+        <query>
+            <status>1</status>
+            <numResult>$count</numResult>
+            <events>$search_output</events>
+        </query>"; 
 ?>

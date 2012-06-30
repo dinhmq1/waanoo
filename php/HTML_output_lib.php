@@ -169,7 +169,7 @@ function getEventImageLarge($event_id) {
         return "<img class='lrgImage' src='$url' />";
         }
     else {
-        return "<img class='lrgImage'  src='./images/buttons/placeholder_icons/placeholder_200.png' />";
+        return "<img class='lrgImage' src='./images/buttons/placeholder_icons/placeholder_200.png' />";
         }
     }
     
@@ -337,7 +337,7 @@ function search_output_func_users($all_vars){
             -->
            
         <div class='eventBtnContainer'>
-            <span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\", \"".strip_tags($event_title)."\")'>
+            <span onClick=\"openEventMap($lat, $lon, '".addslashes(strip_tags($venue_address))."', '".addslashes(strip_tags($event_title))."')\">
             <a href='#event_num_$event_id' class='noclick'>
                 <img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
                 </a>
@@ -378,7 +378,6 @@ function singleEventOutput($all_vars) {
     
     //$event_description = eventFieldShortner($event_description, 75);
     //$event_title = eventFieldShortner($event_title, 40);
-    
     $eventContent = "
         <div style='padding:10px;'>
             <span class='closer'  id='singleEventCloser'>            
@@ -421,7 +420,7 @@ function singleEventOutput($all_vars) {
                 $attend_btn
                 -->
             <br />
-            <span onClick='openEventMap($lat, $lon, \"".strip_tags($venue_address)."\", \"".strip_tags($event_title)."\")'>
+            <span onClick=\"openEventMap($lat, $lon, '".addslashes(strip_tags($venue_address))."', '".addslashes(strip_tags($event_title))."')\">
                 <a href='#' class='noclick'>
                 <img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
                 </a>

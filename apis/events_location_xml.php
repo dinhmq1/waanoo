@@ -25,18 +25,18 @@ function add_xml_event_node($inpt_array) {
     $urlRoot = "http://waanoo.com/";
     $search_output .= "
     <event>
-      <name>$event_title</name>
-      <description>$event_description</description>
+      <name>".strip_tags($event_title)."</name>
+      <description>".strip_tags($event_description)."</description>
       <eventID>$event_id</eventID> 
       <userID>$user_id</userID>  
       <startDate>$start_date</startDate>
       <endDate>$end_date</endDate>
-      <venueAddress>$venue_address</venueAddress>
+      <venueAddress>".strip_tags($venue_address)."</venueAddress>
       <latitude>$lat</latitude>
       <logitude>$lon</logitude>
       <distance>$distance</distance>
       <isContactable>$isContactInfo</isContactable>
-      <contactInfo>$contactInfo</contactInfo>
+      <contactInfo>".strip_tags($contactInfo)."</contactInfo>
       <contactType>$contactType</contactType>
       <imageURL>$urlRoot$image_url</imageURL>
     </event>";
