@@ -35,6 +35,10 @@ html, body
     width: 100%;
     }
     
+    p{
+    margin: 0;
+    padding: 0;
+    }
     
     a {
         text-decoration:none;
@@ -50,6 +54,7 @@ html, body
         
     hr {
      width:75%;
+     padding: 0;
     }
     
     #dimmer{
@@ -200,22 +205,21 @@ html, body
                     background-color: #F8F8F8;
                     z-index: 80;
                     display: none;
-                    
-                     width: 70%;
-                     height: 70%;
-                     right:0px;
-                     top: 30px;
+
+                    right:0px;
+                    top: 30px;
 
                     text-align: left;
-                     color: black;
+                    color: black;
                     padding: 15px;
-                    width: 375px;
-                    height: 200px;
+                    width: 400px;
+                    height: 300px;
                     border-width: 2px;
                     border-color: #EEEDEA;
                     border-style: solid;
                     
                     border-radius: 10px;
+                    overflow:auto;
                     }
        
         
@@ -356,14 +360,14 @@ html, body
             display: none;
         
             z-index: 100;
-            width: 70%;
-            height: 80%;
+            width: 60%;
+            height: auto;
             position: fixed;
             top: 30px;
-            left: 15%;
+            left: 20%;
             
             color: black;
-            background-color: #F8F8F8;
+            background-color: #EEEDEA;
             border-radius: 10px;
             
             overflow:auto;
@@ -378,18 +382,39 @@ html, body
                 width:80%;
                 margin-left:auto;
                 margin-right:auto;
-                background-color:#DB1D46;
-                border-radius:10px;
+                border-radius:3px;
                 border-style:solid;
                 border-width:1px;
                 border-color:black;
+                
+                background-color:#F8F8F8;
                 color: #DB1D46;
             }
             
+            .head:hover {
+                background-color:#DB1D46;
+            }
+            
             .accordionChild {
+                margin-left:auto;
+                margin-right:auto;
                 background-color:#F8F8F8;
+                width: 80%;
                 color: black;
+                
+                border-radius:3px;
+                border-style:solid;
+                border-width:1px;
+                border-color:black;
             }   
+            
+            /* post event */
+            .postTable {
+                margin-left:auto;
+                margin-right:auto;
+                padding: 10px;
+            }
+
         
             #cancelPostEventBtn{
                 position: absolute;
@@ -677,3 +702,13 @@ html, body
     border-width: 1px;
     border-color: black;
  }
+
+    .textError {
+    font-size:60%;
+    }
+    
+    .userTextBox {
+    border-radius:6px;
+    font-size:80%;
+    }
+

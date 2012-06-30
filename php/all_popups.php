@@ -11,6 +11,66 @@
 </div>
 
 
+<form>
+    <div id='signupPanel' class='popup'> 
+        <table class='postTable' align='center' cellpadding='2'>
+            <tr align='left'>
+                <td>email:</td>
+                <td><input class='userTextBox' type ='text' id='email' size='15'/></td>
+                <td><input type='hidden' id='email_test' value='0'/>
+                    <span id='emailIsValid' class='textError'></span>
+                    </td>
+            </tr>
+            <tr align='left'>
+                <td>Password:</td>
+                <td><input class='userTextBox' type ='password' id='password' size='15' /></td>
+                <td><span id='password1Validating' class='textError'></span>
+                    </td>
+            </tr>
+            <tr align='left'>
+                <td>Password again:</td>
+                <td><input class='userTextBox' type ='password' id='passwordcheck' size='15' /></td>
+                <td><span id='password2Validating' class='textError'></span>
+                    </td>
+            </tr>
+            <tr align='left'>
+                <td>First Name:</td>
+                <td><input class='userTextBox' type ='text' id='firstname' size='15' /></td>
+                <td>&nbsp;
+                    </td>
+            </tr>
+            <tr align='left'>
+                <td>Last Name:</td>
+                <td><input class='userTextBox' type ='text' id='lastname'  size='15' /></td>
+                <td>&nbsp;
+                    </td>
+            </tr>
+            <tr align='left'>
+                <td>Sex:</td>
+                <td><select id='sex' /> <br />
+                    <option value='M'>male</option>
+                    <option value='F'>female</option>
+                    </select></td>
+                <td>&nbsp;
+                    </td>
+            </tr>
+            <tr align='left'>
+                <td><span id='ajaxLoaderSignUp'>
+                    <img src='images/ajax-loader-transp-arrows.gif' />
+                    </span></td>
+                <td><span id='submit-signup' onClick='signUpMain()'>
+                    <a href='#' class='testBlackBtn noclick'>Submit!</a>
+                    </span></td>
+                <td><span id='signup-errors' class='textError'></span>
+                    </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+
+
+
 <div id='postEventForm-wrapper' class='popup'>
     <h3 style='text-align: left; padding-left: 20px;'>Post an Event! </h3>
     <span id='cancelPostEventBtn' onClick='close_post_event()'>
@@ -19,88 +79,130 @@
     <!-- acoridion start -->
     <div class='accordion' id='accordion'>
         <p class='head'><a href="#">Basic Information <small>(required)</small></a></p>
-        <div>
-            <p class='accordionChild'>
-            Title: <input id='eventName' type='text' />
-            <br />
-            Describe your event: 
-            &nbsp; &nbsp; &nbsp; <span id="descriptionCount">0</span> / 500
-            <br />
-            <textarea name="event_description" id="eventDescription" rows="4" cols="35" maxlength="500"></textarea><br />
-            <br />
-            </p>
-        </div>
+            <div class='accordionChild'>
+            <table class='postTable' align='center' cellpadding='10'>
+                <tr align='left'>
+                    <td>Title:</td>
+                    <td><input id='eventName' type='text' size='30' /></td>
+                </tr>
+                <tr align='left'>
+                    <td>Describe your event: </td>
+                    <td>
+                        <textarea name="event_description" id="eventDescription" rows="4" cols="35" maxlength="500"></textarea>
+                    </td>  
+                </tr>
+                <tr align='left'>
+                    <td>&nbsp;</td>
+                    <td><span id="descriptionCount">0</span> / 500</td>
+                </tr>
+            </table>
+            </div>
         <p class='head'><a href="#">Date and Time <small>(required)</small></a></p>
-        <div>
-            <p class='accordionChild'>
-            When will it be?:<input type="text" id="eventDateBegin" name="date" />
-            <br />
-            When will it end?:<input type="text" id="eventDateEnd" name="date_end" />
-            <br />
-            <span id='lblEventDateErrors'></span>
-           </p>
-        </div>
+            <div class='accordionChild'>
+                <table class='postTable' align='center' cellpadding='10'>
+                <tr align='left'>
+                    <td>When will it be?:</td>
+                    <td><input type="text" id="eventDateBegin" name="date" /></td>
+                </tr>
+                <tr align='left'>
+                    <td>When will it end?:</td>
+                    <td><input type="text" id="eventDateEnd" name="date_end" /></td>
+                </tr>
+                <tr align='left'>
+                    <td>&nbsp;</td>
+                    <td> <span id='lblEventDateErrors'></span></td>
+                </tr>
+                </table>
+           </div>
         <p class='head'><a href='#'>Pick a location <small>(required)</small></a></p>
         <div class='accordionChild'>
-            Where will it be?<input type='text' id='eventLocation' />
-                <span id="setLocation" onClick='reset_coords()'>
-                <a href='#' class='testBlackBtn noclick'>Test -></a>
-                </span><br />
-                
-            <p>
-                <p id='dragNdropMsg'>
-                    <small>note: drag and drop enabled on map</small>
-                </p>
-            </p>
+            <table class='postTable' align='center' cellpadding='10'>
+                <tr align='left'>
+                    <td>Where will it be?</td>
+                    <td><input type='text' id='eventLocation' />
+                            <span id="setLocation" onClick='reset_coords()'>
+                            <a href='#' class='testBlackBtn noclick'>Test -></a>
+                            </span>
+                    </td>
+                </tr>
+                <tr align='left'>
+                    <td>&nbsp;</td>
+                    <td><p id='dragNdropMsg'>
+                        <small>note: drag and drop enabled on map</small>
+                        </p>
+                    </td>
+                </tr>
+                </table>
         </div>
         <p class='head'><a href='#'>Contact Info</a></p>
         <div class='accordionChild'>
-            Event Homepage URL: <input id='txtEventHomepageURL' size='40' type='text' />
-            <br />
-            Allow Users to Contact you? &nbsp; <input type="checkbox" id="allowContactEvtent" value="contact" /><br />
-            <span id='contactingOptions'>
-            <select id='eventContactType'>
-                <option value='email'>email</option>
-                <option value='phone'>phone</option>
-            </select>
-            Contact Info:
-                <span id='contactInfo'>
-                    <input type="text" id="emailContactInfo" /><br />
-                </span> 
-            </span>
+            <table class='postTable' align='center' cellpadding='10'>
+                <tr align='left'>
+                    <td>Event Homepage URL: </td>
+                    <td><input id='txtEventHomepageURL' size='30' type='text' />
+                    </td>
+                </tr>
+                <tr align='left'>
+                    <td>Allow Users to Contact you?</td>
+                    <td><input type="checkbox" id="allowContactEvtent" value="contact" />
+                    </td>
+                </tr>
+                <tr align='left' id='contactingOptions'>
+                    <div>
+                    <td><select id='eventContactType'>
+                        <option value='email'>email</option>
+                        <option value='phone'>phone</option>
+                        </select></td>
+                    <td>Contact Info:
+                        <span id='contactInfo'>
+                            <input type="text" id="emailContactInfo" />
+                        </span> 
+                    </td>
+                    </div>
+                </tr> 
+            </table>
         </div>
         <p class='head'><a href='#'>Add a photo</a></p>
         <div class='accordionChild'>
-            Upload Image: <a href="#" class='testBlackBtn' id='uploader'>upload!</a> 
-                <span id='imgUploadedSpot'></span>
-            <br />
+            <table class='postTable' align='center' cellpadding='10'>
+                <tr align='left'>
+                    <td>Upload Image: </td>
+                    <td><a href="#" class='testBlackBtn' id='uploader'>upload!</a> </td>
+                    <td><span id='imgUploadedSpot'></span></td>
+                </tr>
+            </table>
         </div>
         <p class='head'><a href='#'>Add some tags</a></p>
         <div class='accordionChild'>
-            Add some tags: <br />
-            <input size='30' type='text' id='txtTagsInpt' /> <br />
-            
-            <select id='selectTags'>
-                <option>food</option>
-                <option>free food</option>
-                <option>BYOB</option>
-                <option>drinks</option>
-                <option>educational</option>
-                <option>music</option>
-                <option>dancing</option>
-                <option>University of Cincinnati</option>
-                <option>DAAP</option>
-                <option>Arts</option>
-                <option>Theater</option>
-                <option>jobs</option>
-                <option>career fair</option>
-            </select>
-            <span id='lblTagInputErrors'></span>
-            <br />
-            Outdoor event: <input type='checkbox' value='true' id='chkOutdoorsEvent' />
-            <br />
-            Free Event: <input type='checkbox' value='true' id='chkFreeEvent' />
-            <br />
+            <table class='postTable' align='center' cellpadding='10'>
+                <tr align='left'>
+                    <td><select id='selectTags'>
+                            <option>food</option>
+                            <option>free food</option>
+                            <option>BYOB</option>
+                            <option>drinks</option>
+                            <option>educational</option>
+                            <option>music</option>
+                            <option>dancing</option>
+                            <option>University of Cincinnati</option>
+                            <option>DAAP</option>
+                            <option>Arts</option>
+                            <option>Theater</option>
+                            <option>jobs</option>
+                            <option>career fair</option>
+                        </select></td>
+                    <td><input size='30' type='text' id='txtTagsInpt' /></td>
+                    <td><span id='lblTagInputErrors'></td>
+                </tr>
+                <tr align='left'>
+                    <td>Outdoor event:</td>
+                    <td><input type='checkbox' value='true' id='chkOutdoorsEvent' /></td>
+                </tr>
+                <tr align='left'>
+                    <td>Free Event:</td>
+                    <td><input type='checkbox' value='true' id='chkFreeEvent' /></td>
+                </tr>
+            </table>
         </div>
     </div>
     
@@ -108,9 +210,8 @@
             <input type='hidden' id='imgFileLocation' value='' />
             <input type='hidden' id='isThereImage' value='0' />
             <input type='hidden' id='oldEventID' value="" />
-    <br />
     <hr />
-    <span id='eventPostErrors'> </span><br>
+    <span id='eventPostErrors'></span><br />
     <span  id='eventFormSubmitBtn' onClick='submitNewEvent()'>
             &nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='testBlackBtn noclick'>Submit!</a>
         </span>
@@ -118,6 +219,8 @@
         <span id="ajaxLoaderPostEvent">
             <img src="images/ajax-loader-transp-arrows.gif" />
         </span>
+    
+    <br />
 </div>
 
 <div id='postEventMiniMap' class='popup'>
@@ -157,37 +260,6 @@
     <div id='myEventsBlock'>
     </div>
 </div>
-
-
-<form>
-    <div id='signupPanel' class='popup'> 
-        email: <input type ='text' id='email' /><input type='hidden' id='email_test' value='0'/>
-            <span id='emailIsValid'></span><br /> 
-        Password: <input type ='password' id='password' size='10' />
-            <span id='password1Validating'></span>
-            <br /> 
-        Password again: <input type ='password' id='passwordcheck' size='10' />
-            <span id='password2Validating'></span>
-            <br /> 
-        First Name: <input type ='text' id='firstname' size='10' /><br /> 
-        Last Name: <input type ='text' id='lastname'  size='10' /><br />
-        Sex: 
-        <select id='sex' /> <br /> <!--hey dumbass, this should be drop down-->
-            <option value='M'>male</option>
-            <option value='F'>female</option>
-        </select><br/>
-        <div id='signup-errors'></div>
-        <span id='submit-signup' onClick='signUpMain()'>
-            <a href='#' class='testBlackBtn noclick'>Submit!</a>
-            </span> 
-        &nbsp;&nbsp;&nbsp;
-            <span id='ajaxLoaderSignUp'>
-                <img src='images/ajax-loader-transp-arrows.gif' />
-            </span>
-        <br /> 
-        <!--Should prolly restate that you can just connect with facebook here-->
-    </div>
-</form>
 
 
 
