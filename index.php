@@ -1,4 +1,26 @@
 <?php 
+// detection for mobile
+$ua = @$_SERVER['HTTP_USER_AGENT'];
+$device = '';
+if( stristr($ua,'ipad') ) {
+    $device = "ipad";
+} else if(stristr($ua,'ipod') or strstr($ua,'iphone')) {
+    $device = "iphone";
+} else if( stristr($ua,'blackberry') ) {
+    $device = "blackberry";
+} else if( stristr($ua,'android') ) {
+    $device = "android";
+}
+
+if(!isset($_GET['ignoreMobile'])) {
+    if($device == "iphone"){
+        header('Location: http://waanoo.com/mobile/iphone.php');
+    }
+    if($device == "android") {
+        header('Location: http://waanoo.com/mobile/android.php');
+    }
+}
+
 require 'php/header.php';
 //temporary
 //require("php/populate_YQL_events.php");

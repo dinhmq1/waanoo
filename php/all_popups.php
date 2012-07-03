@@ -7,7 +7,6 @@
             <img src="./images/buttons/btns_content/btn_done_inactive.png" />
         </a>
     </span>
-    
 </div>
 
 
@@ -219,7 +218,8 @@
         <span id="ajaxLoaderPostEvent">
             <img src="images/ajax-loader-transp-arrows.gif" />
         </span>
-    
+    <br />
+    <br />
     <br />
 </div>
 

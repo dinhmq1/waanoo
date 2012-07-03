@@ -221,6 +221,15 @@ $('.accordion .head').click(function() {
         $(this).next().toggle("fast");
         return false;
     }).next().hide();
+    
+   // restricts so only one is open at a time. 
+$('.accordion .head').click(function() {
+    $('.accordion .head').next().hide();
+    $(this).next().show();
+    
+    $('.accordion .head').css({fontSize:"100%"});
+    $(this).css({fontSize:"150%"});
+});
           
           
 $('#selectTags').change(function(){
@@ -388,17 +397,7 @@ $('#selectTags').change(function(){
             //console.log("escape key");
             controlDimmer(-10);
             // kill all the popups:
-            $('#eventCommentWrapper').hide();
-            $('#pageviewMapWrapper').hide();
-            $('#singleEventWrapper').hide();
-            $('#postEventSuccess').hide();
-            $('#signupPanel').hide();
-            $('#myEventsWrapper').hide();
-            $('#EventDirections').hide();
-            $('#EventMapWrapper').hide();
-            $('#postEventForm-wrapper').hide();
-            $('#map_wrapper').hide();
-            $('#postEventMiniMap').hide();
+            $('.popup').hide();
         }
     }); 
     

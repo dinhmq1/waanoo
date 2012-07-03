@@ -61,7 +61,11 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
             or die("failed to pull address");
         $row_addy = mysqli_fetch_assoc($res2);
         //address_id    event_id    address_text    x_coord y_coord
-        extract($row_addy);
+        if($row_addy != NULL)
+            extract($row_addy);
+        else 
+            break;
+            
         $distance = distance($x_coord, $y_coord, $lat, $lon, "m");
         
         /* after everything is extracted:
