@@ -12,7 +12,7 @@
 <!-- need for all -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <!-- calling asynch, dont need here -->
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
         <!-- NOT USING: <script src="js/gomap.min.js"></script> -->
         <script type="text/javascript" src="js/jQrotate.2.1.js"></script>
     <!-- anytime plugin by Andrew M. Andrews III -->

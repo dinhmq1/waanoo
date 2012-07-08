@@ -44,14 +44,13 @@ function loadScriptMiniMap() {
         }
 
 // NOTE: COORDINATES ARE GLOBALS FROM location_detection.js
+var revGeocoder = null;
+var map2 = null;
+var marker_pos = null;
 
-function initMiniMap() {
+    function initMiniMap() {
         //open up the map
         console.log("initializing map");
-        
-        //postion for marker
-        var lat_m = latitude;//37.79787684894448;
-        var lng_m = longitude;//-83.7020318012207;
         
         //Center of map upon init:
         var lat = latitude;//37.839479235926156;
@@ -66,30 +65,12 @@ function initMiniMap() {
             };
                         
         //this needs to be global because im going to call it later. A lot.
+        //map2 = null;
         map2 = new google.maps.Map(document.getElementById("miniMapCanvas"),myOptions);
-        
-        //add a marker:
-        you_icon = 'images/person_you.png';
-        marker_pos = new google.maps.LatLng(lat_m,lng_m);
-    
-        marker_pos = new google.maps.Marker({
-                map:map2,
-                draggable:true,
-                animation: google.maps.Animation.BOUNCE,
-                position: marker_pos,
-                icon: you_icon
-            });
-        
-        // make reverse geocoder object
-        revGeocoder = new google.maps.Geocoder();
-        // make a listener for the marker
-        google.maps.event.addListener(marker_pos, 'mouseup', reset_position_mini);
-        
         }//end init func
         
-    var revGeocoder = null;
-
-
+    
+    // reset coords when marker is dragged
     function reset_position_mini(){
         var new_pos = marker_pos.getPosition();
         latitude_event = new_pos.lat();
@@ -99,7 +80,6 @@ function initMiniMap() {
         var current_position = marker_pos.getPosition();
         map2.setCenter(current_position);
         console.log("lat new: " + latitude_event + " lng new: " + longitude_event);
-        
         
         // SHOULD GET REVERSE GEOCODE AND UPDATE INTO THE CORECT FIELD:
         revGeocoder.geocode({'latLng': current_position}, function(results, status) {
@@ -121,15 +101,30 @@ function initMiniMap() {
         
         $('#postEventMiniMap').show();
         
-        console.log("begin client side geocode query");
+        //add a marker:
+        var lat_m = latitude;//37.79787684894448;
+        var lng_m = longitude;//-83.7020318012207;
+        you_icon = 'images/person_you.png';
+        marker_pos = new google.maps.LatLng(lat_m,lng_m);
+    
+        marker_you = new google.maps.Marker({
+                map:map2,
+                draggable:true,
+                animation: google.maps.Animation.BOUNCE,
+                position: marker_pos,
+                icon: you_icon
+            });
+            
+        // make reverse geocoder object
+        revGeocoder = new google.maps.Geocoder();
+        // make a listener for the marker
+        google.maps.event.addListener(marker_pos, 'mouseup', reset_position_mini);
+            
         var geocoder = new google.maps.Geocoder();
         var address = $('#eventLocation').val();
         if(address == ""){
             address = "45221";
             }
-        
-        console.log(address);   
-            
         geocoder.geocode( { 'address': address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 map2.setCenter(results[0].geometry.location);
@@ -263,9 +258,219 @@ function testGeocode(address){
             
             return newTime;
             }
+            
+        return false;
         }
     
+    function submitNewEvent(){
+        // Set up the things we need for validation:
+        var errors = "";
+        var errFlag = false; // start with no errors
+        $('#ajaxLoaderPostEvent').show();
+        console.log("submitting new event");
+        
+        // get our variables:
+        var eventName = $('#eventName').val();
+        var eventLoc = $('#eventLocation').val();
+        var eventBegin = $('#eventDateBegin').val();
+        var eventEnd = $('#eventDateEnd').val();
+        var eventDescrip = $('#eventDescription').val();
+        var imgFileName = $('#imgFileLocation').val();
+        var isImage = $('#isThereImage').val();
+        var contact = $('#allowContactEvtent').attr('checked');
+        
+        // stuff added 7/7/2012
+        var homeURL = $('#txtEventHomepageURL').val();
+        var tagsList = $('#txtTagsInpt').val();
+        var outdoors = $('#chkOutdoorsEvent').attr('checked'); // either undefined or "checked"
+        var radioFree = $("#freeEvent").attr('checked');
+        var radioNonFree = $("#nonFreeEvent").attr('checked');
+        var currencyType = $("#priceCurrency").val();
+        var eventCost = $('#eventPrice').val();
+        var isFree = true;
+        
+        // event cost info.. convert to boolean
+        if(radioNonFree == "checked") {
+            if(!testEmpty(eventCost)) {
+                errors += "If the event is not free, you should note the cost. <br />";
+                errFlag = true;
+            }
+            isFree = false;
+        } else {
+            isFree = true;
+        }
+        
+        // outdoors.. convert to boolean
+        if(outdoors == "checked") {
+            outdoors == true;
+        } else {
+            outdoors == false;
+        }
+        
+        
+        // image uploading info:
+        var isImageBool = 0;
+        if(isImage == 1) 
+            isImageBool = 1;
+        else 
+            isImageBool = 0;
+        console.log("is there an image: " + isImage);
+        
+        // convert date to MySQL format:
+        console.log("converting times");
+        eventBegin = toMySQLTime(eventBegin);
+        eventEnd = toMySQLTime(eventEnd);
+        
+        // get optional contact info
+        var isContactInfo = 0;
+        var isContactInfoValid = false;  // so if (0 and False) or (1 and true)
+        if(contact == "checked") {
+            isContactInfo = 1;
+            var contactType = $('#eventContactType').val();
+            if(contactType == "email") {
+                var contactInfo = $('#emailContactInfo').val();
+                isContactInfoValid = testContactEmail();
+                }
+            if(contactType == "phone") {
+                var contactInfo = {
+                    phone1: $('#phone1ContactInfo').val(),
+                    phone2: $('#phone2ContactInfo').val(),
+                    phone3: $('#phone3ContactInfo').val()
+                    }; // JSON for phone
+                isContactInfoValid = testContactPhone();    
+                }
+            }
+        else {
+            isContactInfo = 0;
+            var contactInfo = "none";
+            var contactType = "none";
+            }
+            
+        // validate contact info
+        if(isContactInfo != 0) {
+            if(!(isContactInfoValid)) {
+                errors += "Contact info is not valid. <br />";
+                errFlag = true;
+            }
+        }
+        
+        
+        // check empty
+        if(!(testEmpty(eventName) && testEmpty(eventLoc) && 
+            testEmpty(eventBegin) && testEmpty(eventEnd) 
+            && testEmpty(eventDescrip))){
+            errors += "A required field was empty! <br />";
+            errFlag = true;
+        }
+        
+        // check dates
+        var re = /\d+-\d+-\d+ \d+:\d+/i;
+        if(!(re.test(eventBegin) && re.test(eventEnd))){
+            errors += "Dates are not valid! <br />";
+            errFlag = true;
+        }
+        
+        
+        // decide wether to submit or not
+        if(errFlag) {
+            $('#eventPostErrors').empty().append(errors);
+            $('#ajaxLoaderPostEvent').hide();
+
+        } 
+        else {
+            console.log("Passes all validation");
+            //now to geocode the address and check to see if it is OK
+            var address = eventLoc;
+            geocoder = new google.maps.Geocoder();
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    // status is good. Go ahead an submit form with the geocoded lat and lng
+                    var party_position = results[0].geometry.location
+                    var lat_event = party_position.lat();
+                    var lng_event = party_position.lng();
+                      
+                    // format JSON
+                    postEventData = {
+                        latitude: lat_event,
+                        longitude: lng_event,
+                        eventName: eventName,
+                        eventLocation: address,
+                        eventBegin: eventBegin,
+                        eventEnd: eventEnd,
+                        eventDescription: eventDescrip,
+                        isImageSubmitted: isImageBool,
+                        imageFileName: imgFileName,
+                        isContactInfoActive: isContactInfo,
+                        contactInfoType: contactType,
+                        contactInfoContent: contactInfo,
+                        isFree : isFree,
+                        eventPrice: eventCost,
+                        eventCurrency: currencyType,
+                        isOutdoors: outdoors,
+                        homepageURL: homeURL,
+                        tagsList: tagsList
+                        };
+                    
+                    // ajax call to post our event
+                    $.ajax({
+                        type: "POST",
+                        url: "./php/postevent.php", 
+                        data: postEventData,
+                        dataType: "json",
+                        success: function(result){
+                            var msg = result.message;
+                            var successMsg = result.status;
+                            //alert("Data returned: " + msg);
+                            if(successMsg == 1){
+                                // clear fields
+                                clearPostEvent();
+                                // hide the form
+                                $('#postEventForm-wrapper').hide();
+                                controlDimmer(-1);
+                                
+                                // load up events again.
+                                load_events(latitude, longitude);
+                                }
+                            else {
+                                $('#ajaxLoaderPostEvent').hide();
+                                $('#eventPostErrors').empty().append(msg);
+                                }
+                        
+                            }
+                        });
+            } // end if ok
+            else {
+                // status was NOT OK
+                $('#eventPostErrors').empty().append("Google maps geocoder failed to respond...<br />");
+                }// end Not OK else
+            });// end geocoder.
+        }// end main else
+    }// end submit new function
+
+
+function clearPostEvent() {
+    $('#ajaxLoaderPostEvent').hide();
     
+    $('#eventName').val("");
+    $('#eventLocation').val("");
+    $('#eventDateBegin').val("");
+    $('#eventDateEnd').val("");
+    $('#eventDescription').val("");
+    $('#imgFileLocation').val("");
+    $('#isThereImage').val("0");
+    
+    $('#descriptionCount').empty().append("0");
+    $('#lblEventDateErrors').empty();
+    $('#txtEventHomepageURL').empty();
+    $('#lblTagInputErrors').empty();
+    $('#txtTagsInpt').empty();
+    $('#eventPrice').empty();
+    
+    $('#allowContactEvtent').removeAttr("checked");
+    $('#eventPostErrors').empty();
+}
+
+    /*
     function submitNewEvent(){
         $('#ajaxLoaderPostEvent').show();
         console.log("submitting new event");
@@ -446,3 +651,4 @@ function testGeocode(address){
             <font color='red'>Something was empty</font>");
             }
         }
+    */

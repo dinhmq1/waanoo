@@ -1,7 +1,6 @@
 // some javascript goes here!
 
 $(document).ready(function() {
-
     // STOP ALL <a> clicks
     
     $("a.noclick").click( function(event) {
@@ -124,10 +123,7 @@ $(document).ready(function() {
         
     
     // geolocation scripting see -> location_detection.js
-/**** MAP/ LOCATION SCRIPTING ****/
-    get_location();
-    //$('#map_wrapper').hide();
-    
+
 
 /**** EVENT POSTING SCRIPTING ***/
     //$('#postEventForm-wrapper').hide();
@@ -218,7 +214,7 @@ $(document).ready(function() {
 
 
 $('.accordion .head').click(function() {
-        $(this).next().toggle("fast");
+        $(this).next().toggle(350);
         return false;
     }).next().hide();
     
@@ -464,8 +460,31 @@ $('#uploader').click(function() {
     */
 /*** IMG BUTTON SWAP ***/
 
-    
-    
-    
+
+/*** Autocomplete for google maps location picker ***/
+var input = document.getElementById('eventLocation');
+var autocomplete = new google.maps.places.Autocomplete(input);
+
+$("#freeEvent").attr("checked", "checked"); 
+$("#nonFreeEvent").change( function() {
+    console.log("radio button fired");
+    var radiovalue=$("#nonFreeEvent").attr('checked');
+    if(radiovalue == "checked") {
+        $('.eventCostSection').show();
+    }
+});
+$("#freeEvent").change( function() {
+    console.log("radio button fired");
+    var radiovalue=$("#freeEvent").attr('checked');
+    if(radiovalue == "checked") {
+        $('.eventCostSection').hide();
+    }
+});
+
+
+
+/**** Running code on load --******************************************************************/
+/**** MAP/ LOCATION SCRIPTING ****/
+    get_location();
         
 });  // end ready

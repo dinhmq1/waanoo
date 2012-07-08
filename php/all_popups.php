@@ -120,7 +120,7 @@
                     <td>Where will it be?</td>
                     <td><input type='text' id='eventLocation' />
                             <span id="setLocation" onClick='reset_coords()'>
-                            <a href='#' class='testBlackBtn noclick'>Test -></a>
+                            <a href='#' class='testBlackBtn noclick'>Check on map -></a>
                             </span>
                     </td>
                 </tr>
@@ -198,8 +198,24 @@
                     <td><input type='checkbox' value='true' id='chkOutdoorsEvent' /></td>
                 </tr>
                 <tr align='left'>
-                    <td>Free Event:</td>
-                    <td><input type='checkbox' value='true' id='chkFreeEvent' /></td>
+                    <td>Event cost:</td>
+                    <td id='radioContainer'>
+                    free - <input type='radio'  name='group1' value='free' id='freeEvent' /> | 
+                    not free - <input type='radio'  name='group1' value='notfree' id='nonFreeEvent' />
+                    </td>
+                </tr>
+                <tr class='eventCostSection' style='display:none;'>
+                    <td>Event price:</td>
+                    <td><input type='text' id='eventPrice' /></td>
+                </tr>
+                <tr class='eventCostSection' style='display:none;'>
+                    <td>&nbsp;</td>
+                    <td><select id='priceCurrency'>
+                            <option>$-USA</option>
+                            <option>$-Canadian</option>
+                            <option>Pounds-British</option>
+                        </select>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -210,7 +226,7 @@
             <input type='hidden' id='isThereImage' value='0' />
             <input type='hidden' id='oldEventID' value="" />
     <hr />
-    <span id='eventPostErrors'></span><br />
+    <span id='eventPostErrors' style='color:red;font-size:70%;'></span><br />
     <span  id='eventFormSubmitBtn' onClick='submitNewEvent()'>
             &nbsp;&nbsp;&nbsp;&nbsp;<a href='#' class='testBlackBtn noclick'>Submit!</a>
         </span>
