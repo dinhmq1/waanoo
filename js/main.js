@@ -482,7 +482,20 @@ $("#freeEvent").change( function() {
 });
 
 
+/***  FOOTER IMAGE MOUSEOVERS ***/
+$('#fbFooterImage').mouseover(function() {
+    $(this).attr({ src: "images/icons/fb_active.png"});
+});
+$('#fbFooterImage').mouseout(function() {
+    $(this).attr({ src: "images/icons/fb_inactive.png"});
+});
 
+$('#twitterLogoFooter').mouseover(function() {
+    $(this).attr({ src: "images/icons/twitter_active.png"});
+});
+$('#twitterLogoFooter').mouseout(function() {
+    $(this).attr({ src: "images/icons/twitter_inactive.png"});
+});
 /**** Running code on load --******************************************************************/
 /**** MAP/ LOCATION SCRIPTING ****/
     get_location();

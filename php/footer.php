@@ -1,4 +1,19 @@
-<div id ="wrap">
+<div id ="footerWrap">
+	
+	<img src='images/logos/owl_footer.png' id='owlFooterImage'/>
+    <img src='images/logos/logo_footer.png' id='waanooLogoFooter'/>
+    
+    <span id='copyrightSpan'>© Waanoo, All rights Reserved</span>
+    
+    <a href="http://www.facebook.com/WaanooIt" class="noclick">
+    <img src='images/icons/fb_inactive.png' id='fbFooterImage'/>
+    </a>
+    
+    <a href="https://twitter.com/TweetWaanoo" class="noclick">
+    <img src='images/icons/twitter_inactive.png' id='twitterLogoFooter'/>
+    </a>
+    
+	
     <div class='footer'>
         <ul>
             <li><span id="about-button" onClick='aboutBtn()'> 

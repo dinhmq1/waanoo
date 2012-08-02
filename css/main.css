@@ -1,4 +1,3 @@
-
 /* Main css file. Should ONLY put tag attributes here (e.g. body, a, p) */
     /*
      * 
@@ -27,12 +26,19 @@ html, body
                 
     font-family: 'Karla', sans-serif;
     text-align: center;
-    background-color: #EEEDEA;
+    /*background-color: #EEEDEA;
+     * 
+     */
     color: black;
     font-size: 20px;
     position: relative;
     height: 100%;
     width: 100%;
+   
+    }
+    
+    body {
+    	 background: #EEEDEA url('images/buttons/pattern_test.png') repeat;
     }
     
     p{
@@ -636,22 +642,13 @@ html, body
         /*** FOOTER NAV BAR ***/
     
         .footer {
+            position: absolute;
+            /* top:20px; */
             width: 100%;
-            height: 40px;
+            height: 60px;
             border-top-width: 1px;
             border-top-style: solid;
             border-top-color: black;
-            
-            /*
-            z-index: 2;
-            position: absolute;
-            bottom: 0px;
-            margin-top: -30px;
-            */
-            /*
-            CSS has to be tricked into displaying the footer on the bottom of the page.
-            Use margin-top: -heightoffooter;
-            */
             
             color: white;
             background-color: black;
@@ -671,12 +668,53 @@ html, body
                 background-color: white;
                 
                 }
-        
+   
+#footerWrap {
+    position:relative;
+}
+    
+#owlFooterImage {
+    position: absolute;
+    top: -60px;
+    left: 50px;
+    z-index: 10;
+}
+
+#waanooLogoFooter {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    z-index: 9;
+}
+
+#fbFooterImage {
+   position: absolute;
+    top: 10px;
+    left: 80%;
+    z-index: 10;
+}
+
+#twitterLogoFooter {
+    position: absolute;
+    top: 10px;
+    left: 85%;
+    z-index: 10;
+}
+
+#copyrightSpan {
+    color:white;
+    font-size: 50%;
+    position: absolute;
+    top: 25px;
+    left: 200px;
+    z-index: 10;
+}
+
+
  /* END PRIMARY PAGE ELEMENTS */
 
 
-
-    /* IE FIXES */
+ /* IE FIXES */
     
    a, a:active, a:focus {
     outline: none;

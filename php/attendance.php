@@ -24,6 +24,35 @@ if(@$_SESSION['signed_in'] == true) {
 				";
 		$qry = mysqli_query($cxn, $sql)
 			or die("failed to add attendance");
+			
+		/** Send email to host
+		 * 
+		 */
+		$sql = "SELECT * FROM attendees WHERE event_id='$event_id'";
+		$res = mysqli_query($cxn, $sql) or die("Failed to count attendees!");
+		$num_attend = mysqli_num_rows($res);
+		 
+		 
+		$sql = "SELECT email, user_id, first_name, (SELECT event_title FROM user_events WHERE 				event_id='$event_id') as event_name
+				FROM user_list WHERE 
+				user_id=(SELECT user_id FROM user_events 
+					WHERE event_id='$event_id')";
+					
+		$res = mysqli_query($cxn, $sql)
+			or die("Failed to add pull useremail for attendance");
+		
+		$row = mysqli_fetch_assoc($res);
+		$owner_email = $row['email'];
+		$first_name = $row['first_name'];
+		$event_name = $row['event_name'];
+		 
+		$to = $owner_email;
+		$subject = "Hi $first_name, a new user has RSVP'd for your event!!";
+		$message = "The current RSVP count for event '$event_name' is now: $num_attend";
+		$headers = "From: noreply@waanoo.com\r\n";
+		// Or sendmail_username@hostname by default
+		mail($to, $subject, $message, $headers);
+		
 		
 		$arr = array("msg" => "you are now attending!", "status" => 2);
 		echo json_encode($arr);

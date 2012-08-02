@@ -24,6 +24,16 @@ if($GLOBALS['$debug'] == true) {
 	}
 
 
+function send_confirm_email($user_email, $first_name) {
+	$to = $user_email;
+	$subject = "Hi $first_name, Thanks for joining Waanoo!";
+	$message = "Hi $first_name, \n\nWe are super excited that you signed up for waanoo. This probably means that you want to post an event! If you to get started just click 'POST' on the main page and fill out the required fields. In no time you can be hosting events on Waanoo.\n\nWant to know what the best part about waanoo is? Host analytics. You will get emails when you events recieve RSVP requests and you can see on a map where all of the pageviews for your events are coming from!";
+	$headers = "From: noreply@waanoo.com\r\n";
+	// Or sendmail_username@hostname by default
+	mail($to, $subject, $message, $headers);
+}
+
+
 // DONT NEED ERROR MESSAGES. DOING FRONT END VERIFICATION
 
 function verify_password($password1, $password2, $username){
@@ -202,6 +212,8 @@ function main_validation($email, $password1, $password2, $fname, $lname, $sex) {
 		$_SESSION['privleges'] = "user";
 		//$_SESSION['city'] = $city;
 		//$_SESSION['state'] = $state;
+		
+		send_confirm_email($email, $fname);
 		
 		return true;
 		}
