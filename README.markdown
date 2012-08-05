@@ -1,11 +1,13 @@
 TO DO:
 ======
 
-* are you fucking kidding me: Date.parse() in Firefox javascript cannot handle
-2012-06-24 04:04 PM <-- that format but Chrome does it perfectly... So now I have
-to write my own parse? Fuck you shitty browsers.
 
-* new highlighting color: #DB1D46
+* So the new goal should be to outfit the site with responsive design. Do one version for large screens, another version for small screens. 
+
+http://webdesignerwall.com/tutorials/5-useful-css-tricks-for-responsive-design
+http://webdesignerwall.com/tutorials/responsive-design-in-3-steps
+
+* new highlighting color: #DB1D46 .. waanoo pink
 
 
 * host analytics:

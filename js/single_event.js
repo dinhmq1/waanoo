@@ -3,7 +3,7 @@
 function eventSingleViewer(event_id){
     console.log("singleview for:" + event_id);
     
-    $('#singleEventWrapper').show();
+    $('#singleEventWrapperWrapper').show();
     
     // add the dimmer
     controlDimmer(1);
@@ -41,7 +41,7 @@ function eventSingleViewer(event_id){
 
 
 function closeSingleEvent() {
-    $('#singleEventWrapper').hide();
+    $('#singleEventWrapperWrapper').hide();
     
     hideEventComments();
     controlDimmer(-1);

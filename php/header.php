@@ -16,7 +16,7 @@ else {
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" value="IE=9" />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=1000" />
     <meta name="description" content="Find local events and parties near you! 
               Want to let others know about your event and/or party? Share them on Waanoo!" /> 
     
@@ -29,6 +29,7 @@ else {
 
 
 <body>
+	<div id="epicWrap">
     <div id="header">
         <a href='/'>
             <span>
@@ -100,6 +101,19 @@ else {
                     }
                 ?>
             
+			            
+			            <!-- misc promo stuff -->
+			<style type="text/css">
+				#mainPostItNote {
+					position: absolute;
+					top: 40px;
+					right: 1%;
+					
+				}
+			</style>
+			
+			<img src="images/main_note.png" id="mainPostItNote" />
+			            
         </div> <!-- end #login-logout-wrapper -->
     </div><!-- end #header -->
     

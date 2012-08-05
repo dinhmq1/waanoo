@@ -104,7 +104,46 @@
 
 /*** SINGLE EVENT ***/
 
+#singleEventWrapperWrapper {
+	display: none;
+    position: fixed;
+    top: 20%;
+    height: 500px;
+    width: 900px;
+    
+    left: 50%;
+    margin-left: -450px;
+    
+    z-index: 50;
+    overflow: auto;
+    background-color: #F8F8F8;  
+    border-radius: 5px;
+    
+    font-size: 130%;
+}
+
+.backgroundTextLowOP {
+    	opacity: 0.2;
+    	font-size: 100%;
+    	font-style: italic;
+    	position: absolute;
+    	left: 2%;
+    	top: 2%;
+    }
+    
+ 	.inline {
+ 		position: relative;
+
+ 	}
+ 	
+ 	.inline a {
+ 		position: absolute;
+ 		top: 20px;
+ 		font-size: 130%;
+ 	}
+
 #singleEventWrapper {
+	/*
     display: none;
     position: fixed;
     top: 20%;
@@ -113,12 +152,16 @@
     width: 65%;
     
     z-index: 50;
+    */
     overflow: auto;
+    
     background-color: #F8F8F8;  
     border-radius: 5px;
     
     font-size: 70%;
     }
+    
+    
 
 /*
     .closer {
@@ -179,43 +222,11 @@
             }
 
 
-
-
-/**** EVENT ANALYTICS ***********/
-
-    #pageviewMapWrapper {
-        display: none;
-        position: fixed;
-        top: 10%;
-        left: 10%;
-        height: 80%;
-        width: 80%;
-        
-        z-index: 500;
-        overflow: auto;
-        background-color: #F8F8F8;  
-        border-radius: 5px;
-        
-        font-size: 70%;
-        }
-        
-        #pageviewMap {
-            width: 100%;
-            height: 90%;
-            }
-
-
 /****   Event Messages    ****/
 
     #eventCommentWrapper {
-        display: none;
-        position: fixed;
-        top: 20%;
-        right: 2%;
-        height: 70%;
-        width: 30%;
-        
-        z-index: 50;
+		position: relative;
+		
         overflow: auto;
         background-color: #EEEDEA;
         border-radius: 5px;
@@ -242,3 +253,30 @@
         .eventCommentText {
             text-align: left;
             }
+
+
+
+
+/**** EVENT ANALYTICS ***********/
+
+    #pageviewMapWrapper {
+        display: none;
+        position: fixed;
+        top: 10%;
+        left: 10%;
+        height: 80%;
+        width: 80%;
+        
+        z-index: 500;
+        overflow: auto;
+        background-color: #F8F8F8;  
+        border-radius: 5px;
+        
+        font-size: 70%;
+        }
+        
+        #pageviewMap {
+            width: 100%;
+            height: 90%;
+            }
+

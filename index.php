@@ -144,16 +144,7 @@ require 'php/header.php';
     </span>
 
 
-<!-- misc promo stuff -->
-<style type="text/css">
-	#mainPostItNote {
-		position: absolute;
-		top: 40px;
-		left: 80%;
-	}
-</style>
 
-<img src="images/main_note.png" id="mainPostItNote" />
 
 
 
@@ -161,4 +152,3 @@ require 'php/header.php';
 <?php require("php/all_popups.php"); ?>
 
 <?php require 'php/footer.php';?>
-

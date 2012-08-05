@@ -5,11 +5,11 @@
     
     <span id='copyrightSpan'>© Waanoo, All rights Reserved</span>
     
-    <a href="http://www.facebook.com/WaanooIt" class="noclick">
+    <a href="http://www.facebook.com/WaanooIt" target="_blank">
     <img src='images/icons/fb_inactive.png' id='fbFooterImage'/>
     </a>
     
-    <a href="https://twitter.com/TweetWaanoo" class="noclick">
+    <a href="https://twitter.com/TweetWaanoo" target="_blank">
     <img src='images/icons/twitter_inactive.png' id='twitterLogoFooter'/>
     </a>
     
@@ -134,8 +134,8 @@
         </p>
         <a href="#" class='testBlackBtn noclick'>Close</a>
     </span>
-</div>
+</div><!--- close footer -->
 
-
+</div><!-- close epic wrap -->
 </body>
 </html>

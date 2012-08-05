@@ -38,12 +38,20 @@ html, body
     }
     
     body {
-    	 background: #EEEDEA url('images/buttons/pattern_test.png') repeat;
+    	 background: #EEEDEA url(../images/buttons/pattern_test.png) repeat;
     }
     
     p{
     margin: 0;
     padding: 0;
+    }
+    
+    
+    #epicWrap {
+    	width: 100%;
+    	min-width: 1000px;
+    	height: 100%;
+    	
     }
     
     a {
@@ -105,6 +113,7 @@ html, body
         padding: 0;
         border: 0;
         width: 100%;
+        min-width: 1000px;
         height: 30px;
         /*background-color: #328AC5; *//*temp.. just so i can see wtf i am doing here #2E2E2E; */
         background-color: black;
@@ -739,6 +748,7 @@ html, body
     border-style: groove;
     border-width: 1px;
     border-color: black;
+    background: #EEEDEA url(../images/buttons/pattern_test.png) repeat;
  }
 
     .textError {

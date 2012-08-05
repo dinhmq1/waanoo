@@ -294,11 +294,43 @@
 
 
 
+<div id="singleEventWrapperWrapper" class='popup'>
+	
+	<div id='singleEventWrapper' class='popup'>
+	    <div id='singleEventContent'>
+	        </div>
+	</div>
 
-<div id='singleEventWrapper' class='popup'>
-    <div id='singleEventContent'>
-        </div>
+
+	<div id='eventCommentWrapper'>
+		<br />
+	    <div>
+	    	<span class="backgroundTextLowOP">
+	        Post A Comment!
+	        </span>
+	        <form class="inline">
+	            <input id='eventIdMsg' value='0' type='hidden' />
+	            <textarea id='eventMsgComment' rows="3" cols="35" maxlength="500" placeholder="Say Something!"></textarea> 
+	            
+	            &nbsp;&nbsp;
+	            <a href='#' class='testBlackBtn noclick' onClick='postEventComment()'>
+	                post
+	            </a>
+	        </form>
+	          
+	    </div>
+	    
+	        <br />
+	        
+	    <div id='eventMsgContainer'>
+	    </div>  
+	    <br />
+	            <br />
+	            <br />
+	</div>
+
 </div>
+
 
 
 
@@ -327,22 +359,3 @@
         </div>
 </div>
 -->
-
-
-<div id='eventCommentWrapper' class='popup'>
-    <div>
-        Comment on this event:
-        <form>
-            <input id='eventIdMsg' value='0' type='hidden' />
-            <textarea id='eventMsgComment' rows="3" cols="35" maxlength="500"></textarea>
-                <br />
-            <a href='#' class='testBlackBtn noclick' onClick='postEventComment()'>
-                post
-            </a>
-        </form>
-            <br />
-    </div>
-        
-    <div id='eventMsgContainer'>
-    </div>
-</div>
