@@ -1,15 +1,33 @@
 <!-- POPUPS FOR SITE -->
 
+
+<!--
+	Fix location
+	see location_detection.js
+	we are manipulating map called "map_canvas"
+-->
 <div id='map_wrapper' class='popup'>
     <div id='map_canvas'></div>
-        <span onClick='close_map_selector()'>
-        <a href='#' class='noclick'>
-            <img src="./images/buttons/btns_content/btn_done_inactive.png" />
-        </a>
+    
+    <span >
+    	<input type="text" id="fixLocationInput" size="50"/>
+    	<a href='#' class='testBlackBtn noclick' onClick='fixLocationInput()'>Go To</a>
+    </span>
+    <span>
+    	&nbsp;&nbsp;&nbsp;
+    	&nbsp;&nbsp;&nbsp;
+    </span>
+    <span onClick='close_map_selector()'>
+        <a href='#' class='testBlackBtn noclick'>DONE</a>
     </span>
 </div>
 
 
+
+<!--
+	Signup.
+	See signup.js
+-->
 <form>
     <div id='signupPanel' class='popup'> 
         <table class='postTable' align='center' cellpadding='2'>
@@ -69,7 +87,10 @@
 
 
 
-
+<!--
+	Post event
+	see postevent.js
+-->
 <div id='postEventForm-wrapper' class='popup'>
     <h3 style='text-align: left; padding-left: 20px;'>Post an Event! </h3>
     <span id='cancelPostEventBtn' onClick='close_post_event()'>
@@ -118,18 +139,26 @@
             <table class='postTable' align='center' cellpadding='10'>
                 <tr align='left'>
                     <td>Where will it be?</td>
-                    <td><input type='text' id='eventLocation' />
-                            <span id="setLocation" onClick='reset_coords()'>
-                            <a href='#' class='testBlackBtn noclick'>Check on map -></a>
-                            </span>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr align='left'>
+                    <td>
+                    	<input type='text' id='eventLocation' size="50"/>
+                        
+                    </td>
+                    <td>
+                    	<span id="setLocation" onClick='showMinimapCoords()'>
+                        	<a href='#' class='testBlackBtn noclick'>Check on map -></a>
+                        </span>
                     </td>
                 </tr>
                 <tr align='left'>
-                    <td>&nbsp;</td>
+                    
                     <td><p id='dragNdropMsg'>
                         <small>note: drag and drop enabled on map</small>
                         </p>
                     </td>
+                    <td>&nbsp;</td>
                 </tr>
                 </table>
         </div>

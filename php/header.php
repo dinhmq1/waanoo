@@ -102,7 +102,11 @@ else {
                 ?>
             
 			            
-			            <!-- misc promo stuff -->
+			
+			            
+        </div> <!-- end #login-logout-wrapper -->            
+        
+        <!-- misc promo stuff -->
 			<style type="text/css">
 				#mainPostItNote {
 					position: absolute;
@@ -113,7 +117,5 @@ else {
 			</style>
 			
 			<img src="images/main_note.png" id="mainPostItNote" />
-			            
-        </div> <!-- end #login-logout-wrapper -->
     </div><!-- end #header -->
     

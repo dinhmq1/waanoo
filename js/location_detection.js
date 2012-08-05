@@ -137,6 +137,34 @@ showMapExecuted = false;
         load_events(latitude, longitude);
         }       
         
+// change loc from input
+	function fixLocationInput() {
+		
+		// get lat and lng from geocode
+		var geocoder = new google.maps.Geocoder();
+        var address = $('#fixLocationInput').val();
+        if(address == ""){
+            address = "45221";
+            }
+            
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log(results);
+                // reset the cookies:
+                	latitude = results[0].geometry.location.lat();
+                	longitude = results[0].geometry.location.lng();
+                
+			        $.cookie("latitude", latitude, { expires: 365 });
+			        $.cookie("longitude", longitude, { expires: 365 });
+					
+					var current_position = new google.maps.LatLng(latitude,longitude);
+					marker_you.setPosition(current_position);
+					map.setCenter(current_position);
+				
+                }
+            });
+	}
+		
         
 
     function initialize() {

@@ -44,14 +44,10 @@ function loadScriptMiniMap() {
         }
 
 // NOTE: COORDINATES ARE GLOBALS FROM location_detection.js
-var revGeocoder = null;
-var map2 = null;
-var marker_pos = null;
-
-    function initMiniMap() {
-        //open up the map
-        console.log("initializing map");
-        
+	/*
+	 * Call from main.js
+	 */
+    function initMiniMap() {      
         //Center of map upon init:
         var lat = latitude;//37.839479235926156;
         var lng = longitude;//-83.65678845996092;
@@ -63,24 +59,52 @@ var marker_pos = null;
             zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-                        
+           
         //this needs to be global because im going to call it later. A lot.
         //map2 = null;
-        map2 = new google.maps.Map(document.getElementById("miniMapCanvas"),myOptions);
-        }//end init func
+        map_2 = new google.maps.Map(document.getElementById("miniMapCanvas"),myOptions);
         
+        you_icon = 'images/person_you.png';
+        marker_pos_2 = new google.maps.LatLng(lat,lng);
+    
+        marker_you_2 = new google.maps.Marker({
+                map:map_2,
+                draggable:true,
+                animation: google.maps.Animation.BOUNCE,
+                position: marker_pos_2,
+                icon: you_icon
+            });
+        // make a listener for the marker
+        google.maps.event.addListener(marker_you_2, 'mouseup', reset_position_mini);
+
+		setCoordsMini()
+        }//end init func
+       
+    function setCoordsMini() {
+    	var geocoder = new google.maps.Geocoder();
+        var address = $('#eventLocation').val();
+        
+        if(address == ""){
+            address = "45221";
+            }
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map_2.setCenter(results[0].geometry.location);
+                console.log(results);
+                marker_you_2.setPosition(results[0].geometry.location);
+                }
+            });
+    } 
     
     // reset coords when marker is dragged
     function reset_position_mini(){
-        var new_pos = marker_pos.getPosition();
-        latitude_event = new_pos.lat();
-        longitude_event = new_pos.lng();
-        var current_position = new google.maps.LatLng(latitude_event,longitude_event);
+        var current_position = marker_you_2.getPosition();
         
-        var current_position = marker_pos.getPosition();
-        map2.setCenter(current_position);
-        console.log("lat new: " + latitude_event + " lng new: " + longitude_event);
+        map_2.setCenter(current_position);
         
+        console.log("new position: " + current_position);
+        
+        var revGeocoder = new google.maps.Geocoder();
         // SHOULD GET REVERSE GEOCODE AND UPDATE INTO THE CORECT FIELD:
         revGeocoder.geocode({'latLng': current_position}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -94,44 +118,16 @@ var marker_pos = null;
         //$('#eventLocation').val(reverseGeocodePos);
         }
 
+/*
+ * Gets called from the button
+ * Init is called from this every time.
+ */
 // geocodes address and resets map position
-    function reset_coords(){
+    function showMinimapCoords(){
         console.log("opening mini map for event");
+        $('#postEventMiniMap').show();
         initMiniMap();
         
-        $('#postEventMiniMap').show();
-        
-        //add a marker:
-        var lat_m = latitude;//37.79787684894448;
-        var lng_m = longitude;//-83.7020318012207;
-        you_icon = 'images/person_you.png';
-        marker_pos = new google.maps.LatLng(lat_m,lng_m);
-    
-        marker_you = new google.maps.Marker({
-                map:map2,
-                draggable:true,
-                animation: google.maps.Animation.BOUNCE,
-                position: marker_pos,
-                icon: you_icon
-            });
-            
-        // make reverse geocoder object
-        revGeocoder = new google.maps.Geocoder();
-        // make a listener for the marker
-        google.maps.event.addListener(marker_pos, 'mouseup', reset_position_mini);
-            
-        var geocoder = new google.maps.Geocoder();
-        var address = $('#eventLocation').val();
-        if(address == ""){
-            address = "45221";
-            }
-        geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                map2.setCenter(results[0].geometry.location);
-                console.log(results);
-                marker_you.setPosition(results[0].geometry.location);
-                }
-            });
         }
 // shows 
     function closePostEventMinimap() {

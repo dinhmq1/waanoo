@@ -465,6 +465,10 @@ $('#uploader').click(function() {
 var input = document.getElementById('eventLocation');
 var autocomplete = new google.maps.places.Autocomplete(input);
 
+// fix location auto comp.
+var input2 = document.getElementById('fixLocationInput');
+var autocomplete2 = new google.maps.places.Autocomplete(input2);
+
 $("#freeEvent").attr("checked", "checked"); 
 $("#nonFreeEvent").change( function() {
     console.log("radio button fired");
@@ -499,5 +503,6 @@ $('#twitterLogoFooter').mouseout(function() {
 /**** Running code on load --******************************************************************/
 /**** MAP/ LOCATION SCRIPTING ****/
     get_location();
+    
         
 });  // end ready
