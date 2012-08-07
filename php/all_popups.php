@@ -325,7 +325,7 @@
 
 <div id="singleEventWrapperWrapper" class='popup'>
 	
-	<div id='singleEventWrapper' class='popup'>
+	<div id='singleEventWrapper'>
 	    <div id='singleEventContent'>
 	        </div>
 	</div>
