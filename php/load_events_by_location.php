@@ -1,9 +1,31 @@
 <?php
 //error_reporting(0);
-require('cxn.php');
-require('HTML_output_lib.php');
-session_start();
+if(isset($_REQUEST['latitude']) && isset($_REQUEST['longitude'])) {
+	session_start();
+	require('cxn.php');
+	// LAT LNG FROM FRON END
+	$lat = $_REQUEST['latitude'];
+	$lon = $_REQUEST['longitude'];
+} else {
+	// being called as include from front page
+	require('php/cxn.php');
+	$lat = "39.13105638912487";
+	$lon = "-84.51626435585939";
+}
 
+
+require('HTML_output_lib.php');
+
+
+// TRYING TO JUST DO ONE SCRIPT SO WE ADD SOME OPTIONS
+if(isset($_REQUEST['offset'])) {
+    $offset = $_REQUEST['offset'];
+    }
+else {
+    // the first 15
+    $offset = 0;
+    }
+/***************************** end request and setup ******************/
 // FLAG FOR INCLUDE YQL DB EVENTS
 $GLOBALS['include_YQL'] = false;
 
@@ -258,18 +280,8 @@ function pull_ALL_events($lat, $lon, $offset){
     }
 
 
-// LAT LNG FROM FRON END
-$lat = $_REQUEST['latitude'];
-$lon = $_REQUEST['longitude'];
 
-// TRYING TO JUST DO ONE SCRIPT SO WE ADD SOME OPTIONS
-if(isset($_REQUEST['offset'])) {
-    $offset = $_REQUEST['offset'];
-    }
-else {
-    // the first 15
-    $offset = 0;
-    }
+
     
 $search_output = pull_ALL_events($lat, $lon, $offset);
 

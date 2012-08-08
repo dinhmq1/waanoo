@@ -122,7 +122,7 @@
 					<input type="radio" name="imgType" value="web" />
 				</td>
 				<td>
-					From the web: 
+					From the web (paste image URL): 
 				</td>
 				<td>
 					<input type="text" name="imageURL" size="40">

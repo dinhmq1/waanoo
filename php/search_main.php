@@ -74,12 +74,14 @@ $sql = "SELECT
         event_title LIKE ?
         OR 
         event_description LIKE ?
+        OR 
+        tags_list LIKE ?
         )
         LIMIT ?, 10";
 
 $stm = $cxn->prepare($sql);
 $d = DATE_TO_SEARCH_FROM; // THIS GETS PASSED BY REF. Has to be a var.
-$stm->bind_param('sssi', $d, $term, $term, $offset);
+$stm->bind_param('ssssi', $d, $term, $term, $term, $offset);
 $stm->execute();
 $stm->bind_result($event_id,    
     $user_id,

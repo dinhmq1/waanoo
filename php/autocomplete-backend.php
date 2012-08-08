@@ -30,10 +30,13 @@ $term = "%$term%";//echo $term;
 
 // using Mysqli prepared statements
 $sql = "SELECT event_title, event_description, event_id FROM user_events
-        WHERE event_title LIKE ? OR event_description LIKE ?";
+        WHERE 
+        	event_title LIKE ? OR 
+        	event_description LIKE ? OR 
+        	tags_list LIKE ?";
         
 $stm = $cxn->prepare($sql);
-$stm->bind_param('ss',$term, $term);
+$stm->bind_param('sss',$term, $term, $term);
 $stm->execute();
 $stm->bind_result($title, $descrip, $id);
 

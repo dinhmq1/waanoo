@@ -38,11 +38,11 @@ require 'php/header.php';
     
     <!-- search bar -->
 <form id='searchBarForm'>
-<input type='text' class='searchBar' id='searchBarAuto' size='20' />
+<input type='text' class='searchBar' id='searchBarAuto' placeholder="search groups, clubs, venues, meetings and more" size='50' />
     &nbsp;
     <!-- 
     <a href='#' >go</a> -->
-    <input type='submit' value='&#8734;' class='testBlackBtn'/>
+    <input type='submit' value='&#8734;' class='testBlackBtn' style="font-size: 120%"/>
     </form>
 <br />
 
@@ -120,6 +120,9 @@ require 'php/header.php';
 
 <div class="eventViewer">
     <img src="images/ajax-loader-transp-arrows.gif" />
+    <?php
+    	include "php/load_events_by_location.php";
+    ?>
 </div>
 
 <div id="tempWindow">
