@@ -16,8 +16,8 @@
 	
     <div class='footer'>
         <ul>
-            <li><span id="about-button" onClick='aboutBtn()'> 
-                <a href="#">About</a>
+            <li><span id="about-button" onClick='aboutBtn()' > 
+                <a href="#" >About</a>
                 </span>
                 </li>
             &nbsp;&nbsp;&nbsp;&nbsp;

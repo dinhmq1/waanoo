@@ -643,8 +643,8 @@ html, body
         color: white;
         }   
         .footer a:hover {
-            text-decoration:none;
-            color: black;
+            text-decoration:underline;
+            color: white;
             }
         
         
@@ -671,12 +671,9 @@ html, body
                 
                 }
             
-            .footer ul li:hover
-                {
-                color: black;
-                background-color: white;
+           
                 
-                }
+             
    
 #footerWrap {
     position:relative;
@@ -748,7 +745,7 @@ html, body
     border-style: groove;
     border-width: 1px;
     border-color: black;
-    background: #EEEDEA url(../images/buttons/pattern_test.png) repeat;
+    background: white;
  }
 
     .textError {
