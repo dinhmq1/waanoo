@@ -45,7 +45,7 @@ function eventSingleViewer(event_id){
 function closeSingleEvent() {
     $('#singleEventWrapperWrapper').hide();
     
-    ('#eventCommentWrapper').hide();
+    
     
     hideEventComments();
     controlDimmer(-1);
