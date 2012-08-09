@@ -141,11 +141,17 @@ $(document).ready(function() {
 
     $("#searchBarForm").submit( function(event) {
         event.preventDefault();
+        
         console.log("searching");
         // some call to a search function goes here.
         var searchTerm = $('#searchBarAuto').val();
-        console.log("searching: " + searchTerm);
-        mainSearch(searchTerm);
+        
+        if( searchTerm.length > 0 ) {
+        	console.log("searching: " + searchTerm);
+        	mainSearch(searchTerm);
+        } else {
+        	alert("Enter something to search!");
+        }
     });
     
     // this is for the search. Just testing for now. Remote data source next.

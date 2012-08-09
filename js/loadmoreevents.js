@@ -23,20 +23,31 @@ function loadMoreEvents(){
         
         $('#ajaxLoaderLoadEvents').show();
         
-        $.post("./php/load_events_by_location.php", coords, function(results){
-            // new offset:
-            var newOff = 10 + Number(off);
-            $('#eventOffset').val(newOff);
-            console.log("new offset: " + newOff);
-            
-            $('#ajaxLoaderLoadEvents').hide();
-            $('#ajaxLoaderLoadMore').hide();
-            
-            // with results:
-            $('.eventViewer').append(results);
-            $('#searchType').val("location");
+         $.ajax({
+            type: "GET",
+            url: "./php/load_events_by_location.php", 
+            data: coords,
+            dataType: "html",
+            success: function(result){
+                var status = result.status;
+                var content = result.content;
+                console.log("Status of search: " + status);
+                
+                   var newOff = 10 + Number(off);
+		            $('#eventOffset').val(newOff);
+		            console.log("new offset: " + newOff);
+		            
+		            $('#ajaxLoaderLoadEvents').hide();
+		            $('#ajaxLoaderLoadMore').hide();
+		            
+		            // with results:
+		            $('.eventViewer').append(result);
+		            $('#searchType').val("location");
+                    }
+                
             });
-        }
+            
+      }
     
     if(searchType == "date") {
     

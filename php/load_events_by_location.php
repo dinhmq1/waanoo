@@ -1,4 +1,5 @@
 <?php
+$DEBUG = false;
 //error_reporting(0);
 if(isset($_REQUEST['latitude']) && isset($_REQUEST['longitude'])) {
 	session_start();
@@ -25,17 +26,20 @@ else {
     // the first 15
     $offset = 0;
     }
+if($DEBUG) {
+	print_r($_REQUEST);
+}
+
 /***************************** end request and setup ******************/
 // FLAG FOR INCLUDE YQL DB EVENTS
 $GLOBALS['include_YQL'] = false;
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$DEBUG = false;
 
-$date_search = date("Y-m-d H:m:s", time() - 60*60*24*1); // 12 HOURS EARLIER
-$date_search_2 = date("Y-m-d H:m:s", time() + 60*60*24*45); // two weeks ahead
+$date_search = date("Y-m-d", time() - 60*60*24*1); // 12 HOURS EARLIER
+$date_search_2 = date("Y-m-d", time() + 60*60*24*45); // two weeks ahead
 if($DEBUG == true) {
-    $date_search = date("Y-m-d H:m:s", time() - 60*60*24*365);
+    $date_search = date("Y-m-d", time() - 60*60*24*365);
     }
 define("DATE_TO_SEARCH_FROM", $date_search);
 define("DATE_TO_SEARCH_TO", $date_search_2);

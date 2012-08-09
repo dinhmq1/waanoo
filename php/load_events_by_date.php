@@ -3,20 +3,28 @@ require("cxn.php");
 require("HTML_output_lib.php");
 session_start();
 
+$DEBUG = false;
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
-$date_search_advance_limit = date("Y-m-d H:m:s", time() + 60*60*24*45); 
+$date_search = date("Y-m-d", time() - 60*60*24); // 24 HOURS EARLIER
+$date_search_advance_limit = date("Y-m-d", time() + 60*60*24*45); 
 $distance_tolerance = 50; // miles
+
+if($DEBUG == true) {
+	echo "Date search ".$date_search;
+	echo "Date search adv ".$date_search_advance_limit;
+}
 
 function main($lat, $lon, $offset, $date_search, $distance_tolerance, $date_search_advance_limit) {
     
     $rows_per_page = 10;
     $cxn = $GLOBALS['cxn'];
     $sql = "SELECT * FROM user_events
-            WHERE end_date >= '$date_search'
-            AND start_date <= '$date_search_advance_limit'
+            WHERE 
+            end_date >= '$date_search'
+            AND 
+            start_date <= '$date_search_advance_limit'
             ORDER BY start_date ASC
-            LIMIT $offset, $rows_per_page";
+            	LIMIT $offset, $rows_per_page";
             
     $res = mysqli_query($cxn, $sql)
             or die("could not pull events");

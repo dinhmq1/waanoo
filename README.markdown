@@ -1,6 +1,11 @@
 TO DO:
 ======
 
+* Reorder so that date is default
+
+* List of events you are attending.
+
+* Event date fixes. Debug whole thing.
 
 * So the new goal should be to outfit the site with responsive design. Do one version for large screens, another version for small screens. 
 

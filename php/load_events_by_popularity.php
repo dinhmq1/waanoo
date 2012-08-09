@@ -4,11 +4,10 @@ require("HTML_output_lib.php");
 session_start();
 
 // RESTRICTION ON ONLY NEW EVENTS PULLED
-$date_search = date("Y-m-d H:m:s", time() - 60*60*24); // 24 HOURS EARLIER
+$date_search = date("Y-m-d", time() - 60*60*24); // 24 HOURS EARLIER
 $distance_tolerance = 50; // miles
 
 function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
-    
     $rows_per_page = 10;
     $cxn = $GLOBALS['cxn'];
     $sql = "SELECT COUNT( * ) AS num, event_id, 
@@ -31,11 +30,14 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance) {
             (SELECT contact_info FROM user_events WHERE user_events.event_id = pageviews.event_id) 
             AS contact_info
             FROM pageviews
+            	WHERE 
+(SELECT start_date FROM user_events WHERE user_events.event_id = pageviews.event_id) >= '$date_search' 
             GROUP BY event_id
             ORDER BY num DESC
             LIMIT $offset, $rows_per_page
             ";
-            
+           // GROUP BY event_id
+           // ORDER BY num DESC
     $res = mysqli_query($cxn, $sql)
             or die("could not pull events");
     //echo $sql;
