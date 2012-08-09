@@ -346,7 +346,8 @@
 	</div>
 
 
-	<div id='eventCommentWrapper'>
+ <!-- () 
+ 		<div id='eventCommentWrapper'>
 		<br />
 	    <div>
 	    	<span class="backgroundTextLowOP">
@@ -371,11 +372,11 @@
 	    <br />
 	            <br />
 	            <br />
-	</div>
+	</div>  -->
 
 </div>
 
-
+ 
 
 
 
