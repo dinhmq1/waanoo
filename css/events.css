@@ -37,7 +37,7 @@
 
         background-color: #F8F8F8;  
         border-radius: 5px;
-        overflow: auto;
+        /*overflow: auto;*/
         }
             
 /* 
@@ -107,15 +107,15 @@
 #singleEventWrapperWrapper {
 	display: none;
     position: fixed;
-    top: 20%;
-    height: 500px;
+    top: 15%;
+    height: 400px;
     width: 900px;
     
     left: 50%;
     margin-left: -450px;
     
     z-index: 50;
-    overflow: auto;
+    /*overflow:auto;*/
     background-color: #F8F8F8;  
     border-radius: 5px;
     
@@ -153,12 +153,12 @@
     
     z-index: 50;
     */
-    overflow: auto;
+    /*overflow: auto;*/
     
-    background-color: #F8F8F8;  
+    background-color: white;  
     border-radius: 5px;
     
-    font-size: 70%;
+    font-size: 60%;
     }
     
     
@@ -185,6 +185,7 @@
         float: left;
         
         padding: 10px;
+        
         }
         
     .singleEventText {

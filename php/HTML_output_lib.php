@@ -380,11 +380,7 @@ function singleEventOutput($all_vars) {
     //$event_title = eventFieldShortner($event_title, 40);
     $eventContent = "
         <div style='padding:10px;'>
-            <span class='closer'  id='singleEventCloser'>            
-                <a href='#' class='testBlackBtn noclick' onClick='closeSingleEvent()'>
-                    Close
-                </a>
-            </span>
+            
             &nbsp;&nbsp;&nbsp; 
             $del_btn
              &nbsp;&nbsp;&nbsp;

@@ -635,7 +635,37 @@ html, body
             text-decoration:none;
             color: #DB1D46;
             }
+            
+            
+ /*class for the close button for the single event*/
+ 
 
+
+
+
+.closeButton{
+	    display: block;
+	    float:right;
+	      
+        position:relative;
+        
+        top: -25px;
+        right: 10px;
+        
+        width:10px;
+        height:10px;
+        z-index: 1000;
+        
+        }   
+        .closeButton a:hover {
+            text-decoration:none;
+            color: #DB1D46;
+            background-image: url('./images/buttons/ps-x-button-50.png');
+            }
+			
+			
+			
+			
 /************* FOOTER ****************/ 
         
     .footer a {

@@ -48,3 +48,7 @@ function closeSingleEvent() {
     
     $('#singleEventContent').empty();
     }
+    
+    
+    
+   

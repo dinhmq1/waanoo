@@ -323,9 +323,24 @@
 
 
 
+
 <div id="singleEventWrapperWrapper" class='popup'>
 	
+	
+	
+	
+	<!--<span class='closer'  id='singleEventCloser'>            
+                <a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
+                    <img src='./images/buttons/ps-x-button-50-inv.png'/>
+                </a>
+        </span> -->
+            
 	<div id='singleEventWrapper'>
+		
+		<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
+                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                </a>
+		
 	    <div id='singleEventContent'>
 	        </div>
 	</div>
