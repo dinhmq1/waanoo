@@ -51,25 +51,63 @@
 
 <div id='aboutWaanoo' class='popup'>
     <span onClick='aboutBoxClose()'>
-        <h3>About Waanoo:</h3>
+    	
+    	<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
+                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                </a>
+    	
+    	
+    	
+        <h3>Hi.  Welcome to <span style="color:#e01847">Waanoo</span>.</h3>
+        
+        
         <p>
-            Waanoo is a portal for sharing and finding events near you. 
-            Signup to post an event and contribute something cool, 
-            or simply browse and find something interesting already here!
+        	<span style="color:#e01847">Waanoo</span> is a portal for <span style="color:#e01847">sharing</span> and 
+        	<span style="color:#e01847">posting</span> events.   
+        	No matter what your interests are, you can be sure to <span style="color:#e01847">find events</span> that are suited for 
+        	you within the <span style="color:#e01847">Waanoo community</span>.  
+        	From <span style="color:#e01847">musical concerts</span> and <span style="color:#e01847">sporting events</span>
+        	 to clubs and student organizations <span style="color:#e01847">meetings</span> you can be sure to find them on 
+        	 <span style="color:#e01847">Waanoo</span>.
+ 
+
         </p>
+        <br />
+        
         <p>
-            &nbsp;
+        	At <span style="color:#e01847">Waanoo</span> we believe <span style="color:#e01847">finding</span>
+        	 and <span style="color:#e01847">sharing</span> your events should be made <span style="color:#e01847">simple and easy</span>.  
+        	You get the benefit of simple display of contents <span style="color:#e01847">without</span>
+        	 the annoying informations.  So, have <span style="color:#e01847">fun</span> already.
         </p>
-        <p>
-            &nbsp;
-        </p>
-        <a href="#" class='testBlackBtn noclick'>Close</a>
+        
+        
+       
     </span>
+    
+    
+    <div class="about-image">
+    
+   <!-- <img src="./images/footer_images/about_image_city.png"/> -->
+    	
+    	
+    	
+    </div>
+    
+    
+    
+    
 </div>
 
 
 <div id='contactWaanoo' class='popup'>
     <span onClick='contactBoxClose()'>
+    	
+    	<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
+                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                </a>
+    	
+    	
         <h3>Contact Us:</h3>
         <br />
         <p>

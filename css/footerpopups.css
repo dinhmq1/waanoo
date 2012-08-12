@@ -5,20 +5,74 @@
     
 	z-index: 100;
 	position: fixed;
-	top: 50px;
+	top: 60px;
 	
-	height: 60%;
+	height: 70%;
 	width: 60%;
 	margin-left: 20%;
 	background-color: white;
-	border-style: groove;
-	border-width: 1px;
-	border-color: black;
-
-	overflow: auto;
 	
-	padding: 20px;
+	border-style:solid;
+	border-width: 15px;
+	border-color: black;
+	border-radius:30px;
+	-moz-border-radius:20px; /* Firefox 3.6 and earlier */
+
+/*	overflow: auto; */
+	
+	padding: 0px;
+	
+	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+	font-weight:300;
+	font-size:18px;
+	color:#686868;
+	
+	
+	
 	}
+	
+	#aboutWaanoo h3 {
+		text-align: left;
+		padding-left:20px;
+		padding-top:20px;
+		
+	}
+	
+	#aboutWaanoo p {
+		text-align:left;
+		padding-right:30px;
+		padding-left:20px;
+	}
+
+
+
+			
+	
+	
+	.about-image {
+	/*	border-style:solid;  
+		border-color:blue;  */   /* use this to visualize the div container*/
+		background-image: url('../images/footer_images/about_image_city.png');
+		background-repeat:no-repeat;
+		background-position:bottom;
+		padding-bottom:0px;
+		height:150px;
+		margin-top:4.5%; 
+		
+			}
+			
+	
+	
+	/* this css rule is specific only for firefox browser*/
+		@-moz-document url-prefix() {
+			
+   			 .about-image {
+        	/*	border-style: solid;
+        		border-color:red; */  /*Use to visualize div */
+        		margin-top:4.5%;
+    					}
+					}	
+		
 
 
 #contactWaanoo {
@@ -27,14 +81,14 @@
 	z-index: 100;
 	position: fixed;
 	top: 50px;
-	height: 60%;
+	height: 90%;
 	width: 60%;
 	margin-left: 20%;
-	background-color: whitesmoke;
+	background-color: white;
 
 	border-style: groove;
 	border-width: 1px;
 	border-color: black;
 
-	overflow: auto;
+	/*overflow: auto; */
 	}
