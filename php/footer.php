@@ -154,6 +154,15 @@
                 jake.mercuri@waanoo.com
                 </font>
         </p>
+        <br />
+		
+		<p>
+           For media questions, email Mike Dinh at:<br /> 
+                <font color='#141193'>
+                mike.dinh@waanoo.com
+                </font>
+        </p>  
+		   
        
        </div>
         
