@@ -101,77 +101,70 @@
 
 
 <div id='contactWaanoo' class='popup'>
+   
+    
     <span onClick='contactBoxClose()'>
     	
     	<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
-                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" 
+                    onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
                 </a>
     	
-    	
-        <h3>Contact Us:</h3>
-        <br />
+
+
+	<div class="contactImage"> 
+		</div>
+
+    	<div class="contactText">
+        <h3 style="color: #4c4b4b">Get in <font color='#db1d46'>touch</font> with us.</h3>
+        
         <p>
-            Please direct general inquiries and report abuse to:<br />
-            <font color='blue'>
-                admin
+            <font color='#db1d46'>At Waanoo, we strive to deliver an event sharing portal that is suitable for all interests.
+            If you have suggestions on how to improve the site, and would like share your experiences with Waanoo,
+             please don't hesitate to get in touch with us.  </font>
+         </p>   
+           <br /> 
+          <p style="font-size: 10px">  
+             Please direct general inquiries and report abuse to:<br />
+            	<font color='#141193' size="1">
+                admin@waanoo.com
                 </font>
-                <font color='red'>
-                @
-                </font>
-                <font color='blue'>
-                waanoo.com
-                </font>
+                
         </p>
         <br />
         <p>
-           For Advertising/ Marketing inquiries email Tuan Dihn @:<br />
-                <font color='blue'>
-                jason.dinh
-                </font>
-                <font color='red'>
-                @
-                </font>
-                <font color='blue'>
-                waanoo.com
+           To promote your event, or for general advertising and marketing inquiries, email Jason Dinh at:<br />
+                <font color='#141193'>
+                jason.dinh@waanoo.com
                 </font>
         </p>
         <br />
         
         <p>
-            To report bugs, or request features on Mobile or web platforms email Aaron Decker @: <br /> 
-                <font color='blue'>
-                aaron.decker
-                </font>
-                <font color='red'>
-                @
-                </font>
-                <font color='blue'>
-                waanoo.com
+            To report bugs, or request features on Mobile or web platforms email Aaron Decker at: <br /> 
+                <font color='#141193'>
+                aaron.decker@waanoo.com
                 </font>
         </p>
         
         <br />
         <p>
            The site was designed by Jake Mercuri:<br /> 
-                <font color='blue'>
-                jake.mercuri
-                </font>
-                <font color='red'>
-                @
-                </font>
-                <font color='blue'>
-                waanoo.com
+                <font color='#141193'>
+                jake.mercuri@waanoo.com
                 </font>
         </p>
-        <br />
-        <p>
-            &nbsp;
-        </p>
-        <p>
-            &nbsp;
-        </p>
-        <a href="#" class='testBlackBtn noclick'>Close</a>
+       
+       </div>
+        
     </span>
+    
+   <div class="contact-logo">
+   	
+   </div>
+    
+    
+    
 </div><!--- close footer -->
 
 </div><!-- close epic wrap -->

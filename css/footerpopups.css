@@ -76,19 +76,95 @@
 
 
 #contactWaanoo {
-    display: none;
+    display:none;
 
 	z-index: 100;
 	position: fixed;
-	top: 50px;
-	height: 90%;
-	width: 60%;
-	margin-left: 20%;
+	top: 45px;
+	height: 85%;
+	width: 80%;
+	margin-left: 10%;
 	background-color: white;
 
-	border-style: groove;
+	/*border-style: groove;
 	border-width: 1px;
+	border-color: black;*/
+	border-style:solid;
+	border-width: 15px;
 	border-color: black;
-
+	border-radius:30px;
+	-moz-border-radius:20px; /* Firefox 3.6 and earlier */
 	/*overflow: auto; */
+	
+	
+	text-align:left;
+	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+	font-weight:300;
+	font-size:15px;
+	color:#686868;
+	
 	}
+	
+	
+	.contactText {
+	/*	border:1px solid blue; */
+		margin-top:50px;
+		margin-left:48%;
+		height:400px;
+		width:500px;
+	}
+	
+		
+		
+	
+.contactImage {
+/*	border:1px solid red; */
+	position:relative;
+	float:left;
+	height:320px;
+	/*border-right:#000000 1px solid; */
+	width:42%;
+	margin-top:80px;
+	margin-left:25px;
+	background-image:url('../images/footer_images/silhuette_web.png');
+	background-repeat: no-repeat; 
+	background-position:left;
+	
+}
+
+.contact-logo {
+/*	border:1px solid red; */
+	height:15%;
+	width:32%;
+	margin-left:350px;
+	margin-top:21.5px;
+	background-image:url("../images/footer_images/waanoo_logo_full.png");
+	background-repeat:no-repeat;
+	background-position: center;
+}
+	
+	@-moz-document url-prefix() {
+			
+   			 .contact-logo {
+        	/*	border-style: solid;
+        		border-color:red; */  /*Use to visualize div */
+        		height:15%;
+        		background-position:top;
+        		margin-top:1%;
+        		padding-top:0px;
+    					}
+					}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
