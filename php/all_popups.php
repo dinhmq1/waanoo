@@ -30,36 +30,45 @@
 -->
 <form>
     <div id='signupPanel' class='popup'> 
-        <table class='postTable' align='center' cellpadding='2'>
+    	<div class="signup-image">
+    		
+    </div> 
+    <a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
+                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                </a>
+    	
+        <table class='postTable' align='right' cellpadding='2'>
             <tr align='left'>
-                <td>email:</td>
-                <td><input class='userTextBox' type ='text' id='email' size='15'/></td>
+            	
+                <td>Email:</td>
+                <td><input class='userTextBox' type ='text' id='email' style="width:250px;height:32px"/></td>
                 <td><input type='hidden' id='email_test' value='0'/>
                     <span id='emailIsValid' class='textError'></span>
                     </td>
             </tr>
             <tr align='left'>
                 <td>Password:</td>
-                <td><input class='userTextBox' type ='password' id='password' size='15' /></td>
+                <td><input class='userTextBox' type ='password' id='password' style="width:250px;height:32px" /></td>
                 <td><span id='password1Validating' class='textError'></span>
                     </td>
             </tr>
             <tr align='left'>
                 <td>Password again:</td>
-                <td><input class='userTextBox' type ='password' id='passwordcheck' size='15' /></td>
+                <td><input class='userTextBox' type ='password' id='passwordcheck' style="width:250px;height:32px" /></td>
                 <td><span id='password2Validating' class='textError'></span>
                     </td>
             </tr>
             <tr align='left'>
                 <td>First Name:</td>
-                <td><input class='userTextBox' type ='text' id='firstname' size='15' /></td>
+                <td><input class='userTextBox' type ='text' id='firstname' style="width:250px;height:32px" /></td>
                 <td>&nbsp;
                     </td>
             </tr>
             <tr align='left'>
                 <td>Last Name:</td>
-                <td><input class='userTextBox' type ='text' id='lastname'  size='15' /></td>
-                <td>&nbsp;
+                <td><input class='userTextBox' type ='text' id='lastname'  style="width:250px;height:32px" /></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
             </tr>
             <tr align='left'>
@@ -71,7 +80,7 @@
                 <td>&nbsp;
                     </td>
             </tr>
-            <tr align='left'>
+            <tr align='center'>
                 <td><span id='ajaxLoaderSignUp'>
                     <img src='images/ajax-loader-transp-arrows.gif' />
                     </span></td>

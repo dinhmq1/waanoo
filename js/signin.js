@@ -40,7 +40,7 @@ function signIn(){
 				}
 			else{
 				// Login failed
-				$('#loginNotes').empty().append("login failed: " + "<small>" + msg + "</small>");
+				$('#loginNotes').empty().append("<small>Login failed,</small> "  + "<small>" + msg + "</small>");
 				}
 			}, "json");
 		}

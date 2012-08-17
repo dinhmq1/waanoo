@@ -20,7 +20,7 @@ else {
     <meta name="description" content="Find local events and parties near you! 
               Want to let others know about your event and/or party? Share them on Waanoo!" /> 
     
-    <title>waanoo</title>
+    <title>Waanoo</title>
     <link REL="SHORTCUT ICON" HREF="http://waanoo.com/waanoo_favicon.ico">
     <?php
     require('scripts.php'); 
@@ -60,14 +60,14 @@ else {
                 else{
                     echo "
                         <form id='loginMainForm' action='#'>
-                            <input class='loginField' type='text' id='login-email' placeholder=' email' size='10' />
-                            <input class='loginField' type='password' id='login-password' placeholder=' password' size='10' />
+                            <input class='loginField' type='text' id='login-email' placeholder=' email' size='20' />
+                            <input class='loginField' type='password' id='login-password' placeholder=' password' size='20' />
                             
                             <input class='testBlackBtn' type='submit' value='submit'  />
                                 
                             &nbsp;&nbsp;&nbsp;
                             
-                                <a href='#' id='signupBtn' class='testBlackBtn'>
+                                <a href='#' id='signupBtn' class='testBlackBtn2'>
                                     <!-- <img src='./images/buttons/btns_content/btn_signup_inactive.png' /> -->
                                     sign up!
                                 </a>

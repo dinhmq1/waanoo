@@ -168,6 +168,19 @@ $(document).ready(function() {
             }
         });
     
+/***Changes home signup button**/
+/****$('#signupBtn').mousedown(function(){
+	$('.testBlackBtn2').css({background:"white",color:"#db1d46"});
+	$('testBlackBtn2').hide();
+	$('testBlackBtn').show();
+});   ***/
+
+
+
+   
+   
+   
+   
     
 /**** SIGNUP SUBMISSION STUFF BELOW:  ****/
     // CHECK FOR VALID EMAIL    

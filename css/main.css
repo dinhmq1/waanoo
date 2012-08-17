@@ -159,6 +159,7 @@ html, body
             position: relative;
             float: right;
             top: 2px;
+            right:7px;
             text-align: right;
             
             }
@@ -208,35 +209,49 @@ html, body
         
             
         #loginNotes{
+           /* border: 1px solid red; */
             
             position: absolute;
-            top: 50px;
-            left: 90%;
-            color: red;
+            top: 40px;
+            right:13%;
+            color: #db1d46;
             }
             
                 #signupPanel {
                     position: absolute;
-                    background-color: #F8F8F8;
+                    background-color: white;
                     z-index: 80;
                     display: none;
 
-                    right:0px;
-                    top: 30px;
+                    right:50px;
+                    top: 50px;
 
                     text-align: left;
-                    color: black;
-                    padding: 15px;
-                    width: 400px;
+                    color: #0c125f;
+                    padding: 0px;
+                    width: 650px;
                     height: 300px;
                     border-width: 2px;
                     border-color: #EEEDEA;
                     border-style: solid;
                     
-                    border-radius: 10px;
-                    overflow:auto;
+                  /*  border-radius: 10px; */
+                   /* overflow-x:auto;*/
                     }
        
+       
+       					.signup-image {
+       						position:absolute;
+       						
+       						top:8%;
+       						left:4%;
+       					/*	border: 1px solid red; */
+       						height:60px;
+       						width:60px;
+       						background-image: url('../images/user-icon.png');
+       						background-position:center;
+       						background-repeat:no-repeat;
+       					}
         
         #submit-signup{
             
@@ -628,6 +643,54 @@ html, body
         
 
 .testBlackBtn a {
+        text-decoration:none;
+        color: white;
+        }   
+        .testBlackBtn a:hover {
+            text-decoration:none;
+            color: #DB1D46;
+            }
+            
+            
+            
+            
+/*button class for the signup button*/
+.testBlackBtn2 {
+    -moz-box-shadow:inset 0px 1px 0px 0px #949494;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #949494;
+    box-shadow:inset 0px 1px 0px 0px #949494;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #424242), color-stop(1, #000000) );
+    background:-moz-linear-gradient( center top, #424242 5%, #000000 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#424242', endColorstr='#000000');
+    background-color:#424242;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    border:1px solid #141414;
+    display:inline-block;
+    color:#ffffff;
+    font-family:'Karla', sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    padding:3px 9px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #000000;
+    /*
+    box-shadow: 3px 3px 3px #2B2B2B;  */
+}.testBlackBtn2:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #424242) );
+    background:-moz-linear-gradient( center top, #000000 5%, #424242 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#424242');
+    background-color:#000000;
+    color: red;
+}.testBlackBtn2:active {
+    position:relative;
+    top:1px;
+}
+
+        
+
+.testBlackBtn2 a {
         text-decoration:none;
         color: white;
         }   
