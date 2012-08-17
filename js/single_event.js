@@ -44,7 +44,7 @@ function eventSingleViewer(event_id){
 
 function closeSingleEvent() {
     $('#singleEventWrapperWrapper').hide();
-    
+    $('#signupPanel').hide();
     
     
     hideEventComments();

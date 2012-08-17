@@ -5,6 +5,8 @@
     
     <span id='copyrightSpan'>© Waanoo, All rights Reserved</span>
     
+    
+    
     <a href="http://www.facebook.com/WaanooIt" target="_blank">
     <img src='images/icons/fb_inactive.png' id='fbFooterImage'/>
     </a>
@@ -45,6 +47,8 @@
                 </li>
         </ul>
     </div>
+    
+    <div class="fb-like" data-href="http://www.facebook.com/WaanooIt" data-send="false" data-width="450" data-show-faces="false"></div>
 </div>
 
 

@@ -29,6 +29,21 @@ else {
 
 
 <body>
+	
+	<!-- FB LIKE button -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+  		var js, fjs = d.getElementsByTagName(s)[0];
+  		if (d.getElementById(id)) return;
+  		js = d.createElement(s); js.id = id;
+  		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+ 		 fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	
+	
+	
+	
+	
 	<div id="epicWrap">
     <div id="header">
         <a href='/'>
@@ -67,7 +82,7 @@ else {
                                 
                             &nbsp;&nbsp;&nbsp;
                             
-                                <a href='#' id='signupBtn' class='testBlackBtn2'>
+                                <a href='#' id='signupBtn' class='testBlackBtn2' onClick='closeSingleEvent()'>
                                     <!-- <img src='./images/buttons/btns_content/btn_signup_inactive.png' /> -->
                                     sign up!
                                 </a>

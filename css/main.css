@@ -809,6 +809,13 @@ html, body
     z-index: 10;
 }
 
+.fb-like {
+	position:absolute;
+	bottom:25px;
+	left:30%;
+	z-index: 10;
+}
+
 
  /* END PRIMARY PAGE ELEMENTS */
 
