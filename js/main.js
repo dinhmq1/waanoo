@@ -179,8 +179,12 @@ $(document).ready(function() {
 /*** Got from http://timothyaaron.com/js/fadein.on.scroll.js ***/
 $(document).ready(function() {
 	
+	/**detect whether your're at the bottom of the page**/
+	
+	if ($('body').height() <= ($(window).height() + $(window).scrollTop())) {
+	
 	/* Hide all elements outside the visible window */
-	$('body *').each( function(){
+	$('body ').each( function(){
 	   
 		var top_of_object = $(this).position().top;
 		var bottom_of_window = $(window).scrollTop() + $(window).height();
@@ -195,6 +199,8 @@ $(document).ready(function() {
 	
 	/* Every time the window is scrolled ... */
 	$(window).scroll( function(){
+		
+				
 		
 		/* Check the location of the desired elements */
 		$('.hideme').each( function(i){
@@ -219,6 +225,8 @@ $(document).ready(function() {
 		
 	
 	});
+	
+	}
 	
 });
 
