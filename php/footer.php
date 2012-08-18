@@ -1,3 +1,5 @@
+ <div class="fb-like"></div>
+
 <div id ="footerWrap">
 	
 	<img src='images/logos/owl_footer.png' id='owlFooterImage'/>
@@ -15,6 +17,7 @@
     <img src='images/icons/twitter_inactive.png' id='twitterLogoFooter'/>
     </a>
     
+   
 	
     <div class='footer'>
         <ul>
@@ -48,9 +51,7 @@
         </ul>
     </div>
     
-    <div class="fb-like" data-href="http://www.facebook.com/WaanooIt" data-send="false" data-width="450" data-show-faces="false"></div>
-</div>
-
+    
 
 
 <div id='aboutWaanoo' class='popup'>

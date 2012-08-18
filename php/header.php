@@ -45,10 +45,16 @@ else {
 	
 	
 	<div id="epicWrap">
+		
     <div id="header">
+    	
+    	
         <a href='/'>
             <span>
+            	
+            	
             <img id='headerLogo' src='images/logos/logo_header.png' style='padding-left:10px;' />
+            
             </span>
         </a>
         
@@ -129,8 +135,25 @@ else {
 					right: 1%;
 					
 				}
+				
+			
 			</style>
+			
 			
 			<img src="images/main_note.png" id="mainPostItNote" />
     </div><!-- end #header -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     

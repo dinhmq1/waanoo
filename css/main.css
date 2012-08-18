@@ -763,8 +763,13 @@ html, body
                 display: inline-block;
                 
                 }
-            
-           
+.fb-like {
+				position:absolute;
+				top:-80px;
+				right:-350px;
+				z-index: 50;
+			/*	border:1px solid red; */
+				}
                 
              
    
@@ -809,12 +814,9 @@ html, body
     z-index: 10;
 }
 
-.fb-like {
-	position:absolute;
-	bottom:25px;
-	left:30%;
-	z-index: 10;
-}
+
+
+
 
 
  /* END PRIMARY PAGE ELEMENTS */

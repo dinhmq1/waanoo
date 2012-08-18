@@ -134,12 +134,18 @@ require 'php/header.php';
 
 <br />
 
+
+
 <div id="moreEventsBtn" onclick="loadMoreEvents()">
     <input type="hidden" id="searchType" value="location" />
     <input type="hidden" id="eventOffset" value="10" />
     <a href="#" class='noclick'>
         <img src='images/buttons/btns_headline/btn_load_inactive.png' />
     </a>
+    
+    
+    
+    
 </div>
 &nbsp;&nbsp;&nbsp;
     <span id="ajaxLoaderLoadMore">
