@@ -207,10 +207,16 @@ $(document).ready(function() {
 				
 					$(this).removeClass('hideme').animate({'opacity':'1'},500);
 				
-					$('.fb-like').removeClass('hideme').animate({'opacity':'1'},500);
+					
 				}
 			
 		}); 
+		
+		
+		$('.fb-like').animate({right:-350},1500);  /** fb-like button animates into view faster than owlFooterImage**/
+		$('#owlFooterImage').animate({left:50},2000);
+		
+		
 	
 	});
 	
