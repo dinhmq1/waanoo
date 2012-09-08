@@ -74,7 +74,13 @@ function main($lat, $lon, $offset, $date_search, $distance_tolerance, $date_sear
                 "search_output" => $search_output,
                 "isContactInfo" => $is_contactable,
                 "contactInfo" => $contact_info,
-                "contactType" => $contact_type
+                "contactType" => $contact_type,
+                "eventPrice" => $event_price,
+                "eventCurrency" => $event_currency,
+                "homepageURL" => $homepage_url,
+                "tagsList" => $tags_list,
+                "isFree" => $is_free,
+                "isOutdoors" => $is_outdoors
                 );
         
             $search_output = search_output_func_users($all_vars); //see search_functions.php
