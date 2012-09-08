@@ -12,6 +12,7 @@ else {
 <?php 
 require 'php/header.php';
 require 'php/cxn.php';
+require 'php/HTML_output_lib.php';
 //temporary
 //require("php/populate_YQL_events.php");
 ?>
@@ -119,7 +120,11 @@ echo "<h1>Event: $event_title <br /></h1>
     Where: $address_text <br />
     Lat, Lon: $x_coord, $y_coord <br />
     Description: $event_description<br />
-    ";
+    tags: ".process_tags($tags_list)."<br />
+    price:".formatPrice($is_free, $event_price, $event_currency)."<br />"
+    ."Outdoors:".formatOutdoors($is_outdoors)."<br />"
+    ."homepage:".formatHomepageURL($homepage_url)."<br />"
+    ;
 
 
 // Make RSVP list:

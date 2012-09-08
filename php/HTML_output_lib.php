@@ -1,5 +1,33 @@
 <?php
 
+function process_tags($tags) {
+	if($tags == "")
+		return "none";
+	return $tags;
+}
+
+function formatHomepageURL($url){
+	if($url == "" || $url == NULL)
+		return "";
+	return "<a href='".strip_tags($url)."' style='color:#DB1D46;' target='_blank'>Event Homepage</a>";
+}
+
+function formatPrice($isFree, $eventPrice, $eventCurrency) {
+	if($isFree == 1) {
+		return "Free Event";
+	} else {
+		return "$eventPrice $eventCurrency";
+	}
+}
+
+function formatOutdoors($eventOutdoors) {
+	if($eventOutdoors == 1) {
+		return "<b>*Outdoor Event</b>";
+	} else {
+		return "";
+	}
+}
+
 /*** delete btn- pre filled args on js function ***/
 function deleteBtn($user_id, $event_id) {
     if(@$_SESSION['signed_in'] == true) { 
@@ -376,6 +404,12 @@ function singleEventOutput($all_vars) {
     $pageviewMapBtn = pageviewTrackerMap($user_id, $event_id);
     $mfRatio = maleToFemaleRatio($event_id);
     
+    // added new stuff:
+    $tags = process_tags($tagsList);
+    $priceText = formatPrice($isFree, $eventPrice, $eventCurrency);
+    $outDoorsNote = formatOutdoors($isOutdoors);
+    $formatted_url = formatHomepageURL($homepageURL);
+    
     //$event_description = eventFieldShortner($event_description, 75);
     //$event_title = eventFieldShortner($event_title, 40);
     $eventContent = "
@@ -406,7 +440,9 @@ function singleEventOutput($all_vars) {
             </div>
                 <b>Distance: </b>".round($distance, 1)." miles. <br />
                 <b>Location: </b>".strip_tags($venue_address)." <br />
-                
+                <b>Price: </b> $priceText<br />
+                $formatted_url<br />
+                $outDoorsNote<br />
             $contact_info_div <br />
         </div>
         
@@ -443,6 +479,8 @@ function singleEventOutput($all_vars) {
             <br />
         <div class='singleEventDescription'>
             <b>Description: </b>".strip_tags($event_description)."<br />
+            <br />
+            Tags: $tags
             <br />
             <a href='hoststats.php?event_id=$event_id' class='testBlackBtn'>Statistics</a>
             &nbsp;&nbsp;&nbsp;

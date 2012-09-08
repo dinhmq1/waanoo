@@ -45,7 +45,13 @@ try {
         "distance"=> $distance,
         "isContactInfo" => $is_contactable,
         "contactInfo" => $contact_info,
-        "contactType" => $contact_type
+        "contactType" => $contact_type,
+        "eventPrice" => $event_price,
+        "eventCurrency" => $event_currency,
+        "homepageURL" => $homepage_url,
+        "tagsList" => $tags_list,
+        "isFree" => $is_free,
+        "isOutdoors" => $is_outdoors
         );
     
     echo json_encode(array("content" => singleEventOutput($all_vars), "status" => 1));
