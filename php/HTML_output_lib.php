@@ -375,28 +375,56 @@ function singleEventOutput($all_vars) {
     $contact_info_div = contactInfoOrganizer($contactInfo, $contactType, $isContactInfo);
     $pageviewMapBtn = pageviewTrackerMap($user_id, $event_id);
     $mfRatio = maleToFemaleRatio($event_id);
-    
+    //
     //$event_description = eventFieldShortner($event_description, 75);
     //$event_title = eventFieldShortner($event_title, 40);
     $eventContent = "
-        <div style='padding:10px;'>
+    
+		
+         
+		 
+		<div id='leftBox'>
+			<div style='padding:10px;'>
             
             &nbsp;&nbsp;&nbsp; 
             $del_btn
              &nbsp;&nbsp;&nbsp;
             $edit_btn
-        </div>
-            <br />
-            
-        <div class='singleEventImage'>
+        	</div>
+		
+		
+		
+			 <span class='eventTitle'><b>"
+                .strip_tags($event_title)." 
+                </b></span>
+		
+		</div>
+		
+		<div class='triangle'>
+         
+         </div>
+		<div id='rightBox'>
+		
+		 	<div class='singleEventImage'>
                 $event_image
             </div>
+            
+            
+            
+		
+		
+		
+		</div>	
+	
+        
+            
+            
+            
+       
         
         <div class='singleEventText'>
             
-            <span class='eventTitle'><b>"
-                .strip_tags($event_title)." 
-                </b></span><br />
+           <br />
             <div class='space'> 
                 <b>Date: </b>".strip_tags($day)."
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -410,7 +438,23 @@ function singleEventOutput($all_vars) {
             $contact_info_div <br />
         </div>
         
-        <div class='singleEventButtons'>
+        
+        
+            
+        <div class='singleEventDescription'>
+            <b>Description: </b>".strip_tags($event_description)."<br />
+        </div>
+            
+          
+            
+        <div class='hidden'>   
+        
+		<a href='hoststats.php?event_id=$event_id' class='testBlackBtn'>Statistics</a>
+            &nbsp;&nbsp;&nbsp;
+            $pageviewMapBtn
+            <br /> 
+            
+            <div class='singleEventButtons'>
             <br />
             <!--
                 $attend_btn
@@ -434,21 +478,20 @@ function singleEventOutput($all_vars) {
             
             
             <br />
-        </div>
+        	</div>
+            
+         </div>   
+			
+			
+			
+			
+           
         
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-        <div class='singleEventDescription'>
-            <b>Description: </b>".strip_tags($event_description)."<br />
-            <br />
-            <a href='hoststats.php?event_id=$event_id' class='testBlackBtn'>Statistics</a>
-            &nbsp;&nbsp;&nbsp;
-            $pageviewMapBtn
-            <br />
-        </div>  
+        
+        
+        
+        
+        
         ";
     
     return $eventContent;

@@ -34,7 +34,7 @@
     		
     </div> 
     <a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
-                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                    <img onmouseover="this.src='./images/buttons/closebutton2.png'" onmouseout="this.src='./images/buttons/closebutton.png'" src='./images/buttons/closebutton'/>
                 </a>
     	
         <table class='postTable' align='right' cellpadding='2'>
@@ -347,7 +347,7 @@
 	<div id='singleEventWrapper'>
 		
 		<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
-                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                    <img onmouseover="this.src='./images/buttons/closebutton.png'" onmouseout="this.src='./images/buttons/closebutton2.png'" src='./images/buttons/closebutton2.png'/>
                 </a>
 		
 	    <div id='singleEventContent'>

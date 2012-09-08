@@ -3,9 +3,9 @@
 function eventSingleViewer(event_id){
     console.log("singleview for:" + event_id);
     
-    $('#singleEventWrapperWrapper').show();
+    $('#singleEventWrapperWrapper').fadeIn(250);
     
-    $('#eventCommentWrapper').show();
+    $('#eventCommentWrapper').fadeIn(250);
     
     // add the dimmer
     controlDimmer(1);

@@ -168,12 +168,7 @@ $(document).ready(function() {
             }
         });
     
-/***Changes home signup button**/
-/****$('#signupBtn').mousedown(function(){
-	$('.testBlackBtn2').css({background:"white",color:"#db1d46"});
-	$('testBlackBtn2').hide();
-	$('testBlackBtn').show();
-});   ***/
+
 
 /***PLugin that makes things slowly fade in when scrolling down**/
 /*** Got from http://timothyaaron.com/js/fadein.on.scroll.js ***/

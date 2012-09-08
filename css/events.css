@@ -109,12 +109,12 @@
     position: fixed;
     top: 15%;
     height: 400px;
-    width: 900px;
+    width: 950px;
     
-    left: 50%;
+    left: 49%;
     margin-left: -450px;
     
-    z-index: 50;
+    z-index: 500;
     /*overflow:auto;*/
    overflow-x:visible;
     overflow-y: visible;
@@ -123,7 +123,7 @@
     
     
     background-color: #F8F8F8;  
-    border-radius: 5px;
+    border: 10px solid black;
     
     font-size: 130%;
 }
@@ -161,7 +161,7 @@
     */
     
     
-    background-color: white;  
+    background-color: #fdf8f8;  
     border-radius: 5px;
     
     font-size: 60%;
@@ -178,29 +178,64 @@
         float: right;
         }
         */
+     
+     .triangle {
+     	position:fixed;
+     	margin-top:0px;
+     	margin-left: 390px;
+     	width:150px;
+     	height:70px;
+     	/*border: 1px solid red; */
+     	background: url('../images/triangle.png');
+     	background-position: center;
+     	background-repeat: no-repeat;
+     }
+     
+     
+     .hidden {
+     	display: none;
+     }
+     
+     
+     #leftBox {
+     	position: fixed;
+     	width: 460px;
+     	height: 399px;
+     	margin-left:0px;
+     	border: 1px red solid;
+     }
+     
+     #rightBox {
+     	position: fixed;
+     	width: 490px;
+     	height: 400px;
+     	margin-left: 460px;
+     	border: 1px blue solid;
+     }
+     
+     
+     
         
     .singleEventContent {
-        
-        display: inline-block;
-        position: relative;
+        position:fixed;
+       
         }
 
     .singleEventImage {
-        display: inline-block;
-        position: relative;
-        float: left;
+       position: fixed;
+       top: 21%;
+       right: 16%;
         
-        padding: 10px;
+        padding: 1px;
         
         height:auto;
         width:auto;
         
+        
         }
         
     .singleEventText {
-        display: inline-block;
-        position: relative;
-        float: left;
+        
         width: 50%;
         
         
@@ -208,13 +243,13 @@
         }
         
     .singleEventButtons {
-        display: inline-block;
-        position: relative;
-        float: right;
+        position:fixed;
+        margin-left:250px;
+        margin-top:-70px;
         }
         
     .singleEventDescription {
-        position: relative;
+        
         text-align: left;
         padding: 10px;
         
@@ -222,8 +257,8 @@
         }
 
         .lrgImage {
-            width: 200px;
-            height: 200px;
+            width: 125px;
+            height: 125px;
             }
 
         .tempBtn {

@@ -58,7 +58,7 @@
     <span onClick='aboutBoxClose()'>
     	
     	<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
-                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                    <img onmouseover="this.src='./images/buttons/closebutton.png'" onmouseout="this.src='./images/buttons/closebutton2.png'" src='./images/buttons/closebutton.png'/>
                 </a>
     	
     	
@@ -111,8 +111,8 @@
     <span onClick='contactBoxClose()'>
     	
     	<a href='#' class='closeButton noclick' onClick='closeSingleEvent()'>
-                    <img onmouseover="this.src='./images/buttons/ps-x-button-50.png'" 
-                    onmouseout="this.src='./images/buttons/ps-x-button-50-inv.png'" src='./images/buttons/ps-x-button-50-inv.png'/>
+                    <img onmouseover="this.src='./images/buttons/closebutton2.png'" 
+                    onmouseout="this.src='./images/buttons/closebutton.png'" src='./images/buttons/closebutton.png'/>
                 </a>
     	
 

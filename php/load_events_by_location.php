@@ -1,5 +1,5 @@
 <?php
-$DEBUG = false;
+$DEBUG = TRUE;
 //error_reporting(0);
 if(isset($_REQUEST['latitude']) && isset($_REQUEST['longitude'])) {
 	session_start();
@@ -27,7 +27,7 @@ else {
     $offset = 0;
     }
 if($DEBUG) {
-	print_r($_REQUEST);
+	//print_r($_REQUEST);   ****! Undo comments slashes if changing $DEBUG to false
 }
 
 /***************************** end request and setup ******************/

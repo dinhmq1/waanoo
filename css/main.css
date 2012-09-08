@@ -767,7 +767,7 @@ html, body
 				position:absolute;
 				top:-80px;
 			right:-1000px; /**out of the window's width- want to animate into window upon scroll down to -350px**/
-				z-index: 50;
+				z-index: 0;
 			/*	border:1px solid red; */
 				}
                 
