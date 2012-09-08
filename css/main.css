@@ -389,7 +389,7 @@ html, body
         #postEventForm-wrapper { 
             display: none;
         
-            z-index: 100;
+            z-index: 600;
             width: 60%;
             height: auto;
             position: fixed;
