@@ -426,47 +426,93 @@ function singleEventOutput($all_vars) {
             $edit_btn
         	</div>
 		
-		
-		
-			 <span class='eventTitle'><b>"
+			<div class='lb-text'><span style='color:#e01847'> You</span> are invited to</div>
+			
+			<br />
+			<br />
+			 <span class='eventTitleSingle'><b>"
                 .strip_tags($event_title)." 
                 </b></span>
-		
+                
+                <br /><br /><br /> 
+                
+                <span style='font-size:10pt'>
+                <b><span style='color:#e01847'>Location:</span> </b>
+                ".strip_tags($venue_address)." <br />
+				</span>
+				
+				
+				<div class='lb-buttons'>
+				<a href='hoststats.php?event_id=$event_id' class='testBlackBtn'>Statistics</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$pageviewMapBtn
+				 
+				 		<div class='lb-map' onClick=\"openEventMap($lat, $lon, '".addslashes(strip_tags($venue_address))."', '".addslashes(strip_tags($event_title))."')\">
+                		<a href='#' class='noclick'>
+                		<img class='btnShowMap' src='images/buttons/btns_content/btn_map_inactive.png'/>
+                		</a>
+            			</div>
+				</div>
+				<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;<small><span style='color:#e01847'>RSVP'd:</span></small> 
+                <span id='att_count_$event_id'>
+                    $count_attend
+                </span>
+           		 &nbsp;&nbsp;
+            	<small><span style='color:#e01847'>M/F Ratio:</span> </small>
+           		 <small>$mfRatio</small><br />
+					
 		</div>
+		
+		
+		
+		
 		
 		<div class='triangle'>
          
          </div>
+		
+		
+		
+		
+		
+		
 		<div id='rightBox'>
 		
 		 	<div class='singleEventImage'>
                 $event_image
             </div>
         
-        <div class='singleEventText'>
+        	<div class='singleEventText'>
             
            <br />
             <div class='space'> 
-                <b>Date: </b>".strip_tags($day)."
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    | 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <b>Time: </b> ".strip_tags($hour)." 
+                <b><span style='color:#e01847'>Date:</span> </b>".strip_tags($day)."
+                <br />
+                     
+                
+                <b><span style='color:#e01847'>Time:</span> </b> ".strip_tags($hour)." 
             </div>
-                <b>Distance: </b>".round($distance, 1)." miles. <br />
-                <b>Location: </b>".strip_tags($venue_address)." <br />
-                <b>Price: </b> $priceText<br />
-                $formatted_url<br />
-                $outDoorsNote<br />
-            $contact_info_div <br />
+                <b><span style='color:#e01847'>Distance:</span> </b>".round($distance, 1)." miles. <br /> <br />
+                
+                <b><span style='color:#e01847'>Price:</span> </b> $priceText<br />
+                <span style='color:#e01847'>$formatted_url</span><br />
+                <span style='color:#e01847'>$outDoorsNote</span><br />
+            <span style='color:#e01847'>$contact_info_div</span> <br />
+            
+			 	<div class='singleEventDescription'>
+            		<b><span style='color:#e01847'>Description:</span> </b>
+            		<br />
+            		".strip_tags($event_description)."<br />
+        	  	</div>
+			
+			
+			
         </div>
         
         
         
             
-        <div class='singleEventDescription'>
-            <b>Description: </b>".strip_tags($event_description)."<br />
-        </div>
+       
             
           
             
