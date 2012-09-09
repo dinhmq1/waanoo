@@ -16,7 +16,7 @@ if(@$_SESSION['signed_in'] != true) {
 function dateCheckSensible($all_fields) {
 	$end = strtotime($all_fields['end']);
 	$start = strtotime($all_fields['begin']);
-	if($end > $start && $end > time())
+	if($end > $start)
 		return true;
 	else
 		return false;
@@ -163,6 +163,12 @@ $isContactInfo = $_REQUEST['isContactInfoActive'];
 $contactType = $_REQUEST['contactInfoType'];
 $contactInfo = $_REQUEST['contactInfoContent'];
 
+$isFree = $_REQUEST['isFree'];
+$eventPrice = $_REQUEST['eventPrice'];
+$eventCurrency = $_REQUEST['eventCurrency'];
+$isOutdoors = $_REQUEST['isOutdoors'];
+$homepageURL = $_REQUEST['homepageURL'];
+$tagsList = $_REQUEST['tagsList'];
 
 // encode to array for easy passing
 $all_fields = array(
@@ -229,93 +235,101 @@ if($isContactInfo == 1) {
 	}
 else
 	$isContactInfo = 0; // in case something nasty happened.
+	
+
+// fix cost stuff
+if($isFree == "true" or $isFree == true) {
+    $isFree = 1;
+    $eventPrice = 0;
+} else {
+    $isFree = 0;
+    // now check if numeric
+    if(!is_numeric($eventPrice)) {
+        $errFlag = false;
+        $errorList .= "Event price is not numeric!";
+    }
+}
+
+
+// fix outdoors stuff
+if($isOutdoors == "true" or $isOutdoors == true) {
+    $isOutdoors = 1;
+} else {
+    $isOutdoors = 0;
+}
+
+	
+
+// do main validation.. set flags:
+$errFlag = true;
+$errorList = "";
+
+if(!checkEmpties($all_fields)) {
+    $errFlag = false;
+    $errorList .= "Empty fields!";
+}
+
+if(!dateCheckValid($all_fields)) {
+    $errFlag = false;
+    $errorList .= "Date was not valid!";
+}
+
+if(!dateCheckSensible($all_fields)){
+    $errFlag = false;
+    $errorList .= "Start Date was after end date.";
+}
+
+if(!(($isContactInfo == 0 and $isOk == false) or ($isContactInfo == 1 and $isOk == true))) {
+    $errFlag = false;
+    $errorList .= "Contact info was incorrect!";
+}
+
+if($GLOBALS['debug'] == true) {
+    $errFlag = false;
+    $errorList .= "Debug mode enabled!";
+}
+	
 
 
 // main validation check
-if(checkEmpties($all_fields)) {
+if($errFlag){
+	$query_post = "UPDATE user_events
+		SET  user_id=?, event_title=?, event_description=?, 
+		 start_date=?, end_date=?,
+         is_contactable=?, contact_type=?, contact_info=?,
+         event_price=?, event_currency=?, homepage_url=?, 
+         tags_list=?, is_free=?, is_outdoors=?
+		WHERE event_id=?";
+	$stm = $cxn->prepare($query_post);
+	$stm->bind_param("issssissdsssiii", $uid, $name, $descrip, $begin, $end, $isContactInfo, $contactType, $contactInfo, $eventPrice, $eventCurrency, $homepageURL, $tagsList, $isFree, $isOutdoors, $oldID);
+	$stm->execute();
+	$stm->close();
 	
-	if(dateCheckValid($all_fields)) {
+	$event_id = $oldID;
 	
-		if(dateCheckSensible($all_fields)) {
-			
-			// to lazy to remove this stucture
-			if(($isContactInfo == 0 and $isOk == false) or ($isContactInfo == 1 and $isOk == true)) {
-				// debugger option
-				if($GLOBALS['debug'] == false){
-					// enter event to main table:
-					$query_post = "UPDATE user_events
-						SET  user_id=?, event_title=?, event_description=?, 
-						 start_date=?, end_date=?,
-                         is_contactable=?, contact_type=?, contact_info=?
-						WHERE event_id=?";
-					$stm = $cxn->prepare($query_post);
-					$stm->bind_param("issssissi", $uid, $name, $descrip, $begin, $end, $isContactInfo, $contactType, $contactInfo, $oldID);
-					$stm->execute();
-					$stm->close();
-					
-					/*
-					// pull most recent event for ID
-					$query_id = "SELECT MAX(event_id) 
-								AS event_id FROM user_events";
-					$result = mysqli_query($cxn,$query_id)
-						or    die ("Couldn't retrieve event list.");
-					$row = mysqli_fetch_assoc($result);
-					$event_id = $row['event_id']; 
-					// NOW WE HAVE: $event_id;
-					*/
-					
-					$event_id = $oldID;
-					
-					// enter event to location table
-					$qry = "UPDATE event_address 
-							SET address_text=?, x_coord=?, y_coord=? 
-							WHERE event_id=?";
-					$stm = $cxn->prepare($qry);
-					$stm->bind_param("sddi",  $loc, $lat, $lng, $event_id);
-					$stm->execute();
-					$stm->close();
-					
-					
-					if($isImage == true) {
-						// then we will submit the image
-						resizeAndSubmitImg($imageName, $event_id);
-						}
-					
-					// Success:
-					$arr = array("status" => 1, "message" => "event success!");
-					echo json_encode($arr);
-					}
-				}
-			else {
-				//failure
-				$arr = array("status" => 0, "message" => "Failed to create event... 
-					Contact info invalid!");
-				echo json_encode($arr);
-				}
-			}
-		else {
-			//failure
-			$arr = array("status" => 0, 
-				"message" => "Failed to create event... 
-				Start Date was after end date or Date was before current date");
-			echo json_encode($arr);
-			}
+	// enter event to location table
+	$qry = "UPDATE event_address 
+			SET address_text=?, x_coord=?, y_coord=? 
+			WHERE event_id=?";
+	$stm = $cxn->prepare($qry);
+	$stm->bind_param("sddi",  $loc, $lat, $lng, $event_id);
+	$stm->execute();
+	$stm->close();
+	
+	
+	if($isImage == true) {
+		// then we will submit the image
+		resizeAndSubmitImg($imageName, $event_id);
 		}
-	else {
-		//failure
-		$arr = array("status" => 0, 
-			"message" => "Failed to create event... 
-			Date was not valid!");
-		echo json_encode($arr);
-		}
-	}
-else {
-	//failure
-	$arr = array("status" => 0, 
-		"message" => "Failed to create event... 
-		empty fields!");
+	
+	// Success:
+	$arr = array("status" => 1, "message" => "event success!");
 	echo json_encode($arr);
-	}
+} else {
+    $errMsg = "Failed to create event... $errorList";
+    $arr = array("status" => 0, "message" => $errMsg);
+    echo json_encode($arr);
+}
 	
 
 ?>

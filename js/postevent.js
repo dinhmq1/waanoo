@@ -298,9 +298,9 @@ function testGeocode(address){
         
         // outdoors.. convert to boolean
         if(outdoors == "checked") {
-            outdoors == true;
+            outdoors = true;
         } else {
-            outdoors == false;
+            outdoors = false;
         }
         
         
