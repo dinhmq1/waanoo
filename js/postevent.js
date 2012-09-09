@@ -18,6 +18,8 @@ function close_post_event(){
     console.log("hiding event posting window");
     $('#postEventForm-wrapper').hide();
     controlDimmer(-1);
+    
+    clearPostEvent();
     }
 
 
