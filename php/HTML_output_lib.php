@@ -320,8 +320,10 @@ function search_output_func_users($all_vars){
     $search_output .= "
     <div class='eventSingle' id='event_num_$event_id'>
         
-        <div class='eventImgContainer'>
-            $event_img
+        <div class='eventImgContainer' onClick='eventSingleViewer($event_id)'>
+        <a href='#' class='noclick'>
+            ".$event_img."
+        </a>
         </div>
         
         <a href='#' class='noclick'>

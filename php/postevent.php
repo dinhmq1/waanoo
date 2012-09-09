@@ -64,7 +64,7 @@ function check_for_dups($all_fields) {
 function dateCheckSensible($all_fields) {
     $end = strtotime($all_fields['end']);
     $start = strtotime($all_fields['begin']);
-    if($end > $start && $start > time())
+    if($end > $start && $end > time())
         return true;
     else
         return false;
