@@ -3,6 +3,7 @@ session_start();
 require("cxn.php");
 $id = $_REQUEST['eventId'];
 
+
 function mysqlTimeToAMPM($mysql_date) {
     // $mysql_date is like: 2012-06-23 19:18:20
     $date_section = substr($mysql_date, 0, 10);
@@ -22,13 +23,28 @@ if(@$_SESSION['signed_in'] == true) {
 
     // in this field:   event_id    user_id event_title event_description   end_date    start_date  date_created    public
     $sql = "SELECT 
-            user_id, event_title, event_description, end_date, start_date, date_created, public 
+            user_id, 
+            event_title, 
+            event_description, 
+            end_date, 
+            start_date, 
+            date_created, 
+            public,
+            is_contactable,
+            contact_info,
+            contact_type,
+            event_price,
+            event_currency,
+            homepage_url,
+            tags_list,
+            is_free,
+            is_outdoors
             FROM user_events WHERE event_id=?";
     $stm = $cxn->prepare($sql);
     $stm->bind_param("i", $id);
     $stm->execute();
     
-    $stm->bind_result($user_id, $event_title, $event_description, $end_date, $start_date, $date_created, $public);
+    $stm->bind_result($user_id, $event_title, $event_description, $end_date, $start_date, $date_created, $public, $is_contactable, $contact_info, $contact_type, $event_price, $event_currency,$homepage_url,$tags_list,$is_free,$is_outdoors);
     $stm->fetch();
     $stm->close();
     
@@ -58,7 +74,16 @@ if(@$_SESSION['signed_in'] == true) {
             "start_date" => $start_date,
             "public" => $public,
             "address_text" => $address_text,
-            "date_created" => $date_created
+            "date_created" => $date_created,
+            "isContactInfo" => $is_contactable,
+	        "contactInfo" => $contact_info,
+	        "contactType" => $contact_type,
+	        "eventPrice" => $event_price,
+	        "eventCurrency" => $event_currency,
+	        "homepageURL" => $homepage_url,
+	        "tagsList" => $tags_list,
+	        "isFree" => $is_free,
+	        "isOutdoors" => $is_outdoors
             );
         echo json_encode($arr);
         }

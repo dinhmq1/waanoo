@@ -281,7 +281,7 @@ if($isContactInfo == 1) {
     
     if($contactType == "phone") {
         $isOk = verify_phone($contactInfo);
-        $contactInfo = $contactInfo['phone1'].$contactInfo['phone2'].$contactInfo['phone3'];
+        $contactInfo = $contactInfo['phone1']."-".$contactInfo['phone2']."-".$contactInfo['phone3'];
         }
     }
 else
@@ -341,7 +341,7 @@ if(!check_for_dups($all_fields)){
 
 if(!(($isContactInfo == 0 and $isOk == false) or ($isContactInfo == 1 and $isOk == true))) {
     $errFlag = false;
-    $errorList .= "Duplicate event detected!";
+    $errorList .= "Contact info was incorrect!";
 }
 
 if($GLOBALS['debug'] == true) {
